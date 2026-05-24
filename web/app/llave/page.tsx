@@ -19,7 +19,7 @@ export default async function LlavePage() {
       <p style={{ color: "var(--fg-2)", marginBottom: 32, fontSize: 13 }}>
         Grosor de línea proporcional a la probabilidad del cruce.
       </p>
-      <BracketView matches={ko} simulationAggregates={sim?.team_outlook ?? null} />
+      <BracketView matches={ko} />
     </>
   );
 }

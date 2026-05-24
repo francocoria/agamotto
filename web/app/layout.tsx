@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider, ThemeToggle } from "@/components/ThemeProvider";
 import { LangSwitcher } from "@/components/LangSwitcher";
 import { Logo } from "@/components/Logo";
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </footer>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

@@ -105,6 +105,13 @@ export type Simulation = {
   sampled_universes: any[];
 };
 
+export type BracketSlot = {
+  slot_index: number;
+  top_team: string;
+  p_top: number;
+  top_winners: { team: string; p: number }[];
+};
+
 export type PivotMatch = {
   match_id: string;
   home_team_id: string | null;
@@ -131,6 +138,7 @@ export const api = {
   venues: () => get<Venue[]>("/venues"),
   venue: (id: string) => get<Venue>(`/venues/${id}`),
   simulationLatest: () => get<Simulation>("/simulation/latest"),
+  bracket: () => get<Record<string, BracketSlot[]>>("/simulation/bracket"),
   multiverseChampions: () => get<ChampionEntry[]>("/multiverse/champions"),
   pivotMatches: () => get<PivotMatch[]>("/multiverse/pivot-matches"),
   universes: (limit = 30) => get<any[]>(`/multiverse/universes?limit=${limit}`),
