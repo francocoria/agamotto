@@ -4,7 +4,7 @@ import { api } from "@/lib/api";
 export const revalidate = 30;
 
 export default async function PivotesPage() {
-  const pivot = await api.pivotMatches();
+  const pivot = await api.pivotMatches().catch(() => []);
   const max = Math.max(...pivot.map((p) => p.impact_score), 0.001);
 
   return (

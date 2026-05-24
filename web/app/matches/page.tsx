@@ -13,7 +13,7 @@ export default async function MatchesPage({
     group: searchParams.group,
     team: searchParams.team,
     limit: 200,
-  });
+  }).catch(() => []);
 
   return (
     <>

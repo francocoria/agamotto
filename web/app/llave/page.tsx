@@ -4,7 +4,7 @@ import { BracketView } from "@/components/BracketView";
 export const revalidate = 30;
 
 export default async function LlavePage() {
-  const matches = await api.matches({ limit: 200 });
+  const matches = await api.matches({ limit: 200 }).catch(() => []);
   const sim = await api.simulationLatest().catch(() => null);
   const ko = matches.filter((m) => m.stage !== "group");
 

@@ -4,7 +4,7 @@ import { api } from "@/lib/api";
 export const revalidate = 60;
 
 export default async function VenuesPage() {
-  const venues = await api.venues();
+  const venues = await api.venues().catch(() => []);
   return (
     <>
       <header className="mb-6">

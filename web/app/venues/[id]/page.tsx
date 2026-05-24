@@ -5,8 +5,24 @@ import { MatchCard } from "@/components/MatchCard";
 export const revalidate = 60;
 
 export default async function VenuePage({ params }: { params: { id: string } }) {
-  const venue = await api.venue(params.id);
-  const allMatches = await api.matches({ limit: 200 });
+  const [venue, allMatches] = await Promise.all([
+    api.venue(params.id).catch(() => null),
+    api.matches({ limit: 200 }).catch(() => []),
+  ]);
+
+  if (!venue) {
+    return (
+      <>
+        <header className="mb-8">
+          <Link href="/venues" className="text-xs text-canvas-500 hover:text-agamotto-300">← Sedes</Link>
+          <div className="agm-card agm-card-pad" style={{ color: "var(--fg-3)", marginTop: 24 }}>
+            No se encontró la sede o la API está desconectada.
+          </div>
+        </header>
+      </>
+    );
+  }
+
   const matches = allMatches.filter((m) => m.venue?.venue_id === venue.venue_id);
 
   return (

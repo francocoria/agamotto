@@ -6,9 +6,22 @@ export const revalidate = 30;
 
 export default async function MatchPage({ params }: { params: { id: string } }) {
   const [match, pred] = await Promise.all([
-    api.match(params.id),
+    api.match(params.id).catch(() => null),
     api.prediction(params.id).catch(() => null),
   ]);
+
+  if (!match) {
+    return (
+      <>
+        <Link href="/matches" className="agm-mono" style={{ fontSize: 11, color: "var(--fg-3)", letterSpacing: "0.06em" }}>
+          ← MATCHES
+        </Link>
+        <div className="agm-card agm-card-pad" style={{ color: "var(--fg-3)", marginTop: 24 }}>
+          No se encontró el partido o la API está desconectada.
+        </div>
+      </>
+    );
+  }
 
   const date = new Date(match.kickoff_utc);
   const dateStr = date.toLocaleString("es-AR", { dateStyle: "full", timeStyle: "short" });

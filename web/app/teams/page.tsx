@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { api } from "@/lib/api";
+import { api, type Team } from "@/lib/api";
 
 export const revalidate = 30;
 
 export default async function TeamsPage() {
-  const teams = await api.teams();
-  const byConf = teams.reduce<Record<string, typeof teams>>((acc, t) => {
+  const teams = (await api.teams().catch(() => [])) as Team[];
+  const byConf = teams.reduce<Record<string, Team[]>>((acc, t) => {
     (acc[t.confederation] ||= []).push(t);
     return acc;
   }, {});

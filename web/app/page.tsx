@@ -9,9 +9,9 @@ export default async function Home() {
   const [sim, champions, matches, teams, venues] = await Promise.all([
     api.simulationLatest().catch(() => null),
     api.multiverseChampions().catch(() => []),
-    api.matches({ limit: 8 }),
-    api.teams(),
-    api.venues(),
+    api.matches({ limit: 8 }).catch(() => []),
+    api.teams().catch(() => []),
+    api.venues().catch(() => []),
   ]);
 
   return (

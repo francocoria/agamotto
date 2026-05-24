@@ -16,10 +16,21 @@ const STAGES: { key: keyof TeamOutlook; label: string }[] = [
 export default async function TeamPage({ params }: { params: { id: string } }) {
   const id = params.id.toUpperCase();
   const [team, outlook, matches] = await Promise.all([
-    api.team(id),
+    api.team(id).catch(() => null),
     api.teamOutlook(id).catch(() => null),
-    api.matches({ team: id, limit: 50 }),
+    api.matches({ team: id, limit: 50 }).catch(() => []),
   ]);
+
+  if (!team) {
+    return (
+      <>
+        <Link href="/teams" className="agm-mono" style={{ fontSize: 11, color: "var(--fg-3)" }}>← SELECCIONES</Link>
+        <div className="agm-card agm-card-pad" style={{ color: "var(--fg-3)", marginTop: 24 }}>
+          No se encontró la selección o la API está desconectada.
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
