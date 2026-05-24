@@ -27,6 +27,7 @@ from agamotto.models.elo import EloModel
 from agamotto.models.elo import load as load_elo
 from agamotto.models.player_impact import PlayerImpactModel
 from agamotto.models.player_impact import load as load_pi
+from agamotto.models.stacker import StackerModel, build_features
 
 log = get_logger(__name__)
 
@@ -37,9 +38,11 @@ class AgamottoEnsemble:
     dc: DixonColesModel
     pi: PlayerImpactModel
     calibrator: IsotonicCalibrator | None = None
-    # Mixing weights (probabilities)
+    stacker: StackerModel | None = None
+    # Mixing weights (suman 1)
     w_elo: float = 0.25
     w_dc: float = 0.75
+    w_stacker: float = 0.0
     version: str = "agamotto_ensemble_0.1.0"
     # Mapping: team_id (uppercase code) → display name used for Elo/DC lookups
     team_name_map: dict[str, str] = field(default_factory=dict)
@@ -78,11 +81,27 @@ class AgamottoEnsemble:
             "away": float(np.triu(m, 1).sum()),
         }
 
-        # 4) Combinar Elo + DC
+        # 3.5) Stacker (si está disponible)
+        stack_p = {"home": 0.0, "draw": 0.0, "away": 0.0}
+        if self.stacker is not None and self.w_stacker > 0:
+            elo_h_rating = self.elo.get(home_name)
+            elo_a_rating = self.elo.get(away_name)
+            elo_diff = elo_h_rating + (0 if neutral else self.elo.home_adv) - elo_a_rating
+            feats = build_features(
+                np.array([[elo_p["home"], elo_p["draw"], elo_p["away"]]], dtype=np.float32),
+                np.array([[dc_p["home"], dc_p["draw"], dc_p["away"]]], dtype=np.float32),
+                np.array([[lam_h, lam_a]], dtype=np.float32),
+                np.array([elo_diff], dtype=np.float32),
+                np.array([1.0 if neutral else 0.0], dtype=np.float32),
+            )
+            sp = self.stacker.predict_proba(feats)[0]
+            stack_p = {"home": float(sp[0]), "draw": float(sp[1]), "away": float(sp[2])}
+
+        # 4) Combinar Elo + DC + Stacker
         p = {
-            "home": self.w_elo * elo_p["home"] + self.w_dc * dc_p["home"],
-            "draw": self.w_elo * elo_p["draw"] + self.w_dc * dc_p["draw"],
-            "away": self.w_elo * elo_p["away"] + self.w_dc * dc_p["away"],
+            "home": self.w_elo * elo_p["home"] + self.w_dc * dc_p["home"] + self.w_stacker * stack_p["home"],
+            "draw": self.w_elo * elo_p["draw"] + self.w_dc * dc_p["draw"] + self.w_stacker * stack_p["draw"],
+            "away": self.w_elo * elo_p["away"] + self.w_dc * dc_p["away"] + self.w_stacker * stack_p["away"],
         }
         # Renormaliza
         s = sum(p.values())
@@ -183,7 +202,11 @@ def build(
     dc_version: str = "dixon_coles_0.1.0",
     pi_version: str = "player_impact_0.1.0",
     calibrator_version: str | None = None,
+    use_optimal: bool = True,
 ) -> AgamottoEnsemble:
+    """Construye el ensemble. Si `use_optimal` y hay artefactos guardados
+    por `agamotto train optimize`, los carga (stacker + pesos + calibrador)."""
+    import json
     elo_m = load_elo(elo_version)
     dc_m = load_dc(dc_version)
     try:
@@ -191,8 +214,41 @@ def build(
     except FileNotFoundError:
         log.warning("No player impact model found, using empty.")
         pi_m = PlayerImpactModel()
+
+    # Defaults
+    w_elo, w_dc, w_stacker = 0.25, 0.75, 0.0
+    stacker = None
     cal = None
-    if calibrator_version:
+    version = "agamotto_ensemble_0.1.0"
+
+    # Try to load optimized artifacts
+    weights_path = settings.processed_dir / "ensemble_weights.json"
+    if use_optimal and weights_path.exists():
+        with open(weights_path, encoding="utf-8") as f:
+            w = json.load(f)
+        w_elo = float(w["w_elo"])
+        w_dc = float(w["w_dc"])
+        w_stacker = float(w["w_stacker"])
+        try:
+            stacker = StackerModel.load("stacker_0.1.0")
+            version = "agamotto_ensemble_0.2.0"
+            log.info("Loaded optimal ensemble · weights Elo=%.3f DC=%.3f Stacker=%.3f",
+                     w_elo, w_dc, w_stacker)
+        except FileNotFoundError:
+            stacker = None
+            w_stacker = 0.0
+            # Renormalize elo+dc to sum to 1
+            tot = w_elo + w_dc
+            if tot > 0:
+                w_elo /= tot; w_dc /= tot
+
+    # Calibrator: optimal first, then explicit
+    if use_optimal:
+        try:
+            cal = IsotonicCalibrator.load("calibrator_optimal_0.1.0")
+        except FileNotFoundError:
+            cal = None
+    if cal is None and calibrator_version:
         try:
             cal = IsotonicCalibrator.load(calibrator_version)
         except FileNotFoundError:
@@ -206,7 +262,12 @@ def build(
         rows = s.execute(select(Team.team_id, Team.name)).all()
     team_name_map = {tid: name for tid, name in rows}
 
-    return AgamottoEnsemble(elo=elo_m, dc=dc_m, pi=pi_m, calibrator=cal, team_name_map=team_name_map)
+    return AgamottoEnsemble(
+        elo=elo_m, dc=dc_m, pi=pi_m,
+        calibrator=cal, stacker=stacker,
+        w_elo=w_elo, w_dc=w_dc, w_stacker=w_stacker,
+        version=version, team_name_map=team_name_map,
+    )
 
 
 def save(ens: AgamottoEnsemble) -> str:

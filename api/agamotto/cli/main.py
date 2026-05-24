@@ -91,6 +91,24 @@ def train_ensemble():
     rprint(f"[green]OK[/green] Ensemble: {e.version}")
 
 
+@train_app.command("optimize")
+def train_optimize(start_year: int = typer.Option(2022), end_year: int = typer.Option(2026)):
+    """Entrena LightGBM stacker + optimiza pesos del ensemble por scipy. Reporta métricas."""
+    setup_logging()
+    from agamotto.models.optimize import run_optimize
+    out = run_optimize(start_year=start_year, end_year=end_year)
+    rprint("[green]OK[/green] Ensemble optimization complete")
+    rprint(f"Optimal weights:  Elo={out['weights']['w_elo']:.3f}  "
+           f"DC={out['weights']['w_dc']:.3f}  Stacker={out['weights']['w_stacker']:.3f}")
+    rprint(f"Brier:    [cyan]{out['brier']:.4f}[/cyan]")
+    rprint(f"Log loss: [cyan]{out['log_loss']:.4f}[/cyan]")
+    table = Table(title="Comparativa de modelos")
+    table.add_column("Modelo"); table.add_column("Brier", justify="right"); table.add_column("LogLoss", justify="right")
+    for name, m in out["metrics_comparison"].items():
+        table.add_row(name, f"{m['brier']:.4f}", f"{m['log_loss']:.4f}")
+    rprint(table)
+
+
 @train_app.command("validation")
 def train_validation(start_year: int = typer.Option(2022, help="Año de inicio de validación.")):
     """Ejecuta backtesting walk-forward, calibra el ensemble y guarda métricas."""
