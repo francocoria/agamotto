@@ -103,14 +103,18 @@ def train_validation(start_year: int = typer.Option(2022, help="Año de inicio d
 
 
 @train_app.command("all")
-def train_all():
-    """Entrena todo en orden: elo → poisson → dixon-coles → player-impact → ensemble → validation."""
-    train_elo()
-    train_poisson()
-    train_dc()
+def train_all(skip_validation: bool = typer.Option(False, help="Saltear backtesting walk-forward.")):
+    """Entrena todo en orden: elo → poisson → dixon-coles → player-impact → ensemble (+ validation)."""
+    train_elo(min_date="2014-01-01")
+    train_poisson(min_date="2016-01-01")
+    train_dc(min_date="2020-01-01")
     train_pi()
     train_ensemble()
-    train_validation()
+    if not skip_validation:
+        try:
+            train_validation(start_year=2022)
+        except Exception as e:
+            rprint(f"[yellow]WARN[/yellow] validation skipped: {e}")
 
 
 # ------------------ simulate / predict / serve ------------------
