@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider, ThemeToggle } from "@/components/ThemeProvider";
 import { LangSwitcher } from "@/components/LangSwitcher";
 import { Logo } from "@/components/Logo";
+import { UserMenu } from "@/components/UserMenu";
 
 export const metadata: Metadata = {
   title: "Agamotto · Mundial 2026",
@@ -73,12 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </span>
                 <LangSwitcher />
                 <ThemeToggle />
-                <Link href="/login" className="agm-btn agm-btn-ghost" style={{ height: 32, padding: "0 14px", fontSize: 12 }}>
-                  Iniciar sesión
-                </Link>
-                <Link href="/signup" className="agm-btn agm-btn-primary" style={{ height: 32, padding: "0 14px", fontSize: 12 }}>
-                  Crear cuenta
-                </Link>
+                <UserMenu />
               </div>
             </div>
           </header>

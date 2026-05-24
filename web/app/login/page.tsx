@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LoginForm } from "@/components/LoginForm";
 
 export default function LoginPage() {
   return (
@@ -25,31 +26,7 @@ export default function LoginPage() {
           Entrá para ejecutar simulaciones, guardar escenarios y exportar tus análisis.
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-          <button className="agm-btn">G  Google</button>
-          <button className="agm-btn"></button>
-        </div>
-        <div style={{ textAlign: "center", margin: "20px 0 16px", fontSize: 10, color: "var(--fg-3)", letterSpacing: "0.16em" }}>
-          O CONTINUÁ CON
-        </div>
-
-        <form>
-          <label className="agm-label">EMAIL</label>
-          <input className="agm-input" type="email" placeholder="lionel@10.ar" />
-          <label className="agm-label" style={{ marginTop: 14 }}>CONTRASEÑA</label>
-          <input className="agm-input" type="password" placeholder="••••••••••" />
-
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12, fontSize: 12 }}>
-            <label style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--fg-2)" }}>
-              <input type="checkbox" /> Mantener sesión
-            </label>
-            <a className="agm-mono" style={{ color: "var(--green-deep)" }}>Olvidé la contraseña</a>
-          </div>
-
-          <button type="submit" className="agm-btn agm-btn-primary" style={{ width: "100%", marginTop: 20, justifyContent: "center" }}>
-            ENTRAR
-          </button>
-        </form>
+        <LoginForm />
 
         <div style={{ textAlign: "center", marginTop: 16, fontSize: 12, color: "var(--fg-2)" }}>
           ¿No tenés cuenta? <Link href="/signup" className="agm-mono" style={{ color: "var(--green-deep)", fontWeight: 700 }}>Crear cuenta</Link>
