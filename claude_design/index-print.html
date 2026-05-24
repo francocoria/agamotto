@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Agamotto · Mundial 2026 · Diseños · PDF</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Print page layout ── */
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+    html, body { background: #c0c4ca; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .print-page {
+      width: 297mm;
+      height: 210mm;
+      background: #ffffff;
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .print-page:last-child { page-break-after: auto; break-after: auto; }
+
+    .pp-stage {
+      width: 100%; height: calc(100% - 22mm);
+      display: flex; align-items: center; justify-content: center;
+      padding: 10mm 12mm 0;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .pp-frame {
+      position: relative;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06);
+      overflow: hidden;
+      border-radius: 2px;
+      background: white;
+    }
+    .pp-art {
+      transform-origin: top left;
+    }
+    .pp-caption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 22mm;
+      padding: 6mm 14mm;
+      display: flex; justify-content: space-between; align-items: center;
+      box-sizing: border-box;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      background: #f6f7f9;
+    }
+    .pp-caption-l { display: flex; flex-direction: column; gap: 4px; }
+    .pp-section {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: #8a96a3;
+      text-transform: uppercase;
+    }
+    .pp-title {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 0.01em;
+      color: #0e1320;
+      text-transform: uppercase;
+    }
+    .pp-meta {
+      display: flex; gap: 22px; align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: #5a6573;
+    }
+    .pp-meta b { color: #0e1320; font-weight: 600; }
+    .pp-page-num {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #0a9956;
+      letter-spacing: 0.04em;
+    }
+
+    /* Cover */
+    .pp-cover {
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 22mm 24mm;
+      box-sizing: border-box;
+      background:
+        radial-gradient(ellipse 60% 50% at 0% 0%, rgba(10, 153, 86, 0.10), transparent 60%),
+        radial-gradient(ellipse 55% 45% at 100% 100%, rgba(90, 54, 214, 0.10), transparent 60%),
+        #f6f7f9;
+    }
+    .pp-cover h1 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 130px;
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: #0e1320;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .pp-cover h1 .accent { color: #0a9956; }
+    .pp-cover .kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: #0a9956;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pp-cover .kicker::before {
+      content: ""; width: 36px; height: 1px; background: #0a9956;
+    }
+    .pp-cover .lede {
+      max-width: 760px; font-size: 14px; line-height: 1.6;
+      color: #2c3543; margin-top: 28px;
+    }
+    .pp-cover-foot {
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .pp-cover-foot .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.14em; color: #5a6573;
+      line-height: 1.8;
+    }
+    .pp-cover-foot .meta b { color: #0e1320; font-weight: 600; }
+    .pp-toc {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #5a6573;
+      letter-spacing: 0.12em;
+      line-height: 1.9;
+      column-count: 2; column-gap: 60px;
+      max-width: 520px;
+    }
+    .pp-toc b { color: #0e1320; font-weight: 600; }
+    .pp-flags { display: flex; gap: 10px; }
+    .pp-flags span {
+      font-family: 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;
+      font-size: 28px;
+    }
+
+    @media screen {
+      body { padding: 24px; }
+      .print-page {
+        margin: 0 auto 24px;
+        box-shadow: 0 8px 36px rgba(0,0,0,0.15);
+      }
+    }
+
+    @media print {
+      html, body { background: white; }
+      .print-page { margin: 0; box-shadow: none; }
+    }
+
+    /* Disable animations for print clarity */
+    .print-page .agm-anim-blur,
+    .print-page .agm-anim-fade-up,
+    .print-page .agm-anim-fade,
+    .print-page .agm-anim-slide,
+    .print-page .agm-stagger > *,
+    .print-page .agm-dot-pulse {
+      animation: none !important;
+    }
+    .print-page .agm-bar-fill,
+    .print-page .agm-bar-1x2 > span {
+      animation: none !important;
+      transform: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- App parts (same as main file) -->
+  <script type="text/babel" src="i18n.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="components-wc.jsx"></script>
+  <script type="text/babel" src="screens/landing.jsx"></script>
+  <script type="text/babel" src="screens/multiverse.jsx"></script>
+  <script type="text/babel" src="screens/bracket.jsx"></script>
+  <script type="text/babel" src="screens/academic.jsx"></script>
+  <script type="text/babel" src="screens/pivot.jsx"></script>
+  <script type="text/babel" src="screens/auth.jsx"></script>
+
+  <script type="text/babel">
+    // ── Page sizes ──
+    // A4 landscape ≈ 297mm × 210mm. At 96dpi: ~1122px × 794px.
+    // Reserve ~22mm caption strip → stage box ≈ 1054 × 681
+    const STAGE_W = 1054, STAGE_H = 681;
+    // Portrait stage: 210mm × 297mm = 794 × 1122. Reserve caption → 760 × 1010
+    const STAGE_W_P = 760, STAGE_H_P = 1010;
+
+    function PrintPage({ width, height, sectionLabel, title, meta, pageNum, total, children, portrait, dark }) {
+      const sw = portrait ? STAGE_W_P : STAGE_W;
+      const sh = portrait ? STAGE_H_P : STAGE_H;
+      const scale = Math.min(sw / width, sh / height);
+      const fw = width * scale, fh = height * scale;
+      return (
+        <div className="print-page" style={portrait ? { width: '210mm', height: '297mm' } : null}>
+          <div className="pp-stage" style={portrait ? { height: 'calc(100% - 22mm)' } : null}>
+            <div className="pp-frame" style={{ width: fw, height: fh }}>
+              <div className="pp-art" style={{
+                width, height,
+                transform: `scale(${scale})`,
+              }}>
+                {children}
+              </div>
+            </div>
+          </div>
+          <div className="pp-caption">
+            <div className="pp-caption-l">
+              <span className="pp-section">{sectionLabel}</span>
+              <span className="pp-title">{title}</span>
+            </div>
+            <div className="pp-meta">
+              {meta && <span>{meta}</span>}
+              <span className="pp-page-num">{String(pageNum).padStart(2, '0')} / {String(total).padStart(2, '0')}</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function CoverPage({ total }) {
+      return (
+        <div className="print-page">
+          <div className="pp-cover">
+            <div>
+              <div className="kicker">MUNDIAL · USA · MEX · CAN · 2026</div>
+              <h1>
+                AGAMOTTO. <br />
+                NO VEMOS UN<br />
+                FUTURO. LOS<br />
+                <span className="accent">CALCULAMOS<br />TODOS.</span>
+              </h1>
+              <div className="lede">
+                Plataforma predictiva multiverso calibrada matemáticamente para los 104 partidos del Mundial 2026.
+                Documento de diseño · landing, autenticación, simulador, llave eliminatoria, calibración de modelos y partidos pivote.
+              </div>
+            </div>
+
+            <div className="pp-cover-foot">
+              <div className="meta">
+                <div><b>Proyecto</b> · Agamotto / Predictive 2026</div>
+                <div><b>Edición</b> · v0.4.1 · CALIB Ω</div>
+                <div><b>Páginas</b> · {total}</div>
+              </div>
+              <div className="pp-toc">
+                <b>01</b> · Cover<br />
+                <b>02</b> · Landing · Desktop<br />
+                <b>03</b> · Landing · Mobile<br />
+                <b>04</b> · Login · Desktop<br />
+                <b>05</b> · Login · Mobile<br />
+                <b>06</b> · Signup · Desktop<br />
+                <b>07</b> · Signup · Mobile<br />
+                <b>08</b> · Escenarios · Desktop<br />
+                <b>09</b> · Escenarios · Mobile<br />
+                <b>10</b> · Llave · Desktop<br />
+                <b>11</b> · Llave · Mobile<br />
+                <b>12</b> · Modelo · Desktop<br />
+                <b>13</b> · Modelo · Mobile<br />
+                <b>14</b> · Pivotes · Desktop<br />
+                <b>15</b> · Pivotes · Mobile<br />
+              </div>
+              <div className="pp-flags">
+                <span>🇺🇸</span>
+                <span>🇲🇽</span>
+                <span>🇨🇦</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function PrintBook() {
+      const pages = [
+        { sec: 'I · LANDING',        title: 'Landing · Desktop',  w: 1440, h: 3960, c: () => <LandingDesktop />,    meta: '1440 × 3960' },
+        { sec: 'I · LANDING',        title: 'Landing · Mobile',   w: 390,  h: 2760, c: () => <LandingMobile />,     meta: '390 × 2760', portrait: true },
+        { sec: 'II · AUTH',          title: 'Login · Desktop',    w: 1440, h: 900,  c: () => <LoginDesktop />,      meta: '1440 × 900' },
+        { sec: 'II · AUTH',          title: 'Login · Mobile',     w: 390,  h: 920,  c: () => <LoginMobile />,       meta: '390 × 920', portrait: true },
+        { sec: 'II · AUTH',          title: 'Signup · Desktop',   w: 1440, h: 900,  c: () => <SignupDesktop />,     meta: '1440 × 900' },
+        { sec: 'II · AUTH',          title: 'Signup · Mobile',    w: 390,  h: 1020, c: () => <SignupMobile />,      meta: '390 × 1020', portrait: true },
+        { sec: 'III · ESCENARIOS',   title: 'Escenarios · Desktop', w: 1440, h: 1000, c: () => <MultiverseDesktop />, meta: '1440 × 1000' },
+        { sec: 'III · ESCENARIOS',   title: 'Escenarios · Mobile', w: 390, h: 1680, c: () => <MultiverseMobile />, meta: '390 × 1680', portrait: true },
+        { sec: 'IV · LLAVE',         title: 'Llave · Desktop',    w: 1600, h: 980,  c: () => <BracketDesktop />,    meta: '1600 × 980' },
+        { sec: 'IV · LLAVE',         title: 'Llave · Mobile',     w: 390,  h: 1320, c: () => <BracketMobile />,     meta: '390 × 1320', portrait: true },
+        { sec: 'V · MODELO',         title: 'Modelo · Desktop',   w: 1440, h: 1020, c: () => <AcademicDesktop />,   meta: '1440 × 1020' },
+        { sec: 'V · MODELO',         title: 'Modelo · Mobile',    w: 390,  h: 1540, c: () => <AcademicMobile />,    meta: '390 × 1540', portrait: true },
+        { sec: 'VI · PIVOTES',       title: 'Pivotes · Desktop',  w: 1440, h: 960,  c: () => <PivotDesktop />,      meta: '1440 × 960' },
+        { sec: 'VI · PIVOTES',       title: 'Pivotes · Mobile',   w: 390,  h: 1500, c: () => <PivotMobile />,       meta: '390 × 1500', portrait: true },
+      ];
+      const total = pages.length + 1;
+      return (
+        <ThemeProvider>
+          <LangProvider>
+            <CoverPage total={total} />
+            {pages.map((p, i) => (
+              <PrintPage key={i} width={p.w} height={p.h}
+                sectionLabel={p.sec} title={p.title} meta={p.meta}
+                pageNum={i + 2} total={total} portrait={p.portrait}>
+                {p.c()}
+              </PrintPage>
+            ))}
+          </LangProvider>
+        </ThemeProvider>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<PrintBook />);
+
+    // Auto-print once everything has settled
+    (async () => {
+      try { await document.fonts.ready; } catch {}
+      await new Promise((r) => setTimeout(r, 1200));
+      window.print();
+    })();
+  </script>
+</body>
+</html>

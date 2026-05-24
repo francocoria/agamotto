@@ -1,0 +1,100 @@
+"""16 sedes oficiales del Mundial FIFA 2026."""
+
+VENUES_2026 = [
+    {
+        "venue_id": "MERCEDES_BENZ__ATLANTA", "name": "Mercedes-Benz Stadium",
+        "city": "Atlanta", "country": "USA", "altitude_m": 320, "capacity": 71000,
+        "surface": "hybrid", "roof": "retractable", "timezone": "America/New_York",
+        "latitude": 33.7553, "longitude": -84.4006,
+    },
+    {
+        "venue_id": "GILLETTE__BOSTON", "name": "Gillette Stadium",
+        "city": "Boston", "country": "USA", "altitude_m": 36, "capacity": 65000,
+        "surface": "natural", "roof": "open", "timezone": "America/New_York",
+        "latitude": 42.0909, "longitude": -71.2643,
+    },
+    {
+        "venue_id": "AT_T__DALLAS", "name": "AT&T Stadium",
+        "city": "Dallas", "country": "USA", "altitude_m": 144, "capacity": 80000,
+        "surface": "natural", "roof": "retractable", "timezone": "America/Chicago",
+        "latitude": 32.7473, "longitude": -97.0945,
+    },
+    {
+        "venue_id": "AKRON__GUADALAJARA", "name": "Estadio Akron",
+        "city": "Guadalajara", "country": "Mexico", "altitude_m": 1566, "capacity": 48000,
+        "surface": "natural", "roof": "open", "timezone": "America/Mexico_City",
+        "latitude": 20.6818, "longitude": -103.4626,
+    },
+    {
+        "venue_id": "NRG__HOUSTON", "name": "NRG Stadium",
+        "city": "Houston", "country": "USA", "altitude_m": 15, "capacity": 72000,
+        "surface": "natural", "roof": "retractable", "timezone": "America/Chicago",
+        "latitude": 29.6847, "longitude": -95.4107,
+    },
+    {
+        "venue_id": "ARROWHEAD__KANSAS_CITY", "name": "Arrowhead Stadium",
+        "city": "Kansas City", "country": "USA", "altitude_m": 226, "capacity": 76000,
+        "surface": "natural", "roof": "open", "timezone": "America/Chicago",
+        "latitude": 39.0489, "longitude": -94.4839,
+    },
+    {
+        "venue_id": "SOFI__LOS_ANGELES", "name": "SoFi Stadium",
+        "city": "Los Angeles", "country": "USA", "altitude_m": 35, "capacity": 70000,
+        "surface": "natural", "roof": "fixed", "timezone": "America/Los_Angeles",
+        "latitude": 33.9535, "longitude": -118.3392,
+    },
+    {
+        "venue_id": "AZTECA__MEXICO_CITY", "name": "Estadio Azteca",
+        "city": "Mexico City", "country": "Mexico", "altitude_m": 2240, "capacity": 87000,
+        "surface": "natural", "roof": "open", "timezone": "America/Mexico_City",
+        "latitude": 19.3029, "longitude": -99.1505,
+    },
+    {
+        "venue_id": "HARD_ROCK__MIAMI", "name": "Hard Rock Stadium",
+        "city": "Miami", "country": "USA", "altitude_m": 3, "capacity": 65000,
+        "surface": "natural", "roof": "open", "timezone": "America/New_York",
+        "latitude": 25.9580, "longitude": -80.2389,
+    },
+    {
+        "venue_id": "BBVA__MONTERREY", "name": "Estadio BBVA",
+        "city": "Monterrey", "country": "Mexico", "altitude_m": 537, "capacity": 53000,
+        "surface": "natural", "roof": "open", "timezone": "America/Monterrey",
+        "latitude": 25.6692, "longitude": -100.2447,
+    },
+    {
+        "venue_id": "METLIFE__NEW_YORK", "name": "MetLife Stadium",
+        "city": "New York/New Jersey", "country": "USA", "altitude_m": 2, "capacity": 82000,
+        "surface": "natural", "roof": "open", "timezone": "America/New_York",
+        "latitude": 40.8136, "longitude": -74.0744,
+    },
+    {
+        "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA", "name": "Lincoln Financial Field",
+        "city": "Philadelphia", "country": "USA", "altitude_m": 12, "capacity": 69000,
+        "surface": "natural", "roof": "open", "timezone": "America/New_York",
+        "latitude": 39.9008, "longitude": -75.1675,
+    },
+    {
+        "venue_id": "LEVIS__SAN_FRANCISCO", "name": "Levi's Stadium",
+        "city": "San Francisco Bay Area", "country": "USA", "altitude_m": 5, "capacity": 68500,
+        "surface": "natural", "roof": "open", "timezone": "America/Los_Angeles",
+        "latitude": 37.4032, "longitude": -121.9698,
+    },
+    {
+        "venue_id": "LUMEN__SEATTLE", "name": "Lumen Field",
+        "city": "Seattle", "country": "USA", "altitude_m": 4, "capacity": 69000,
+        "surface": "hybrid", "roof": "open", "timezone": "America/Los_Angeles",
+        "latitude": 47.5952, "longitude": -122.3316,
+    },
+    {
+        "venue_id": "BMO__TORONTO", "name": "BMO Field",
+        "city": "Toronto", "country": "Canada", "altitude_m": 76, "capacity": 45000,
+        "surface": "natural", "roof": "open", "timezone": "America/Toronto",
+        "latitude": 43.6325, "longitude": -79.4185,
+    },
+    {
+        "venue_id": "BC_PLACE__VANCOUVER", "name": "BC Place",
+        "city": "Vancouver", "country": "Canada", "altitude_m": 0, "capacity": 54500,
+        "surface": "hybrid", "roof": "retractable", "timezone": "America/Vancouver",
+        "latitude": 49.2767, "longitude": -123.1119,
+    },
+]

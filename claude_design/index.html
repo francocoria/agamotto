@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agamotto · Mundial 2026 · Diseños</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { margin: 0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React + Babel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- Design canvas -->
+  <script type="text/babel" src="design-canvas.jsx"></script>
+
+  <!-- App parts -->
+  <script type="text/babel" src="i18n.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="components-wc.jsx"></script>
+  <script type="text/babel" src="screens/landing.jsx"></script>
+  <script type="text/babel" src="screens/multiverse.jsx"></script>
+  <script type="text/babel" src="screens/bracket.jsx"></script>
+  <script type="text/babel" src="screens/academic.jsx"></script>
+  <script type="text/babel" src="screens/pivot.jsx"></script>
+  <script type="text/babel" src="screens/auth.jsx"></script>
+
+  <!-- App mount -->
+  <script type="text/babel">
+    function App() {
+      return (
+        <ThemeProvider>
+        <LangProvider>
+          <DesignCanvas>
+            <DCSection id="landing" title="Landing · Inicio" subtitle="Página pública · hero, tabla detallada de probabilidades, próximos partidos, login/signup.">
+              <DCArtboard id="landing-desk" label="Desktop · 1440" width={1440} height={3960}>
+                <LandingDesktop />
+              </DCArtboard>
+              <DCArtboard id="landing-mob" label="Mobile · 390" width={390} height={2760}>
+                <LandingMobile />
+              </DCArtboard>
+            </DCSection>
+
+            <DCSection id="auth" title="Autenticación · Login & Crear cuenta" subtitle="Vistas dedicadas con split visual + formulario. OAuth, validación y fuerza de contraseña.">
+              <DCArtboard id="login-desk" label="Login · Desktop" width={1440} height={900}>
+                <LoginDesktop />
+              </DCArtboard>
+              <DCArtboard id="signup-desk" label="Signup · Desktop" width={1440} height={900}>
+                <SignupDesktop />
+              </DCArtboard>
+              <DCArtboard id="login-mob" label="Login · Mobile" width={390} height={920}>
+                <LoginMobile />
+              </DCArtboard>
+              <DCArtboard id="signup-mob" label="Signup · Mobile" width={390} height={1020}>
+                <SignupMobile />
+              </DCArtboard>
+            </DCSection>
+
+            <DCSection id="scenarios" title="Escenarios · Simulador contrafactual" subtitle="Cadena de condiciones → recalcular el torneo y comparar deltas de probabilidad.">
+              <DCArtboard id="mv-desk" label="Desktop · 1440" width={1440} height={1000}>
+                <MultiverseDesktop />
+              </DCArtboard>
+              <DCArtboard id="mv-mob" label="Mobile · 390" width={390} height={1680}>
+                <MultiverseMobile />
+              </DCArtboard>
+            </DCSection>
+
+            <DCSection id="bracket" title="Llave eliminatoria · Multiverso" subtitle="Cuadro de eliminación con grosor de línea proporcional a la probabilidad del cruce.">
+              <DCArtboard id="br-desk" label="Desktop · 1600" width={1600} height={980}>
+                <BracketDesktop />
+              </DCArtboard>
+              <DCArtboard id="br-mob" label="Mobile · 390" width={390} height={1320}>
+                <BracketMobile />
+              </DCArtboard>
+            </DCSection>
+
+            <DCSection id="academic" title="Panel académico · Calibración" subtitle="Curva de calibración, Brier, Log-Loss y auditoría del ensemble.">
+              <DCArtboard id="ac-desk" label="Desktop · 1440" width={1440} height={1020}>
+                <AcademicDesktop />
+              </DCArtboard>
+              <DCArtboard id="ac-mob" label="Mobile · 390" width={390} height={1540}>
+                <AcademicMobile />
+              </DCArtboard>
+            </DCSection>
+
+            <DCSection id="pivot" title="Partidos pivote" subtitle="Partidos cuyo resultado bifurca el torneo con la mayor entropía sistémica.">
+              <DCArtboard id="pv-desk" label="Desktop · 1440" width={1440} height={960}>
+                <PivotDesktop />
+              </DCArtboard>
+              <DCArtboard id="pv-mob" label="Mobile · 390" width={390} height={1500}>
+                <PivotMobile />
+              </DCArtboard>
+            </DCSection>
+          </DesignCanvas>
+        </LangProvider>
+        </ThemeProvider>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
