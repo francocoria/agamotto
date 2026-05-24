@@ -54,15 +54,7 @@ export function SignupForm() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-        <button type="button" onClick={onGoogle} className="agm-btn" disabled={loading}>
-          G  Google
-        </button>
-        <button type="button" className="agm-btn" disabled>  Apple</button>
-      </div>
-      <div style={{ textAlign: "center", margin: "20px 0 16px", fontSize: 10, color: "var(--fg-3)", letterSpacing: "0.16em" }}>
-        O CONTINUÁ CON
-      </div>
+      {/* Removed Google/Apple buttons per user request */}
 
       <label className="agm-label">NOMBRE</label>
       <input className="agm-input" type="text" required value={name}
