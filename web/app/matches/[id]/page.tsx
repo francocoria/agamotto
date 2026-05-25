@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { api, pct } from "@/lib/api";
 import { ProbabilityBar, ProbLabels } from "@/components/ProbabilityBar";
+import { ScorelineDistribution } from "@/components/ScorelineDistribution";
 
 export const revalidate = 30;
 
@@ -86,22 +87,6 @@ export default async function MatchPage({ params }: { params: { id: string } }) 
                 <Stat label="xG visitante" value={pred.lambda_away.toFixed(2)} />
               </div>
 
-              <h3 className="agm-display" style={{ marginTop: 32, fontSize: 12, letterSpacing: "0.16em", color: "var(--fg-3)" }}>
-                TOP MARCADORES
-              </h3>
-              <ul style={{ marginTop: 12, padding: 0, listStyle: "none" }}>
-                {pred.top_scorelines.slice(0, 8).map((s) => (
-                  <li key={s.score} style={{ display: "flex", alignItems: "center", padding: "6px 0", fontSize: 13 }}>
-                    <span className="agm-mono" style={{ color: "var(--fg-3)", width: 50 }}>{s.score}</span>
-                    <div className="agm-bar" style={{ flex: 1, marginRight: 12, height: 5 }}>
-                      <div className="agm-bar-fill" style={{ width: `${(s.p / pred.top_scorelines[0].p) * 100}%` }} />
-                    </div>
-                    <span className="agm-mono agm-num" style={{ color: "var(--green-deep)", width: 56, textAlign: "right" }}>
-                      {pct(s.p, 2)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
 
@@ -134,6 +119,16 @@ export default async function MatchPage({ params }: { params: { id: string } }) 
               </div>
             )}
           </aside>
+        </div>
+      )}
+
+      {pred && (
+        <div style={{ marginTop: 32 }}>
+          <ScorelineDistribution
+            scorelines={pred.top_scorelines}
+            homeTeam={match.home_team}
+            awayTeam={match.away_team}
+          />
         </div>
       )}
     </>

@@ -152,10 +152,10 @@ html, body { background: #f6f7f9; min-height: 100vh; margin: 0; padding: 0; }
 .agm-card {
   background: var(--bg-1);
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 20px;
   position: relative;
   box-shadow: var(--shadow-card);
-  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
 }
 .agm-root[data-theme="dark"] .agm-card {
   background: linear-gradient(180deg, rgba(17, 24, 31, 0.85), rgba(11, 17, 23, 0.85));
@@ -332,8 +332,62 @@ html, body { background: #f6f7f9; min-height: 100vh; margin: 0; padding: 0; }
 /* Animations */
 @keyframes agm-fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes agm-fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes agm-blur-in { from { opacity: 0; filter: blur(6px); transform: translateY(6px); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
+@keyframes agm-blur-in { from { opacity: 0; filter: blur(8px); transform: translateY(10px) scale(0.99); } to { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); } }
 @keyframes agm-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes agm-page-in {
+  0%   { opacity: 0; filter: blur(12px); transform: scale(0.985); }
+  60%  { opacity: 1; filter: blur(2px); }
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+@keyframes agm-iris-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.92; }
+}
+@keyframes agm-iris-rotate { to { transform: rotate(360deg); } }
+
+/* Main content gets a soft Eye-of-Agamotto entrance */
+main { animation: agm-page-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Buttons & inputs softer */
+.agm-btn, .agm-btn-icon { border-radius: 12px; }
+.agm-input { border-radius: 12px; }
+.agm-pill { border-radius: 999px; }
+
+/* Eye logo / header element */
+.agm-eye-mark {
+  width: 28px; height: 28px;
+  border-radius: 999px;
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 50%, var(--green-soft) 0%, var(--green) 35%, var(--green-deep) 75%);
+  box-shadow: 0 0 0 1.5px var(--green), 0 0 16px var(--green-glow);
+  animation: agm-iris-pulse 4s ease-in-out infinite;
+}
+.agm-eye-mark::before {
+  content: ""; position: absolute; inset: 5px;
+  border-radius: 999px;
+  background: var(--bg-1);
+  opacity: 0.18;
+}
+.agm-eye-mark::after {
+  content: ""; position: absolute;
+  width: 6px; height: 11px;
+  border-radius: 50%;
+  background: #06090d;
+  box-shadow: -1px -2px 0 0 var(--green-soft);
+}
+.agm-eye-spin {
+  position: absolute; inset: -3px;
+  border-radius: 999px;
+  background: conic-gradient(from 0deg,
+    var(--green) 0deg, transparent 90deg,
+    var(--violet) 180deg, transparent 270deg, var(--green) 360deg);
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  padding: 1.5px;
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: agm-iris-rotate 12s linear infinite;
+  pointer-events: none;
+}
 .agm-anim-blur { animation: agm-blur-in .7s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
 .agm-anim-fade-up { animation: agm-fade-up .5s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
 .agm-anim-fade { animation: agm-fade-in .6s ease both; }

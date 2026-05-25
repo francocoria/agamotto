@@ -164,6 +164,17 @@ def train_all(skip_validation: bool = typer.Option(False, help="Saltear backtest
 
 # ------------------ simulate / predict / serve ------------------
 
+@app.command("cache-predictions")
+def cache_predictions(out: str = typer.Option("", help="Ruta salida. Default: web/public/data/predictions.json")):
+    """Pre-computa predicción del ensemble para 1.128 pares (cancha neutral) → JSON estático."""
+    setup_logging()
+    from pathlib import Path
+    from agamotto.models.cache_predictions import compute_all
+    out_path = Path(out) if out else None
+    data = compute_all(out_path=out_path)
+    rprint(f"[green]OK[/green] {data['n_pairs']} pares · modelo {data['model_version']}")
+
+
 @app.command("simulate")
 def simulate(
     runs: int = typer.Option(100_000, help="Iteraciones Monte Carlo."),

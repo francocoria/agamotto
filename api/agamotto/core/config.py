@@ -16,7 +16,13 @@ class Settings(BaseSettings):
     # API
     api_host: str = "0.0.0.0"
     api_port: int = 8000
-    api_cors_origins: list[str] = ["http://localhost:3000"]
+    api_cors_origins: list[str] = [
+        "http://localhost:3000",
+        "https://agamotto-one.vercel.app",
+        "https://agamotto.vercel.app",
+    ]
+    # Regex para preview deploys de Vercel (agamotto-XXX.vercel.app)
+    api_cors_origin_regex: str = r"https://agamotto[-a-zA-Z0-9]*\.vercel\.app"
 
     # Simulation defaults
     simulation_default_runs: int = 100_000

@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { api, pct, type MatchPrediction, type Team } from "@/lib/api";
+import { loadPredictionsCache, lookupPair, type PredictionsCache } from "@/lib/predictions-cache";
 
 export function CustomPredictor({ teams, defaultHome, defaultAway }: {
   teams: Team[];
@@ -18,16 +19,54 @@ export function CustomPredictor({ teams, defaultHome, defaultAway }: {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<MatchPrediction | null>(null);
+  const [cache, setCache] = useState<PredictionsCache | null>(null);
+  const [source, setSource] = useState<"cache" | "live" | null>(null);
+
+  // Preload static cache on mount
+  useEffect(() => {
+    loadPredictionsCache().then(setCache).catch(() => setCache(null));
+  }, []);
 
   const swap = () => { setHome(away); setAway(home); };
 
+  // Auto-recompute on selection change (with debounce)
+  useEffect(() => {
+    if (!home || !away || home === away) return;
+    const t = setTimeout(() => onPredict(), 200);
+    return () => clearTimeout(t);
+
+  }, [home, away, neutral, cache]);
+
   const onPredict = async () => {
-    if (home === away) {
-      setError("Elegí dos equipos distintos");
-      return;
-    }
-    setLoading(true);
+    if (home === away) { setError("Elegí dos equipos distintos"); return; }
     setError(null);
+
+    // Try cache first (only valid for neutral pairs)
+    if (cache && neutral) {
+      const cached = lookupPair(cache, home, away);
+      if (cached) {
+        const r: MatchPrediction = {
+          match_id: `CACHE_${home}_${away}`,
+          model_version: cached.model_version,
+          as_of: new Date().toISOString(),
+          home_team: cached.home_team as any,
+          away_team: cached.away_team as any,
+          venue: null,
+          p_home: cached.p_home, p_draw: cached.p_draw, p_away: cached.p_away,
+          lambda_home: cached.lambda_home, lambda_away: cached.lambda_away,
+          p_over_2_5: cached.p_over_2_5, p_btts: cached.p_btts,
+          top_scorelines: cached.top_scorelines as any,
+          top_factors: cached.top_factors as any,
+        };
+        setResult(r);
+        setSource("cache");
+        return;
+      }
+    }
+
+    // Fallback to live API
+    setLoading(true);
+    setSource("live");
     try {
       const r = await api.predictCustom(home, away, neutral);
       setResult(r);
@@ -43,21 +82,13 @@ export function CustomPredictor({ teams, defaultHome, defaultAway }: {
 
   return (
     <div>
-      {/* Selectors */}
       <div className="agm-card agm-card-pad" style={{ marginBottom: 24 }}>
         <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr auto 1fr",
-          gap: 16,
-          alignItems: "end",
+          display: "grid", gridTemplateColumns: "1fr auto 1fr",
+          gap: 16, alignItems: "end",
         }}>
           <TeamSelect label="LOCAL" value={home} onChange={setHome} teams={sorted} />
-          <button
-            onClick={swap}
-            className="agm-btn-icon"
-            title="Invertir local/visitante"
-            style={{ marginBottom: 1 }}
-          >
+          <button onClick={swap} className="agm-btn-icon" title="Invertir" style={{ marginBottom: 1 }}>
             ⇄
           </button>
           <TeamSelect label="VISITANTE" value={away} onChange={setAway} teams={sorted} />
@@ -65,26 +96,20 @@ export function CustomPredictor({ teams, defaultHome, defaultAway }: {
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 20, gap: 16, flexWrap: "wrap" }}>
           <label style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--fg-2)", fontSize: 12 }}>
-            <input
-              type="checkbox"
-              checked={neutral}
-              onChange={(e) => setNeutral(e.target.checked)}
-            />
+            <input type="checkbox" checked={neutral} onChange={(e) => setNeutral(e.target.checked)} />
             Cancha neutral (default Mundial)
           </label>
-          <button
-            onClick={onPredict}
-            disabled={loading || home === away}
-            className="agm-btn agm-btn-primary"
-            style={{ minWidth: 200, justifyContent: "center", opacity: loading || home === away ? 0.5 : 1 }}
-          >
-            {loading ? "CALCULANDO..." : "PREDECIR PARTIDO"}
-          </button>
+          {source === "cache" && (
+            <span className="agm-pill agm-pill-green" style={{ fontSize: 9 }}>
+              ⚡ INSTANT · CACHED
+            </span>
+          )}
+          {source === "live" && loading && (
+            <span className="agm-pill" style={{ fontSize: 9 }}>LIVE · API</span>
+          )}
         </div>
         {error && (
-          <div className="agm-pill agm-pill-red" style={{ marginTop: 14 }}>
-            {error}
-          </div>
+          <div className="agm-pill agm-pill-red" style={{ marginTop: 14 }}>{error}</div>
         )}
       </div>
 
@@ -108,15 +133,15 @@ function TeamSelect({ label, value, onChange, teams }: {
       <div style={{ position: "relative" }}>
         {selected && (
           <span className="agm-flag-emoji" style={{
-            position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)",
-            fontSize: 20, pointerEvents: "none",
+            position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)",
+            fontSize: 22, pointerEvents: "none",
           }}>{selected.flag_emoji}</span>
         )}
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
           className="agm-input"
-          style={{ paddingLeft: 44, fontSize: 14, fontWeight: 600, height: 48 }}
+          style={{ paddingLeft: 48, fontSize: 14, fontWeight: 600, height: 52 }}
         >
           {teams.map((t) => (
             <option key={t.team_id} value={t.team_id}>
@@ -142,20 +167,17 @@ function PredictionResult({ result, homeTeam, awayTeam }: {
         <span className="agm-card-eyebrow">{result.model_version}</span>
       </div>
 
-      {/* VS row */}
       <div style={{
-        padding: 28,
-        background: "var(--bg-2)",
+        padding: 28, background: "var(--bg-2)",
         display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", gap: 16,
       }}>
-        <ResultSide team={homeTeam} p={result.p_home} lambda={result.lambda_home} />
+        <ResultSide team={homeTeam} p={result.p_home} lam={result.lambda_home} />
         <div className="agm-display" style={{ fontSize: 22, color: "var(--fg-3)" }}>VS</div>
-        <ResultSide team={awayTeam} p={result.p_away} lambda={result.lambda_away} right />
+        <ResultSide team={awayTeam} p={result.p_away} lam={result.lambda_away} right />
       </div>
 
-      {/* Probability bar */}
       <div style={{ padding: 24, borderBottom: "1px solid var(--line)" }}>
-        <div style={{ display: "flex", borderRadius: 4, overflow: "hidden", height: 12 }}>
+        <div style={{ display: "flex", borderRadius: 999, overflow: "hidden", height: 12 }}>
           <div style={{ flex: result.p_home, background: "var(--green)" }} />
           <div style={{ flex: result.p_draw, background: "var(--fg-3)" }} />
           <div style={{ flex: result.p_away, background: "var(--violet)" }} />
@@ -172,13 +194,12 @@ function PredictionResult({ result, homeTeam, awayTeam }: {
         </div>
       </div>
 
-      {/* Top scorelines */}
       <div style={{ padding: 24, borderBottom: "1px solid var(--line)" }}>
         <div className="agm-mono" style={{ fontSize: 11, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-          RESULTADOS MÁS PROBABLES
+          TODOS LOS RESULTADOS PROBABLES
         </div>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-          {(result.top_scorelines ?? []).slice(0, 8).map((s) => {
+          {(result.top_scorelines ?? []).slice(0, 15).map((s) => {
             const [h, a] = s.score.split("-").map(Number);
             const winLabel = h > a ? homeTeam?.fifa_code ?? "Local"
               : h < a ? awayTeam?.fifa_code ?? "Visita" : "Empate";
@@ -187,9 +208,7 @@ function PredictionResult({ result, homeTeam, awayTeam }: {
               <li key={s.score} style={{
                 display: "grid",
                 gridTemplateColumns: "auto 1fr 80px 60px",
-                gap: 10,
-                padding: "8px 0",
-                alignItems: "center",
+                gap: 10, padding: "8px 0", alignItems: "center",
                 borderBottom: "1px solid var(--line)",
               }}>
                 <span className="agm-mono" style={{ fontSize: 14, fontWeight: 700, color: "var(--fg-0)" }}>
@@ -210,7 +229,6 @@ function PredictionResult({ result, homeTeam, awayTeam }: {
         </ul>
       </div>
 
-      {/* Factors */}
       {result.top_factors?.length > 0 && (
         <div style={{ padding: 24 }}>
           <div className="agm-mono" style={{ fontSize: 11, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
@@ -229,7 +247,7 @@ function PredictionResult({ result, homeTeam, awayTeam }: {
   );
 }
 
-function ResultSide({ team, p, lambda, right }: { team?: Team; p: number; lambda: number; right?: boolean }) {
+function ResultSide({ team, p, lam, right }: { team?: Team; p: number; lam: number; right?: boolean }) {
   return (
     <div style={{ textAlign: right ? "right" : "left" }}>
       <div style={{ fontSize: 48, lineHeight: 1 }}>{team?.flag_emoji ?? "🏳️"}</div>
@@ -241,7 +259,7 @@ function ResultSide({ team, p, lambda, right }: { team?: Team; p: number; lambda
         marginTop: 10, fontSize: 22, color: "var(--green-deep)", fontWeight: 700,
       }}>{pct(p)}</div>
       <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", marginTop: 2 }}>
-        xG {lambda.toFixed(2)}
+        xG {lam.toFixed(2)}
       </div>
     </div>
   );
