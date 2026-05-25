@@ -2,7 +2,7 @@
 
 Pipeline:
   1) Corre el backtest walk-forward y guarda predicciones por modelo + features de meta.
-  2) Entrena LightGBM stacker con k-fold CV → predicciones OOF.
+  2) Entrena LightGBM stacker (k-fold OOF + bagging) con features base + contextuales.
   3) Busca pesos óptimos (Elo, DC, Stacker) minimizando log loss vía scipy.
   4) Aplica calibración isotónica al ensemble óptimo.
   5) Reporta métricas comparativas y guarda el ensemble + calibrador finales.
@@ -11,6 +11,7 @@ Pipeline:
 from __future__ import annotations
 
 import json
+from collections import defaultdict
 from datetime import date
 
 import joblib
@@ -31,8 +32,14 @@ from agamotto.models.calibration import (
 )
 from agamotto.models.dixon_coles import DixonColesModel, _fit_rho
 from agamotto.models.elo import EloModel
+from agamotto.models.features import (
+    CONTEXT_FEATURE_NAMES,
+    H2HState,
+    TeamState,
+    compute_match_features,
+)
 from agamotto.models.poisson import PoissonModel, _build_dataset
-from agamotto.models.stacker import build_features, train_kfold_oof
+from agamotto.models.stacker import build_features, train_kfold_oof_bagged
 
 log = get_logger(__name__)
 
@@ -48,73 +55,104 @@ def _load_history() -> pd.DataFrame:
     return df.sort_values("date").reset_index(drop=True)
 
 
+def _train_year_models(df_train: pd.DataFrame) -> tuple[EloModel, PoissonModel, DixonColesModel]:
+    elo_m = EloModel(ratings={}, last_played={})
+    for _, r in df_train.iterrows():
+        elo_m.update_one(r["home"], r["away"], int(r["hs"]), int(r["as_"]),
+                         r["tournament"], r["date"], bool(r["neutral"]))
+
+    df_train_p = df_train[df_train["date"] >= date(2014, 1, 1)]
+    dd, weights, y_pois = _build_dataset(df_train_p)
+    teams = sorted(set(dd["team"]).union(dd["opp"]))
+    t_idx = {t: i for i, t in enumerate(teams)}
+    n = len(teams)
+    X = np.zeros((len(dd), 1 + 2 * n), dtype=np.float32)
+    X[:, 0] = dd["is_home"].values
+    for i, r in enumerate(dd.itertuples(index=False)):
+        X[i, 1 + t_idx[r.team]] = 1.0
+        X[i, 1 + n + t_idx[r.opp]] = 1.0
+    reg = PoissonRegressor(alpha=1e-3, max_iter=500).fit(X, y_pois, sample_weight=weights)
+    pois_m = PoissonModel(
+        attack={t: float(reg.coef_[1 + i]) for t, i in t_idx.items()},
+        defense={t: float(reg.coef_[1 + n + i]) for t, i in t_idx.items()},
+        intercept=float(reg.intercept_),
+        home_adv=float(reg.coef_[0]),
+    )
+
+    df_train_dc = df_train[df_train["date"] >= date(2018, 1, 1)]
+    rho = _fit_rho(df_train_dc, pois_m)
+    dc_m = DixonColesModel(poisson=pois_m, rho=rho)
+    return elo_m, pois_m, dc_m
+
+
 def collect_walk_forward(start_year: int = 2022, end_year: int = 2026) -> dict:
-    """Camina año a año. Para cada año, entrena modelos con info <= anio-1
-    y predice los partidos del año. Devuelve arrays alineados.
+    """Para cada año de validación retrenamos los modelos base (Elo / Poisson / DC)
+    con datos < año. Recorremos los partidos cronológicamente manteniendo team_state
+    incremental para features contextuales (forma, descanso, h2h) sin leakage.
     """
     df = _load_history()
-    df_val = df[df["date"] >= date(start_year, 1, 1)].copy()
-    if df_val.empty:
-        raise ValueError("No validation data found.")
 
-    log.info("Walk-forward collection: %d candidate matches", len(df_val))
-
-    y_true, p_elo, p_dc, lam, elo_diff_arr, neutral_arr = [], [], [], [], [], []
-
+    # Pre-build base models por año (caro pero único)
+    year_models: dict[int, tuple[EloModel, PoissonModel, DixonColesModel]] = {}
     for year in range(start_year, end_year + 1):
-        year_mask = (df_val["date"] >= date(year, 1, 1)) & (df_val["date"] <= date(year, 12, 31))
-        df_year = df_val[year_mask]
-        if df_year.empty:
-            continue
         cutoff = date(year - 1, 12, 31)
-        log.info("year %d: training up to %s, predicting %d matches",
-                 year, cutoff, len(df_year))
+        log.info("training base models with data <= %s ...", cutoff)
+        year_models[year] = _train_year_models(df[df["date"] <= cutoff])
 
-        # ----- Elo -----
-        elo_m = EloModel(ratings={}, last_played={})
-        df_train_elo = df[df["date"] <= cutoff]
-        for _, r in df_train_elo.iterrows():
-            elo_m.update_one(r["home"], r["away"], int(r["hs"]), int(r["as_"]),
-                             r["tournament"], r["date"], bool(r["neutral"]))
+    # Build initial state from all matches < start_year
+    log.info("Building initial state from history before %s...", date(start_year, 1, 1))
+    team_state: dict[str, TeamState] = defaultdict(TeamState)
+    h2h_state: dict[tuple[str, str], H2HState] = defaultdict(H2HState)
 
-        # ----- Poisson -----
-        df_train_p = df[(df["date"] >= date(2014, 1, 1)) & (df["date"] <= cutoff)]
-        dd, weights, y_pois = _build_dataset(df_train_p)
-        teams = sorted(set(dd["team"]).union(dd["opp"]))
-        t_idx = {t: i for i, t in enumerate(teams)}
-        n = len(teams)
-        X = np.zeros((len(dd), 1 + 2 * n), dtype=np.float32)
-        X[:, 0] = dd["is_home"].values
-        for i, r in enumerate(dd.itertuples(index=False)):
-            X[i, 1 + t_idx[r.team]] = 1.0
-            X[i, 1 + n + t_idx[r.opp]] = 1.0
-        reg = PoissonRegressor(alpha=1e-3, max_iter=500).fit(X, y_pois, sample_weight=weights)
-        pois_m = PoissonModel(
-            attack={t: float(reg.coef_[1 + i]) for t, i in t_idx.items()},
-            defense={t: float(reg.coef_[1 + n + i]) for t, i in t_idx.items()},
-            intercept=float(reg.intercept_),
-            home_adv=float(reg.coef_[0]),
+    cutoff_init = date(start_year, 1, 1)
+    pre = df[df["date"] < cutoff_init]
+    for _, r in pre.iterrows():
+        team_state[r["home"]].update(int(r["hs"]), int(r["as_"]), r["date"])
+        team_state[r["away"]].update(int(r["as_"]), int(r["hs"]), r["date"])
+        key = tuple(sorted([r["home"], r["away"]]))
+        h2h_state[key].update(
+            int(r["hs"]) if r["home"] == key[0] else int(r["as_"]),
+            int(r["as_"]) if r["home"] == key[0] else int(r["hs"]),
         )
 
-        # ----- DC -----
-        df_train_dc = df[(df["date"] >= date(2018, 1, 1)) & (df["date"] <= cutoff)]
-        rho = _fit_rho(df_train_dc, pois_m)
-        dc_m = DixonColesModel(poisson=pois_m, rho=rho)
+    # Walk validation matches in date order, compute features BEFORE updating
+    val = df[(df["date"] >= cutoff_init) & (df["date"] <= date(end_year, 12, 31))]
+    val = val.sort_values("date").reset_index(drop=True)
+    log.info("Walk-forward over %d validation matches.", len(val))
 
-        # ----- Predict each match in df_year -----
-        for _, r in df_year.iterrows():
-            h, a, neutral = r["home"], r["away"], bool(r["neutral"])
-            hs, as_ = int(r["hs"]), int(r["as_"])
-            outcome = 0 if hs > as_ else 1 if hs == as_ else 2
-            y_true.append(outcome)
-            elo_p = elo_m.predict_proba(h, a, neutral=neutral)
-            dc_p = dc_m.predict_proba(h, a, neutral=neutral)
-            lam_h, lam_a = pois_m.lambda_home_away(h, a, neutral=neutral)
-            p_elo.append([elo_p["home"], elo_p["draw"], elo_p["away"]])
-            p_dc.append([dc_p["home"], dc_p["draw"], dc_p["away"]])
-            lam.append([lam_h, lam_a])
-            elo_diff_arr.append(elo_m.get(h) + (0 if neutral else elo_m.home_adv) - elo_m.get(a))
-            neutral_arr.append(1.0 if neutral else 0.0)
+    y_true, p_elo, p_dc, lam, elo_diff_arr, neutral_arr = [], [], [], [], [], []
+    ctx_rows = []
+
+    for _, r in val.iterrows():
+        h, a, neutral = r["home"], r["away"], bool(r["neutral"])
+        hs, as_ = int(r["hs"]), int(r["as_"])
+        match_year = r["date"].year
+        elo_m, pois_m, dc_m = year_models[match_year]
+
+        # Predict
+        elo_p = elo_m.predict_proba(h, a, neutral=neutral)
+        dc_p = dc_m.predict_proba(h, a, neutral=neutral)
+        lam_h, lam_a = pois_m.lambda_home_away(h, a, neutral=neutral)
+
+        # Contextual features (before this match's result)
+        ctx = compute_match_features(h, a, r["date"], team_state, h2h_state)
+
+        y_true.append(0 if hs > as_ else 1 if hs == as_ else 2)
+        p_elo.append([elo_p["home"], elo_p["draw"], elo_p["away"]])
+        p_dc.append([dc_p["home"], dc_p["draw"], dc_p["away"]])
+        lam.append([lam_h, lam_a])
+        elo_diff_arr.append(elo_m.get(h) + (0 if neutral else elo_m.home_adv) - elo_m.get(a))
+        neutral_arr.append(1.0 if neutral else 0.0)
+        ctx_rows.append([ctx[k] for k in CONTEXT_FEATURE_NAMES])
+
+        # Update state AFTER prediction
+        team_state[h].update(hs, as_, r["date"])
+        team_state[a].update(as_, hs, r["date"])
+        key = tuple(sorted([h, a]))
+        h2h_state[key].update(
+            hs if h == key[0] else as_,
+            as_ if h == key[0] else hs,
+        )
 
     return {
         "y": np.array(y_true),
@@ -123,6 +161,7 @@ def collect_walk_forward(start_year: int = 2022, end_year: int = 2026) -> dict:
         "lambdas": np.array(lam, dtype=np.float32),
         "elo_diff": np.array(elo_diff_arr, dtype=np.float32),
         "neutral": np.array(neutral_arr, dtype=np.float32),
+        "context": np.array(ctx_rows, dtype=np.float32),
     }
 
 
@@ -132,7 +171,7 @@ def _renorm(p: np.ndarray) -> np.ndarray:
 
 
 def _optimal_weights(p_list: list[np.ndarray], y: np.ndarray) -> np.ndarray:
-    """Minimiza log loss del promedio ponderado de p_list. Pesos en simplex (suma=1, >=0)."""
+    """Minimiza log loss del promedio ponderado de p_list. Pesos en simplex (>=0, suma=1)."""
     K = len(p_list)
     P = np.stack(p_list, axis=0)  # (K, n, 3)
 
@@ -156,32 +195,32 @@ def _metrics(p: np.ndarray, y: np.ndarray) -> dict:
     return {"brier": brier_multiclass(p, y), "log_loss": log_loss_multiclass(p, y)}
 
 
-def run_optimize(start_year: int = 2022, end_year: int = 2026) -> dict:
-    log.info("=== Agamotto · ensemble optimization ===")
+def run_optimize(start_year: int = 2022, end_year: int = 2026, n_bags: int = 3) -> dict:
+    log.info("=== Agamotto · ensemble optimization (v0.3 — context features + bagging) ===")
     data = collect_walk_forward(start_year=start_year, end_year=end_year)
     y = data["y"]
     p_elo, p_dc = data["p_elo"], data["p_dc"]
     log.info("Collected %d out-of-time predictions.", len(y))
 
-    # --- Train LGBM stacker with k-fold OOF ---
-    X = build_features(p_elo, p_dc, data["lambdas"], data["elo_diff"], data["neutral"])
-    p_stacker_oof, stacker_final = train_kfold_oof(X, y, n_splits=5, seed=42)
+    # Build stacker features (base + contextual)
+    X = build_features(p_elo, p_dc, data["lambdas"], data["elo_diff"], data["neutral"],
+                       context=data["context"])
+    p_stacker_oof, stacker_final = train_kfold_oof_bagged(
+        X, y, n_splits=5, n_bags=n_bags, seeds=list(range(42, 42 + n_bags)),
+    )
 
-    # --- Base metrics ---
     metrics = {
         "Naive": _metrics(np.full((len(y), 3), 1 / 3), y),
         "Elo": _metrics(p_elo, y),
         "DC": _metrics(p_dc, y),
-        "Stacker (LGBM OOF)": _metrics(p_stacker_oof, y),
+        f"Stacker (LGBM OOF · {n_bags} bags · {X.shape[1]} feats)": _metrics(p_stacker_oof, y),
     }
 
-    # --- Optimize linear weights over (Elo, DC, Stacker) ---
     w = _optimal_weights([p_elo, p_dc, p_stacker_oof], y)
     log.info("Optimal weights: Elo=%.3f  DC=%.3f  Stacker=%.3f", w[0], w[1], w[2])
     mix = _renorm(w[0] * p_elo + w[1] * p_dc + w[2] * p_stacker_oof)
     metrics["Ensemble (Elo+DC+Stacker, optimal weights)"] = _metrics(mix, y)
 
-    # --- Calibrate the optimal ensemble (isotonic, per-class) ---
     calib = IsotonicCalibrator()
     calib.fit(mix, y)
     calibrated = np.array([
@@ -192,16 +231,16 @@ def run_optimize(start_year: int = 2022, end_year: int = 2026) -> dict:
 
     log.info("Comparative metrics:")
     for name, m in metrics.items():
-        log.info("  %-50s Brier=%.4f  LogLoss=%.4f", name, m["brier"], m["log_loss"])
+        log.info("  %-58s Brier=%.4f  LogLoss=%.4f", name, m["brier"], m["log_loss"])
 
-    # --- Persist artifacts ---
-    stacker_path = stacker_final.save("stacker_0.1.0")
+    # Persist
+    stacker_path = stacker_final.save("stacker_0.2.0")
     calib.save("calibrator_optimal_0.1.0")
     weights_path = settings.processed_dir / "ensemble_weights.json"
     with open(weights_path, "w", encoding="utf-8") as f:
         json.dump({"w_elo": float(w[0]), "w_dc": float(w[1]), "w_stacker": float(w[2])}, f, indent=2)
 
-    # Calibration bins for the academic panel
+    # Calibration bins
     preds_flat = calibrated.flatten()
     obs = np.zeros_like(calibrated)
     obs[np.arange(len(y)), y] = 1.0
@@ -223,13 +262,13 @@ def run_optimize(start_year: int = 2022, end_year: int = 2026) -> dict:
                          "observed": 0.0, "n": 0})
 
     out = {
-        "model_version": "agamotto_ensemble_0.2.0",
+        "model_version": "agamotto_ensemble_0.3.0",
         "weights": {"w_elo": float(w[0]), "w_dc": float(w[1]), "w_stacker": float(w[2])},
         "metrics_comparison": metrics,
         "brier": metrics["Ensemble (calibrated)"]["brier"],
         "log_loss": metrics["Ensemble (calibrated)"]["log_loss"],
         "bins": bins,
-        "note": f"Walk-forward {start_year}-{end_year} · {len(y)} partidos · LGBM stacker 5-fold OOF.",
+        "note": f"Walk-forward {start_year}-{end_year} · {len(y)} partidos · stacker {X.shape[1]} feats · {n_bags} bags.",
         "stacker_path": stacker_path,
         "weights_path": str(weights_path),
     }
@@ -239,16 +278,16 @@ def run_optimize(start_year: int = 2022, end_year: int = 2026) -> dict:
     log.info("Wrote optimization results → %s", results_path)
 
     with get_session() as s:
-        mv = s.get(ModelVersion, "agamotto_ensemble_0.2.0")
+        mv = s.get(ModelVersion, "agamotto_ensemble_0.3.0")
         if not mv:
             s.add(ModelVersion(
-                model_version_id="agamotto_ensemble_0.2.0",
-                family="ensemble-stacker",
-                params={"weights": out["weights"]},
+                model_version_id="agamotto_ensemble_0.3.0",
+                family="ensemble-stacker-context",
+                params={"weights": out["weights"], "n_bags": n_bags},
                 metrics={"brier": out["brier"], "log_loss": out["log_loss"]},
                 artifact_path=stacker_path,
             ))
         else:
             mv.metrics = {"brier": out["brier"], "log_loss": out["log_loss"]}
-            mv.params = {"weights": out["weights"]}
+            mv.params = {"weights": out["weights"], "n_bags": n_bags}
     return out

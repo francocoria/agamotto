@@ -87,12 +87,22 @@ class AgamottoEnsemble:
             elo_h_rating = self.elo.get(home_name)
             elo_a_rating = self.elo.get(away_name)
             elo_diff = elo_h_rating + (0 if neutral else self.elo.home_adv) - elo_a_rating
+            # Context features: at inference we don't have the per-match historical state
+            # available cheaply, so we pass neutral priors (form 0.5, no h2h info).
+            # The stacker still benefits from the base features it always sees.
+            from agamotto.models.features import CONTEXT_FEATURE_NAMES
+            ctx_neutral = np.zeros((1, len(CONTEXT_FEATURE_NAMES)), dtype=np.float32)
+            # form_5 priors = 0.5
+            ctx_neutral[0, 0] = 0.5  # home_form_5
+            ctx_neutral[0, 1] = 0.5  # away_form_5
+            ctx_neutral[0, 8] = 0.5  # h2h_home_pct
             feats = build_features(
                 np.array([[elo_p["home"], elo_p["draw"], elo_p["away"]]], dtype=np.float32),
                 np.array([[dc_p["home"], dc_p["draw"], dc_p["away"]]], dtype=np.float32),
                 np.array([[lam_h, lam_a]], dtype=np.float32),
                 np.array([elo_diff], dtype=np.float32),
                 np.array([1.0 if neutral else 0.0], dtype=np.float32),
+                context=ctx_neutral,
             )
             sp = self.stacker.predict_proba(feats)[0]
             stack_p = {"home": float(sp[0]), "draw": float(sp[1]), "away": float(sp[2])}
@@ -230,8 +240,13 @@ def build(
         w_dc = float(w["w_dc"])
         w_stacker = float(w["w_stacker"])
         try:
-            stacker = StackerModel.load("stacker_0.1.0")
-            version = "agamotto_ensemble_0.2.0"
+            # Try v0.2 first (with context features); fall back to v0.1
+            try:
+                stacker = StackerModel.load("stacker_0.2.0")
+                version = "agamotto_ensemble_0.3.0"
+            except FileNotFoundError:
+                stacker = StackerModel.load("stacker_0.1.0")
+                version = "agamotto_ensemble_0.2.0"
             log.info("Loaded optimal ensemble · weights Elo=%.3f DC=%.3f Stacker=%.3f",
                      w_elo, w_dc, w_stacker)
         except FileNotFoundError:
