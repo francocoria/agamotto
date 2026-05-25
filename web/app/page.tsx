@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { api } from "@/lib/api";
+import { ApiStatusBanner } from "@/components/ApiStatusBanner";
 import { ChampionsTable } from "@/components/ChampionsTable";
 import { MatchCard } from "@/components/MatchCard";
 
@@ -13,9 +14,16 @@ export default async function Home() {
     api.teams().catch(() => []),
     api.venues().catch(() => []),
   ]);
+  // Build team_id -> group label map from matches
+  const groups: Record<string, string> = {};
+  for (const m of matches) {
+    if (m.group_label && m.home_team?.fifa_code) groups[m.home_team.fifa_code] = m.group_label;
+    if (m.group_label && m.away_team?.fifa_code) groups[m.away_team.fifa_code] = m.group_label;
+  }
 
   return (
     <>
+      <ApiStatusBanner />
       <section className="agm-anim-blur" style={{ marginBottom: 56 }}>
         <div className="agm-mono" style={{ fontSize: 11, color: "var(--green-deep)", letterSpacing: "0.3em", marginBottom: 24 }}>
           MUNDIAL · USA · MEX · CAN · 2026
@@ -69,7 +77,12 @@ export default async function Home() {
         </div>
         <div className="agm-card" style={{ padding: 0, marginTop: 0, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
           {champions.length > 0 ? (
-            <ChampionsTable entries={champions} top={16} />
+            <ChampionsTable
+              entries={champions}
+              outlook={sim?.team_outlook ?? null}
+              groups={groups}
+              top={16}
+            />
           ) : (
             <div style={{ padding: 32, color: "var(--fg-3)", fontSize: 13 }}>
               Sin simulación todavía. Ejecutá <code className="agm-mono">agamotto simulate</code>.

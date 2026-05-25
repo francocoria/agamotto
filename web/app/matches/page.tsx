@@ -1,4 +1,4 @@
-import { api } from "@/lib/api";
+import { api, type Match } from "@/lib/api";
 import { MatchCard } from "@/components/MatchCard";
 
 export const revalidate = 30;
@@ -8,14 +8,14 @@ export default async function MatchesPage({
 }: {
   searchParams: { stage?: string; group?: string; team?: string };
 }) {
-  const matches = await api.matches({
+  const matches: Match[] = await api.matches({
     stage: searchParams.stage,
     group: searchParams.group,
     team: searchParams.team,
     limit: 200,
-  }).catch(() => []);
+  }).catch(() => [] as Match[]);
 
-  const byGroup = matches.reduce<Record<string, typeof matches>>((acc, m) => {
+  const byGroup = matches.reduce<Record<string, Match[]>>((acc, m) => {
     const key = m.stage === "group" ? `Grupo ${m.group_label}` : "Fase Eliminatoria";
     if (!acc[key]) acc[key] = [];
     acc[key].push(m);
