@@ -148,6 +148,8 @@ export const api = {
   },
   match: (id: string) => get<Match>(`/matches/${id}`),
   prediction: (id: string) => get<MatchPrediction>(`/matches/${id}/prediction`),
+  predictCustom: (home: string, away: string, neutral = true) =>
+    get<MatchPrediction>(`/predict?home=${home}&away=${away}&neutral=${neutral}`),
   venues: () => get<Venue[]>("/venues"),
   venue: (id: string) => get<Venue>(`/venues/${id}`),
   simulationLatest: () => get<Simulation>("/simulation/latest"),

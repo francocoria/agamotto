@@ -38,9 +38,12 @@ export default async function Home() {
           {sim?.n_runs ? <> Cada noche corremos <strong style={{ color: "var(--fg-0)" }}>{sim.n_runs.toLocaleString()} simulaciones</strong> con un ensemble de Elo + Dixon-Coles + LightGBM stacker, calibrado por isotónica.</> : <> Ensemble de Elo + Dixon-Coles + LightGBM stacker, calibrado por isotónica.</>}
           {" "}Probabilidades, no certezas — y todos los universos posibles.
         </p>
-        <div style={{ display: "flex", gap: 12, marginTop: 28 }}>
-          <Link href="/escenarios" className="agm-btn agm-btn-primary">
-            ABRIR EL OJO
+        <div style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
+          <Link href="/comparar" className="agm-btn agm-btn-primary">
+            COMPARAR DOS EQUIPOS
+          </Link>
+          <Link href="/escenarios" className="agm-btn agm-btn-ghost">
+            Abrir el Ojo
           </Link>
           <Link href="/llave" className="agm-btn agm-btn-ghost">
             Ver bracket

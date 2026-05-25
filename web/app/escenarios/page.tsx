@@ -4,8 +4,12 @@ import { CounterfactualPanel } from "@/components/CounterfactualPanel";
 export const revalidate = 30;
 
 export default async function EscenariosPage() {
-  const champions = await api.multiverseChampions().catch(() => []);
-  const apiOnline = champions.length > 0;
+  const [champions, matches, teams] = await Promise.all([
+    api.multiverseChampions().catch(() => []),
+    api.matches({ limit: 200 }).catch(() => []),
+    api.teams().catch(() => []),
+  ]);
+  const apiOnline = champions.length > 0 || matches.length > 0;
 
   return (
     <>
@@ -32,7 +36,7 @@ export default async function EscenariosPage() {
         </div>
       )}
 
-      <CounterfactualPanel baseline={champions} />
+      <CounterfactualPanel baseline={champions} matches={matches} teams={teams} />
 
       <section className="agm-card agm-card-pad" style={{ marginTop: 32 }}>
         <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", letterSpacing: "0.14em" }}>
