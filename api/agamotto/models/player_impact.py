@@ -34,13 +34,45 @@ log = get_logger(__name__)
 POSITION_WEIGHTS = {"GK": 1.2, "DF": 1.0, "MF": 1.1, "FW": 1.2}
 
 
-def compute_player_rating(caps: int, age: int, position: str, is_starter: bool) -> float:
-    """Rating 20-95. Cuando lleguen stats de rendimiento reales, reemplazar esta función."""
-    caps_score = min(caps, 100) / 100 * 18         # 0..18
-    age_pen = -((age - 27) ** 2) / 6 * 0.6         # peak 27, decae ~15 puntos a 18/36
+def compute_player_rating(
+    caps: int, age: int, position: str, is_starter: bool,
+    goals: int = 0, club: str = "",
+) -> float:
+    """Rating 20-95 basado en caps, goles, club, edad y posición.
+
+    Componentes:
+      - Caps-por-año (normaliza por edad): mide ritmo internacional
+      - Goles (solo MF/FW): eficiencia ofensiva normalizada
+      - Tier de club: proxy de calidad del entorno donde compite
+      - Curva de edad: peak ~27
+      - Bonus de titular
+    """
+    from agamotto.models.club_tiers import get_club_tier
+
+    # 1. Caps por año de carrera senior (asume debut a los 18)
+    senior_years = max(1, age - 18)
+    caps_per_year = caps / senior_years
+    caps_score = min(caps_per_year, 12) / 12 * 12  # 0..12 puntos
+
+    # 2. Goles (solo cuenta para FW/MF con >=10 caps)
+    goals_score = 0.0
+    if position in ("FW", "MF") and caps >= 10:
+        gpc = goals / max(caps, 1)
+        target_gpc = 0.30 if position == "FW" else 0.12  # FW elite=0.3, MF elite=0.12
+        goals_score = min(gpc / target_gpc, 1.5) * 6  # 0..9 puntos
+
+    # 3. Calidad de club (tier 1 = elite Champions, tier 4 = otros)
+    tier = get_club_tier(club) if club else 3.5
+    club_score = (4.0 - tier) * 3.0  # tier 1 = +9, tier 4 = 0
+
+    # 4. Curva de edad: peak 27, decae 6 puntos en los extremos
+    age_pen = -((age - 27) ** 2) / 8
+
+    # 5. Sesgo posicional + titular
     pos_bias = {"GK": 0.0, "DF": 0.0, "MF": 1.0, "FW": 2.0}.get(position, 0.0)
-    starter_bonus = 4.0 if is_starter else 0.0
-    r = 50 + caps_score + age_pen + pos_bias + starter_bonus
+    starter_bonus = 3.0 if is_starter else 0.0
+
+    r = 50 + caps_score + goals_score + club_score + age_pen + pos_bias + starter_bonus
     return max(20.0, min(95.0, r))
 
 
@@ -202,9 +234,11 @@ def train_from_csv_squads(csv_path: str | None = None) -> PlayerImpactModel:
             pos = map_position(r["Posicion_General"])
             age = int(r["Edad"]) if r["Edad"] else 26
             caps = int(r["Partidos_Internacionales"]) if r["Partidos_Internacionales"] else 0
+            goals = int(r.get("Goles_Internacionales") or 0)
+            club = (r.get("Club_Actual") or "").strip()
             is_starter = (_ud.normalize("NFKD", r["Es_Titular"]).encode("ascii","ignore").decode().lower().strip()
                           in ("si", "sí"))
-            rating = compute_player_rating(caps, age, pos, is_starter)
+            rating = compute_player_rating(caps, age, pos, is_starter, goals=goals, club=club)
             from agamotto.core.ids import player_id as _pid
             pid = _pid(name)
             ratings[pid] = rating

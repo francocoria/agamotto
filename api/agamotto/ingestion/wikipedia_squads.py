@@ -333,6 +333,7 @@ class WikipediaSquadsAdapter(Adapter):
                     "Club_Actual": r["club"],
                     "Dorsal": r["shirt"] if r["shirt"] is not None else "",
                     "Partidos_Internacionales": r["caps"] or 0,
+                    "Goles_Internacionales": r["goals"] or 0,
                 })
             ok += 1
 
@@ -342,7 +343,7 @@ class WikipediaSquadsAdapter(Adapter):
             writer = csv.DictWriter(f, fieldnames=[
                 "Pais", "Grupo", "Jugador", "Posicion_Especifica", "Posicion_General",
                 "Es_Titular", "Edad", "Altura_cm", "Club_Actual", "Dorsal",
-                "Partidos_Internacionales",
+                "Partidos_Internacionales", "Goles_Internacionales",
             ])
             writer.writeheader()
             writer.writerows(all_rows)
