@@ -27,6 +27,18 @@ class VenueOut(BaseModel):
     longitude: float | None = None
 
 
+class ScorelineOut(BaseModel):
+    score: str
+    p: float
+
+
+class FactorOut(BaseModel):
+    name: str
+    value: float
+    direction: str
+    weight: float
+
+
 class PredictionInline(BaseModel):
     p_home: float
     p_draw: float
@@ -53,18 +65,6 @@ class MatchOut(BaseModel):
     away_score: int | None = None
     status: str
     prediction: PredictionInline | None = None
-
-
-class ScorelineOut(BaseModel):
-    score: str
-    p: float
-
-
-class FactorOut(BaseModel):
-    name: str
-    value: float
-    direction: str
-    weight: float
 
 
 class MatchPredictionOut(BaseModel):
