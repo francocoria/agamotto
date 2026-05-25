@@ -49,8 +49,9 @@ class PlayerImpactModel:
     player_ratings: dict[str, float] = field(default_factory=dict)
     # Por equipo: strength del XI titular (centrado en 50)
     team_lineup_strength: dict[str, float] = field(default_factory=dict)
-    # Cuánto sensitivity tiene lambda al strength_diff. 0.005 = +1 punto de strength => +0.5% goles
-    impact_alpha: float = 0.005
+    # Cuánto sensitivity tiene lambda al strength_diff. 0.003 = +1 punto strength => +0.3% goles
+    # Conservador para que no domine al Elo (que tiene 49k partidos de señal real).
+    impact_alpha: float = 0.003
     version: str = "player_impact_0.2.0"
 
     def rating(self, player_id: str) -> float:
@@ -177,7 +178,14 @@ def train_from_csv_squads(csv_path: str | None = None) -> PlayerImpactModel:
     from pathlib import Path
     from agamotto.ingestion.squads_csv import map_country, map_position
 
-    p = Path(csv_path) if csv_path else (settings.raw_dir / "squads_2026.csv")
+    # Preferir Wikipedia scrape si existe, fallback a seed sintético
+    if csv_path:
+        p = Path(csv_path)
+    else:
+        wiki = settings.raw_dir / "squads_wikipedia.csv"
+        seed = settings.raw_dir / "squads_2026.csv"
+        p = wiki if wiki.exists() else seed
+    log.info("Player Impact training source: %s", p)
     if not p.exists():
         log.warning("CSV no encontrado en %s — usando DB.", p)
         return train_from_db()
@@ -229,11 +237,8 @@ def train_from_csv_squads(csv_path: str | None = None) -> PlayerImpactModel:
 
 # Backwards-compat
 def train_from_market_values() -> PlayerImpactModel:
-    """Si hay CSV de squads, usalo. Si no, fallback a market values (vacío)."""
-    csv = settings.raw_dir / "squads_2026.csv"
-    if csv.exists():
-        return train_from_csv_squads(str(csv))
-    return train_from_db()
+    """Prefiere data scrapeada de Wikipedia, fallback a seed sintético, luego DB."""
+    return train_from_csv_squads()  # picks wiki vs seed internally
 
 
 def save(model: PlayerImpactModel) -> str:

@@ -47,6 +47,24 @@ def ingest_squads_csv(path: str = typer.Option(None, help="Ruta al CSV de plante
     rprint(f"[green]OK[/green] Squads CSV: {n} jugadores")
 
 
+@ingest_app.command("wikipedia-squads")
+def ingest_wikipedia_squads(
+    only: str = typer.Option("", help="Solo estos team_ids separados por coma (ej. ARG,FRA,BRA). Default: todos."),
+    out: str = typer.Option("data/raw/squads_wikipedia.csv", help="CSV de salida."),
+    ingest_after: bool = typer.Option(True, help="Después del scrape, ingestar el CSV a la DB."),
+):
+    """Scrapea planteles actuales desde Wikipedia EN → CSV. Respeta rate limit (1 req/s)."""
+    setup_logging()
+    from agamotto.ingestion.wikipedia_squads import run as wiki_run
+    from agamotto.ingestion.squads_csv import run as csv_run
+    only_list = [s.strip() for s in only.split(",") if s.strip()] if only else None
+    n = wiki_run(only=only_list, out_csv=out)
+    rprint(f"[green]OK[/green] Wikipedia squads: {n} rows → {out}")
+    if ingest_after and n > 0:
+        m = csv_run(csv_path=out)
+        rprint(f"[green]OK[/green] Cargados {m} jugadores en la DB")
+
+
 # ------------------ train ------------------
 
 @train_app.command("elo")

@@ -29,6 +29,33 @@ from agamotto.ingestion.base import Adapter
 log = get_logger(__name__)
 
 
+# English aliases pulled from Wikipedia
+_EN_ALIASES = {
+    "algeria": "ALG", "argentina": "ARG", "australia": "AUS", "austria": "AUT",
+    "belgium": "BEL", "bolivia": "BOL", "bosnia and herzegovina": "BIH",
+    "brazil": "BRA", "cameroon": "CMR", "canada": "CAN", "cape verde": "CPV",
+    "chile": "CHI", "colombia": "COL", "costa rica": "CRC",
+    "croatia": "CRO", "curacao": "CUW", "czech republic": "CZE", "czechia": "CZE",
+    "denmark": "DEN", "dr congo": "COD", "democratic republic of the congo": "COD",
+    "ecuador": "ECU", "egypt": "EGY", "el salvador": "SLV", "england": "ENG",
+    "france": "FRA", "germany": "GER", "ghana": "GHA", "greece": "GRE",
+    "haiti": "HAI", "honduras": "HON", "hungary": "HUN", "iceland": "ISL",
+    "iran": "IRN", "iraq": "IRQ", "ireland": "IRL", "ivory coast": "CIV",
+    "italy": "ITA", "jamaica": "JAM", "japan": "JPN", "jordan": "JOR",
+    "korea republic": "KOR", "south korea": "KOR",
+    "mexico": "MEX", "morocco": "MAR", "netherlands": "NED",
+    "new zealand": "NZL", "nigeria": "NGA", "norway": "NOR",
+    "panama": "PAN", "paraguay": "PAR", "peru": "PER",
+    "poland": "POL", "portugal": "POR", "qatar": "QAT",
+    "romania": "ROU", "saudi arabia": "KSA", "scotland": "SCO",
+    "senegal": "SEN", "serbia": "SRB", "south africa": "RSA",
+    "spain": "ESP", "sweden": "SWE", "switzerland": "SUI",
+    "tunisia": "TUN", "turkey": "TUR", "ukraine": "UKR",
+    "united states": "USA", "uruguay": "URU", "uzbekistan": "UZB",
+    "venezuela": "VEN", "wales": "WAL",
+}
+
+
 # Mapeo Español → team_id (FIFA code)
 COUNTRY_MAP: dict[str, tuple[str, str, str, str]] = {
     # name_es : (team_id, fifa_code, confederation, flag_emoji)
@@ -124,9 +151,21 @@ POSITION_MAP = {
 }
 
 
-def map_country(country_es: str) -> tuple[str, str, str, str] | None:
-    """Devuelve (team_id, fifa_code, confederation, flag) o None si no se reconoce."""
-    return COUNTRY_MAP.get(_norm(country_es))
+def map_country(country: str) -> tuple[str, str, str, str] | None:
+    """Devuelve (team_id, fifa_code, confederation, flag) o None si no se reconoce.
+    Acepta nombres en español (default) o inglés (Wikipedia)."""
+    n = _norm(country)
+    if n in COUNTRY_MAP:
+        return COUNTRY_MAP[n]
+    # English fallback: look up team_id by EN alias, then return entry from Spanish map by team_id
+    tid = _EN_ALIASES.get(n)
+    if not tid:
+        return None
+    # Find Spanish entry with that team_id
+    for v in COUNTRY_MAP.values():
+        if v[0] == tid:
+            return v
+    return None
 
 
 def map_position(pos_general_es: str) -> str:
@@ -217,6 +256,7 @@ class SquadsCsvAdapter(Adapter):
             by_team.setdefault(m[0], []).append(r)
 
         processed_rows = 0
+        seen_pids: set[str] = set()
         with get_session() as s:
             for team_id, players in by_team.items():
                 squad = Squad(
@@ -244,16 +284,21 @@ class SquadsCsvAdapter(Adapter):
                     is_starter = _norm(r["Es_Titular"]) in ("si", "sí")
 
                     pid = canonical_player_id(name)
-                    # Player upsert (the same player name could theoretically clash; canonical ID is good enough for synthetic)
-                    p = s.get(Player, pid)
-                    if not p:
-                        p = Player(
-                            player_id=pid, name=name, full_name=name,
-                            position=pos, nation=team_id, club=club,
-                            height_cm=height,
-                        )
-                        s.add(p)
+                    # Player upsert robusto: chequear DB + cache de IDs ya insertados en esta sesión
+                    if pid in seen_pids:
+                        p = s.get(Player, pid)
                     else:
+                        p = s.get(Player, pid)
+                        if not p:
+                            p = Player(
+                                player_id=pid, name=name, full_name=name,
+                                position=pos, nation=team_id, club=club,
+                                height_cm=height,
+                            )
+                            s.add(p)
+                            s.flush()
+                        seen_pids.add(pid)
+                    if p:
                         p.nation = team_id
                         p.club = club
                         p.position = pos
