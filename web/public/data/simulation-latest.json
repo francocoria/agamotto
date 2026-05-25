@@ -1,0 +1,2728 @@
+{
+  "simulation_id": 2,
+  "tournament_id": "WC2026",
+  "model_version": "agamotto_ensemble_0.3.0",
+  "n_runs": 100000,
+  "created_at": "2026-05-25T22:49:28.053990",
+  "champion_distribution": [
+    {
+      "team": "ARG",
+      "p": 0.17475
+    },
+    {
+      "team": "ESP",
+      "p": 0.14168
+    },
+    {
+      "team": "MAR",
+      "p": 0.06981
+    },
+    {
+      "team": "JPN",
+      "p": 0.06822
+    },
+    {
+      "team": "BRA",
+      "p": 0.06542
+    },
+    {
+      "team": "FRA",
+      "p": 0.04968
+    },
+    {
+      "team": "POR",
+      "p": 0.04491
+    },
+    {
+      "team": "ENG",
+      "p": 0.04467
+    },
+    {
+      "team": "SEN",
+      "p": 0.03703
+    },
+    {
+      "team": "COL",
+      "p": 0.03661
+    },
+    {
+      "team": "NED",
+      "p": 0.03189
+    },
+    {
+      "team": "ECU",
+      "p": 0.02464
+    },
+    {
+      "team": "GER",
+      "p": 0.02435
+    },
+    {
+      "team": "ALG",
+      "p": 0.01983
+    },
+    {
+      "team": "IRN",
+      "p": 0.01876
+    },
+    {
+      "team": "URU",
+      "p": 0.01672
+    },
+    {
+      "team": "AUS",
+      "p": 0.01542
+    },
+    {
+      "team": "CIV",
+      "p": 0.01103
+    },
+    {
+      "team": "MEX",
+      "p": 0.00962
+    },
+    {
+      "team": "CAN",
+      "p": 0.00911
+    },
+    {
+      "team": "BEL",
+      "p": 0.00829
+    },
+    {
+      "team": "AUT",
+      "p": 0.00772
+    },
+    {
+      "team": "UZB",
+      "p": 0.00732
+    },
+    {
+      "team": "DEN",
+      "p": 0.00723
+    },
+    {
+      "team": "SUI",
+      "p": 0.00698
+    },
+    {
+      "team": "CRO",
+      "p": 0.00641
+    },
+    {
+      "team": "KOR",
+      "p": 0.00557
+    },
+    {
+      "team": "NGA",
+      "p": 0.00506
+    },
+    {
+      "team": "EGY",
+      "p": 0.00486
+    },
+    {
+      "team": "NZL",
+      "p": 0.00369
+    },
+    {
+      "team": "USA",
+      "p": 0.00362
+    },
+    {
+      "team": "TUN",
+      "p": 0.00344
+    },
+    {
+      "team": "TUR",
+      "p": 0.00338
+    },
+    {
+      "team": "ITA",
+      "p": 0.00315
+    },
+    {
+      "team": "JOR",
+      "p": 0.0015
+    },
+    {
+      "team": "PAN",
+      "p": 0.00148
+    },
+    {
+      "team": "CMR",
+      "p": 0.00144
+    },
+    {
+      "team": "PAR",
+      "p": 0.00114
+    },
+    {
+      "team": "VEN",
+      "p": 0.00096
+    },
+    {
+      "team": "IRQ",
+      "p": 0.00063
+    },
+    {
+      "team": "SWE",
+      "p": 0.00058
+    },
+    {
+      "team": "POL",
+      "p": 0.00036
+    },
+    {
+      "team": "CRC",
+      "p": 0.00032
+    },
+    {
+      "team": "UKR",
+      "p": 0.0003
+    },
+    {
+      "team": "KSA",
+      "p": 0.00021
+    },
+    {
+      "team": "GHA",
+      "p": 0.00011
+    },
+    {
+      "team": "JAM",
+      "p": 0.0001
+    }
+  ],
+  "team_outlook": {
+    "ALG": {
+      "p_group_winner": 0.23655,
+      "p_runner_up": 0.32791,
+      "p_best_third": 0.18441,
+      "p_round_32": 0.74887,
+      "p_round_16": 0.39713,
+      "p_quarter": 0.19031,
+      "p_semi": 0.09555,
+      "p_final": 0.04834,
+      "p_champion": 0.01983
+    },
+    "ARG": {
+      "p_group_winner": 0.70171,
+      "p_runner_up": 0.20084,
+      "p_best_third": 0.06114,
+      "p_round_32": 0.96369,
+      "p_round_16": 0.73651,
+      "p_quarter": 0.4913,
+      "p_semi": 0.34874,
+      "p_final": 0.24995,
+      "p_champion": 0.17475
+    },
+    "AUS": {
+      "p_group_winner": 0.25324,
+      "p_runner_up": 0.26623,
+      "p_best_third": 0.18031,
+      "p_round_32": 0.69978,
+      "p_round_16": 0.38849,
+      "p_quarter": 0.19085,
+      "p_semi": 0.08398,
+      "p_final": 0.03462,
+      "p_champion": 0.01542
+    },
+    "AUT": {
+      "p_group_winner": 0.20936,
+      "p_runner_up": 0.25741,
+      "p_best_third": 0.18595,
+      "p_round_32": 0.65272,
+      "p_round_16": 0.33767,
+      "p_quarter": 0.14715,
+      "p_semi": 0.0646,
+      "p_final": 0.02252,
+      "p_champion": 0.00772
+    },
+    "BEL": {
+      "p_group_winner": 0.16223,
+      "p_runner_up": 0.27509,
+      "p_best_third": 0.20662,
+      "p_round_32": 0.64394,
+      "p_round_16": 0.29798,
+      "p_quarter": 0.12441,
+      "p_semi": 0.05494,
+      "p_final": 0.02369,
+      "p_champion": 0.00829
+    },
+    "BRA": {
+      "p_group_winner": 0.54421,
+      "p_runner_up": 0.25813,
+      "p_best_third": 0.11055,
+      "p_round_32": 0.91289,
+      "p_round_16": 0.61481,
+      "p_quarter": 0.36054,
+      "p_semi": 0.22621,
+      "p_final": 0.1364,
+      "p_champion": 0.06542
+    },
+    "CAN": {
+      "p_group_winner": 0.24624,
+      "p_runner_up": 0.30304,
+      "p_best_third": 0.1784,
+      "p_round_32": 0.72768,
+      "p_round_16": 0.34089,
+      "p_quarter": 0.16229,
+      "p_semi": 0.06344,
+      "p_final": 0.02607,
+      "p_champion": 0.00911
+    },
+    "CIV": {
+      "p_group_winner": 0.22202,
+      "p_runner_up": 0.31732,
+      "p_best_third": 0.19198,
+      "p_round_32": 0.73132,
+      "p_round_16": 0.36649,
+      "p_quarter": 0.17011,
+      "p_semi": 0.07992,
+      "p_final": 0.03192,
+      "p_champion": 0.01103
+    },
+    "CMR": {
+      "p_group_winner": 0.10551,
+      "p_runner_up": 0.18404,
+      "p_best_third": 0.17573,
+      "p_round_32": 0.46528,
+      "p_round_16": 0.18894,
+      "p_quarter": 0.06445,
+      "p_semi": 0.02196,
+      "p_final": 0.00564,
+      "p_champion": 0.00144
+    },
+    "COL": {
+      "p_group_winner": 0.33498,
+      "p_runner_up": 0.30935,
+      "p_best_third": 0.15637,
+      "p_round_32": 0.8007,
+      "p_round_16": 0.47606,
+      "p_quarter": 0.28026,
+      "p_semi": 0.14652,
+      "p_final": 0.07066,
+      "p_champion": 0.03661
+    },
+    "CRC": {
+      "p_group_winner": 0.05195,
+      "p_runner_up": 0.17558,
+      "p_best_third": 0.15214,
+      "p_round_32": 0.37967,
+      "p_round_16": 0.10102,
+      "p_quarter": 0.02401,
+      "p_semi": 0.00622,
+      "p_final": 0.00146,
+      "p_champion": 0.00032
+    },
+    "CRO": {
+      "p_group_winner": 0.15504,
+      "p_runner_up": 0.23378,
+      "p_best_third": 0.19569,
+      "p_round_32": 0.58451,
+      "p_round_16": 0.26183,
+      "p_quarter": 0.12126,
+      "p_semi": 0.04814,
+      "p_final": 0.01758,
+      "p_champion": 0.00641
+    },
+    "DEN": {
+      "p_group_winner": 0.20097,
+      "p_runner_up": 0.28781,
+      "p_best_third": 0.27233,
+      "p_round_32": 0.76111,
+      "p_round_16": 0.34233,
+      "p_quarter": 0.15393,
+      "p_semi": 0.05866,
+      "p_final": 0.02015,
+      "p_champion": 0.00723
+    },
+    "ECU": {
+      "p_group_winner": 0.35173,
+      "p_runner_up": 0.29814,
+      "p_best_third": 0.16215,
+      "p_round_32": 0.81202,
+      "p_round_16": 0.45228,
+      "p_quarter": 0.25427,
+      "p_semi": 0.12917,
+      "p_final": 0.06068,
+      "p_champion": 0.02464
+    },
+    "EGY": {
+      "p_group_winner": 0.19188,
+      "p_runner_up": 0.27466,
+      "p_best_third": 0.19504,
+      "p_round_32": 0.66158,
+      "p_round_16": 0.28382,
+      "p_quarter": 0.12501,
+      "p_semi": 0.04364,
+      "p_final": 0.0158,
+      "p_champion": 0.00486
+    },
+    "ENG": {
+      "p_group_winner": 0.38884,
+      "p_runner_up": 0.27661,
+      "p_best_third": 0.15043,
+      "p_round_32": 0.81588,
+      "p_round_16": 0.53766,
+      "p_quarter": 0.30903,
+      "p_semi": 0.1601,
+      "p_final": 0.08377,
+      "p_champion": 0.04467
+    },
+    "ESP": {
+      "p_group_winner": 0.55137,
+      "p_runner_up": 0.26095,
+      "p_best_third": 0.10496,
+      "p_round_32": 0.91728,
+      "p_round_16": 0.68029,
+      "p_quarter": 0.45534,
+      "p_semi": 0.31999,
+      "p_final": 0.22912,
+      "p_champion": 0.14168
+    },
+    "FRA": {
+      "p_group_winner": 0.40169,
+      "p_runner_up": 0.32645,
+      "p_best_third": 0.1747,
+      "p_round_32": 0.90284,
+      "p_round_16": 0.55364,
+      "p_quarter": 0.33328,
+      "p_semi": 0.17387,
+      "p_final": 0.09084,
+      "p_champion": 0.04968
+    },
+    "GER": {
+      "p_group_winner": 0.47023,
+      "p_runner_up": 0.26462,
+      "p_best_third": 0.13157,
+      "p_round_32": 0.86642,
+      "p_round_16": 0.50219,
+      "p_quarter": 0.27163,
+      "p_semi": 0.12958,
+      "p_final": 0.06445,
+      "p_champion": 0.02435
+    },
+    "GHA": {
+      "p_group_winner": 0.08291,
+      "p_runner_up": 0.16422,
+      "p_best_third": 0.16053,
+      "p_round_32": 0.40766,
+      "p_round_16": 0.10722,
+      "p_quarter": 0.02728,
+      "p_semi": 0.00677,
+      "p_final": 0.00114,
+      "p_champion": 0.00011
+    },
+    "IRN": {
+      "p_group_winner": 0.2958,
+      "p_runner_up": 0.28032,
+      "p_best_third": 0.16956,
+      "p_round_32": 0.74568,
+      "p_round_16": 0.44394,
+      "p_quarter": 0.22688,
+      "p_semi": 0.11502,
+      "p_final": 0.04692,
+      "p_champion": 0.01876
+    },
+    "IRQ": {
+      "p_group_winner": 0.04985,
+      "p_runner_up": 0.13605,
+      "p_best_third": 0.1506,
+      "p_round_32": 0.3365,
+      "p_round_16": 0.10356,
+      "p_quarter": 0.02906,
+      "p_semi": 0.00862,
+      "p_final": 0.00246,
+      "p_champion": 0.00063
+    },
+    "ITA": {
+      "p_group_winner": 0.12447,
+      "p_runner_up": 0.30711,
+      "p_best_third": 0.19369,
+      "p_round_32": 0.62527,
+      "p_round_16": 0.23806,
+      "p_quarter": 0.08117,
+      "p_semi": 0.03035,
+      "p_final": 0.01102,
+      "p_champion": 0.00315
+    },
+    "JAM": {
+      "p_group_winner": 0.06523,
+      "p_runner_up": 0.1606,
+      "p_best_third": 0.17266,
+      "p_round_32": 0.39849,
+      "p_round_16": 0.08801,
+      "p_quarter": 0.01856,
+      "p_semi": 0.00424,
+      "p_final": 0.00069,
+      "p_champion": 0.0001
+    },
+    "JOR": {
+      "p_group_winner": 0.21966,
+      "p_runner_up": 0.24216,
+      "p_best_third": 0.18098,
+      "p_round_32": 0.6428,
+      "p_round_16": 0.23205,
+      "p_quarter": 0.08313,
+      "p_semi": 0.02951,
+      "p_final": 0.0075,
+      "p_champion": 0.0015
+    },
+    "JPN": {
+      "p_group_winner": 0.43223,
+      "p_runner_up": 0.29307,
+      "p_best_third": 0.13348,
+      "p_round_32": 0.85878,
+      "p_round_16": 0.56408,
+      "p_quarter": 0.36473,
+      "p_semi": 0.21524,
+      "p_final": 0.11801,
+      "p_champion": 0.06822
+    },
+    "KOR": {
+      "p_group_winner": 0.16819,
+      "p_runner_up": 0.27535,
+      "p_best_third": 0.20569,
+      "p_round_32": 0.64923,
+      "p_round_16": 0.29948,
+      "p_quarter": 0.12832,
+      "p_semi": 0.05654,
+      "p_final": 0.01931,
+      "p_champion": 0.00557
+    },
+    "KSA": {
+      "p_group_winner": 0.07401,
+      "p_runner_up": 0.15366,
+      "p_best_third": 0.15462,
+      "p_round_32": 0.38229,
+      "p_round_16": 0.0996,
+      "p_quarter": 0.02669,
+      "p_semi": 0.00578,
+      "p_final": 0.00112,
+      "p_champion": 0.00021
+    },
+    "MAR": {
+      "p_group_winner": 0.56538,
+      "p_runner_up": 0.26985,
+      "p_best_third": 0.09181,
+      "p_round_32": 0.92704,
+      "p_round_16": 0.58333,
+      "p_quarter": 0.33568,
+      "p_semi": 0.20605,
+      "p_final": 0.11984,
+      "p_champion": 0.06981
+    },
+    "MEX": {
+      "p_group_winner": 0.26932,
+      "p_runner_up": 0.35935,
+      "p_best_third": 0.16146,
+      "p_round_32": 0.79013,
+      "p_round_16": 0.3582,
+      "p_quarter": 0.14843,
+      "p_semi": 0.06337,
+      "p_final": 0.02418,
+      "p_champion": 0.00962
+    },
+    "NED": {
+      "p_group_winner": 0.38933,
+      "p_runner_up": 0.27823,
+      "p_best_third": 0.14627,
+      "p_round_32": 0.81383,
+      "p_round_16": 0.51505,
+      "p_quarter": 0.28327,
+      "p_semi": 0.15892,
+      "p_final": 0.06978,
+      "p_champion": 0.03189
+    },
+    "NGA": {
+      "p_group_winner": 0.16326,
+      "p_runner_up": 0.22025,
+      "p_best_third": 0.18234,
+      "p_round_32": 0.56585,
+      "p_round_16": 0.27049,
+      "p_quarter": 0.11382,
+      "p_semi": 0.04236,
+      "p_final": 0.01477,
+      "p_champion": 0.00506
+    },
+    "NZL": {
+      "p_group_winner": 0.31682,
+      "p_runner_up": 0.26615,
+      "p_best_third": 0.16615,
+      "p_round_32": 0.74912,
+      "p_round_16": 0.30948,
+      "p_quarter": 0.12478,
+      "p_semi": 0.04995,
+      "p_final": 0.01448,
+      "p_champion": 0.00369
+    },
+    "PAN": {
+      "p_group_winner": 0.15569,
+      "p_runner_up": 0.20994,
+      "p_best_third": 0.1894,
+      "p_round_32": 0.55503,
+      "p_round_16": 0.19674,
+      "p_quarter": 0.07106,
+      "p_semi": 0.0224,
+      "p_final": 0.00636,
+      "p_champion": 0.00148
+    },
+    "PAR": {
+      "p_group_winner": 0.07775,
+      "p_runner_up": 0.1638,
+      "p_best_third": 0.17156,
+      "p_round_32": 0.41311,
+      "p_round_16": 0.13903,
+      "p_quarter": 0.05063,
+      "p_semi": 0.01513,
+      "p_final": 0.00426,
+      "p_champion": 0.00114
+    },
+    "POL": {
+      "p_group_winner": 0.10007,
+      "p_runner_up": 0.2102,
+      "p_best_third": 0.19507,
+      "p_round_32": 0.50534,
+      "p_round_16": 0.13422,
+      "p_quarter": 0.03237,
+      "p_semi": 0.00856,
+      "p_final": 0.00164,
+      "p_champion": 0.00036
+    },
+    "POR": {
+      "p_group_winner": 0.48787,
+      "p_runner_up": 0.26864,
+      "p_best_third": 0.12303,
+      "p_round_32": 0.87954,
+      "p_round_16": 0.53774,
+      "p_quarter": 0.33284,
+      "p_semi": 0.16931,
+      "p_final": 0.094,
+      "p_champion": 0.04491
+    },
+    "QAT": {
+      "p_group_winner": 0.01606,
+      "p_runner_up": 0.05287,
+      "p_best_third": 0.08554,
+      "p_round_32": 0.15447,
+      "p_round_16": 0.02776,
+      "p_quarter": 0.00465,
+      "p_semi": 0.0006,
+      "p_final": 8e-05,
+      "p_champion": 0.0
+    },
+    "SEN": {
+      "p_group_winner": 0.38128,
+      "p_runner_up": 0.33287,
+      "p_best_third": 0.18045,
+      "p_round_32": 0.8946,
+      "p_round_16": 0.52494,
+      "p_quarter": 0.30441,
+      "p_semi": 0.14998,
+      "p_final": 0.07315,
+      "p_champion": 0.03703
+    },
+    "SUI": {
+      "p_group_winner": 0.19466,
+      "p_runner_up": 0.23691,
+      "p_best_third": 0.1836,
+      "p_round_32": 0.61517,
+      "p_round_16": 0.30412,
+      "p_quarter": 0.13193,
+      "p_semi": 0.05063,
+      "p_final": 0.01814,
+      "p_champion": 0.00698
+    },
+    "SWE": {
+      "p_group_winner": 0.14536,
+      "p_runner_up": 0.19773,
+      "p_best_third": 0.17719,
+      "p_round_32": 0.52028,
+      "p_round_16": 0.16292,
+      "p_quarter": 0.05142,
+      "p_semi": 0.01348,
+      "p_final": 0.00324,
+      "p_champion": 0.00058
+    },
+    "TUN": {
+      "p_group_winner": 0.12187,
+      "p_runner_up": 0.31647,
+      "p_best_third": 0.19449,
+      "p_round_32": 0.63283,
+      "p_round_16": 0.24,
+      "p_quarter": 0.08341,
+      "p_semi": 0.03106,
+      "p_final": 0.01124,
+      "p_champion": 0.00344
+    },
+    "TUR": {
+      "p_group_winner": 0.27285,
+      "p_runner_up": 0.25908,
+      "p_best_third": 0.17568,
+      "p_round_32": 0.70761,
+      "p_round_16": 0.29197,
+      "p_quarter": 0.11813,
+      "p_semi": 0.04729,
+      "p_final": 0.01378,
+      "p_champion": 0.00338
+    },
+    "UKR": {
+      "p_group_winner": 0.06558,
+      "p_runner_up": 0.1492,
+      "p_best_third": 0.15487,
+      "p_round_32": 0.36965,
+      "p_round_16": 0.11577,
+      "p_quarter": 0.03459,
+      "p_semi": 0.00956,
+      "p_final": 0.00208,
+      "p_champion": 0.0003
+    },
+    "URU": {
+      "p_group_winner": 0.34722,
+      "p_runner_up": 0.29419,
+      "p_best_third": 0.16227,
+      "p_round_32": 0.80368,
+      "p_round_16": 0.42833,
+      "p_quarter": 0.22915,
+      "p_semi": 0.10886,
+      "p_final": 0.04668,
+      "p_champion": 0.01672
+    },
+    "USA": {
+      "p_group_winner": 0.21927,
+      "p_runner_up": 0.27346,
+      "p_best_third": 0.19006,
+      "p_round_32": 0.68279,
+      "p_round_16": 0.29047,
+      "p_quarter": 0.11917,
+      "p_semi": 0.04319,
+      "p_final": 0.01377,
+      "p_champion": 0.00362
+    },
+    "UZB": {
+      "p_group_winner": 0.22759,
+      "p_runner_up": 0.2977,
+      "p_best_third": 0.19,
+      "p_round_32": 0.71529,
+      "p_round_16": 0.33425,
+      "p_quarter": 0.15151,
+      "p_semi": 0.0609,
+      "p_final": 0.02204,
+      "p_champion": 0.00732
+    },
+    "VEN": {
+      "p_group_winner": 0.19067,
+      "p_runner_up": 0.23261,
+      "p_best_third": 0.18648,
+      "p_round_32": 0.60976,
+      "p_round_16": 0.19916,
+      "p_quarter": 0.0635,
+      "p_semi": 0.0211,
+      "p_final": 0.00466,
+      "p_champion": 0.00096
+    }
+  },
+  "sampled_universes": [
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "BRA"
+      ],
+      "semis": [
+        "ARG",
+        "BRA"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "MEX",
+      "final": [
+        "MEX",
+        "NED"
+      ],
+      "semis": [
+        "MEX",
+        "NED"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "POR",
+      "final": [
+        "POR",
+        "NED"
+      ],
+      "semis": [
+        "NED",
+        "POR"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "NZL",
+      "final": [
+        "NZL",
+        "ESP"
+      ],
+      "semis": [
+        "ESP",
+        "NZL"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "IRN",
+      "final": [
+        "IRN",
+        "ENG"
+      ],
+      "semis": [
+        "ENG",
+        "IRN"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "TUN"
+      ]
+    },
+    {
+      "champion": "FRA",
+      "final": [
+        "FRA",
+        "ECU"
+      ],
+      "semis": [
+        "FRA",
+        "ECU"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "DEN",
+      "final": [
+        "DEN",
+        "ITA"
+      ],
+      "semis": [
+        "DEN",
+        "ITA"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "URU"
+      ],
+      "semis": [
+        "ARG",
+        "URU"
+      ],
+      "winners": [
+        "MEX",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ALG",
+      "final": [
+        "ALG",
+        "COL"
+      ],
+      "semis": [
+        "COL",
+        "ALG"
+      ],
+      "winners": [
+        "MAR",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "COL",
+      "final": [
+        "COL",
+        "BRA"
+      ],
+      "semis": [
+        "COL",
+        "BRA"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "CMR",
+      "final": [
+        "CMR",
+        "PAR"
+      ],
+      "semis": [
+        "PAR",
+        "CMR"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "TUN"
+      ]
+    },
+    {
+      "champion": "MAR",
+      "final": [
+        "MAR",
+        "EGY"
+      ],
+      "semis": [
+        "MAR",
+        "EGY"
+      ],
+      "winners": [
+        "MEX",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "NED",
+      "final": [
+        "NED",
+        "SEN"
+      ],
+      "semis": [
+        "SEN",
+        "NED"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "SEN",
+      "final": [
+        "SEN",
+        "ESP"
+      ],
+      "semis": [
+        "SEN",
+        "ESP"
+      ],
+      "winners": [
+        "POL",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "POR"
+      ],
+      "semis": [
+        "ARG",
+        "POR"
+      ],
+      "winners": [
+        "JAM",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "DEN",
+      "final": [
+        "DEN",
+        "JPN"
+      ],
+      "semis": [
+        "JPN",
+        "DEN"
+      ],
+      "winners": [
+        "POL",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "POR",
+      "final": [
+        "POR",
+        "FRA"
+      ],
+      "semis": [
+        "FRA",
+        "POR"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "NZL"
+      ],
+      "semis": [
+        "ARG",
+        "NZL"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "JPN",
+      "final": [
+        "JPN",
+        "EGY"
+      ],
+      "semis": [
+        "JPN",
+        "EGY"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ECU",
+      "final": [
+        "ECU",
+        "JPN"
+      ],
+      "semis": [
+        "JPN",
+        "ECU"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "TUN"
+      ]
+    },
+    {
+      "champion": "GER",
+      "final": [
+        "GER",
+        "NED"
+      ],
+      "semis": [
+        "NED",
+        "GER"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "ITA"
+      ]
+    },
+    {
+      "champion": "NGA",
+      "final": [
+        "NGA",
+        "ECU"
+      ],
+      "semis": [
+        "ECU",
+        "NGA"
+      ],
+      "winners": [
+        "POL",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ENG",
+      "final": [
+        "ENG",
+        "NED"
+      ],
+      "semis": [
+        "ENG",
+        "NED"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "TUN"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "POR"
+      ],
+      "semis": [
+        "ARG",
+        "POR"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ECU",
+      "final": [
+        "ECU",
+        "ENG"
+      ],
+      "semis": [
+        "ENG",
+        "ECU"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "CRC"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "URU"
+      ],
+      "semis": [
+        "ARG",
+        "URU"
+      ],
+      "winners": [
+        "MEX",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "URU"
+      ],
+      "semis": [
+        "ARG",
+        "URU"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "COL",
+      "final": [
+        "COL",
+        "JPN"
+      ],
+      "semis": [
+        "COL",
+        "JPN"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "JPN",
+      "final": [
+        "JPN",
+        "ESP"
+      ],
+      "semis": [
+        "JPN",
+        "ESP"
+      ],
+      "winners": [
+        "MEX",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ENG",
+      "final": [
+        "ENG",
+        "BRA"
+      ],
+      "semis": [
+        "ENG",
+        "BRA"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ESP",
+      "final": [
+        "ESP",
+        "ARG"
+      ],
+      "semis": [
+        "ARG",
+        "ESP"
+      ],
+      "winners": [
+        "POL",
+        "KSA",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "BRA",
+      "final": [
+        "BRA",
+        "EGY"
+      ],
+      "semis": [
+        "EGY",
+        "BRA"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "ESP"
+      ],
+      "semis": [
+        "ARG",
+        "ESP"
+      ],
+      "winners": [
+        "POL",
+        "KSA",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "FRA",
+      "final": [
+        "FRA",
+        "UZB"
+      ],
+      "semis": [
+        "FRA",
+        "UZB"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "TUN"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "CIV"
+      ],
+      "semis": [
+        "ARG",
+        "CIV"
+      ],
+      "winners": [
+        "MAR",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "FRA",
+      "final": [
+        "FRA",
+        "POR"
+      ],
+      "semis": [
+        "FRA",
+        "POR"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "ITA"
+      ]
+    },
+    {
+      "champion": "COL",
+      "final": [
+        "COL",
+        "CIV"
+      ],
+      "semis": [
+        "COL",
+        "CIV"
+      ],
+      "winners": [
+        "POL",
+        "KSA",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ECU",
+      "final": [
+        "ECU",
+        "NED"
+      ],
+      "semis": [
+        "NED",
+        "ECU"
+      ],
+      "winners": [
+        "MEX",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "POR",
+      "final": [
+        "POR",
+        "DEN"
+      ],
+      "semis": [
+        "POR",
+        "DEN"
+      ],
+      "winners": [
+        "JAM",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "NGA",
+      "final": [
+        "NGA",
+        "ARG"
+      ],
+      "semis": [
+        "NGA",
+        "ARG"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "CRC"
+      ]
+    },
+    {
+      "champion": "MAR",
+      "final": [
+        "MAR",
+        "POR"
+      ],
+      "semis": [
+        "MAR",
+        "POR"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "BRA",
+      "final": [
+        "BRA",
+        "MAR"
+      ],
+      "semis": [
+        "MAR",
+        "BRA"
+      ],
+      "winners": [
+        "MAR",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "BRA",
+      "final": [
+        "BRA",
+        "AUS"
+      ],
+      "semis": [
+        "AUS",
+        "BRA"
+      ],
+      "winners": [
+        "POL",
+        "POR",
+        "TUN"
+      ]
+    },
+    {
+      "champion": "POR",
+      "final": [
+        "POR",
+        "BRA"
+      ],
+      "semis": [
+        "POR",
+        "BRA"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "ESP"
+      ],
+      "semis": [
+        "ARG",
+        "ESP"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "ITA"
+      ]
+    },
+    {
+      "champion": "JPN",
+      "final": [
+        "JPN",
+        "ESP"
+      ],
+      "semis": [
+        "JPN",
+        "ESP"
+      ],
+      "winners": [
+        "MEX",
+        "EGY",
+        "CRC"
+      ]
+    },
+    {
+      "champion": "MEX",
+      "final": [
+        "MEX",
+        "ECU"
+      ],
+      "semis": [
+        "MEX",
+        "ECU"
+      ],
+      "winners": [
+        "JAM",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ESP",
+      "final": [
+        "ESP",
+        "JPN"
+      ],
+      "semis": [
+        "JPN",
+        "ESP"
+      ],
+      "winners": [
+        "MAR",
+        "CAN",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "JPN",
+      "final": [
+        "JPN",
+        "POR"
+      ],
+      "semis": [
+        "JPN",
+        "POR"
+      ],
+      "winners": [
+        "MEX",
+        "POR",
+        "ARG"
+      ]
+    },
+    {
+      "champion": "ARG",
+      "final": [
+        "ARG",
+        "BRA"
+      ],
+      "semis": [
+        "ARG",
+        "BRA"
+      ],
+      "winners": [
+        "MAR",
+        "EGY",
+        "ARG"
+      ]
+    }
+  ],
+  "ko_match_outcomes": {
+    "round_32__0": {
+      "BEL": 11716,
+      "ALG": 15992,
+      "MAR": 35168,
+      "ESP": 17635,
+      "MEX": 11746,
+      "POL": 2444,
+      "IRQ": 3954,
+      "JAM": 1345
+    },
+    "round_32__1": {
+      "ARG": 55743,
+      "TUN": 5910,
+      "USA": 603,
+      "TUR": 526,
+      "SEN": 1920,
+      "BEL": 812,
+      "KOR": 739,
+      "UZB": 699,
+      "EGY": 616,
+      "ESP": 1109,
+      "CMR": 355,
+      "JPN": 1005,
+      "FRA": 1984,
+      "CIV": 876,
+      "ECU": 716,
+      "VEN": 418,
+      "POL": 301,
+      "AUT": 546,
+      "URU": 731,
+      "ITA": 6136,
+      "AUS": 778,
+      "ALG": 1008,
+      "GHA": 182,
+      "BRA": 924,
+      "PAR": 313,
+      "MAR": 754,
+      "JAM": 200,
+      "COL": 907,
+      "NED": 758,
+      "CRO": 697,
+      "PAN": 395,
+      "CRC": 1852,
+      "GER": 818,
+      "SWE": 311,
+      "POR": 813,
+      "IRN": 752,
+      "KSA": 180,
+      "NZL": 584,
+      "CAN": 670,
+      "UKR": 206,
+      "DEN": 1677,
+      "ENG": 875,
+      "SUI": 616,
+      "MEX": 639,
+      "JOR": 494,
+      "NGA": 561,
+      "IRQ": 245,
+      "QAT": 46
+    },
+    "round_32__2": {
+      "CRO": 9284,
+      "FRA": 23036,
+      "SEN": 20815,
+      "DEN": 8311,
+      "COL": 16498,
+      "PAR": 4867,
+      "JPN": 16975,
+      "QAT": 214
+    },
+    "round_32__3": {
+      "USA": 821,
+      "ENG": 27942,
+      "NGA": 9461,
+      "AUS": 16230,
+      "CRO": 1103,
+      "BEL": 1075,
+      "EGY": 978,
+      "SUI": 11459,
+      "JAM": 434,
+      "NZL": 660,
+      "GER": 708,
+      "CIV": 1014,
+      "AUT": 938,
+      "FRA": 1004,
+      "UZB": 902,
+      "IRN": 1036,
+      "MEX": 867,
+      "SEN": 1036,
+      "SWE": 584,
+      "ECU": 964,
+      "DEN": 1231,
+      "TUN": 845,
+      "KOR": 1034,
+      "ITA": 828,
+      "PAN": 700,
+      "JPN": 966,
+      "ARG": 492,
+      "PAR": 762,
+      "URU": 894,
+      "COL": 1098,
+      "CRC": 497,
+      "CMR": 747,
+      "CAN": 980,
+      "GHA": 416,
+      "IRQ": 543,
+      "POR": 786,
+      "UKR": 455,
+      "ESP": 816,
+      "ALG": 1122,
+      "JOR": 657,
+      "BRA": 745,
+      "NED": 945,
+      "QAT": 176,
+      "MAR": 630,
+      "VEN": 635,
+      "KSA": 482,
+      "POL": 587,
+      "TUR": 715
+    },
+    "round_32__4": {
+      "NED": 23841,
+      "MEX": 16917,
+      "AUT": 10682,
+      "MAR": 17593,
+      "IRN": 17300,
+      "POL": 5797,
+      "CMR": 4283,
+      "JAM": 3587
+    },
+    "round_32__5": {
+      "COL": 23315,
+      "JPN": 32180,
+      "KOR": 790,
+      "ARG": 536,
+      "UKR": 367,
+      "ESP": 830,
+      "URU": 904,
+      "EGY": 860,
+      "MAR": 730,
+      "PAR": 3781,
+      "ECU": 1051,
+      "ITA": 636,
+      "MEX": 800,
+      "CRO": 9133,
+      "POR": 792,
+      "BEL": 899,
+      "DEN": 1078,
+      "TUR": 670,
+      "CAN": 896,
+      "SUI": 916,
+      "NED": 876,
+      "POL": 456,
+      "ENG": 1131,
+      "USA": 665,
+      "NZL": 593,
+      "AUT": 836,
+      "FRA": 1069,
+      "GER": 700,
+      "SEN": 1050,
+      "CIV": 836,
+      "IRQ": 416,
+      "CMR": 594,
+      "TUN": 726,
+      "GHA": 323,
+      "AUS": 1085,
+      "JOR": 555,
+      "KSA": 384,
+      "CRC": 311,
+      "UZB": 819,
+      "NGA": 775,
+      "VEN": 541,
+      "JAM": 372,
+      "ALG": 939,
+      "IRN": 946,
+      "BRA": 728,
+      "SWE": 441,
+      "PAN": 583,
+      "QAT": 86
+    },
+    "round_32__6": {
+      "AUS": 14818,
+      "EGY": 11474,
+      "SUI": 11925,
+      "NGA": 10894,
+      "CAN": 13541,
+      "POR": 15498,
+      "ENG": 18117,
+      "KSA": 3733
+    },
+    "round_32__7": {
+      "DEN": 16080,
+      "SEN": 22942,
+      "FRA": 23509,
+      "BRA": 696,
+      "ALG": 1178,
+      "KOR": 963,
+      "CAN": 958,
+      "PAN": 714,
+      "JPN": 929,
+      "AUS": 1072,
+      "JAM": 533,
+      "IRQ": 660,
+      "ITA": 1018,
+      "TUN": 994,
+      "TUR": 770,
+      "NZL": 705,
+      "EGY": 977,
+      "ENG": 1000,
+      "GER": 751,
+      "CIV": 986,
+      "POR": 760,
+      "QAT": 1361,
+      "UKR": 628,
+      "MEX": 906,
+      "CRO": 1106,
+      "CMR": 722,
+      "URU": 794,
+      "POL": 672,
+      "ECU": 882,
+      "VEN": 615,
+      "JOR": 649,
+      "IRN": 986,
+      "SUI": 1079,
+      "AUT": 937,
+      "USA": 834,
+      "BEL": 1189,
+      "UZB": 877,
+      "SWE": 600,
+      "MAR": 584,
+      "CRC": 605,
+      "NED": 881,
+      "NGA": 1008,
+      "ESP": 701,
+      "COL": 1064,
+      "GHA": 487,
+      "PAR": 777,
+      "KSA": 500,
+      "ARG": 361
+    },
+    "round_32__8": {
+      "ECU": 1188,
+      "POR": 32605,
+      "KSA": 2632,
+      "JPN": 1238,
+      "EGY": 10211,
+      "CAN": 13839,
+      "BRA": 1064,
+      "ENG": 1332,
+      "KOR": 1024,
+      "VEN": 686,
+      "MAR": 928,
+      "GER": 937,
+      "NZL": 820,
+      "ALG": 1218,
+      "FRA": 1623,
+      "DEN": 1645,
+      "CIV": 1101,
+      "JAM": 418,
+      "PAN": 735,
+      "IRN": 1067,
+      "TUN": 920,
+      "COL": 1237,
+      "CRC": 398,
+      "ESP": 1172,
+      "UZB": 1019,
+      "BEL": 1164,
+      "MEX": 927,
+      "AUT": 1000,
+      "CMR": 642,
+      "NGA": 939,
+      "USA": 911,
+      "URU": 1135,
+      "ARG": 742,
+      "UKR": 400,
+      "SUI": 1021,
+      "TUR": 860,
+      "PAR": 652,
+      "NED": 1114,
+      "AUS": 1227,
+      "ITA": 832,
+      "SEN": 1587,
+      "IRQ": 462,
+      "CRO": 1016,
+      "JOR": 721,
+      "GHA": 383,
+      "POL": 534,
+      "SWE": 554,
+      "QAT": 120
+    },
+    "round_32__9": {
+      "GER": 28735,
+      "URU": 15886,
+      "ECU": 16473,
+      "SWE": 6437,
+      "USA": 10441,
+      "GHA": 2609,
+      "UZB": 11800,
+      "PAN": 7619
+    },
+    "round_32__10": {
+      "ENG": 883,
+      "ESP": 44026,
+      "BEL": 9863,
+      "AUS": 875,
+      "VEN": 465,
+      "ALG": 15401,
+      "URU": 704,
+      "NED": 751,
+      "MEX": 741,
+      "JAM": 367,
+      "GER": 614,
+      "NGA": 787,
+      "IRQ": 2330,
+      "SEN": 811,
+      "KOR": 751,
+      "JPN": 870,
+      "ARG": 385,
+      "ECU": 762,
+      "USA": 622,
+      "CAN": 753,
+      "TUN": 732,
+      "IRN": 818,
+      "BRA": 595,
+      "ITA": 731,
+      "SUI": 768,
+      "POR": 718,
+      "CIV": 780,
+      "TUR": 506,
+      "CRC": 397,
+      "FRA": 875,
+      "SWE": 469,
+      "DEN": 998,
+      "KSA": 395,
+      "UKR": 381,
+      "UZB": 716,
+      "COL": 857,
+      "EGY": 744,
+      "NZL": 514,
+      "MAR": 568,
+      "JOR": 514,
+      "AUT": 733,
+      "QAT": 115,
+      "PAN": 544,
+      "PAR": 544,
+      "GHA": 318,
+      "CRO": 895,
+      "CMR": 514,
+      "POL": 500
+    },
+    "round_32__11": {
+      "CIV": 11417,
+      "CRC": 4274,
+      "BRA": 37042,
+      "ITA": 10998,
+      "TUN": 11361,
+      "UKR": 2276,
+      "ARG": 14405,
+      "KOR": 8227
+    },
+    "round_32__12": {
+      "SEN": 1155,
+      "PAN": 7203,
+      "SWE": 5769,
+      "CAN": 1218,
+      "URU": 20752,
+      "ECU": 22172,
+      "USA": 1032,
+      "BEL": 1257,
+      "DEN": 1429,
+      "FRA": 1123,
+      "KSA": 692,
+      "AUT": 1203,
+      "CMR": 944,
+      "MAR": 768,
+      "AUS": 1384,
+      "NGA": 1218,
+      "CRO": 1315,
+      "CIV": 1139,
+      "PAR": 929,
+      "JPN": 1208,
+      "GER": 962,
+      "SUI": 1174,
+      "IRN": 1201,
+      "CRC": 627,
+      "ALG": 1285,
+      "POR": 924,
+      "EGY": 1189,
+      "ESP": 963,
+      "VEN": 774,
+      "NED": 1135,
+      "POL": 786,
+      "KOR": 1205,
+      "ENG": 1330,
+      "QAT": 212,
+      "UKR": 613,
+      "UZB": 1197,
+      "TUN": 1060,
+      "TUR": 1000,
+      "ITA": 1018,
+      "NZL": 899,
+      "JAM": 592,
+      "BRA": 829,
+      "JOR": 869,
+      "MEX": 1125,
+      "IRQ": 674,
+      "ARG": 575,
+      "COL": 1266,
+      "GHA": 606
+    },
+    "round_32__13": {
+      "TUR": 14050,
+      "BEL": 1823,
+      "MEX": 1152,
+      "NZL": 15720,
+      "NGA": 1406,
+      "SUI": 1454,
+      "NED": 1118,
+      "JOR": 10341,
+      "CIV": 1318,
+      "CRO": 1634,
+      "PAR": 1278,
+      "ITA": 1609,
+      "USA": 1227,
+      "IRN": 1294,
+      "VEN": 8349,
+      "SEN": 1178,
+      "JPN": 1037,
+      "TUN": 1452,
+      "KOR": 1418,
+      "CAN": 1234,
+      "FRA": 1141,
+      "COL": 1364,
+      "KSA": 962,
+      "SWE": 1127,
+      "UKR": 1057,
+      "GHA": 837,
+      "AUS": 1380,
+      "AUT": 1338,
+      "URU": 1033,
+      "MAR": 610,
+      "CRC": 1141,
+      "UZB": 1242,
+      "PAN": 1181,
+      "GER": 882,
+      "DEN": 1784,
+      "ALG": 1570,
+      "ENG": 1156,
+      "EGY": 1333,
+      "QAT": 446,
+      "JAM": 953,
+      "IRQ": 1072,
+      "POR": 878,
+      "BRA": 749,
+      "POL": 1345,
+      "ESP": 777,
+      "ECU": 1020,
+      "CMR": 1118,
+      "ARG": 412
+    },
+    "round_32__14": {
+      "BRA": 18109,
+      "UZB": 14154,
+      "GHA": 4561,
+      "GER": 15112,
+      "CIV": 17182,
+      "KOR": 13797,
+      "USA": 11891,
+      "UKR": 5194
+    },
+    "round_32__15": {
+      "IRN": 18994,
+      "NED": 20086,
+      "AUT": 15554,
+      "CMR": 8975,
+      "TUR": 10100,
+      "NZL": 10453,
+      "VEN": 7433,
+      "JOR": 8405
+    },
+    "round_16__0": {
+      "ARG": 36977,
+      "ALG": 7063,
+      "ESP": 11298,
+      "MEX": 4428,
+      "MAR": 19593,
+      "TUR": 162,
+      "BEL": 4253,
+      "SEN": 977,
+      "UZB": 249,
+      "JPN": 602,
+      "CIV": 341,
+      "ECU": 314,
+      "VEN": 95,
+      "POL": 524,
+      "AUT": 203,
+      "AUS": 322,
+      "ITA": 1993,
+      "BRA": 468,
+      "COL": 448,
+      "IRQ": 947,
+      "URU": 277,
+      "POR": 394,
+      "IRN": 304,
+      "TUN": 1895,
+      "EGY": 227,
+      "CRC": 396,
+      "FRA": 1018,
+      "DEN": 650,
+      "SUI": 234,
+      "NED": 330,
+      "NZL": 173,
+      "JOR": 128,
+      "CAN": 244,
+      "KOR": 255,
+      "GER": 341,
+      "JAM": 281,
+      "ENG": 476,
+      "SWE": 69,
+      "CRO": 261,
+      "PAR": 101,
+      "NGA": 210,
+      "USA": 171,
+      "CMR": 104,
+      "UKR": 43,
+      "PAN": 98,
+      "KSA": 31,
+      "GHA": 25,
+      "QAT": 7
+    },
+    "round_16__1": {
+      "CRO": 4703,
+      "ENG": 15019,
+      "SEN": 12646,
+      "FRA": 14392,
+      "COL": 10387,
+      "PAR": 1946,
+      "AUS": 7360,
+      "JPN": 11570,
+      "JAM": 70,
+      "DEN": 4092,
+      "NZL": 208,
+      "CIV": 356,
+      "MEX": 335,
+      "SUI": 4396,
+      "ECU": 455,
+      "ARG": 331,
+      "ITA": 261,
+      "CMR": 190,
+      "NGA": 3397,
+      "EGY": 358,
+      "CAN": 376,
+      "URU": 341,
+      "ESP": 514,
+      "BEL": 431,
+      "IRQ": 125,
+      "GER": 303,
+      "UZB": 315,
+      "BRA": 410,
+      "NED": 451,
+      "ALG": 509,
+      "IRN": 424,
+      "TUN": 275,
+      "MAR": 380,
+      "AUT": 336,
+      "POR": 396,
+      "SWE": 125,
+      "USA": 241,
+      "POL": 123,
+      "KOR": 324,
+      "JOR": 187,
+      "VEN": 138,
+      "PAN": 191,
+      "TUR": 216,
+      "CRC": 96,
+      "QAT": 55,
+      "UKR": 81,
+      "KSA": 89,
+      "GHA": 76
+    },
+    "round_16__2": {
+      "NED": 12657,
+      "MEX": 7591,
+      "AUT": 4372,
+      "ARG": 393,
+      "IRN": 8736,
+      "JPN": 20682,
+      "COL": 13522,
+      "MAR": 11197,
+      "EGY": 357,
+      "ECU": 545,
+      "ITA": 252,
+      "POL": 1419,
+      "POR": 454,
+      "CRO": 4134,
+      "PAR": 1333,
+      "TUR": 251,
+      "CAN": 400,
+      "ENG": 679,
+      "CMR": 1454,
+      "BEL": 430,
+      "ESP": 604,
+      "GER": 352,
+      "SEN": 624,
+      "JAM": 798,
+      "CIV": 376,
+      "FRA": 658,
+      "AUS": 555,
+      "NGA": 336,
+      "SUI": 406,
+      "BRA": 439,
+      "NZL": 247,
+      "TUN": 302,
+      "PAN": 188,
+      "UKR": 104,
+      "DEN": 505,
+      "JOR": 175,
+      "ALG": 457,
+      "URU": 420,
+      "VEN": 160,
+      "KSA": 92,
+      "SWE": 118,
+      "UZB": 350,
+      "KOR": 330,
+      "IRQ": 148,
+      "CRC": 81,
+      "USA": 244,
+      "GHA": 66,
+      "QAT": 7
+    },
+    "round_16__3": {
+      "AUS": 8052,
+      "EGY": 5094,
+      "SUI": 5926,
+      "BRA": 420,
+      "DEN": 7174,
+      "CAN": 6371,
+      "FRA": 14156,
+      "ALG": 629,
+      "KOR": 377,
+      "ENG": 11648,
+      "POR": 9380,
+      "NGA": 5285,
+      "JPN": 588,
+      "ITA": 387,
+      "TUN": 392,
+      "NZL": 287,
+      "SEN": 13161,
+      "PAN": 236,
+      "GER": 374,
+      "CIV": 450,
+      "CMR": 225,
+      "URU": 371,
+      "IRN": 487,
+      "CRO": 512,
+      "BEL": 539,
+      "MAR": 383,
+      "AUT": 414,
+      "CRC": 169,
+      "ESP": 503,
+      "MEX": 434,
+      "COL": 632,
+      "KSA": 1066,
+      "ECU": 426,
+      "JAM": 113,
+      "TUR": 275,
+      "POL": 178,
+      "PAR": 281,
+      "JOR": 204,
+      "QAT": 210,
+      "USA": 300,
+      "UZB": 375,
+      "SWE": 148,
+      "VEN": 164,
+      "GHA": 101,
+      "ARG": 273,
+      "NED": 479,
+      "IRQ": 193,
+      "UKR": 158
+    },
+    "round_16__4": {
+      "GER": 15336,
+      "URU": 8183,
+      "POR": 21092,
+      "SWE": 1917,
+      "EGY": 4983,
+      "CAN": 7278,
+      "BRA": 736,
+      "ENG": 890,
+      "KOR": 495,
+      "ECU": 8904,
+      "MAR": 663,
+      "NZL": 353,
+      "ALG": 747,
+      "USA": 4212,
+      "DEN": 819,
+      "PAN": 2698,
+      "FRA": 1057,
+      "CRC": 125,
+      "IRN": 608,
+      "UZB": 5347,
+      "BEL": 636,
+      "ARG": 597,
+      "NED": 671,
+      "AUS": 701,
+      "CIV": 549,
+      "PAR": 273,
+      "ITA": 361,
+      "JPN": 888,
+      "SEN": 1028,
+      "TUN": 429,
+      "KSA": 803,
+      "CRO": 564,
+      "COL": 778,
+      "JOR": 305,
+      "MEX": 489,
+      "AUT": 527,
+      "IRQ": 159,
+      "TUR": 389,
+      "CMR": 232,
+      "POL": 171,
+      "NGA": 461,
+      "GHA": 681,
+      "ESP": 881,
+      "SUI": 499,
+      "UKR": 132,
+      "QAT": 21,
+      "VEN": 243,
+      "JAM": 89
+    },
+    "round_16__5": {
+      "ENG": 531,
+      "ESP": 30380,
+      "BRA": 19861,
+      "AUS": 437,
+      "BEL": 4507,
+      "TUN": 3888,
+      "ITA": 3656,
+      "ALG": 7887,
+      "ARG": 9781,
+      "URU": 347,
+      "NED": 421,
+      "KOR": 2951,
+      "MEX": 324,
+      "CRC": 959,
+      "GER": 288,
+      "NGA": 348,
+      "CIV": 4525,
+      "JPN": 552,
+      "ECU": 373,
+      "CAN": 315,
+      "IRN": 412,
+      "IRQ": 686,
+      "SUI": 335,
+      "POR": 384,
+      "TUR": 191,
+      "FRA": 495,
+      "UKR": 531,
+      "SEN": 440,
+      "AUT": 309,
+      "PAN": 152,
+      "DEN": 444,
+      "POL": 124,
+      "NZL": 177,
+      "PAR": 175,
+      "CRO": 407,
+      "UZB": 286,
+      "COL": 494,
+      "MAR": 356,
+      "USA": 205,
+      "GHA": 61,
+      "KSA": 86,
+      "VEN": 115,
+      "EGY": 293,
+      "SWE": 118,
+      "JAM": 81,
+      "JOR": 151,
+      "CMR": 141,
+      "QAT": 20
+    },
+    "round_16__6": {
+      "TUR": 6292,
+      "PAN": 3543,
+      "SWE": 2647,
+      "NZL": 6713,
+      "NGA": 1345,
+      "ECU": 14410,
+      "URU": 12976,
+      "NED": 1415,
+      "CIV": 1282,
+      "CRO": 1545,
+      "JOR": 4081,
+      "DEN": 1709,
+      "FRA": 1552,
+      "IRN": 1422,
+      "CMR": 808,
+      "JPN": 1591,
+      "USA": 1061,
+      "MAR": 996,
+      "SUI": 1397,
+      "PAR": 954,
+      "TUN": 1160,
+      "CAN": 1245,
+      "AUT": 1281,
+      "COL": 1765,
+      "GHA": 426,
+      "GER": 1082,
+      "ALG": 1739,
+      "POR": 1184,
+      "SEN": 1565,
+      "KOR": 1269,
+      "AUS": 1658,
+      "UZB": 1211,
+      "ESP": 1354,
+      "ENG": 1660,
+      "VEN": 2995,
+      "EGY": 1189,
+      "BEL": 1645,
+      "QAT": 145,
+      "IRQ": 648,
+      "ITA": 1207,
+      "KSA": 502,
+      "BRA": 1065,
+      "JAM": 424,
+      "MEX": 1242,
+      "UKR": 549,
+      "POL": 698,
+      "ARG": 778,
+      "CRC": 575
+    },
+    "round_16__7": {
+      "BRA": 12655,
+      "NED": 11903,
+      "UZB": 7018,
+      "IRN": 10295,
+      "CIV": 9132,
+      "TUR": 4037,
+      "KOR": 6831,
+      "CMR": 3291,
+      "AUT": 7273,
+      "NZL": 4320,
+      "GER": 9087,
+      "USA": 5483,
+      "VEN": 2440,
+      "UKR": 1861,
+      "JOR": 3082,
+      "GHA": 1292
+    },
+    "quarter__0": {
+      "ARG": 26154,
+      "ENG": 7301,
+      "ESP": 7758,
+      "FRA": 7344,
+      "COL": 4744,
+      "PAR": 457,
+      "BEL": 1924,
+      "SEN": 6016,
+      "ALG": 3645,
+      "DEN": 1517,
+      "JPN": 6135,
+      "MEX": 1878,
+      "MAR": 11957,
+      "SUI": 1465,
+      "AUS": 2908,
+      "CIV": 244,
+      "CRO": 1603,
+      "POR": 385,
+      "IRN": 276,
+      "ECU": 292,
+      "NGA": 1091,
+      "TUN": 731,
+      "ITA": 723,
+      "NED": 339,
+      "IRQ": 284,
+      "VEN": 56,
+      "POL": 135,
+      "TUR": 94,
+      "URU": 213,
+      "GER": 271,
+      "CAN": 214,
+      "EGY": 169,
+      "BRA": 444,
+      "USA": 125,
+      "KOR": 185,
+      "UZB": 179,
+      "CMR": 57,
+      "UKR": 22,
+      "CRC": 92,
+      "AUT": 176,
+      "JOR": 71,
+      "JAM": 65,
+      "QAT": 6,
+      "PAN": 67,
+      "GHA": 24,
+      "NZL": 98,
+      "SWE": 39,
+      "KSA": 27
+    },
+    "quarter__1": {
+      "AUS": 4037,
+      "MEX": 3532,
+      "NED": 7049,
+      "SUI": 2563,
+      "BRA": 515,
+      "DEN": 3039,
+      "CAN": 2732,
+      "JPN": 13419,
+      "COL": 8070,
+      "MAR": 7352,
+      "FRA": 8182,
+      "KOR": 272,
+      "ECU": 461,
+      "EGY": 1921,
+      "ITA": 227,
+      "TUN": 242,
+      "ENG": 6858,
+      "ALG": 513,
+      "POR": 5128,
+      "IRN": 4459,
+      "NGA": 2164,
+      "SEN": 7268,
+      "ARG": 474,
+      "TUR": 164,
+      "AUT": 1902,
+      "CRO": 2037,
+      "ESP": 769,
+      "JAM": 192,
+      "CIV": 341,
+      "CMR": 520,
+      "BEL": 428,
+      "POL": 403,
+      "PAR": 546,
+      "KSA": 235,
+      "NZL": 179,
+      "JOR": 113,
+      "PAN": 117,
+      "URU": 343,
+      "QAT": 27,
+      "UZB": 283,
+      "GER": 343,
+      "USA": 169,
+      "IRQ": 89,
+      "UKR": 66,
+      "SWE": 71,
+      "GHA": 44,
+      "CRC": 61,
+      "VEN": 81
+    },
+    "quarter__2": {
+      "GER": 6700,
+      "ESP": 22456,
+      "POR": 10697,
+      "SWE": 400,
+      "BEL": 2273,
+      "ITA": 1551,
+      "EGY": 1724,
+      "ALG": 4387,
+      "BRA": 12546,
+      "ENG": 767,
+      "NED": 555,
+      "MEX": 300,
+      "ECU": 4104,
+      "NGA": 332,
+      "URU": 3434,
+      "ARG": 7618,
+      "CIV": 2242,
+      "DEN": 490,
+      "JPN": 860,
+      "CAN": 2787,
+      "IRN": 446,
+      "UZB": 1883,
+      "UKR": 166,
+      "SEN": 737,
+      "PAN": 707,
+      "USA": 1303,
+      "FRA": 855,
+      "SUI": 330,
+      "MAR": 609,
+      "CRO": 380,
+      "TUN": 1629,
+      "NZL": 172,
+      "AUS": 516,
+      "TUR": 192,
+      "COL": 701,
+      "KOR": 1417,
+      "VEN": 84,
+      "JAM": 46,
+      "AUT": 304,
+      "POL": 88,
+      "PAR": 144,
+      "KSA": 164,
+      "CRC": 275,
+      "IRQ": 249,
+      "CMR": 124,
+      "GHA": 122,
+      "JOR": 131,
+      "QAT": 3
+    },
+    "quarter__3": {
+      "BRA": 9116,
+      "NED": 7949,
+      "SWE": 838,
+      "NZL": 4546,
+      "IRN": 6321,
+      "ECU": 8060,
+      "URU": 6896,
+      "TUR": 4279,
+      "CMR": 1495,
+      "CRO": 794,
+      "JOR": 2636,
+      "DEN": 820,
+      "AUT": 4078,
+      "FRA": 1006,
+      "CIV": 5165,
+      "GER": 5644,
+      "JPN": 1110,
+      "KOR": 3780,
+      "VEN": 1889,
+      "UZB": 3745,
+      "TUN": 504,
+      "COL": 1137,
+      "PAN": 1349,
+      "PAR": 366,
+      "GHA": 487,
+      "USA": 2722,
+      "MAR": 687,
+      "SUI": 705,
+      "POR": 721,
+      "SEN": 977,
+      "AUS": 937,
+      "ESP": 1016,
+      "ALG": 1010,
+      "ENG": 1084,
+      "BEL": 869,
+      "IRQ": 240,
+      "JAM": 121,
+      "ITA": 534,
+      "MEX": 627,
+      "NGA": 649,
+      "UKR": 702,
+      "CAN": 611,
+      "EGY": 550,
+      "ARG": 628,
+      "CRC": 194,
+      "KSA": 152,
+      "POL": 230,
+      "QAT": 24
+    },
+    "semi__0": {
+      "ARG": 18701,
+      "MEX": 2014,
+      "NED": 3062,
+      "ESP": 5600,
+      "ENG": 7310,
+      "FRA": 8005,
+      "DEN": 1525,
+      "COL": 6075,
+      "PAR": 265,
+      "MAR": 11197,
+      "SEN": 6407,
+      "JPN": 10566,
+      "ECU": 296,
+      "EGY": 605,
+      "POR": 2479,
+      "NGA": 1084,
+      "AUS": 2832,
+      "CAN": 1010,
+      "SUI": 1400,
+      "BEL": 916,
+      "CRO": 1284,
+      "BRA": 505,
+      "IRN": 1827,
+      "ALG": 1936,
+      "TUN": 297,
+      "VEN": 22,
+      "ITA": 306,
+      "CMR": 131,
+      "JOR": 48,
+      "PAN": 44,
+      "TUR": 68,
+      "CIV": 206,
+      "GER": 269,
+      "AUT": 659,
+      "UZB": 152,
+      "KOR": 148,
+      "POL": 89,
+      "USA": 87,
+      "URU": 219,
+      "IRQ": 98,
+      "JAM": 36,
+      "KSA": 50,
+      "GHA": 6,
+      "CRC": 32,
+      "NZL": 80,
+      "SWE": 27,
+      "UKR": 21,
+      "QAT": 4
+    },
+    "semi__1": {
+      "BRA": 13135,
+      "NED": 3916,
+      "POR": 6921,
+      "NZL": 1368,
+      "IRN": 2865,
+      "ECU": 5772,
+      "ITA": 796,
+      "URU": 4449,
+      "ALG": 2898,
+      "CMR": 433,
+      "EGY": 975,
+      "ESP": 17312,
+      "DEN": 490,
+      "GER": 6176,
+      "NGA": 393,
+      "JPN": 1235,
+      "UZB": 2052,
+      "CIV": 2986,
+      "ARG": 6294,
+      "AUT": 1593,
+      "CAN": 1597,
+      "USA": 1290,
+      "FRA": 1079,
+      "SUI": 414,
+      "SEN": 908,
+      "ENG": 1067,
+      "KOR": 1783,
+      "BEL": 1453,
+      "IRQ": 148,
+      "PAN": 592,
+      "AUS": 630,
+      "JOR": 702,
+      "MAR": 787,
+      "TUR": 1310,
+      "COL": 991,
+      "MEX": 404,
+      "TUN": 827,
+      "CRO": 474,
+      "VEN": 444,
+      "SWE": 297,
+      "PAR": 161,
+      "GHA": 108,
+      "UKR": 187,
+      "KSA": 62,
+      "CRC": 114,
+      "POL": 75,
+      "JAM": 33,
+      "QAT": 4
+    },
+    "final__0": {
+      "ARG": 17475,
+      "MEX": 962,
+      "POR": 4491,
+      "NZL": 369,
+      "IRN": 1876,
+      "FRA": 4968,
+      "DEN": 723,
+      "ALG": 1983,
+      "COL": 3661,
+      "CMR": 144,
+      "MAR": 6981,
+      "NED": 3189,
+      "SEN": 3703,
+      "JPN": 6822,
+      "ECU": 2464,
+      "GER": 2435,
+      "NGA": 506,
+      "ENG": 4467,
+      "ESP": 14168,
+      "BRA": 6542,
+      "CAN": 911,
+      "EGY": 486,
+      "BEL": 829,
+      "URU": 1672,
+      "SUI": 698,
+      "AUS": 1542,
+      "AUT": 772,
+      "JOR": 150,
+      "ITA": 315,
+      "CIV": 1103,
+      "CRO": 641,
+      "PAR": 114,
+      "KOR": 557,
+      "TUR": 338,
+      "PAN": 148,
+      "SWE": 58,
+      "TUN": 344,
+      "UZB": 732,
+      "USA": 362,
+      "POL": 36,
+      "GHA": 11,
+      "IRQ": 63,
+      "VEN": 96,
+      "CRC": 32,
+      "KSA": 21,
+      "UKR": 30,
+      "JAM": 10
+    }
+  }
+}

@@ -1,0 +1,434 @@
+[
+  {
+    "team_id": "ESP",
+    "name": "Spain",
+    "fifa_code": "ESP",
+    "confederation": "UEFA",
+    "fifa_rank": 3,
+    "elo": 2042.2,
+    "flag_emoji": "🇪🇸"
+  },
+  {
+    "team_id": "ARG",
+    "name": "Argentina",
+    "fifa_code": "ARG",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 1,
+    "elo": 1988.0,
+    "flag_emoji": "🇦🇷"
+  },
+  {
+    "team_id": "FRA",
+    "name": "France",
+    "fifa_code": "FRA",
+    "confederation": "UEFA",
+    "fifa_rank": 2,
+    "elo": 1961.3,
+    "flag_emoji": "🇫🇷"
+  },
+  {
+    "team_id": "MAR",
+    "name": "Morocco",
+    "fifa_code": "MAR",
+    "confederation": "CAF",
+    "fifa_rank": 13,
+    "elo": 1919.9,
+    "flag_emoji": "🇲🇦"
+  },
+  {
+    "team_id": "ENG",
+    "name": "England",
+    "fifa_code": "ENG",
+    "confederation": "UEFA",
+    "fifa_rank": 4,
+    "elo": 1914.3,
+    "flag_emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+  },
+  {
+    "team_id": "JPN",
+    "name": "Japan",
+    "fifa_code": "JPN",
+    "confederation": "AFC",
+    "fifa_rank": 15,
+    "elo": 1905.8,
+    "flag_emoji": "🇯🇵"
+  },
+  {
+    "team_id": "BRA",
+    "name": "Brazil",
+    "fifa_code": "BRA",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 5,
+    "elo": 1870.8,
+    "flag_emoji": "🇧🇷"
+  },
+  {
+    "team_id": "POR",
+    "name": "Portugal",
+    "fifa_code": "POR",
+    "confederation": "UEFA",
+    "fifa_rank": 6,
+    "elo": 1866.8,
+    "flag_emoji": "🇵🇹"
+  },
+  {
+    "team_id": "COL",
+    "name": "Colombia",
+    "fifa_code": "COL",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 12,
+    "elo": 1865.1,
+    "flag_emoji": "🇨🇴"
+  },
+  {
+    "team_id": "SEN",
+    "name": "Senegal",
+    "fifa_code": "SEN",
+    "confederation": "CAF",
+    "fifa_rank": 17,
+    "elo": 1862.0,
+    "flag_emoji": "🇸🇳"
+  },
+  {
+    "team_id": "NED",
+    "name": "Netherlands",
+    "fifa_code": "NED",
+    "confederation": "UEFA",
+    "fifa_rank": 7,
+    "elo": 1855.8,
+    "flag_emoji": "🇳🇱"
+  },
+  {
+    "team_id": "AUS",
+    "name": "Australia",
+    "fifa_code": "AUS",
+    "confederation": "AFC",
+    "fifa_rank": 26,
+    "elo": 1841.8,
+    "flag_emoji": "🇦🇺"
+  },
+  {
+    "team_id": "GER",
+    "name": "Germany",
+    "fifa_code": "GER",
+    "confederation": "UEFA",
+    "fifa_rank": 9,
+    "elo": 1840.9,
+    "flag_emoji": "🇩🇪"
+  },
+  {
+    "team_id": "ECU",
+    "name": "Ecuador",
+    "fifa_code": "ECU",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 22,
+    "elo": 1839.4,
+    "flag_emoji": "🇪🇨"
+  },
+  {
+    "team_id": "IRN",
+    "name": "Iran",
+    "fifa_code": "IRN",
+    "confederation": "AFC",
+    "fifa_rank": 20,
+    "elo": 1832.3,
+    "flag_emoji": "🇮🇷"
+  },
+  {
+    "team_id": "MEX",
+    "name": "Mexico",
+    "fifa_code": "MEX",
+    "confederation": "CONCACAF",
+    "fifa_rank": 18,
+    "elo": 1822.0,
+    "flag_emoji": "🇲🇽"
+  },
+  {
+    "team_id": "CRO",
+    "name": "Croatia",
+    "fifa_code": "CRO",
+    "confederation": "UEFA",
+    "fifa_rank": 11,
+    "elo": 1821.2,
+    "flag_emoji": "🇭🇷"
+  },
+  {
+    "team_id": "NGA",
+    "name": "Nigeria",
+    "fifa_code": "NGA",
+    "confederation": "CAF",
+    "fifa_rank": 40,
+    "elo": 1817.9,
+    "flag_emoji": "🇳🇬"
+  },
+  {
+    "team_id": "ALG",
+    "name": "Algeria",
+    "fifa_code": "ALG",
+    "confederation": "CAF",
+    "fifa_rank": 37,
+    "elo": 1815.5,
+    "flag_emoji": "🇩🇿"
+  },
+  {
+    "team_id": "KOR",
+    "name": "South Korea",
+    "fifa_code": "KOR",
+    "confederation": "AFC",
+    "fifa_rank": 23,
+    "elo": 1807.7,
+    "flag_emoji": "🇰🇷"
+  },
+  {
+    "team_id": "TUR",
+    "name": "Turkey",
+    "fifa_code": "TUR",
+    "confederation": "UEFA",
+    "fifa_rank": 27,
+    "elo": 1799.8,
+    "flag_emoji": "🇹🇷"
+  },
+  {
+    "team_id": "URU",
+    "name": "Uruguay",
+    "fifa_code": "URU",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 14,
+    "elo": 1797.9,
+    "flag_emoji": "🇺🇾"
+  },
+  {
+    "team_id": "UZB",
+    "name": "Uzbekistan",
+    "fifa_code": "UZB",
+    "confederation": "AFC",
+    "fifa_rank": 57,
+    "elo": 1797.8,
+    "flag_emoji": "🇺🇿"
+  },
+  {
+    "team_id": "SUI",
+    "name": "Switzerland",
+    "fifa_code": "SUI",
+    "confederation": "UEFA",
+    "fifa_rank": 19,
+    "elo": 1788.5,
+    "flag_emoji": "🇨🇭"
+  },
+  {
+    "team_id": "CAN",
+    "name": "Canada",
+    "fifa_code": "CAN",
+    "confederation": "CONCACAF",
+    "fifa_rank": 30,
+    "elo": 1780.2,
+    "flag_emoji": "🇨🇦"
+  },
+  {
+    "team_id": "BEL",
+    "name": "Belgium",
+    "fifa_code": "BEL",
+    "confederation": "UEFA",
+    "fifa_rank": 8,
+    "elo": 1772.6,
+    "flag_emoji": "🇧🇪"
+  },
+  {
+    "team_id": "EGY",
+    "name": "Egypt",
+    "fifa_code": "EGY",
+    "confederation": "CAF",
+    "fifa_rank": 36,
+    "elo": 1764.6,
+    "flag_emoji": "🇪🇬"
+  },
+  {
+    "team_id": "CIV",
+    "name": "Ivory Coast",
+    "fifa_code": "CIV",
+    "confederation": "CAF",
+    "fifa_rank": 42,
+    "elo": 1762.5,
+    "flag_emoji": "🇨🇮"
+  },
+  {
+    "team_id": "PAN",
+    "name": "Panama",
+    "fifa_code": "PAN",
+    "confederation": "CONCACAF",
+    "fifa_rank": 39,
+    "elo": 1762.5,
+    "flag_emoji": "🇵🇦"
+  },
+  {
+    "team_id": "DEN",
+    "name": "Denmark",
+    "fifa_code": "DEN",
+    "confederation": "UEFA",
+    "fifa_rank": 21,
+    "elo": 1757.9,
+    "flag_emoji": "🇩🇰"
+  },
+  {
+    "team_id": "ITA",
+    "name": "Italy",
+    "fifa_code": "ITA",
+    "confederation": "UEFA",
+    "fifa_rank": 10,
+    "elo": 1756.1,
+    "flag_emoji": "🇮🇹"
+  },
+  {
+    "team_id": "JOR",
+    "name": "Jordan",
+    "fifa_code": "JOR",
+    "confederation": "AFC",
+    "fifa_rank": 64,
+    "elo": 1748.3,
+    "flag_emoji": "🇯🇴"
+  },
+  {
+    "team_id": "AUT",
+    "name": "Austria",
+    "fifa_code": "AUT",
+    "confederation": "UEFA",
+    "fifa_rank": 25,
+    "elo": 1737.6,
+    "flag_emoji": "🇦🇹"
+  },
+  {
+    "team_id": "USA",
+    "name": "United States",
+    "fifa_code": "USA",
+    "confederation": "CONCACAF",
+    "fifa_rank": 16,
+    "elo": 1731.9,
+    "flag_emoji": "🇺🇸"
+  },
+  {
+    "team_id": "PAR",
+    "name": "Paraguay",
+    "fifa_code": "PAR",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 41,
+    "elo": 1729.0,
+    "flag_emoji": "🇵🇾"
+  },
+  {
+    "team_id": "IRQ",
+    "name": "Iraq",
+    "fifa_code": "IRQ",
+    "confederation": "AFC",
+    "fifa_rank": 58,
+    "elo": 1721.4,
+    "flag_emoji": "🇮🇶"
+  },
+  {
+    "team_id": "TUN",
+    "name": "Tunisia",
+    "fifa_code": "TUN",
+    "confederation": "CAF",
+    "fifa_rank": 46,
+    "elo": 1714.9,
+    "flag_emoji": "🇹🇳"
+  },
+  {
+    "team_id": "CMR",
+    "name": "Cameroon",
+    "fifa_code": "CMR",
+    "confederation": "CAF",
+    "fifa_rank": 45,
+    "elo": 1691.9,
+    "flag_emoji": "🇨🇲"
+  },
+  {
+    "team_id": "CRC",
+    "name": "Costa Rica",
+    "fifa_code": "CRC",
+    "confederation": "CONCACAF",
+    "fifa_rank": 47,
+    "elo": 1684.3,
+    "flag_emoji": "🇨🇷"
+  },
+  {
+    "team_id": "NZL",
+    "name": "New Zealand",
+    "fifa_code": "NZL",
+    "confederation": "OFC",
+    "fifa_rank": 95,
+    "elo": 1676.3,
+    "flag_emoji": "🇳🇿"
+  },
+  {
+    "team_id": "UKR",
+    "name": "Ukraine",
+    "fifa_code": "UKR",
+    "confederation": "UEFA",
+    "fifa_rank": 28,
+    "elo": 1673.2,
+    "flag_emoji": "🇺🇦"
+  },
+  {
+    "team_id": "KSA",
+    "name": "Saudi Arabia",
+    "fifa_code": "KSA",
+    "confederation": "AFC",
+    "fifa_rank": 56,
+    "elo": 1656.5,
+    "flag_emoji": "🇸🇦"
+  },
+  {
+    "team_id": "VEN",
+    "name": "Venezuela",
+    "fifa_code": "VEN",
+    "confederation": "CONMEBOL",
+    "fifa_rank": 53,
+    "elo": 1653.3,
+    "flag_emoji": "🇻🇪"
+  },
+  {
+    "team_id": "JAM",
+    "name": "Jamaica",
+    "fifa_code": "JAM",
+    "confederation": "CONCACAF",
+    "fifa_rank": 60,
+    "elo": 1647.0,
+    "flag_emoji": "🇯🇲"
+  },
+  {
+    "team_id": "POL",
+    "name": "Poland",
+    "fifa_code": "POL",
+    "confederation": "UEFA",
+    "fifa_rank": 33,
+    "elo": 1644.5,
+    "flag_emoji": "🇵🇱"
+  },
+  {
+    "team_id": "SWE",
+    "name": "Sweden",
+    "fifa_code": "SWE",
+    "confederation": "UEFA",
+    "fifa_rank": 35,
+    "elo": 1634.1,
+    "flag_emoji": "🇸🇪"
+  },
+  {
+    "team_id": "GHA",
+    "name": "Ghana",
+    "fifa_code": "GHA",
+    "confederation": "CAF",
+    "fifa_rank": 67,
+    "elo": 1599.8,
+    "flag_emoji": "🇬🇭"
+  },
+  {
+    "team_id": "QAT",
+    "name": "Qatar",
+    "fifa_code": "QAT",
+    "confederation": "AFC",
+    "fifa_rank": 50,
+    "elo": 1572.5,
+    "flag_emoji": "🇶🇦"
+  }
+]

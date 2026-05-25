@@ -225,6 +225,7 @@ class HistoricalMatch(Base):
     city: Mapped[str | None] = mapped_column(String)
     country: Mapped[str | None] = mapped_column(String)
     neutral: Mapped[bool] = mapped_column(Boolean, default=False)
+    stats: Mapped[dict | None] = mapped_column(JSON)
 
     __table_args__ = (
         Index("ix_hist_date", "match_date"),

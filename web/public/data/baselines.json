@@ -1,0 +1,40 @@
+{
+  "baselines": [
+    {
+      "name": "Naive",
+      "brier": 0.6666666666666669,
+      "log_loss": 1.0986122886681098
+    },
+    {
+      "name": "Elo",
+      "brier": 0.5250119729741982,
+      "log_loss": 0.8979463577270508
+    },
+    {
+      "name": "DC",
+      "brier": 0.5301416942151868,
+      "log_loss": 0.900630533695221
+    },
+    {
+      "name": "Stacker (LGBM OOF · 3 bags · 217 feats)",
+      "brier": 0.5590529434374735,
+      "log_loss": 0.9721762537956238
+    },
+    {
+      "name": "Ensemble (Elo+DC+Stacker, optimal weights)",
+      "brier": 0.5199232653651222,
+      "log_loss": 0.8857276733402742
+    },
+    {
+      "name": "Ensemble (calibrated)",
+      "brier": 0.5133110475854582,
+      "log_loss": 0.8712628095035695
+    }
+  ],
+  "weights": {
+    "w_elo": 0.3833324302740273,
+    "w_dc": 0.39179506557613464,
+    "w_stacker": 0.22487250414983806
+  },
+  "note": "Walk-forward 2022-2026 · 4421 partidos · stacker 217 feats · 3 bags."
+}

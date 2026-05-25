@@ -1,0 +1,787 @@
+{
+  "round_32": [
+    {
+      "slot_index": 0,
+      "home_team": "ALG",
+      "away_team": "MAR",
+      "pair_occurrences": 0.1863,
+      "p_home_wins_if_matchup": 0.3635,
+      "p_away_wins_if_matchup": 0.6365,
+      "alternative_pairs": [
+        {
+          "home": "BEL",
+          "away": "MAR",
+          "p": 0.1548
+        },
+        {
+          "home": "ESP",
+          "away": "MAR",
+          "p": 0.1475
+        },
+        {
+          "home": "ALG",
+          "away": "MEX",
+          "p": 0.088
+        }
+      ]
+    },
+    {
+      "slot_index": 1,
+      "home_team": "ARG",
+      "away_team": "DEN",
+      "pair_occurrences": 0.0393,
+      "p_home_wins_if_matchup": 0.8038,
+      "p_away_wins_if_matchup": 0.1962,
+      "alternative_pairs": [
+        {
+          "home": "ARG",
+          "away": "SEN",
+          "p": 0.0319
+        },
+        {
+          "home": "ARG",
+          "away": "FRA",
+          "p": 0.0305
+        },
+        {
+          "home": "ARG",
+          "away": "KOR",
+          "p": 0.0197
+        }
+      ]
+    },
+    {
+      "slot_index": 2,
+      "home_team": "COL",
+      "away_team": "FRA",
+      "pair_occurrences": 0.1248,
+      "p_home_wins_if_matchup": 0.4813,
+      "p_away_wins_if_matchup": 0.5187,
+      "alternative_pairs": [
+        {
+          "home": "COL",
+          "away": "SEN",
+          "p": 0.1176
+        },
+        {
+          "home": "FRA",
+          "away": "JPN",
+          "p": 0.1175
+        },
+        {
+          "home": "JPN",
+          "away": "SEN",
+          "p": 0.1123
+        }
+      ]
+    },
+    {
+      "slot_index": 3,
+      "home_team": "AUS",
+      "away_team": "ENG",
+      "pair_occurrences": 0.0183,
+      "p_home_wins_if_matchup": 0.3812,
+      "p_away_wins_if_matchup": 0.6188,
+      "alternative_pairs": [
+        {
+          "home": "ENG",
+          "away": "SUI",
+          "p": 0.0171
+        },
+        {
+          "home": "ENG",
+          "away": "NGA",
+          "p": 0.0158
+        },
+        {
+          "home": "AUS",
+          "away": "SUI",
+          "p": 0.014
+        }
+      ]
+    },
+    {
+      "slot_index": 4,
+      "home_team": "MEX",
+      "away_team": "NED",
+      "pair_occurrences": 0.1389,
+      "p_home_wins_if_matchup": 0.4141,
+      "p_away_wins_if_matchup": 0.5859,
+      "alternative_pairs": [
+        {
+          "home": "MAR",
+          "away": "NED",
+          "p": 0.107
+        },
+        {
+          "home": "IRN",
+          "away": "MEX",
+          "p": 0.1061
+        },
+        {
+          "home": "NED",
+          "away": "POL",
+          "p": 0.0801
+        }
+      ]
+    },
+    {
+      "slot_index": 5,
+      "home_team": "COL",
+      "away_team": "JPN",
+      "pair_occurrences": 0.0204,
+      "p_home_wins_if_matchup": 0.4459,
+      "p_away_wins_if_matchup": 0.5541,
+      "alternative_pairs": [
+        {
+          "home": "CRO",
+          "away": "JPN",
+          "p": 0.017
+        },
+        {
+          "home": "COL",
+          "away": "CRO",
+          "p": 0.0153
+        },
+        {
+          "home": "JPN",
+          "away": "PAR",
+          "p": 0.0132
+        }
+      ]
+    },
+    {
+      "slot_index": 6,
+      "home_team": "CAN",
+      "away_team": "ENG",
+      "pair_occurrences": 0.0825,
+      "p_home_wins_if_matchup": 0.3536,
+      "p_away_wins_if_matchup": 0.6464,
+      "alternative_pairs": [
+        {
+          "home": "AUS",
+          "away": "CAN",
+          "p": 0.0816
+        },
+        {
+          "home": "EGY",
+          "away": "ENG",
+          "p": 0.0762
+        },
+        {
+          "home": "ENG",
+          "away": "POR",
+          "p": 0.0754
+        }
+      ]
+    },
+    {
+      "slot_index": 7,
+      "home_team": "DEN",
+      "away_team": "SEN",
+      "pair_occurrences": 0.0239,
+      "p_home_wins_if_matchup": 0.3422,
+      "p_away_wins_if_matchup": 0.6578,
+      "alternative_pairs": [
+        {
+          "home": "DEN",
+          "away": "FRA",
+          "p": 0.0232
+        },
+        {
+          "home": "FRA",
+          "away": "SEN",
+          "p": 0.0117
+        },
+        {
+          "home": "ITA",
+          "away": "SEN",
+          "p": 0.0095
+        }
+      ]
+    },
+    {
+      "slot_index": 8,
+      "home_team": "EGY",
+      "away_team": "POR",
+      "pair_occurrences": 0.0205,
+      "p_home_wins_if_matchup": 0.3278,
+      "p_away_wins_if_matchup": 0.6722,
+      "alternative_pairs": [
+        {
+          "home": "CAN",
+          "away": "POR",
+          "p": 0.0205
+        },
+        {
+          "home": "DEN",
+          "away": "POR",
+          "p": 0.0184
+        },
+        {
+          "home": "CAN",
+          "away": "EGY",
+          "p": 0.016
+        }
+      ]
+    },
+    {
+      "slot_index": 9,
+      "home_team": "ECU",
+      "away_team": "GER",
+      "pair_occurrences": 0.1421,
+      "p_home_wins_if_matchup": 0.4905,
+      "p_away_wins_if_matchup": 0.5095,
+      "alternative_pairs": [
+        {
+          "home": "GER",
+          "away": "URU",
+          "p": 0.1369
+        },
+        {
+          "home": "GER",
+          "away": "PAN",
+          "p": 0.099
+        },
+        {
+          "home": "GER",
+          "away": "SWE",
+          "p": 0.0922
+        }
+      ]
+    },
+    {
+      "slot_index": 10,
+      "home_team": "ALG",
+      "away_team": "ESP",
+      "pair_occurrences": 0.0221,
+      "p_home_wins_if_matchup": 0.3127,
+      "p_away_wins_if_matchup": 0.6873,
+      "alternative_pairs": [
+        {
+          "home": "BEL",
+          "away": "ESP",
+          "p": 0.0217
+        },
+        {
+          "home": "DEN",
+          "away": "ESP",
+          "p": 0.0176
+        },
+        {
+          "home": "ESP",
+          "away": "TUN",
+          "p": 0.0145
+        }
+      ]
+    },
+    {
+      "slot_index": 11,
+      "home_team": "BRA",
+      "away_team": "TUN",
+      "pair_occurrences": 0.1716,
+      "p_home_wins_if_matchup": 0.732,
+      "p_away_wins_if_matchup": 0.268,
+      "alternative_pairs": [
+        {
+          "home": "BRA",
+          "away": "ITA",
+          "p": 0.1682
+        },
+        {
+          "home": "ARG",
+          "away": "BRA",
+          "p": 0.1095
+        },
+        {
+          "home": "BRA",
+          "away": "CRC",
+          "p": 0.0949
+        }
+      ]
+    },
+    {
+      "slot_index": 12,
+      "home_team": "ECU",
+      "away_team": "URU",
+      "pair_occurrences": 0.0222,
+      "p_home_wins_if_matchup": 0.5419,
+      "p_away_wins_if_matchup": 0.4581,
+      "alternative_pairs": [
+        {
+          "home": "ECU",
+          "away": "PAN",
+          "p": 0.0164
+        },
+        {
+          "home": "PAN",
+          "away": "URU",
+          "p": 0.0157
+        },
+        {
+          "home": "ECU",
+          "away": "SWE",
+          "p": 0.0156
+        }
+      ]
+    },
+    {
+      "slot_index": 13,
+      "home_team": "NZL",
+      "away_team": "TUR",
+      "pair_occurrences": 0.0158,
+      "p_home_wins_if_matchup": 0.4946,
+      "p_away_wins_if_matchup": 0.5054,
+      "alternative_pairs": [
+        {
+          "home": "JOR",
+          "away": "NZL",
+          "p": 0.0149
+        },
+        {
+          "home": "JOR",
+          "away": "TUR",
+          "p": 0.0143
+        },
+        {
+          "home": "NZL",
+          "away": "VEN",
+          "p": 0.014
+        }
+      ]
+    },
+    {
+      "slot_index": 14,
+      "home_team": "CIV",
+      "away_team": "UZB",
+      "pair_occurrences": 0.0953,
+      "p_home_wins_if_matchup": 0.5073,
+      "p_away_wins_if_matchup": 0.4927,
+      "alternative_pairs": [
+        {
+          "home": "CIV",
+          "away": "USA",
+          "p": 0.0858
+        },
+        {
+          "home": "CIV",
+          "away": "GER",
+          "p": 0.0836
+        },
+        {
+          "home": "KOR",
+          "away": "UZB",
+          "p": 0.0815
+        }
+      ]
+    },
+    {
+      "slot_index": 15,
+      "home_team": "IRN",
+      "away_team": "NZL",
+      "pair_occurrences": 0.0746,
+      "p_home_wins_if_matchup": 0.6514,
+      "p_away_wins_if_matchup": 0.3486,
+      "alternative_pairs": [
+        {
+          "home": "NED",
+          "away": "NZL",
+          "p": 0.074
+        },
+        {
+          "home": "NED",
+          "away": "TUR",
+          "p": 0.0724
+        },
+        {
+          "home": "IRN",
+          "away": "TUR",
+          "p": 0.0722
+        }
+      ]
+    }
+  ],
+  "round_16": [
+    {
+      "slot_index": 0,
+      "home_team": "ARG",
+      "away_team": "MAR",
+      "pair_occurrences": 0.1964,
+      "p_home_wins_if_matchup": 0.5742,
+      "p_away_wins_if_matchup": 0.4258,
+      "alternative_pairs": [
+        {
+          "home": "ARG",
+          "away": "ESP",
+          "p": 0.0979
+        },
+        {
+          "home": "ALG",
+          "away": "ARG",
+          "p": 0.0892
+        },
+        {
+          "home": "ARG",
+          "away": "MEX",
+          "p": 0.0669
+        }
+      ]
+    },
+    {
+      "slot_index": 1,
+      "home_team": "ENG",
+      "away_team": "FRA",
+      "pair_occurrences": 0.0661,
+      "p_home_wins_if_matchup": 0.492,
+      "p_away_wins_if_matchup": 0.508,
+      "alternative_pairs": [
+        {
+          "home": "ENG",
+          "away": "SEN",
+          "p": 0.0573
+        },
+        {
+          "home": "ENG",
+          "away": "JPN",
+          "p": 0.0476
+        },
+        {
+          "home": "COL",
+          "away": "ENG",
+          "p": 0.0462
+        }
+      ]
+    },
+    {
+      "slot_index": 2,
+      "home_team": "JPN",
+      "away_team": "NED",
+      "pair_occurrences": 0.077,
+      "p_home_wins_if_matchup": 0.5803,
+      "p_away_wins_if_matchup": 0.4197,
+      "alternative_pairs": [
+        {
+          "home": "IRN",
+          "away": "JPN",
+          "p": 0.0567
+        },
+        {
+          "home": "JPN",
+          "away": "MAR",
+          "p": 0.0559
+        },
+        {
+          "home": "COL",
+          "away": "NED",
+          "p": 0.0552
+        }
+      ]
+    },
+    {
+      "slot_index": 3,
+      "home_team": "ENG",
+      "away_team": "FRA",
+      "pair_occurrences": 0.043,
+      "p_home_wins_if_matchup": 0.5055,
+      "p_away_wins_if_matchup": 0.4945,
+      "alternative_pairs": [
+        {
+          "home": "ENG",
+          "away": "SEN",
+          "p": 0.0424
+        },
+        {
+          "home": "FRA",
+          "away": "POR",
+          "p": 0.0367
+        },
+        {
+          "home": "POR",
+          "away": "SEN",
+          "p": 0.0347
+        }
+      ]
+    },
+    {
+      "slot_index": 4,
+      "home_team": "GER",
+      "away_team": "POR",
+      "pair_occurrences": 0.094,
+      "p_home_wins_if_matchup": 0.4156,
+      "p_away_wins_if_matchup": 0.5844,
+      "alternative_pairs": [
+        {
+          "home": "ECU",
+          "away": "POR",
+          "p": 0.0532
+        },
+        {
+          "home": "POR",
+          "away": "URU",
+          "p": 0.0525
+        },
+        {
+          "home": "CAN",
+          "away": "GER",
+          "p": 0.0398
+        }
+      ]
+    },
+    {
+      "slot_index": 5,
+      "home_team": "BRA",
+      "away_team": "ESP",
+      "pair_occurrences": 0.1641,
+      "p_home_wins_if_matchup": 0.3892,
+      "p_away_wins_if_matchup": 0.6108,
+      "alternative_pairs": [
+        {
+          "home": "ARG",
+          "away": "ESP",
+          "p": 0.0628
+        },
+        {
+          "home": "ALG",
+          "away": "BRA",
+          "p": 0.0564
+        },
+        {
+          "home": "ESP",
+          "away": "TUN",
+          "p": 0.0505
+        }
+      ]
+    },
+    {
+      "slot_index": 6,
+      "home_team": "ECU",
+      "away_team": "NZL",
+      "pair_occurrences": 0.0343,
+      "p_home_wins_if_matchup": 0.6607,
+      "p_away_wins_if_matchup": 0.3393,
+      "alternative_pairs": [
+        {
+          "home": "NZL",
+          "away": "URU",
+          "p": 0.0327
+        },
+        {
+          "home": "ECU",
+          "away": "TUR",
+          "p": 0.031
+        },
+        {
+          "home": "TUR",
+          "away": "URU",
+          "p": 0.0299
+        }
+      ]
+    },
+    {
+      "slot_index": 7,
+      "home_team": "BRA",
+      "away_team": "NED",
+      "pair_occurrences": 0.0359,
+      "p_home_wins_if_matchup": 0.5814,
+      "p_away_wins_if_matchup": 0.4186,
+      "alternative_pairs": [
+        {
+          "home": "CIV",
+          "away": "NED",
+          "p": 0.0347
+        },
+        {
+          "home": "BRA",
+          "away": "IRN",
+          "p": 0.0341
+        },
+        {
+          "home": "CIV",
+          "away": "IRN",
+          "p": 0.0334
+        }
+      ]
+    }
+  ],
+  "quarter": [
+    {
+      "slot_index": 0,
+      "home_team": "ARG",
+      "away_team": "ENG",
+      "pair_occurrences": 0.0548,
+      "p_home_wins_if_matchup": 0.663,
+      "p_away_wins_if_matchup": 0.337,
+      "alternative_pairs": [
+        {
+          "home": "ARG",
+          "away": "FRA",
+          "p": 0.0537
+        },
+        {
+          "home": "ARG",
+          "away": "SEN",
+          "p": 0.0463
+        },
+        {
+          "home": "ARG",
+          "away": "JPN",
+          "p": 0.0428
+        }
+      ]
+    },
+    {
+      "slot_index": 1,
+      "home_team": "FRA",
+      "away_team": "JPN",
+      "pair_occurrences": 0.0295,
+      "p_home_wins_if_matchup": 0.4465,
+      "p_away_wins_if_matchup": 0.5535,
+      "alternative_pairs": [
+        {
+          "home": "JPN",
+          "away": "SEN",
+          "p": 0.0281
+        },
+        {
+          "home": "ENG",
+          "away": "JPN",
+          "p": 0.0235
+        },
+        {
+          "home": "JPN",
+          "away": "POR",
+          "p": 0.0198
+        }
+      ]
+    },
+    {
+      "slot_index": 2,
+      "home_team": "ESP",
+      "away_team": "POR",
+      "pair_occurrences": 0.0639,
+      "p_home_wins_if_matchup": 0.6343,
+      "p_away_wins_if_matchup": 0.3657,
+      "alternative_pairs": [
+        {
+          "home": "ESP",
+          "away": "GER",
+          "p": 0.0461
+        },
+        {
+          "home": "BRA",
+          "away": "POR",
+          "p": 0.0419
+        },
+        {
+          "home": "BRA",
+          "away": "GER",
+          "p": 0.0307
+        }
+      ]
+    },
+    {
+      "slot_index": 3,
+      "home_team": "BRA",
+      "away_team": "ECU",
+      "pair_occurrences": 0.0184,
+      "p_home_wins_if_matchup": 0.5622,
+      "p_away_wins_if_matchup": 0.4378,
+      "alternative_pairs": [
+        {
+          "home": "ECU",
+          "away": "NED",
+          "p": 0.0174
+        },
+        {
+          "home": "BRA",
+          "away": "URU",
+          "p": 0.0167
+        },
+        {
+          "home": "NED",
+          "away": "URU",
+          "p": 0.016
+        }
+      ]
+    }
+  ],
+  "semi": [
+    {
+      "slot_index": 0,
+      "home_team": "ARG",
+      "away_team": "JPN",
+      "pair_occurrences": 0.036,
+      "p_home_wins_if_matchup": 0.6247,
+      "p_away_wins_if_matchup": 0.3753,
+      "alternative_pairs": [
+        {
+          "home": "ARG",
+          "away": "FRA",
+          "p": 0.0221
+        },
+        {
+          "home": "JPN",
+          "away": "MAR",
+          "p": 0.022
+        },
+        {
+          "home": "ARG",
+          "away": "MAR",
+          "p": 0.0219
+        }
+      ]
+    },
+    {
+      "slot_index": 1,
+      "home_team": "BRA",
+      "away_team": "ESP",
+      "pair_occurrences": 0.024,
+      "p_home_wins_if_matchup": 0.3927,
+      "p_away_wins_if_matchup": 0.6073,
+      "alternative_pairs": [
+        {
+          "home": "ECU",
+          "away": "ESP",
+          "p": 0.0187
+        },
+        {
+          "home": "ESP",
+          "away": "NED",
+          "p": 0.0174
+        },
+        {
+          "home": "ESP",
+          "away": "URU",
+          "p": 0.016
+        }
+      ]
+    }
+  ],
+  "final": [
+    {
+      "slot_index": 0,
+      "home_team": "ARG",
+      "away_team": "ESP",
+      "pair_occurrences": 0.0413,
+      "p_home_wins_if_matchup": 0.5551,
+      "p_away_wins_if_matchup": 0.4449,
+      "alternative_pairs": [
+        {
+          "home": "ARG",
+          "away": "BRA",
+          "p": 0.027
+        },
+        {
+          "home": "ESP",
+          "away": "MAR",
+          "p": 0.0214
+        },
+        {
+          "home": "ESP",
+          "away": "JPN",
+          "p": 0.0202
+        }
+      ]
+    }
+  ]
+}

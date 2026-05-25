@@ -65,6 +65,15 @@ def ingest_wikipedia_squads(
         rprint(f"[green]OK[/green] Cargados {m} jugadores en la DB")
 
 
+@ingest_app.command("enrich-stats")
+def ingest_enrich_stats():
+    """Descargar minutos de goles y enriquecer el historico con estadisticas de remates, corners y posesion."""
+    setup_logging()
+    from agamotto.ingestion.stats_enricher import run
+    n = run()
+    rprint(f"[green]OK[/green] Enriquecidos {n} partidos con estadisticas avanzadas")
+
+
 # ------------------ train ------------------
 
 @train_app.command("elo")

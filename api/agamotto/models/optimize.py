@@ -49,9 +49,9 @@ def _load_history() -> pd.DataFrame:
         rows = s.execute(select(
             HistoricalMatch.match_date, HistoricalMatch.home_team, HistoricalMatch.away_team,
             HistoricalMatch.home_score, HistoricalMatch.away_score, HistoricalMatch.neutral,
-            HistoricalMatch.tournament,
+            HistoricalMatch.tournament, HistoricalMatch.stats,
         )).all()
-    df = pd.DataFrame(rows, columns=["date", "home", "away", "hs", "as_", "neutral", "tournament"])
+    df = pd.DataFrame(rows, columns=["date", "home", "away", "hs", "as_", "neutral", "tournament", "stats"])
     return df.sort_values("date").reset_index(drop=True)
 
 
@@ -107,8 +107,11 @@ def collect_walk_forward(start_year: int = 2022, end_year: int = 2026) -> dict:
     cutoff_init = date(start_year, 1, 1)
     pre = df[df["date"] < cutoff_init]
     for _, r in pre.iterrows():
-        team_state[r["home"]].update(int(r["hs"]), int(r["as_"]), r["date"])
-        team_state[r["away"]].update(int(r["as_"]), int(r["hs"]), r["date"])
+        stats = r.get("stats")
+        home_stats = stats.get("home") if isinstance(stats, dict) else None
+        away_stats = stats.get("away") if isinstance(stats, dict) else None
+        team_state[r["home"]].update(int(r["hs"]), int(r["as_"]), r["date"], home_stats)
+        team_state[r["away"]].update(int(r["as_"]), int(r["hs"]), r["date"], away_stats)
         key = tuple(sorted([r["home"], r["away"]]))
         h2h_state[key].update(
             int(r["hs"]) if r["home"] == key[0] else int(r["as_"]),
@@ -146,8 +149,11 @@ def collect_walk_forward(start_year: int = 2022, end_year: int = 2026) -> dict:
         ctx_rows.append([ctx[k] for k in CONTEXT_FEATURE_NAMES])
 
         # Update state AFTER prediction
-        team_state[h].update(hs, as_, r["date"])
-        team_state[a].update(as_, hs, r["date"])
+        stats = r.get("stats")
+        home_stats = stats.get("home") if isinstance(stats, dict) else None
+        away_stats = stats.get("away") if isinstance(stats, dict) else None
+        team_state[h].update(hs, as_, r["date"], home_stats)
+        team_state[a].update(as_, hs, r["date"], away_stats)
         key = tuple(sorted([h, a]))
         h2h_state[key].update(
             hs if h == key[0] else as_,

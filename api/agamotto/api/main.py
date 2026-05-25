@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from agamotto import __version__
-from agamotto.api.routes import matches, multiverse, players, predict, simulation, teams, validation, venues
+from agamotto.api.routes import matches, multiverse, players, predict, simulation, teams, validation, venues, analyze
 from agamotto.core.config import settings
 from agamotto.core.db import init_engine
 
@@ -44,6 +44,7 @@ def create_app() -> FastAPI:
     app.include_router(multiverse.router)
     app.include_router(validation.router)
     app.include_router(predict.router)
+    app.include_router(analyze.router)
 
     return app
 

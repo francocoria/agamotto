@@ -1,0 +1,331 @@
+[
+  {
+    "team": "ARG",
+    "p": 0.17475,
+    "name": "Argentina",
+    "flag": "🇦🇷",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "ESP",
+    "p": 0.14168,
+    "name": "Spain",
+    "flag": "🇪🇸",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "MAR",
+    "p": 0.06981,
+    "name": "Morocco",
+    "flag": "🇲🇦",
+    "confederation": "CAF"
+  },
+  {
+    "team": "JPN",
+    "p": 0.06822,
+    "name": "Japan",
+    "flag": "🇯🇵",
+    "confederation": "AFC"
+  },
+  {
+    "team": "BRA",
+    "p": 0.06542,
+    "name": "Brazil",
+    "flag": "🇧🇷",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "FRA",
+    "p": 0.04968,
+    "name": "France",
+    "flag": "🇫🇷",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "POR",
+    "p": 0.04491,
+    "name": "Portugal",
+    "flag": "🇵🇹",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "ENG",
+    "p": 0.04467,
+    "name": "England",
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "SEN",
+    "p": 0.03703,
+    "name": "Senegal",
+    "flag": "🇸🇳",
+    "confederation": "CAF"
+  },
+  {
+    "team": "COL",
+    "p": 0.03661,
+    "name": "Colombia",
+    "flag": "🇨🇴",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "NED",
+    "p": 0.03189,
+    "name": "Netherlands",
+    "flag": "🇳🇱",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "ECU",
+    "p": 0.02464,
+    "name": "Ecuador",
+    "flag": "🇪🇨",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "GER",
+    "p": 0.02435,
+    "name": "Germany",
+    "flag": "🇩🇪",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "ALG",
+    "p": 0.01983,
+    "name": "Algeria",
+    "flag": "🇩🇿",
+    "confederation": "CAF"
+  },
+  {
+    "team": "IRN",
+    "p": 0.01876,
+    "name": "Iran",
+    "flag": "🇮🇷",
+    "confederation": "AFC"
+  },
+  {
+    "team": "URU",
+    "p": 0.01672,
+    "name": "Uruguay",
+    "flag": "🇺🇾",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "AUS",
+    "p": 0.01542,
+    "name": "Australia",
+    "flag": "🇦🇺",
+    "confederation": "AFC"
+  },
+  {
+    "team": "CIV",
+    "p": 0.01103,
+    "name": "Ivory Coast",
+    "flag": "🇨🇮",
+    "confederation": "CAF"
+  },
+  {
+    "team": "MEX",
+    "p": 0.00962,
+    "name": "Mexico",
+    "flag": "🇲🇽",
+    "confederation": "CONCACAF"
+  },
+  {
+    "team": "CAN",
+    "p": 0.00911,
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "confederation": "CONCACAF"
+  },
+  {
+    "team": "BEL",
+    "p": 0.00829,
+    "name": "Belgium",
+    "flag": "🇧🇪",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "AUT",
+    "p": 0.00772,
+    "name": "Austria",
+    "flag": "🇦🇹",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "UZB",
+    "p": 0.00732,
+    "name": "Uzbekistan",
+    "flag": "🇺🇿",
+    "confederation": "AFC"
+  },
+  {
+    "team": "DEN",
+    "p": 0.00723,
+    "name": "Denmark",
+    "flag": "🇩🇰",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "SUI",
+    "p": 0.00698,
+    "name": "Switzerland",
+    "flag": "🇨🇭",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "CRO",
+    "p": 0.00641,
+    "name": "Croatia",
+    "flag": "🇭🇷",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "KOR",
+    "p": 0.00557,
+    "name": "South Korea",
+    "flag": "🇰🇷",
+    "confederation": "AFC"
+  },
+  {
+    "team": "NGA",
+    "p": 0.00506,
+    "name": "Nigeria",
+    "flag": "🇳🇬",
+    "confederation": "CAF"
+  },
+  {
+    "team": "EGY",
+    "p": 0.00486,
+    "name": "Egypt",
+    "flag": "🇪🇬",
+    "confederation": "CAF"
+  },
+  {
+    "team": "NZL",
+    "p": 0.00369,
+    "name": "New Zealand",
+    "flag": "🇳🇿",
+    "confederation": "OFC"
+  },
+  {
+    "team": "USA",
+    "p": 0.00362,
+    "name": "United States",
+    "flag": "🇺🇸",
+    "confederation": "CONCACAF"
+  },
+  {
+    "team": "TUN",
+    "p": 0.00344,
+    "name": "Tunisia",
+    "flag": "🇹🇳",
+    "confederation": "CAF"
+  },
+  {
+    "team": "TUR",
+    "p": 0.00338,
+    "name": "Turkey",
+    "flag": "🇹🇷",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "ITA",
+    "p": 0.00315,
+    "name": "Italy",
+    "flag": "🇮🇹",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "JOR",
+    "p": 0.0015,
+    "name": "Jordan",
+    "flag": "🇯🇴",
+    "confederation": "AFC"
+  },
+  {
+    "team": "PAN",
+    "p": 0.00148,
+    "name": "Panama",
+    "flag": "🇵🇦",
+    "confederation": "CONCACAF"
+  },
+  {
+    "team": "CMR",
+    "p": 0.00144,
+    "name": "Cameroon",
+    "flag": "🇨🇲",
+    "confederation": "CAF"
+  },
+  {
+    "team": "PAR",
+    "p": 0.00114,
+    "name": "Paraguay",
+    "flag": "🇵🇾",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "VEN",
+    "p": 0.00096,
+    "name": "Venezuela",
+    "flag": "🇻🇪",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "team": "IRQ",
+    "p": 0.00063,
+    "name": "Iraq",
+    "flag": "🇮🇶",
+    "confederation": "AFC"
+  },
+  {
+    "team": "SWE",
+    "p": 0.00058,
+    "name": "Sweden",
+    "flag": "🇸🇪",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "POL",
+    "p": 0.00036,
+    "name": "Poland",
+    "flag": "🇵🇱",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "CRC",
+    "p": 0.00032,
+    "name": "Costa Rica",
+    "flag": "🇨🇷",
+    "confederation": "CONCACAF"
+  },
+  {
+    "team": "UKR",
+    "p": 0.0003,
+    "name": "Ukraine",
+    "flag": "🇺🇦",
+    "confederation": "UEFA"
+  },
+  {
+    "team": "KSA",
+    "p": 0.00021,
+    "name": "Saudi Arabia",
+    "flag": "🇸🇦",
+    "confederation": "AFC"
+  },
+  {
+    "team": "GHA",
+    "p": 0.00011,
+    "name": "Ghana",
+    "flag": "🇬🇭",
+    "confederation": "CAF"
+  },
+  {
+    "team": "JAM",
+    "p": 0.0001,
+    "name": "Jamaica",
+    "flag": "🇯🇲",
+    "confederation": "CONCACAF"
+  }
+]
