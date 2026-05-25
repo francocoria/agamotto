@@ -3,6 +3,7 @@ import { api, pct } from "@/lib/api";
 import { ProbabilityBar, ProbLabels } from "@/components/ProbabilityBar";
 import { ScorelineDistribution } from "@/components/ScorelineDistribution";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 export default async function MatchPage({ params }: { params: { id: string } }) {

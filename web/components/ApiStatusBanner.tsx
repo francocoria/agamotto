@@ -2,10 +2,10 @@ import { API_BASE } from "@/lib/api";
 
 async function checkApi(): Promise<boolean> {
   try {
-    const res = await fetch(`${API_BASE}/`, {
-      next: { revalidate: 30 },
-      signal: AbortSignal.timeout(3500),
-    });
+    const signal = typeof AbortSignal !== "undefined" && (AbortSignal as any).timeout
+      ? (AbortSignal as any).timeout(2500)
+      : undefined;
+    const res = await fetch(`${API_BASE}/`, { next: { revalidate: 30 }, signal });
     return res.ok;
   } catch {
     return false;

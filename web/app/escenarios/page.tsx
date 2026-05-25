@@ -1,6 +1,7 @@
 import { api } from "@/lib/api";
 import { CounterfactualPanel } from "@/components/CounterfactualPanel";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 export default async function EscenariosPage() {

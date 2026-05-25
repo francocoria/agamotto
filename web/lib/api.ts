@@ -1,9 +1,28 @@
 // Typed API client for Agamotto backend.
+//
+// IMPORTANT: every fetch uses a short timeout (default 4s) so we never block
+// the Vercel build for slow Render cold-starts. Pages that call api.* should
+// always `.catch(() => fallback)`.
 
 export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
+const DEFAULT_TIMEOUT_MS = 4000;
+
+function withTimeout(ms: number): AbortSignal {
+  // Fallback for environments without AbortSignal.timeout
+  if (typeof AbortSignal !== "undefined" && (AbortSignal as any).timeout) {
+    return (AbortSignal as any).timeout(ms);
+  }
+  const c = new AbortController();
+  setTimeout(() => c.abort(), ms);
+  return c.signal;
+}
+
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, { next: { revalidate: 30 } });
+  const res = await fetch(`${API_BASE}${path}`, {
+    next: { revalidate: 30 },
+    signal: withTimeout(DEFAULT_TIMEOUT_MS),
+  });
   if (!res.ok) throw new Error(`${res.status} ${path}`);
   return res.json();
 }
@@ -13,6 +32,8 @@ async function post<T>(path: string, body: unknown): Promise<T> {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(body),
+    // counterfactual can take longer
+    signal: withTimeout(15_000),
   });
   if (!res.ok) throw new Error(`${res.status} ${path}`);
   return res.json();

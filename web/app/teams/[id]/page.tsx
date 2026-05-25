@@ -2,6 +2,7 @@ import Link from "next/link";
 import { api, pct, type TeamOutlook } from "@/lib/api";
 import { MatchCard } from "@/components/MatchCard";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 const STAGES: { key: keyof TeamOutlook; label: string }[] = [

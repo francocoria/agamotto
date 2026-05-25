@@ -40,10 +40,15 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   let response = NextResponse.next({ request });
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  // If Supabase env not configured, skip auth gating entirely so the site stays usable
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseKey) {
+    return response;
+  }
+
+  try {
+    const supabase = createServerClient(supabaseUrl, supabaseKey, {
       cookies: {
         get(name: string) {
           return request.cookies.get(name)?.value;
@@ -59,25 +64,28 @@ export async function middleware(request: NextRequest) {
           response.cookies.set({ name, value: "", ...options });
         },
       },
-    },
-  );
+    });
 
-  const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await supabase.auth.getUser();
 
-  // Redirect protected routes if not authed
-  if (!user && isProtected(pathname)) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    url.searchParams.set("from", pathname);
-    return NextResponse.redirect(url);
-  }
-  // Redirect authed users away from /login or /signup
-  if (user && (pathname === "/login" || pathname === "/signup")) {
-    const url = request.nextUrl.clone();
-    const from = request.nextUrl.searchParams.get("from");
-    url.pathname = from && from.startsWith("/") ? from : "/";
-    url.search = "";
-    return NextResponse.redirect(url);
+    // Redirect protected routes if not authed
+    if (!user && isProtected(pathname)) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      url.searchParams.set("from", pathname);
+      return NextResponse.redirect(url);
+    }
+    // Redirect authed users away from /login or /signup
+    if (user && (pathname === "/login" || pathname === "/signup")) {
+      const url = request.nextUrl.clone();
+      const from = request.nextUrl.searchParams.get("from");
+      url.pathname = from && from.startsWith("/") ? from : "/";
+      url.search = "";
+      return NextResponse.redirect(url);
+    }
+  } catch (err) {
+    // Si Supabase falla por cualquier razón, no romper la navegación
+    console.error("[middleware] auth check failed:", err);
   }
 
   return response;

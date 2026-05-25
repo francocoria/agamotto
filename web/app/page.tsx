@@ -4,6 +4,8 @@ import { ApiStatusBanner } from "@/components/ApiStatusBanner";
 import { ChampionsTable } from "@/components/ChampionsTable";
 import { MatchCard } from "@/components/MatchCard";
 
+// Server-render on demand. Avoids Vercel build timeout when API is cold.
+export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 export default async function Home() {

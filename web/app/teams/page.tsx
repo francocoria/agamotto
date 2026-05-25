@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { api, type Team } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 export default async function TeamsPage() {

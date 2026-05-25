@@ -1,6 +1,7 @@
 import { api, type Match } from "@/lib/api";
 import { MatchCard } from "@/components/MatchCard";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 export default async function MatchesPage({
