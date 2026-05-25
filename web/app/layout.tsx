@@ -21,6 +21,7 @@ const NAV = [
   { href: "/modelo", label: "MODELO" },
   { href: "/pivotes", label: "PIVOTES" },
   { href: "/jugadores", label: "JUGADORES" },
+  { href: "/sobre", label: "SOBRE" },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

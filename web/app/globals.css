@@ -333,6 +333,7 @@ html, body { background: #f6f7f9; min-height: 100vh; margin: 0; padding: 0; }
 @keyframes agm-fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes agm-fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes agm-blur-in { from { opacity: 0; filter: blur(6px); transform: translateY(6px); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
+@keyframes agm-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 .agm-anim-blur { animation: agm-blur-in .7s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
 .agm-anim-fade-up { animation: agm-fade-up .5s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
 .agm-anim-fade { animation: agm-fade-in .6s ease both; }
