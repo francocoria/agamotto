@@ -38,6 +38,15 @@ def ingest_martj42():
     rprint(f"[green]OK[/green] MartJ42: {n} historical matches")
 
 
+@ingest_app.command("squads-csv")
+def ingest_squads_csv(path: str = typer.Option(None, help="Ruta al CSV de planteles. Default: data/raw/squads_2026.csv")):
+    """Cargar planteles del Mundial desde CSV (formato: Pais,Grupo,Jugador,Posicion_*,Es_Titular,Edad,Club_Actual,Dorsal,Partidos_Internacionales)."""
+    setup_logging()
+    from agamotto.ingestion.squads_csv import run
+    n = run(csv_path=path)
+    rprint(f"[green]OK[/green] Squads CSV: {n} jugadores")
+
+
 # ------------------ train ------------------
 
 @train_app.command("elo")

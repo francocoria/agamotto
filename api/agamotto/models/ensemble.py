@@ -210,7 +210,7 @@ def _btts_prob(m: np.ndarray) -> float:
 def build(
     elo_version: str = "elo_0.1.0",
     dc_version: str = "dixon_coles_0.1.0",
-    pi_version: str = "player_impact_0.1.0",
+    pi_version: str = "player_impact_0.2.0",
     calibrator_version: str | None = None,
     use_optimal: bool = True,
 ) -> AgamottoEnsemble:
@@ -222,8 +222,12 @@ def build(
     try:
         pi_m = load_pi(pi_version)
     except FileNotFoundError:
-        log.warning("No player impact model found, using empty.")
-        pi_m = PlayerImpactModel()
+        try:
+            pi_m = load_pi("player_impact_0.1.0")
+            log.info("Fallback to player_impact_0.1.0")
+        except FileNotFoundError:
+            log.warning("No player impact model found, using empty.")
+            pi_m = PlayerImpactModel()
 
     # Defaults
     w_elo, w_dc, w_stacker = 0.25, 0.75, 0.0
