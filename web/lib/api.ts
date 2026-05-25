@@ -55,10 +55,23 @@ export type Match = {
   home_score?: number | null;
   away_score?: number | null;
   status: string;
+  prediction?: PredictionInline | null;
 };
 
 export type Scoreline = { score: string; p: number };
 export type Factor = { name: string; value: number; direction: string; weight: number };
+
+export type PredictionInline = {
+  p_home: number;
+  p_draw: number;
+  p_away: number;
+  lambda_home: number;
+  lambda_away: number;
+  p_over_2_5?: number | null;
+  p_btts?: number | null;
+  top_scorelines: Scoreline[];
+  top_factors: Factor[];
+};
 
 export type MatchPrediction = {
   match_id: string;

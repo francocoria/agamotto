@@ -9,6 +9,7 @@ from agamotto.api.schemas import (
     FactorOut,
     MatchOut,
     MatchPredictionOut,
+    PredictionInline,
     ScorelineOut,
     TeamOut,
     VenueOut,
@@ -38,13 +39,26 @@ def _venue_out(v: Venue | None) -> VenueOut | None:
     )
 
 
-def _match_out(m: Match) -> MatchOut:
+def _pred_inline(p: Prediction | None) -> PredictionInline | None:
+    if p is None:
+        return None
+    top_sc = (p.scoreline_matrix or {}).get("top", []) if isinstance(p.scoreline_matrix, dict) else []
+    return PredictionInline(
+        p_home=p.p_home or 0, p_draw=p.p_draw or 0, p_away=p.p_away or 0,
+        lambda_home=p.lambda_home or 0, lambda_away=p.lambda_away or 0,
+        p_over_2_5=p.p_over_2_5, p_btts=p.p_btts,
+        top_scorelines=[ScorelineOut(**s_) for s_ in top_sc],
+        top_factors=[FactorOut(**f) for f in (p.top_factors or [])],
+    )
+
+
+def _match_out(m: Match, pred: Prediction | None = None) -> MatchOut:
     return MatchOut(
         match_id=m.match_id, tournament_id=m.tournament_id, stage=m.stage,
         group_label=m.group_label, match_number=m.match_number, kickoff_utc=m.kickoff_utc,
         venue=_venue_out(m.venue), home_team=_team_out(m.home_team),
         away_team=_team_out(m.away_team), home_score=m.home_score, away_score=m.away_score,
-        status=m.status,
+        status=m.status, prediction=_pred_inline(pred),
     )
 
 
@@ -66,7 +80,22 @@ def list_matches(
         q = q.where((Match.home_team_id == team) | (Match.away_team_id == team))
     q = q.order_by(Match.kickoff_utc).limit(limit)
     rows = s.execute(q).scalars().all()
-    return [_match_out(m) for m in rows]
+
+    # Bulk-fetch latest prediction per match in one query
+    match_ids = [m.match_id for m in rows]
+    pred_rows = s.execute(
+        select(Prediction)
+        .where(Prediction.match_id.in_(match_ids))
+        .order_by(Prediction.match_id, Prediction.created_at.desc())
+    ).scalars().all()
+
+    # Keep only latest per match_id
+    pred_map: dict[str, Prediction] = {}
+    for p in pred_rows:
+        if p.match_id not in pred_map:
+            pred_map[p.match_id] = p
+
+    return [_match_out(m, pred_map.get(m.match_id)) for m in rows]
 
 
 @router.get("/{match_id}", response_model=MatchOut)
@@ -74,7 +103,11 @@ def get_match(match_id: str, s: Session = Depends(db)):
     m = s.get(Match, match_id)
     if not m:
         raise HTTPException(404, "Match not found")
-    return _match_out(m)
+    p = s.execute(
+        select(Prediction).where(Prediction.match_id == match_id)
+        .order_by(Prediction.created_at.desc())
+    ).scalars().first()
+    return _match_out(m, p)
 
 
 @router.get("/{match_id}/prediction", response_model=MatchPredictionOut)

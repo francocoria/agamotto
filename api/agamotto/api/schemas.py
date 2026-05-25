@@ -27,6 +27,18 @@ class VenueOut(BaseModel):
     longitude: float | None = None
 
 
+class PredictionInline(BaseModel):
+    p_home: float
+    p_draw: float
+    p_away: float
+    lambda_home: float
+    lambda_away: float
+    p_over_2_5: float | None = None
+    p_btts: float | None = None
+    top_scorelines: list[ScorelineOut] = []
+    top_factors: list[FactorOut] = []
+
+
 class MatchOut(BaseModel):
     match_id: str
     tournament_id: str
@@ -40,6 +52,7 @@ class MatchOut(BaseModel):
     home_score: int | None = None
     away_score: int | None = None
     status: str
+    prediction: PredictionInline | None = None
 
 
 class ScorelineOut(BaseModel):

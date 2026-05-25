@@ -81,14 +81,14 @@ export default async function Home() {
       {/* Próximos partidos */}
       <section>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
-          <h3 className="agm-display" style={{ fontSize: 14, letterSpacing: "0.16em", color: "var(--fg-2)" }}>
+          <h2 className="agm-display" style={{ fontSize: 14, letterSpacing: "0.16em", color: "var(--fg-2)" }}>
             PRÓXIMOS PARTIDOS
-          </h3>
-          <Link href="/matches" className="agm-mono" style={{ fontSize: 11, color: "var(--green-deep)" }}>
+          </h2>
+          <a href="/matches" className="agm-mono" style={{ fontSize: 11, color: "var(--green-deep)" }}>
             VER TODOS →
-          </Link>
+          </a>
         </div>
-        <div className="agm-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
+        <div className="agm-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 20 }}>
           {matches.map((m) => (
             <MatchCard key={m.match_id} match={m} />
           ))}

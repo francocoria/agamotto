@@ -15,18 +15,39 @@ export default async function MatchesPage({
     limit: 200,
   }).catch(() => []);
 
+  const byGroup = matches.reduce<Record<string, typeof matches>>((acc, m) => {
+    const key = m.stage === "group" ? `Grupo ${m.group_label}` : "Fase Eliminatoria";
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(m);
+    return acc;
+  }, {});
+
   return (
     <>
-      <header className="mb-6">
-        <h1 className="title text-3xl">Partidos</h1>
-        <p className="text-canvas-500 mt-1">{matches.length} partidos en el catálogo del torneo</p>
-      </header>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {matches.map((m) => (
-          <MatchCard key={m.match_id} match={m} />
-        ))}
+      <div style={{ marginBottom: 32 }}>
+        <h1 className="agm-display" style={{ fontSize: 28, color: "var(--fg-0)" }}>PARTIDOS</h1>
+        <p style={{ color: "var(--fg-3)", fontSize: 13, marginTop: 6 }}>
+          {matches.length} partidos · Mundial FIFA 2026
+        </p>
       </div>
+
+      {Object.entries(byGroup).map(([groupLabel, groupMatches]) => (
+        <section key={groupLabel} style={{ marginBottom: 40 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, paddingBottom: 8, borderBottom: "1px solid var(--line)" }}>
+            <h2 className="agm-display" style={{ fontSize: 12, letterSpacing: "0.18em", color: "var(--fg-2)" }}>
+              {groupLabel.toUpperCase()}
+            </h2>
+            <span className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)" }}>
+              {groupMatches.length} partidos
+            </span>
+          </div>
+          <div className="agm-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
+            {groupMatches.map((m) => (
+              <MatchCard key={m.match_id} match={m} />
+            ))}
+          </div>
+        </section>
+      ))}
     </>
   );
 }
