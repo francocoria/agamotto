@@ -284,6 +284,9 @@ class TournamentSimulator:
         rival_history: dict[tuple[str, str], Counter] = defaultdict(Counter)
         # Match: counts de winners por match_id en knockout (template)
         ko_match_outcomes: dict[str, Counter] = defaultdict(Counter)
+        # Pares (ordenados alfabéticamente) + ganador: Counter[(home_alpha, away_alpha, winner)]
+        # Esto permite saber el cruce MODAL real, no solo qué equipo ganó más veces en ese slot.
+        ko_match_triples: dict[str, Counter] = defaultdict(Counter)
 
         sampled_universes = []
 
@@ -334,6 +337,10 @@ class TournamentSimulator:
                     key = f"{stage}__{i}"
                     if w:
                         ko_match_outcomes[key][w] += 1
+                    if h and a and w:
+                        # Orden alfabético para que (A,B,A) y (B,A,A) se cuenten juntos
+                        p1, p2 = sorted([h, a])
+                        ko_match_triples[key][(p1, p2, w)] += 1
 
             if len(sampled_universes) < store_universes:
                 sampled_universes.append({
@@ -384,12 +391,21 @@ class TournamentSimulator:
                 "top_factors": p["top_factors"],
             }
 
+        # Serialize ko_match_triples: dict[str -> list of {pair: [a,b], winner: w, count: n}]
+        triples_out = {}
+        for slot_key, c in ko_match_triples.items():
+            triples_out[slot_key] = [
+                {"home": p1, "away": p2, "winner": w, "count": cnt}
+                for (p1, p2, w), cnt in c.items()
+            ]
+
         return {
             "n_runs": n_runs,
             "team_outlook": team_outlook,
             "champion_distribution": champion_dist,
             "match_predictions": match_predictions,
             "ko_match_outcomes": {k: dict(v) for k, v in ko_match_outcomes.items()},
+            "ko_match_triples": triples_out,
             "sampled_universes": sampled_universes,
             "model_version": self.ens.version,
         }
@@ -443,6 +459,7 @@ def _persist_simulation(out: dict, model_version: str) -> None:
             "champion_distribution": out["champion_distribution"],
             "sampled_universes": out["sampled_universes"],
             "ko_match_outcomes": out["ko_match_outcomes"],
+            "ko_match_triples": out.get("ko_match_triples", {}),
         }
         sim = Simulation(
             tournament_id="WC2026",
