@@ -156,6 +156,7 @@ export const api = {
   pivotMatches: () => get<PivotMatch[]>("/multiverse/pivot-matches"),
   universes: (limit = 30) => get<any[]>(`/multiverse/universes?limit=${limit}`),
   calibration: () => get<any>("/validation/calibration"),
+  baselines: () => get<any>("/validation/baselines"),
   models: () => get<any[]>("/validation/models"),
   counterfactual: (conditions: any[], n_runs = 5000) =>
     post<any>(`/simulation/counterfactual`, { conditions, n_runs }),

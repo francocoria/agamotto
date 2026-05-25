@@ -44,33 +44,45 @@ def calibration(s: Session = Depends(db)):
 
 @router.get("/baselines")
 def baselines():
+    """Devuelve la comparativa cruda del backtest/optimize, en el orden en que se calculó.
+    Frontend ordena/highlightea como quiera."""
     path = settings.processed_dir / "calibration_results.json"
+    weights = None
+    weights_path = settings.processed_dir / "ensemble_weights.json"
+    if weights_path.exists():
+        try:
+            with open(weights_path, encoding="utf-8") as f:
+                weights = json.load(f)
+        except Exception:
+            weights = None
+
     if path.exists():
         try:
             with open(path, encoding="utf-8") as f:
                 data = json.load(f)
-                mc = data.get("metrics_comparison", {})
-                if mc:
-                    return {
-                        "baselines": [
-                            {"name": "Naive (equal probability)", "log_loss": mc.get("Naive", {}).get("log_loss"), "brier": mc.get("Naive", {}).get("brier")},
-                            {"name": "Elo", "log_loss": mc.get("Elo", {}).get("log_loss"), "brier": mc.get("Elo", {}).get("brier")},
-                            {"name": "Poisson", "log_loss": mc.get("Poisson", {}).get("log_loss"), "brier": mc.get("Poisson", {}).get("brier")},
-                            {"name": "Dixon-Coles", "log_loss": mc.get("Dixon-Coles", {}).get("log_loss"), "brier": mc.get("Dixon-Coles", {}).get("brier")},
-                            {"name": "Agamotto Ensemble", "log_loss": mc.get("Ensemble (Calibrated)", {}).get("log_loss"), "brier": mc.get("Ensemble (Calibrated)", {}).get("brier")},
-                        ]
-                    }
+            mc = data.get("metrics_comparison", {})
+            baselines = [
+                {"name": name, "brier": m.get("brier"), "log_loss": m.get("log_loss")}
+                for name, m in mc.items()
+            ]
+            return {
+                "baselines": baselines,
+                "weights": weights,
+                "note": data.get("note"),
+            }
         except Exception:
             pass
 
     return {
         "baselines": [
-            {"name": "Naive (equal probability)", "log_loss": None, "brier": None},
+            {"name": "Naive", "log_loss": None, "brier": None},
             {"name": "Elo", "log_loss": None, "brier": None},
             {"name": "Poisson", "log_loss": None, "brier": None},
             {"name": "Dixon-Coles", "log_loss": None, "brier": None},
-            {"name": "Agamotto Ensemble", "log_loss": None, "brier": None},
+            {"name": "Ensemble (calibrated)", "log_loss": None, "brier": None},
         ],
+        "weights": weights,
+        "note": "Ejecutá `agamotto train optimize` para llenar este panel.",
     }
 
 
