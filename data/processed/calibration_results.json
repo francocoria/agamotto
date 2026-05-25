@@ -1,0 +1,101 @@
+{
+  "model_version": "agamotto_ensemble_0.3.0",
+  "weights": {
+    "w_elo": 0.42272828254592126,
+    "w_dc": 0.3816593817041494,
+    "w_stacker": 0.19561233574992928
+  },
+  "metrics_comparison": {
+    "Naive": {
+      "brier": 0.6666666666666669,
+      "log_loss": 1.0986122886681098
+    },
+    "Elo": {
+      "brier": 0.525011954101183,
+      "log_loss": 0.8979463577270508
+    },
+    "DC": {
+      "brier": 0.5301416941855243,
+      "log_loss": 0.900630533695221
+    },
+    "Stacker (LGBM OOF · 3 bags · 21 feats)": {
+      "brier": 0.5616143387268119,
+      "log_loss": 0.9707764387130737
+    },
+    "Ensemble (Elo+DC+Stacker, optimal weights)": {
+      "brier": 0.5205180171659852,
+      "log_loss": 0.8868018804794453
+    },
+    "Ensemble (calibrated)": {
+      "brier": 0.5148401089433201,
+      "log_loss": 0.8741330656215395
+    }
+  },
+  "brier": 0.5148401089433201,
+  "log_loss": 0.8741330656215395,
+  "bins": [
+    {
+      "bin": "0.0-0.1",
+      "predicted": 0.0575,
+      "observed": 0.0567,
+      "n": 1729
+    },
+    {
+      "bin": "0.1-0.2",
+      "predicted": 0.1521,
+      "observed": 0.1512,
+      "n": 2282
+    },
+    {
+      "bin": "0.2-0.3",
+      "predicted": 0.2547,
+      "observed": 0.2521,
+      "n": 3276
+    },
+    {
+      "bin": "0.3-0.4",
+      "predicted": 0.339,
+      "observed": 0.3436,
+      "n": 2165
+    },
+    {
+      "bin": "0.4-0.5",
+      "predicted": 0.4432,
+      "observed": 0.4491,
+      "n": 973
+    },
+    {
+      "bin": "0.5-0.6",
+      "predicted": 0.5516,
+      "observed": 0.5442,
+      "n": 950
+    },
+    {
+      "bin": "0.6-0.7",
+      "predicted": 0.6575,
+      "observed": 0.6786,
+      "n": 532
+    },
+    {
+      "bin": "0.7-0.8",
+      "predicted": 0.742,
+      "observed": 0.7185,
+      "n": 650
+    },
+    {
+      "bin": "0.8-0.9",
+      "predicted": 0.8537,
+      "observed": 0.8705,
+      "n": 525
+    },
+    {
+      "bin": "0.9-1.0",
+      "predicted": 0.9294,
+      "observed": 0.9167,
+      "n": 144
+    }
+  ],
+  "note": "Walk-forward 2022-2026 · 4421 partidos · stacker 21 feats · 3 bags.",
+  "stacker_path": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\plan prediccion mundial\\data\\processed\\stacker_0.2.0.joblib",
+  "weights_path": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\plan prediccion mundial\\data\\processed\\ensemble_weights.json"
+}
