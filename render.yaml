@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: agamotto-api
+    runtime: python
+    rootDir: api
+    buildCommand: pip install .
+    startCommand: python -m uvicorn agamotto.api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONIOENCODING
+        value: utf-8
+      - key: AGAMOTTO_DATABASE_URL
+        sync: false   # se completa manualmente en el dashboard de Render
