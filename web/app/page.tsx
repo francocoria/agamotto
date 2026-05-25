@@ -34,7 +34,9 @@ export default async function Home() {
           <span style={{ color: "var(--green)" }}>LOS CALCULAMOS<br />TODOS.</span>
         </h1>
         <p style={{ marginTop: 28, color: "var(--fg-2)", maxWidth: 720, fontSize: 15, lineHeight: 1.6 }}>
-          Plataforma predictiva multiverso calibrada matemáticamente para los {matches.length > 0 ? "104" : "—"} partidos del Mundial 2026. Servimos las {sim?.n_runs.toLocaleString() ?? "—"} simulaciones por noche con ensemble de cinco modelos. Tu seguridad al fijar una creencia o ver.
+          Plataforma predictiva calibrada para los <strong style={{ color: "var(--fg-0)" }}>104 partidos</strong> del Mundial 2026.
+          {sim?.n_runs ? <> Cada noche corremos <strong style={{ color: "var(--fg-0)" }}>{sim.n_runs.toLocaleString()} simulaciones</strong> con un ensemble de Elo + Dixon-Coles + LightGBM stacker, calibrado por isotónica.</> : <> Ensemble de Elo + Dixon-Coles + LightGBM stacker, calibrado por isotónica.</>}
+          {" "}Probabilidades, no certezas — y todos los universos posibles.
         </p>
         <div style={{ display: "flex", gap: 12, marginTop: 28 }}>
           <Link href="/escenarios" className="agm-btn agm-btn-primary">
