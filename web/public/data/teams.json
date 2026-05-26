@@ -430,5 +430,86 @@
     "fifa_rank": 50,
     "elo": 1572.5,
     "flag_emoji": "🇶🇦"
+  },
+  {
+    "team_id": "RSA",
+    "name": "Sudáfrica",
+    "fifa_code": "RSA",
+    "confederation": "CAF",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇿🇦"
+  },
+  {
+    "team_id": "CZE",
+    "name": "República Checa",
+    "fifa_code": "CZE",
+    "confederation": "UEFA",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇨🇿"
+  },
+  {
+    "team_id": "BIH",
+    "name": "Bosnia y Herzegovina",
+    "fifa_code": "BIH",
+    "confederation": "UEFA",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇧🇦"
+  },
+  {
+    "team_id": "HAI",
+    "name": "Haití",
+    "fifa_code": "HAI",
+    "confederation": "CONCACAF",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇭🇹"
+  },
+  {
+    "team_id": "SCO",
+    "name": "Escocia",
+    "fifa_code": "SCO",
+    "confederation": "UEFA",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+  },
+  {
+    "team_id": "CPV",
+    "name": "Cabo Verde",
+    "fifa_code": "CPV",
+    "confederation": "CAF",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇨🇻"
+  },
+  {
+    "team_id": "NOR",
+    "name": "Noruega",
+    "fifa_code": "NOR",
+    "confederation": "UEFA",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇳🇴"
+  },
+  {
+    "team_id": "CUW",
+    "name": "Curazao",
+    "fifa_code": "CUW",
+    "confederation": "CONCACAF",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇨🇼"
+  },
+  {
+    "team_id": "COD",
+    "name": "RD Congo",
+    "fifa_code": "COD",
+    "confederation": "CAF",
+    "fifa_rank": null,
+    "elo": null,
+    "flag_emoji": "🇨🇩"
   }
 ]

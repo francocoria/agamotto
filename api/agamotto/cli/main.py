@@ -74,6 +74,48 @@ def ingest_enrich_stats():
     rprint(f"[green]OK[/green] Enriquecidos {n} partidos con estadisticas avanzadas")
 
 
+@ingest_app.command("sofascore")
+def ingest_sofascore(
+    teams: str = typer.Option(
+        "", help="Códigos FIFA separados por coma (ej. ARG,BRA,FRA). Default: todas las 57."
+    ),
+    pages: int = typer.Option(6, help="Páginas de historial por equipo (~10 partidos/página). 6 páginas ≈ 60 partidos."),
+    delay: float = typer.Option(2.0, help="Segundos entre requests (conservador para no ser bloqueados)."),
+    min_year: int = typer.Option(2019, help="Solo partidos desde este año."),
+    no_merge: bool = typer.Option(False, help="Si True, no actualiza la DB al terminar."),
+):
+    """Scrapea estadísticas granulares de Sofascore: xG, tiros libres, corners por mitad, goles por tramo.
+
+    Guarda checkpoint en data/raw/sofascore_progress.json → resumible si se interrumpe.
+    Requiere httpx: pip install httpx.
+    """
+    setup_logging()
+    from agamotto.ingestion.sofascore_scraper import run as sofa_run
+    
+    team_list = [t.strip().upper() for t in teams.split(",") if t.strip()] if teams else None
+    
+    rprint(f"[cyan]Sofascore scraper[/cyan] arrancando…")
+    rprint(f"  Equipos: {team_list or 'TODOS (57)'}")
+    rprint(f"  Páginas/equipo: {pages} (~{pages * 10} partidos)")
+    rprint(f"  Delay: {delay}s por request")
+    rprint(f"  Desde: {min_year}")
+    rprint(f"  Merge DB: {not no_merge}")
+    rprint("")
+    rprint("[yellow]⏳ Este proceso tarda varias horas. Checkpoint automático cada equipo.[/yellow]")
+    
+    result = sofa_run(
+        team_codes=team_list,
+        pages=pages,
+        delay=delay,
+        min_year=min_year,
+        merge_db=not no_merge,
+    )
+    
+    rprint(f"[green]✓ OK[/green] Sofascore scraping completado:")
+    rprint(f"  Eventos scrapeados: [cyan]{result['events_scraped']}[/cyan]")
+    rprint(f"  Partidos DB actualizados: [cyan]{result['db_updated']}[/cyan]")
+
+
 # ------------------ train ------------------
 
 @train_app.command("elo")

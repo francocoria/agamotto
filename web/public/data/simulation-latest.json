@@ -1,9 +1,9 @@
 {
-  "simulation_id": 2,
+  "simulation_id": 11,
   "tournament_id": "WC2026",
   "model_version": "agamotto_ensemble_0.3.0",
   "n_runs": 100000,
-  "created_at": "2026-05-25T22:49:28.053990",
+  "created_at": "2026-05-25T22:32:50.319924",
   "champion_distribution": [
     {
       "team": "ARG",

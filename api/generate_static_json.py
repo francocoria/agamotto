@@ -46,6 +46,25 @@ def get_or_generate_match_stats(m):
         if random.random() < 0.08:
             early_goals_away += 1
 
+    # Goals by period
+    periods_home = {"0_15": 0, "15_30": 0, "30_45": 0, "45_60": 0, "60_75": 0, "75_90": 0, "90plus": 0}
+    periods_away = {"0_15": 0, "15_30": 0, "30_45": 0, "45_60": 0, "60_75": 0, "75_90": 0, "90plus": 0}
+    
+    # Distribute goals deterministically
+    buckets = list(periods_home.keys())
+    for _ in range(hs):
+        b = random.choice(buckets)
+        periods_home[b] += 1
+    for _ in range(as_):
+        b = random.choice(buckets)
+        periods_away[b] += 1
+
+    # First vs second half splits
+    fh_goals_home = periods_home["0_15"] + periods_home["15_30"] + periods_home["30_45"]
+    sh_goals_home = hs - fh_goals_home
+    fh_goals_away = periods_away["0_15"] + periods_away["15_30"] + periods_away["30_45"]
+    sh_goals_away = as_ - fh_goals_away
+
     # Possession
     base_home_pos = 50.0
     if not neutral:
@@ -81,6 +100,60 @@ def get_or_generate_match_stats(m):
     home_reds = 1 if random.random() < 0.05 else 0
     away_reds = 1 if random.random() < 0.05 else 0
 
+    # New stats: xG, free kicks, offsides, passes, accuracy, aerials won, saves
+    home_xg = float(round(hs * 0.7 + home_sot * 0.15 + random.uniform(0.1, 0.5), 2))
+    away_xg = float(round(as_ * 0.7 + away_sot * 0.15 + random.uniform(0.1, 0.5), 2))
+    
+    home_passes = int(round(home_pos * 8.0 + random.uniform(-20, 20)))
+    away_passes = int(round(away_pos * 8.0 + random.uniform(-20, 20)))
+    
+    home_pass_acc = float(round(65.0 + home_pos * 0.3 + random.uniform(-3, 3), 1))
+    away_pass_acc = float(round(65.0 + away_pos * 0.3 + random.uniform(-3, 3), 1))
+    
+    home_free_kicks = away_fouls + random.randint(1, 4)
+    away_free_kicks = home_fouls + random.randint(1, 4)
+    
+    home_offsides = random.randint(0, 4)
+    away_offsides = random.randint(0, 4)
+    
+    home_aerials = random.randint(5, 20)
+    away_aerials = random.randint(5, 20)
+    
+    home_saves = max(0, away_sot - hs)
+    away_saves = max(0, home_sot - as_)
+
+    # Splits (First/Second half)
+    def make_half_split(total_val, ratio=0.5):
+        h1 = int(round(total_val * ratio + random.uniform(-1, 1)))
+        h1 = max(0, min(total_val, h1))
+        h2 = total_val - h1
+        return h1, h2
+
+    fh_shots_home, sh_shots_home = make_half_split(home_shots, 0.45)
+    fh_shots_away, sh_shots_away = make_half_split(away_shots, 0.45)
+    fh_sot_home, sh_sot_home = make_half_split(home_sot, 0.45)
+    fh_sot_away, sh_sot_away = make_half_split(away_sot, 0.45)
+    fh_corners_home, sh_corners_home = make_half_split(home_corners, 0.5)
+    fh_corners_away, sh_corners_away = make_half_split(away_corners, 0.5)
+    fh_fouls_home, sh_fouls_home = make_half_split(home_fouls, 0.48)
+    fh_fouls_away, sh_fouls_away = make_half_split(away_fouls, 0.48)
+    fh_free_home, sh_free_home = make_half_split(home_free_kicks, 0.5)
+    fh_free_away, sh_free_away = make_half_split(away_free_kicks, 0.5)
+    fh_offsides_home, sh_offsides_home = make_half_split(home_offsides, 0.5)
+    fh_offsides_away, sh_offsides_away = make_half_split(away_offsides, 0.5)
+
+    fh_pos_home = float(round(home_pos + random.uniform(-2, 2), 1))
+    fh_pos_home = max(30.0, min(70.0, fh_pos_home))
+    sh_pos_home = 100.0 - fh_pos_home
+
+    fh_xg_home = float(round(home_xg * 0.45 + random.uniform(-0.1, 0.1), 2))
+    fh_xg_home = max(0.0, min(home_xg, fh_xg_home))
+    sh_xg_home = float(round(home_xg - fh_xg_home, 2))
+
+    fh_xg_away = float(round(away_xg * 0.45 + random.uniform(-0.1, 0.1), 2))
+    fh_xg_away = max(0.0, min(away_xg, fh_xg_away))
+    sh_xg_away = float(round(away_xg - fh_xg_away, 2))
+
     return {
         "home": {
             "possession": float(round(home_pos / 100.0, 3)),
@@ -90,7 +163,37 @@ def get_or_generate_match_stats(m):
             "early_goals_10m": int(early_goals_home),
             "fouls": int(home_fouls),
             "yellow_cards": int(home_yellows),
-            "red_cards": int(home_reds)
+            "red_cards": int(home_reds),
+            "free_kicks": int(home_free_kicks),
+            "offsides": int(home_offsides),
+            "passes": int(home_passes),
+            "pass_accuracy": float(home_pass_acc),
+            "aerials_won": int(home_aerials),
+            "saves": int(home_saves),
+            "xg": float(home_xg),
+            "goals_by_period": periods_home,
+            "first_half": {
+                "goals": int(fh_goals_home),
+                "possession": float(round(fh_pos_home / 100.0, 3)),
+                "shots": int(fh_shots_home),
+                "shots_on_target": int(fh_sot_home),
+                "corners": int(fh_corners_home),
+                "fouls": int(fh_fouls_home),
+                "free_kicks": int(fh_free_home),
+                "offsides": int(fh_offsides_home),
+                "xg": float(fh_xg_home)
+            },
+            "second_half": {
+                "goals": int(sh_goals_home),
+                "possession": float(round(sh_pos_home / 100.0, 3)),
+                "shots": int(sh_shots_home),
+                "shots_on_target": int(sh_sot_home),
+                "corners": int(sh_corners_home),
+                "fouls": int(sh_fouls_home),
+                "free_kicks": int(sh_free_home),
+                "offsides": int(sh_offsides_home),
+                "xg": float(sh_xg_home)
+            }
         },
         "away": {
             "possession": float(round(away_pos / 100.0, 3)),
@@ -100,7 +203,37 @@ def get_or_generate_match_stats(m):
             "early_goals_10m": int(early_goals_away),
             "fouls": int(away_fouls),
             "yellow_cards": int(away_yellows),
-            "red_cards": int(away_reds)
+            "red_cards": int(away_reds),
+            "free_kicks": int(away_free_kicks),
+            "offsides": int(away_offsides),
+            "passes": int(away_passes),
+            "pass_accuracy": float(away_pass_acc),
+            "aerials_won": int(away_aerials),
+            "saves": int(away_saves),
+            "xg": float(away_xg),
+            "goals_by_period": periods_away,
+            "first_half": {
+                "goals": int(fh_goals_away),
+                "possession": float(round((100.0 - fh_pos_home) / 100.0, 3)),
+                "shots": int(fh_shots_away),
+                "shots_on_target": int(fh_sot_away),
+                "corners": int(fh_corners_away),
+                "fouls": int(fh_fouls_away),
+                "free_kicks": int(fh_free_away),
+                "offsides": int(fh_offsides_away),
+                "xg": float(fh_xg_away)
+            },
+            "second_half": {
+                "goals": int(sh_goals_away),
+                "possession": float(round((100.0 - sh_pos_home) / 100.0, 3)),
+                "shots": int(sh_shots_away),
+                "shots_on_target": int(sh_sot_away),
+                "corners": int(sh_corners_away),
+                "fouls": int(sh_fouls_away),
+                "free_kicks": int(sh_free_away),
+                "offsides": int(sh_offsides_away),
+                "xg": float(sh_xg_away)
+            }
         }
     }
 

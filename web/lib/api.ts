@@ -231,6 +231,45 @@ async function computeAnalysisOffline(home: string, away: string, n: number): Pr
     const fouls: number[] = [];
     const yellows: number[] = [];
     const reds: number[] = [];
+    
+    // New stats
+    const xg: number[] = [];
+    const freeKicks: number[] = [];
+    const offsides: number[] = [];
+    const passes: number[] = [];
+    const passAcc: number[] = [];
+    const aerials: number[] = [];
+    const saves: number[] = [];
+
+    // Half stats
+    const fh_goals: number[] = [];
+    const fh_possession: number[] = [];
+    const fh_shots: number[] = [];
+    const fh_sot: number[] = [];
+    const fh_corners: number[] = [];
+    const fh_fouls: number[] = [];
+    const fh_free: number[] = [];
+    const fh_offsides: number[] = [];
+    const fh_xg: number[] = [];
+
+    const sh_goals: number[] = [];
+    const sh_possession: number[] = [];
+    const sh_shots: number[] = [];
+    const sh_sot: number[] = [];
+    const sh_corners: number[] = [];
+    const sh_fouls: number[] = [];
+    const sh_free: number[] = [];
+    const sh_offsides: number[] = [];
+    const sh_xg: number[] = [];
+
+    // Periods
+    const p_0_15: number[] = [];
+    const p_15_30: number[] = [];
+    const p_30_45: number[] = [];
+    const p_45_60: number[] = [];
+    const p_60_75: number[] = [];
+    const p_75_90: number[] = [];
+    const p_90plus: number[] = [];
 
     subset.forEach((m) => {
       const isHome = m.home === team;
@@ -246,12 +285,61 @@ async function computeAnalysisOffline(home: string, away: string, n: number): Pr
         const s = m.stats[side];
         possession.push(s.possession ?? 0.5);
         shots.push(s.shots ?? 0);
-        sot.push(s.shots_on_target ?? 0);
+        sot.push(s.shots_on_target ?? s.sot ?? 0);
         corners.push(s.corners ?? 0);
         earlyGoals.push(s.early_goals_10m ?? 0);
         fouls.push(s.fouls ?? 0);
-        yellows.push(s.yellow_cards ?? 0);
-        reds.push(s.red_cards ?? 0);
+        yellows.push(s.yellow_cards ?? s.yellows ?? 0);
+        reds.push(s.red_cards ?? s.reds ?? 0);
+        
+        // Advanced
+        xg.push(s.xg ?? 1.1);
+        freeKicks.push(s.free_kicks ?? 11.0);
+        offsides.push(s.offsides ?? 1.8);
+        passes.push(s.passes ?? 400.0);
+        passAcc.push(s.pass_accuracy ?? 78.0);
+        aerials.push(s.aerials_won ?? 12.0);
+        saves.push(s.saves ?? 3.0);
+
+        // First half
+        if (s.first_half) {
+          const fh = s.first_half;
+          fh_goals.push(fh.goals ?? 0);
+          fh_possession.push(fh.possession ?? 0.5);
+          fh_shots.push(fh.shots ?? 0);
+          fh_sot.push(fh.shots_on_target ?? fh.sot ?? 0);
+          fh_corners.push(fh.corners ?? 0);
+          fh_fouls.push(fh.fouls ?? 0);
+          fh_free.push(fh.free_kicks ?? fh.free ?? 0);
+          fh_offsides.push(fh.offsides ?? 0);
+          fh_xg.push(fh.xg ?? 0.5);
+        }
+
+        // Second half
+        if (s.second_half) {
+          const sh = s.second_half;
+          sh_goals.push(sh.goals ?? 0);
+          sh_possession.push(sh.possession ?? 0.5);
+          sh_shots.push(sh.shots ?? 0);
+          sh_sot.push(sh.shots_on_target ?? sh.sot ?? 0);
+          sh_corners.push(sh.corners ?? 0);
+          sh_fouls.push(sh.fouls ?? 0);
+          sh_free.push(sh.free_kicks ?? sh.free ?? 0);
+          sh_offsides.push(sh.offsides ?? 0);
+          sh_xg.push(sh.xg ?? 0.6);
+        }
+
+        // Periods
+        if (s.goals_by_period) {
+          const gp = s.goals_by_period;
+          p_0_15.push(gp["0_15"] ?? 0);
+          p_15_30.push(gp["15_30"] ?? 0);
+          p_30_45.push(gp["30_45"] ?? 0);
+          p_45_60.push(gp["45_60"] ?? 0);
+          p_60_75.push(gp["60_75"] ?? 0);
+          p_75_90.push(gp["75_90"] ?? 0);
+          p_90plus.push(gp["90plus"] ?? 0);
+        }
       }
     });
 
@@ -273,6 +361,53 @@ async function computeAnalysisOffline(home: string, away: string, n: number): Pr
       fouls_avg: getRollingAvg(fouls),
       yellows_avg: getRollingAvg(yellows),
       reds_avg: getRollingAvg(reds),
+      
+      // Advanced
+      xg_avg: getRollingAvg(xg),
+      free_kicks_avg: getRollingAvg(freeKicks),
+      offsides_avg: getRollingAvg(offsides),
+      passes_avg: getRollingAvg(passes),
+      pass_accuracy_avg: getRollingAvg(passAcc),
+      aerials_won_avg: getRollingAvg(aerials),
+      saves_avg: getRollingAvg(saves),
+
+      // First Half
+      first_half: {
+        goals_avg: getRollingAvg(fh_goals),
+        possession_avg: getRollingAvg(fh_possession),
+        shots_avg: getRollingAvg(fh_shots),
+        sot_avg: getRollingAvg(fh_sot),
+        corners_avg: getRollingAvg(fh_corners),
+        fouls_avg: getRollingAvg(fh_fouls),
+        free_kicks_avg: getRollingAvg(fh_free),
+        offsides_avg: getRollingAvg(fh_offsides),
+        xg_avg: getRollingAvg(fh_xg)
+      },
+
+      // Second Half
+      second_half: {
+        goals_avg: getRollingAvg(sh_goals),
+        possession_avg: getRollingAvg(sh_possession),
+        shots_avg: getRollingAvg(sh_shots),
+        sot_avg: getRollingAvg(sh_sot),
+        corners_avg: getRollingAvg(sh_corners),
+        fouls_avg: getRollingAvg(sh_fouls),
+        free_kicks_avg: getRollingAvg(sh_free),
+        offsides_avg: getRollingAvg(sh_offsides),
+        xg_avg: getRollingAvg(sh_xg)
+      },
+
+      // Goals by period
+      periods: {
+        p_0_15: getRollingAvg(p_0_15),
+        p_15_30: getRollingAvg(p_15_30),
+        p_30_45: getRollingAvg(p_30_45),
+        p_45_60: getRollingAvg(p_45_60),
+        p_60_75: getRollingAvg(p_60_75),
+        p_75_90: getRollingAvg(p_75_90),
+        p_90plus: getRollingAvg(p_90plus)
+      },
+
       shot_efficiency: totalShots > 0 ? parseFloat((totalSot / totalShots).toFixed(3)) : null,
       conversion_rate: totalSot > 0 ? parseFloat((totalGf / totalSot).toFixed(3)) : null,
       matches_analyzed: subset.length,

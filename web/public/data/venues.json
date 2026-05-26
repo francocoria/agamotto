@@ -1,18 +1,5 @@
 [
   {
-    "venue_id": "ARROWHEAD__KANSAS_CITY",
-    "name": "Arrowhead Stadium",
-    "city": "Kansas City",
-    "country": "USA",
-    "altitude_m": 226,
-    "capacity": 76000,
-    "surface": "natural",
-    "roof": "open",
-    "timezone": "America/Chicago",
-    "latitude": 39.0489,
-    "longitude": -94.4839
-  },
-  {
     "venue_id": "AT_T__DALLAS",
     "name": "AT&T Stadium",
     "city": "Dallas",
@@ -24,6 +11,19 @@
     "timezone": "America/Chicago",
     "latitude": 32.7473,
     "longitude": -97.0945
+  },
+  {
+    "venue_id": "ARROWHEAD__KANSAS_CITY",
+    "name": "Arrowhead Stadium",
+    "city": "Kansas City",
+    "country": "USA",
+    "altitude_m": 226,
+    "capacity": 76000,
+    "surface": "natural",
+    "roof": "open",
+    "timezone": "America/Chicago",
+    "latitude": 39.0489,
+    "longitude": -94.4839
   },
   {
     "venue_id": "BC_PLACE__VANCOUVER",

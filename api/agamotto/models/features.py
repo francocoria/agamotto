@@ -16,6 +16,7 @@ import pandas as pd
 
 
 BASE_METRICS = {
+    # Partido Completo
     "gf": 1.2,
     "ga": 1.2,
     "possession": 0.5,
@@ -26,6 +27,51 @@ BASE_METRICS = {
     "fouls": 13.0,
     "yellows": 1.5,
     "reds": 0.05,
+    "free_kicks": 11.0,
+    "offsides": 1.8,
+    "passes": 400.0,
+    "pass_accuracy": 78.0,
+    "aerials_won": 12.0,
+    "saves": 3.0,
+    "xg": 1.1,
+    "tackles": 14.0,
+    "interceptions": 8.0,
+    "clearances": 12.0,
+    "big_chances": 2.5,
+    "crosses": 18.0,
+    "long_balls": 35.0,
+    "dribbles": 5.0,
+
+    # Primer Tiempo
+    "first_half_goals": 0.6,
+    "first_half_shots": 4.8,
+    "first_half_sot": 1.6,
+    "first_half_corners": 2.2,
+    "first_half_fouls": 6.0,
+    "first_half_free_kicks": 5.0,
+    "first_half_offsides": 0.8,
+    "first_half_possession": 0.5,
+    "first_half_xg": 0.5,
+    
+    # Segundo Tiempo
+    "second_half_goals": 0.6,
+    "second_half_shots": 5.2,
+    "second_half_sot": 1.9,
+    "second_half_corners": 2.3,
+    "second_half_fouls": 6.5,
+    "second_half_free_kicks": 5.5,
+    "second_half_offsides": 1.0,
+    "second_half_possession": 0.5,
+    "second_half_xg": 0.6,
+    
+    # Goles por tramo
+    "goals_0_15": 0.1,
+    "goals_15_30": 0.15,
+    "goals_30_45": 0.18,
+    "goals_45_60": 0.15,
+    "goals_60_75": 0.18,
+    "goals_75_90": 0.22,
+    "goals_90plus": 0.08,
 }
 
 
@@ -38,75 +84,79 @@ class TeamState:
     # Form: lista de "points" (3=W, 1=D, 0=L) ordenada cronológicamente
     recent_pts: list[int] = field(default_factory=list)
     
-    # Listas de estadísticas rolling (máximo últimas 20 para eficiencia)
-    recent_gf: list[int] = field(default_factory=list)
-    recent_ga: list[int] = field(default_factory=list)
-    recent_possession: list[float] = field(default_factory=list)
-    recent_shots: list[int] = field(default_factory=list)
-    recent_sot: list[int] = field(default_factory=list)
-    recent_corners: list[int] = field(default_factory=list)
-    recent_early_goals: list[int] = field(default_factory=list)
-    recent_fouls: list[int] = field(default_factory=list)
-    recent_yellows: list[int] = field(default_factory=list)
-    recent_reds: list[int] = field(default_factory=list)
+    # Diccionario con el historial de cada métrica (máximo últimas 20 para eficiencia)
+    metrics: dict[str, list[float]] = field(default_factory=lambda: defaultdict(list))
+
+    # Properties para compatibilidad con código que acceda directamente
+    @property
+    def recent_gf(self): return self.metrics["gf"]
+    @property
+    def recent_ga(self): return self.metrics["ga"]
+    @property
+    def recent_possession(self): return self.metrics["possession"]
+    @property
+    def recent_shots(self): return self.metrics["shots"]
+    @property
+    def recent_sot(self): return self.metrics["sot"]
+    @property
+    def recent_corners(self): return self.metrics["corners"]
+    @property
+    def recent_early_goals(self): return self.metrics["early_goals"]
+    @property
+    def recent_fouls(self): return self.metrics["fouls"]
+    @property
+    def recent_yellows(self): return self.metrics["yellows"]
+    @property
+    def recent_reds(self): return self.metrics["reds"]
 
     def update(self, gf: int, ga: int, match_date: date, stats: dict | None = None):
         pts = 3 if gf > ga else 1 if gf == ga else 0
         self.recent_pts.append(pts)
-        self.recent_gf.append(gf)
-        self.recent_ga.append(ga)
         
-        # Obtener estadísticas del JSON stats o usar valores por defecto
-        home_stats = stats.get("home", {}) if stats else {}
-        away_stats = stats.get("away", {}) if stats else {}
+        self.metrics["gf"].append(float(gf))
+        self.metrics["ga"].append(float(ga))
         
-        # Nota: el stats JSON contiene "home" y "away". Necesitamos saber si este equipo
-        # es el local o el visitante. Asumimos local si gf matches home score, o lo inferimos
-        # por simplicidad desde el dict. Si no viene, usamos defaults de BASE_METRICS.
-        is_home_side = True
-        if stats:
-            # Si hay stats, podemos inferir de cuál lado es este equipo comparando los goles
-            if home_stats.get("shots") is not None:
-                # Si los goles no coinciden unívocamente, miramos goles del JSON
-                pass
-        
-        # Para simplificar: el que llama al update pasará las estadísticas ya filtradas para ESTE equipo
-        # como un dict plano (ej. stats={"possession": 0.55, "shots": 12, ...})
-        pos = stats.get("possession", 0.5) if stats else 0.5
-        sh = stats.get("shots", 10) if stats else 10
-        sot = stats.get("shots_on_target", 3) if stats else 3
-        corn = stats.get("corners", 4) if stats else 4
-        eg = stats.get("early_goals_10m", 0) if stats else 0
-        fl = stats.get("fouls", 12) if stats else 12
-        yel = stats.get("yellow_cards", 1) if stats else 1
-        red = stats.get("red_cards", 0) if stats else 0
-
-        self.recent_possession.append(pos)
-        self.recent_shots.append(sh)
-        self.recent_sot.append(sot)
-        self.recent_corners.append(corn)
-        self.recent_early_goals.append(eg)
-        self.recent_fouls.append(fl)
-        self.recent_yellows.append(yel)
-        self.recent_reds.append(red)
+        for metric in BASE_METRICS:
+            if metric in ("gf", "ga"):
+                continue
+            
+            val = None
+            if stats:
+                if metric.startswith("first_half_"):
+                    sub_key = metric.replace("first_half_", "")
+                    if sub_key == "goals":
+                        val = stats.get("first_half", {}).get("goals")
+                    else:
+                        val = stats.get("first_half", {}).get(sub_key)
+                elif metric.startswith("second_half_"):
+                    sub_key = metric.replace("second_half_", "")
+                    if sub_key == "goals":
+                        val = stats.get("second_half", {}).get("goals")
+                    else:
+                        val = stats.get("second_half", {}).get(sub_key)
+                elif metric.startswith("goals_"):
+                    period = metric.replace("goals_", "")
+                    val = stats.get("goals_by_period", {}).get(period)
+                elif metric == "early_goals":
+                    val = stats.get("early_goals_10m")
+                else:
+                    val = stats.get(metric)
+            
+            if val is None:
+                val = BASE_METRICS.get(metric, 0.0)
+            
+            self.metrics[metric].append(float(val))
 
         self.matches_played += 1
         self.last_match_date = match_date
 
-        # Limitar tamaño a 20 elementos
+        # Limitar tamaño a 20 elementos en todas las métricas
         max_len = 20
         if len(self.recent_pts) > max_len:
             self.recent_pts.pop(0)
-            self.recent_gf.pop(0)
-            self.recent_ga.pop(0)
-            self.recent_possession.pop(0)
-            self.recent_shots.pop(0)
-            self.recent_sot.pop(0)
-            self.recent_corners.pop(0)
-            self.recent_early_goals.pop(0)
-            self.recent_fouls.pop(0)
-            self.recent_yellows.pop(0)
-            self.recent_reds.pop(0)
+            for k in list(self.metrics.keys()):
+                if len(self.metrics[k]) > max_len:
+                    self.metrics[k].pop(0)
 
     def form_pct(self, n: int = 5) -> float:
         if not self.recent_pts:
@@ -115,14 +165,18 @@ class TeamState:
         return sum(tail) / (3 * len(tail))
 
     def get_avg(self, metric_name: str, n: int = 5) -> float:
-        arr = getattr(self, f"recent_{metric_name}", [])
+        arr = self.metrics.get(metric_name)
+        if not arr:
+            arr = getattr(self, f"recent_{metric_name}", [])
         if not arr:
             return BASE_METRICS.get(metric_name, 0.0)
         tail = arr[-n:]
         return float(np.mean(tail))
 
     def get_ema(self, metric_name: str, span: int = 5) -> float:
-        arr = getattr(self, f"recent_{metric_name}", [])
+        arr = self.metrics.get(metric_name)
+        if not arr:
+            arr = getattr(self, f"recent_{metric_name}", [])
         if not arr:
             return BASE_METRICS.get(metric_name, 0.0)
         alpha = 2.0 / (span + 1.0)

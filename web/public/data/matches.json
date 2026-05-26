@@ -43,11 +43,11 @@
     "prediction": {
       "p_home": 0.56317804244742,
       "p_draw": 0.246569657428837,
-      "p_away": 0.190252300123743,
-      "lambda_home": 1.43001128614192,
-      "lambda_away": 0.863959222726903,
-      "p_over_2_5": 0.299922219962362,
-      "p_btts": 0.443269274170242,
+      "p_away": 0.19025230012374306,
+      "lambda_home": 1.4300112861419159,
+      "lambda_away": 0.8639592227269027,
+      "p_over_2_5": 0.29992221996236224,
+      "p_btts": 0.4432692741702416,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -154,13 +154,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.713917322415204,
-      "p_draw": 0.209215238978291,
-      "p_away": 0.076867438606505,
-      "lambda_home": 1.46081234523649,
-      "lambda_away": 0.422190013410824,
-      "p_over_2_5": 0.264246098687863,
-      "p_btts": 0.266885390642844,
+      "p_home": 0.7139173224152036,
+      "p_draw": 0.20921523897829136,
+      "p_away": 0.07686743860650504,
+      "lambda_home": 1.4608123452364905,
+      "lambda_away": 0.42219001341082363,
+      "p_over_2_5": 0.2642460986878627,
+      "p_btts": 0.2668853906428441,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -226,113 +226,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_B01",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "B",
-    "match_number": 7,
-    "kickoff_utc": "2026-06-12T18:00:00",
-    "venue": {
-      "venue_id": "SOFI__LOS_ANGELES",
-      "name": "SoFi Stadium",
-      "city": "Los Angeles",
-      "country": "USA",
-      "altitude_m": 35,
-      "capacity": 70000,
-      "surface": "natural",
-      "roof": "fixed",
-      "timezone": "America/Los_Angeles",
-      "latitude": 33.9535,
-      "longitude": -118.3392
-    },
-    "home_team": {
-      "team_id": "CAN",
-      "name": "Canada",
-      "fifa_code": "CAN",
-      "confederation": "CONCACAF",
-      "fifa_rank": 30,
-      "elo": 1780.2,
-      "flag_emoji": "🇨🇦"
-    },
-    "away_team": {
-      "team_id": "POR",
-      "name": "Portugal",
-      "fifa_code": "POR",
-      "confederation": "UEFA",
-      "fifa_rank": 6,
-      "elo": 1866.8,
-      "flag_emoji": "🇵🇹"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.303259552509411,
-      "p_draw": 0.261791729351448,
-      "p_away": 0.434948718139141,
-      "lambda_home": 0.971900037422611,
-      "lambda_away": 1.36086205321503,
-      "p_over_2_5": 0.17695508586991,
-      "p_btts": 0.465520518882458,
-      "top_scorelines": [
-        {
-          "score": "1-1",
-          "p": 0.13163086660088666
-        },
-        {
-          "score": "0-1",
-          "p": 0.12874417852782652
-        },
-        {
-          "score": "0-0",
-          "p": 0.10032727442092768
-        },
-        {
-          "score": "1-0",
-          "p": 0.09100368709245943
-        },
-        {
-          "score": "0-2",
-          "p": 0.08984596373935663
-        },
-        {
-          "score": "1-2",
-          "p": 0.08732129552055123
-        },
-        {
-          "score": "2-1",
-          "p": 0.06236309564493742
-        },
-        {
-          "score": "2-0",
-          "p": 0.04582616988812723
-        },
-        {
-          "score": "2-2",
-          "p": 0.04243378519210731
-        },
-        {
-          "score": "0-3",
-          "p": 0.04075598756247455
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": -86.6,
-          "direction": "away",
-          "weight": 0.21638849163086377
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 0.1,
-          "direction": "home",
-          "weight": 0.0009255505565138843
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_A03",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -374,13 +267,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.276540878690555,
-      "p_draw": 0.25184471951982,
-      "p_away": 0.471614401789625,
+      "p_home": 0.2765408786905547,
+      "p_draw": 0.2518447195198199,
+      "p_away": 0.4716144017896255,
       "lambda_home": 0.645190970016869,
-      "lambda_away": 1.10245189111086,
-      "p_over_2_5": 0.089184538198706,
-      "p_btts": 0.320749873627423,
+      "lambda_away": 1.1024518911108632,
+      "p_over_2_5": 0.08918453819870602,
+      "p_btts": 0.3207498736274231,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -446,108 +339,108 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_B02",
+    "match_id": "WC2026_GROUP_B01",
     "tournament_id": "WC2026",
     "stage": "group",
     "group_label": "B",
-    "match_number": 8,
-    "kickoff_utc": "2026-06-12T22:00:00",
+    "match_number": 7,
+    "kickoff_utc": "2026-06-12T18:00:00",
     "venue": {
-      "venue_id": "AZTECA__MEXICO_CITY",
-      "name": "Estadio Azteca",
-      "city": "Mexico City",
-      "country": "Mexico",
-      "altitude_m": 2240,
-      "capacity": 87000,
+      "venue_id": "SOFI__LOS_ANGELES",
+      "name": "SoFi Stadium",
+      "city": "Los Angeles",
+      "country": "USA",
+      "altitude_m": 35,
+      "capacity": 70000,
       "surface": "natural",
-      "roof": "open",
-      "timezone": "America/Mexico_City",
-      "latitude": 19.3029,
-      "longitude": -99.1505
+      "roof": "fixed",
+      "timezone": "America/Los_Angeles",
+      "latitude": 33.9535,
+      "longitude": -118.3392
     },
     "home_team": {
-      "team_id": "EGY",
-      "name": "Egypt",
-      "fifa_code": "EGY",
-      "confederation": "CAF",
-      "fifa_rank": 36,
-      "elo": 1764.6,
-      "flag_emoji": "🇪🇬"
+      "team_id": "CAN",
+      "name": "Canada",
+      "fifa_code": "CAN",
+      "confederation": "CONCACAF",
+      "fifa_rank": 30,
+      "elo": 1780.2,
+      "flag_emoji": "🇨🇦"
     },
     "away_team": {
-      "team_id": "KSA",
-      "name": "Saudi Arabia",
-      "fifa_code": "KSA",
-      "confederation": "AFC",
-      "fifa_rank": 56,
-      "elo": 1656.5,
-      "flag_emoji": "🇸🇦"
+      "team_id": "POR",
+      "name": "Portugal",
+      "fifa_code": "POR",
+      "confederation": "UEFA",
+      "fifa_rank": 6,
+      "elo": 1866.8,
+      "flag_emoji": "🇵🇹"
     },
     "home_score": null,
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.555649478870805,
-      "p_draw": 0.256641513586346,
-      "p_away": 0.187709007542849,
-      "lambda_home": 1.0852496636583,
-      "lambda_away": 0.680606175479547,
-      "p_over_2_5": 0.188121139281161,
-      "p_btts": 0.330159755240446,
+      "p_home": 0.3032595525094113,
+      "p_draw": 0.2617917293514475,
+      "p_away": 0.4349487181391412,
+      "lambda_home": 0.9719000374226109,
+      "lambda_away": 1.3608620532150262,
+      "p_over_2_5": 0.17695508586990968,
+      "p_btts": 0.46552051888245766,
       "top_scorelines": [
         {
-          "score": "1-0",
-          "p": 0.18237467066997215
-        },
-        {
-          "score": "0-0",
-          "p": 0.17428793593524505
-        },
-        {
           "score": "1-1",
-          "p": 0.1295826160438644
+          "p": 0.13163086660088666
         },
         {
           "score": "0-1",
-          "p": 0.11316415657427863
+          "p": 0.12874417852782652
         },
         {
-          "score": "2-0",
-          "p": 0.10072304428648952
+          "score": "0-0",
+          "p": 0.10032727442092768
         },
         {
-          "score": "2-1",
-          "p": 0.06855272595448464
-        },
-        {
-          "score": "1-2",
-          "p": 0.04299232719713568
+          "score": "1-0",
+          "p": 0.09100368709245943
         },
         {
           "score": "0-2",
-          "p": 0.03961514906368309
+          "p": 0.08984596373935663
         },
         {
-          "score": "3-0",
-          "p": 0.03643654997818443
+          "score": "1-2",
+          "p": 0.08732129552055123
         },
         {
-          "score": "3-1",
-          "p": 0.024798940928321463
+          "score": "2-1",
+          "p": 0.06236309564493742
+        },
+        {
+          "score": "2-0",
+          "p": 0.04582616988812723
+        },
+        {
+          "score": "2-2",
+          "p": 0.04243378519210731
+        },
+        {
+          "score": "0-3",
+          "p": 0.04075598756247455
         }
       ],
       "top_factors": [
         {
           "name": "elo_diff",
-          "value": 108.1,
-          "direction": "home",
-          "weight": 0.27028275189171436
+          "value": -86.6,
+          "direction": "away",
+          "weight": 0.21638849163086377
         },
         {
           "name": "lineup_strength_diff",
-          "value": -0.4,
-          "direction": "away",
-          "weight": 0.00424463121526577
+          "value": 0.1,
+          "direction": "home",
+          "weight": 0.0009255505565138843
         }
       ]
     }
@@ -594,12 +487,12 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.376960645066345,
-      "p_draw": 0.28325695530602,
-      "p_away": 0.339782399627636,
-      "lambda_home": 1.14479580335127,
-      "lambda_away": 0.935748502583816,
-      "p_over_2_5": 0.219866159000621,
+      "p_home": 0.3769606450663445,
+      "p_draw": 0.2832569553060198,
+      "p_away": 0.33978239962763573,
+      "lambda_home": 1.1447958033512655,
+      "lambda_away": 0.9357485025838156,
+      "p_over_2_5": 0.2198661590006209,
       "p_btts": 0.417718380824256,
       "top_scorelines": [
         {
@@ -666,6 +559,226 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_B02",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "B",
+    "match_number": 8,
+    "kickoff_utc": "2026-06-12T22:00:00",
+    "venue": {
+      "venue_id": "AZTECA__MEXICO_CITY",
+      "name": "Estadio Azteca",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "altitude_m": 2240,
+      "capacity": 87000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/Mexico_City",
+      "latitude": 19.3029,
+      "longitude": -99.1505
+    },
+    "home_team": {
+      "team_id": "EGY",
+      "name": "Egypt",
+      "fifa_code": "EGY",
+      "confederation": "CAF",
+      "fifa_rank": 36,
+      "elo": 1764.6,
+      "flag_emoji": "🇪🇬"
+    },
+    "away_team": {
+      "team_id": "KSA",
+      "name": "Saudi Arabia",
+      "fifa_code": "KSA",
+      "confederation": "AFC",
+      "fifa_rank": 56,
+      "elo": 1656.5,
+      "flag_emoji": "🇸🇦"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.5556494788708048,
+      "p_draw": 0.25664151358634596,
+      "p_away": 0.18770900754284917,
+      "lambda_home": 1.0852496636583047,
+      "lambda_away": 0.6806061754795467,
+      "p_over_2_5": 0.18812113928116084,
+      "p_btts": 0.3301597552404457,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.18237467066997215
+        },
+        {
+          "score": "0-0",
+          "p": 0.17428793593524505
+        },
+        {
+          "score": "1-1",
+          "p": 0.1295826160438644
+        },
+        {
+          "score": "0-1",
+          "p": 0.11316415657427863
+        },
+        {
+          "score": "2-0",
+          "p": 0.10072304428648952
+        },
+        {
+          "score": "2-1",
+          "p": 0.06855272595448464
+        },
+        {
+          "score": "1-2",
+          "p": 0.04299232719713568
+        },
+        {
+          "score": "0-2",
+          "p": 0.03961514906368309
+        },
+        {
+          "score": "3-0",
+          "p": 0.03643654997818443
+        },
+        {
+          "score": "3-1",
+          "p": 0.024798940928321463
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 108.1,
+          "direction": "home",
+          "weight": 0.27028275189171436
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": -0.4,
+          "direction": "away",
+          "weight": 0.00424463121526577
+        }
+      ]
+    }
+  },
+  {
+    "match_id": "WC2026_GROUP_A05",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "A",
+    "match_number": 5,
+    "kickoff_utc": "2026-06-13T18:00:00",
+    "venue": {
+      "venue_id": "NRG__HOUSTON",
+      "name": "NRG Stadium",
+      "city": "Houston",
+      "country": "USA",
+      "altitude_m": 15,
+      "capacity": 72000,
+      "surface": "natural",
+      "roof": "retractable",
+      "timezone": "America/Chicago",
+      "latitude": 29.6847,
+      "longitude": -95.4107
+    },
+    "home_team": {
+      "team_id": "MEX",
+      "name": "Mexico",
+      "fifa_code": "MEX",
+      "confederation": "CONCACAF",
+      "fifa_rank": 18,
+      "elo": 1822.0,
+      "flag_emoji": "🇲🇽"
+    },
+    "away_team": {
+      "team_id": "JAM",
+      "name": "Jamaica",
+      "fifa_code": "JAM",
+      "confederation": "CONCACAF",
+      "fifa_rank": 60,
+      "elo": 1647.0,
+      "flag_emoji": "🇯🇲"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.56317804244742,
+      "p_draw": 0.246569657428837,
+      "p_away": 0.19025230012374306,
+      "lambda_home": 1.2944251145131525,
+      "lambda_away": 0.6392368793211244,
+      "p_over_2_5": 0.24336706212391035,
+      "p_btts": 0.3459418910658173,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.18412262114853553
+        },
+        {
+          "score": "0-0",
+          "p": 0.14769466148217397
+        },
+        {
+          "score": "1-1",
+          "p": 0.12273983823206559
+        },
+        {
+          "score": "2-0",
+          "p": 0.12115713083761984
+        },
+        {
+          "score": "0-1",
+          "p": 0.08937000602160469
+        },
+        {
+          "score": "2-1",
+          "p": 0.07744810622414128
+        },
+        {
+          "score": "3-0",
+          "p": 0.05227627765285703
+        },
+        {
+          "score": "1-2",
+          "p": 0.03824685196305961
+        },
+        {
+          "score": "3-1",
+          "p": 0.03341692458933696
+        },
+        {
+          "score": "0-2",
+          "p": 0.029547365493943364
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 174.9,
+          "direction": "home",
+          "weight": 0.4373384980004084
+        },
+        {
+          "name": "model_disagreement",
+          "value": 0.066,
+          "direction": "neutral",
+          "weight": 0.06625003512694128
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 2.7,
+          "direction": "home",
+          "weight": 0.027061639537481086
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_B03",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -707,13 +820,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.353229133331069,
-      "p_draw": 0.303078678496151,
+      "p_home": 0.3532291333310693,
+      "p_draw": 0.3030786784961507,
       "p_away": 0.34369218817278,
-      "lambda_home": 0.941173537753536,
-      "lambda_away": 0.830877182112189,
-      "p_over_2_5": 0.157764990881453,
-      "p_btts": 0.347563831668509,
+      "lambda_home": 0.9411735377535362,
+      "lambda_away": 0.8308771821121888,
+      "p_over_2_5": 0.15776499088145285,
+      "p_btts": 0.34756383166850874,
       "top_scorelines": [
         {
           "score": "0-0",
@@ -814,13 +927,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.671851913722261,
-      "p_draw": 0.176771230396852,
-      "p_away": 0.151376855880886,
-      "lambda_home": 1.89528904629161,
+      "p_home": 0.6718519137222614,
+      "p_draw": 0.1767712303968521,
+      "p_away": 0.15137685588088645,
+      "lambda_home": 1.895289046291609,
       "lambda_away": 0.705343872087395,
-      "p_over_2_5": 0.421035429846988,
-      "p_btts": 0.432551652604484,
+      "p_over_2_5": 0.42103542984698766,
+      "p_btts": 0.43255165260448447,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -880,232 +993,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_A05",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "A",
-    "match_number": 5,
-    "kickoff_utc": "2026-06-13T18:00:00",
-    "venue": {
-      "venue_id": "NRG__HOUSTON",
-      "name": "NRG Stadium",
-      "city": "Houston",
-      "country": "USA",
-      "altitude_m": 15,
-      "capacity": 72000,
-      "surface": "natural",
-      "roof": "retractable",
-      "timezone": "America/Chicago",
-      "latitude": 29.6847,
-      "longitude": -95.4107
-    },
-    "home_team": {
-      "team_id": "MEX",
-      "name": "Mexico",
-      "fifa_code": "MEX",
-      "confederation": "CONCACAF",
-      "fifa_rank": 18,
-      "elo": 1822.0,
-      "flag_emoji": "🇲🇽"
-    },
-    "away_team": {
-      "team_id": "JAM",
-      "name": "Jamaica",
-      "fifa_code": "JAM",
-      "confederation": "CONCACAF",
-      "fifa_rank": 60,
-      "elo": 1647.0,
-      "flag_emoji": "🇯🇲"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.56317804244742,
-      "p_draw": 0.246569657428837,
-      "p_away": 0.190252300123743,
-      "lambda_home": 1.29442511451315,
-      "lambda_away": 0.639236879321124,
-      "p_over_2_5": 0.24336706212391,
-      "p_btts": 0.345941891065817,
-      "top_scorelines": [
-        {
-          "score": "1-0",
-          "p": 0.18412262114853553
-        },
-        {
-          "score": "0-0",
-          "p": 0.14769466148217397
-        },
-        {
-          "score": "1-1",
-          "p": 0.12273983823206559
-        },
-        {
-          "score": "2-0",
-          "p": 0.12115713083761984
-        },
-        {
-          "score": "0-1",
-          "p": 0.08937000602160469
-        },
-        {
-          "score": "2-1",
-          "p": 0.07744810622414128
-        },
-        {
-          "score": "3-0",
-          "p": 0.05227627765285703
-        },
-        {
-          "score": "1-2",
-          "p": 0.03824685196305961
-        },
-        {
-          "score": "3-1",
-          "p": 0.03341692458933696
-        },
-        {
-          "score": "0-2",
-          "p": 0.029547365493943364
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 174.9,
-          "direction": "home",
-          "weight": 0.4373384980004084
-        },
-        {
-          "name": "model_disagreement",
-          "value": 0.066,
-          "direction": "neutral",
-          "weight": 0.06625003512694128
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 2.7,
-          "direction": "home",
-          "weight": 0.027061639537481086
-        }
-      ]
-    }
-  },
-  {
-    "match_id": "WC2026_GROUP_C02",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "C",
-    "match_number": 14,
-    "kickoff_utc": "2026-06-13T22:00:00",
-    "venue": {
-      "venue_id": "LUMEN__SEATTLE",
-      "name": "Lumen Field",
-      "city": "Seattle",
-      "country": "USA",
-      "altitude_m": 4,
-      "capacity": 69000,
-      "surface": "hybrid",
-      "roof": "open",
-      "timezone": "America/Los_Angeles",
-      "latitude": 47.5952,
-      "longitude": -122.3316
-    },
-    "home_team": {
-      "team_id": "TUN",
-      "name": "Tunisia",
-      "fifa_code": "TUN",
-      "confederation": "CAF",
-      "fifa_rank": 46,
-      "elo": 1714.9,
-      "flag_emoji": "🇹🇳"
-    },
-    "away_team": {
-      "team_id": "CRC",
-      "name": "Costa Rica",
-      "fifa_code": "CRC",
-      "confederation": "CONCACAF",
-      "fifa_rank": 47,
-      "elo": 1684.3,
-      "flag_emoji": "🇨🇷"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.412627782218547,
-      "p_draw": 0.282586923041248,
-      "p_away": 0.304785294740205,
-      "lambda_home": 1.30375330433873,
-      "lambda_away": 0.918456502940345,
-      "p_over_2_5": 0.265654151104032,
-      "p_btts": 0.441057657813805,
-      "top_scorelines": [
-        {
-          "score": "1-0",
-          "p": 0.13795290034981608
-        },
-        {
-          "score": "1-1",
-          "p": 0.1331026004687002
-        },
-        {
-          "score": "0-0",
-          "p": 0.11170586439889253
-        },
-        {
-          "score": "0-1",
-          "p": 0.09619811553080503
-        },
-        {
-          "score": "2-0",
-          "p": 0.09210255856979385
-        },
-        {
-          "score": "2-1",
-          "p": 0.08459219385587116
-        },
-        {
-          "score": "1-2",
-          "p": 0.05959275446233446
-        },
-        {
-          "score": "0-2",
-          "p": 0.045708612406976934
-        },
-        {
-          "score": "3-0",
-          "p": 0.040026338357806716
-        },
-        {
-          "score": "2-2",
-          "p": 0.03884712527245759
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 30.6,
-          "direction": "home",
-          "weight": 0.07659519832113575
-        },
-        {
-          "name": "model_disagreement",
-          "value": 0.07,
-          "direction": "neutral",
-          "weight": 0.06971652821454494
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 0.4,
-          "direction": "home",
-          "weight": 0.003954353056136489
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_A06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -1147,13 +1034,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.120988143137539,
-      "p_draw": 0.184052224282759,
-      "p_away": 0.694959632579703,
-      "lambda_home": 0.5706100001878,
-      "lambda_away": 1.61382695468583,
-      "p_over_2_5": 0.0722654967918074,
-      "p_btts": 0.350896073068278,
+      "p_home": 0.12098814313753853,
+      "p_draw": 0.18405222428275878,
+      "p_away": 0.6949596325797027,
+      "lambda_home": 0.5706100001878004,
+      "lambda_away": 1.6138269546858335,
+      "p_over_2_5": 0.07226549679180737,
+      "p_btts": 0.35089607306827775,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -1254,13 +1141,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.658603035909756,
-      "p_draw": 0.193005250360841,
+      "p_home": 0.6586030359097558,
+      "p_draw": 0.1930052503608412,
       "p_away": 0.148391713729403,
-      "lambda_home": 1.7774890408984,
-      "lambda_away": 0.702825930484089,
-      "p_over_2_5": 0.387928175005221,
-      "p_btts": 0.422150622784451,
+      "lambda_home": 1.777489040898397,
+      "lambda_away": 0.7028259304840895,
+      "p_over_2_5": 0.3879281750052215,
+      "p_btts": 0.4221506227844508,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -1320,6 +1207,119 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_C02",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "C",
+    "match_number": 14,
+    "kickoff_utc": "2026-06-13T22:00:00",
+    "venue": {
+      "venue_id": "LUMEN__SEATTLE",
+      "name": "Lumen Field",
+      "city": "Seattle",
+      "country": "USA",
+      "altitude_m": 4,
+      "capacity": 69000,
+      "surface": "hybrid",
+      "roof": "open",
+      "timezone": "America/Los_Angeles",
+      "latitude": 47.5952,
+      "longitude": -122.3316
+    },
+    "home_team": {
+      "team_id": "TUN",
+      "name": "Tunisia",
+      "fifa_code": "TUN",
+      "confederation": "CAF",
+      "fifa_rank": 46,
+      "elo": 1714.9,
+      "flag_emoji": "🇹🇳"
+    },
+    "away_team": {
+      "team_id": "CRC",
+      "name": "Costa Rica",
+      "fifa_code": "CRC",
+      "confederation": "CONCACAF",
+      "fifa_rank": 47,
+      "elo": 1684.3,
+      "flag_emoji": "🇨🇷"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.4126277822185469,
+      "p_draw": 0.2825869230412477,
+      "p_away": 0.3047852947402054,
+      "lambda_home": 1.3037533043387304,
+      "lambda_away": 0.9184565029403451,
+      "p_over_2_5": 0.2656541511040318,
+      "p_btts": 0.4410576578138052,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.13795290034981608
+        },
+        {
+          "score": "1-1",
+          "p": 0.1331026004687002
+        },
+        {
+          "score": "0-0",
+          "p": 0.11170586439889253
+        },
+        {
+          "score": "0-1",
+          "p": 0.09619811553080503
+        },
+        {
+          "score": "2-0",
+          "p": 0.09210255856979385
+        },
+        {
+          "score": "2-1",
+          "p": 0.08459219385587116
+        },
+        {
+          "score": "1-2",
+          "p": 0.05959275446233446
+        },
+        {
+          "score": "0-2",
+          "p": 0.045708612406976934
+        },
+        {
+          "score": "3-0",
+          "p": 0.040026338357806716
+        },
+        {
+          "score": "2-2",
+          "p": 0.03884712527245759
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 30.6,
+          "direction": "home",
+          "weight": 0.07659519832113575
+        },
+        {
+          "name": "model_disagreement",
+          "value": 0.07,
+          "direction": "neutral",
+          "weight": 0.06971652821454494
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 0.4,
+          "direction": "home",
+          "weight": 0.003954353056136489
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_B05",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -1363,11 +1363,11 @@
     "prediction": {
       "p_home": 0.56317804244742,
       "p_draw": 0.246569657428837,
-      "p_away": 0.190252300123743,
-      "lambda_home": 1.25842032432221,
-      "lambda_away": 0.696721277170854,
-      "p_over_2_5": 0.238146871113746,
-      "p_btts": 0.362414623119943,
+      "p_away": 0.19025230012374306,
+      "lambda_home": 1.2584203243222079,
+      "lambda_away": 0.6967212771708541,
+      "p_over_2_5": 0.23814687111374616,
+      "p_btts": 0.36241462311994277,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -1427,113 +1427,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_D01",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "D",
-    "match_number": 19,
-    "kickoff_utc": "2026-06-14T18:00:00",
-    "venue": {
-      "venue_id": "AT_T__DALLAS",
-      "name": "AT&T Stadium",
-      "city": "Dallas",
-      "country": "USA",
-      "altitude_m": 144,
-      "capacity": 80000,
-      "surface": "natural",
-      "roof": "retractable",
-      "timezone": "America/Chicago",
-      "latitude": 32.7473,
-      "longitude": -97.0945
-    },
-    "home_team": {
-      "team_id": "USA",
-      "name": "United States",
-      "fifa_code": "USA",
-      "confederation": "CONCACAF",
-      "fifa_rank": 16,
-      "elo": 1731.9,
-      "flag_emoji": "🇺🇸"
-    },
-    "away_team": {
-      "team_id": "GER",
-      "name": "Germany",
-      "fifa_code": "GER",
-      "confederation": "UEFA",
-      "fifa_rank": 9,
-      "elo": 1840.9,
-      "flag_emoji": "🇩🇪"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.357491041740646,
-      "p_draw": 0.237111405236143,
-      "p_away": 0.405397553023211,
-      "lambda_home": 1.30552396776971,
-      "lambda_away": 1.87007030034263,
-      "p_over_2_5": 0.259436919838681,
-      "p_btts": 0.619228968407576,
-      "top_scorelines": [
-        {
-          "score": "1-1",
-          "p": 0.10461372793223564
-        },
-        {
-          "score": "1-2",
-          "p": 0.09536630085542458
-        },
-        {
-          "score": "0-1",
-          "p": 0.07550206400944272
-        },
-        {
-          "score": "0-2",
-          "p": 0.07304829571098821
-        },
-        {
-          "score": "2-1",
-          "p": 0.0665766369646546
-        },
-        {
-          "score": "2-2",
-          "p": 0.062251495742147014
-        },
-        {
-          "score": "1-3",
-          "p": 0.059447228961089935
-        },
-        {
-          "score": "1-0",
-          "p": 0.0519177196190094
-        },
-        {
-          "score": "0-3",
-          "p": 0.045535149433255075
-        },
-        {
-          "score": "0-0",
-          "p": 0.04439726485439654
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": -109.1,
-          "direction": "away",
-          "weight": 0.2726973697663766
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": -1.1,
-          "direction": "away",
-          "weight": 0.011225169161057324
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_C03",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -1575,13 +1468,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.700211776306332,
-      "p_draw": 0.205198794756438,
-      "p_away": 0.0945894289372303,
-      "lambda_home": 1.49051269809959,
-      "lambda_away": 0.562230715124932,
-      "p_over_2_5": 0.291129770615862,
-      "p_btts": 0.335951600201164,
+      "p_home": 0.7002117763063318,
+      "p_draw": 0.20519879475643796,
+      "p_away": 0.09458942893723028,
+      "lambda_home": 1.4905126980995917,
+      "lambda_away": 0.5622307151249315,
+      "p_over_2_5": 0.29112977061586215,
+      "p_btts": 0.3359516002011638,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -1647,6 +1540,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_D01",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "D",
+    "match_number": 19,
+    "kickoff_utc": "2026-06-14T18:00:00",
+    "venue": {
+      "venue_id": "AT_T__DALLAS",
+      "name": "AT&T Stadium",
+      "city": "Dallas",
+      "country": "USA",
+      "altitude_m": 144,
+      "capacity": 80000,
+      "surface": "natural",
+      "roof": "retractable",
+      "timezone": "America/Chicago",
+      "latitude": 32.7473,
+      "longitude": -97.0945
+    },
+    "home_team": {
+      "team_id": "USA",
+      "name": "United States",
+      "fifa_code": "USA",
+      "confederation": "CONCACAF",
+      "fifa_rank": 16,
+      "elo": 1731.9,
+      "flag_emoji": "🇺🇸"
+    },
+    "away_team": {
+      "team_id": "GER",
+      "name": "Germany",
+      "fifa_code": "GER",
+      "confederation": "UEFA",
+      "fifa_rank": 9,
+      "elo": 1840.9,
+      "flag_emoji": "🇩🇪"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.3574910417406463,
+      "p_draw": 0.2371114052361429,
+      "p_away": 0.4053975530232108,
+      "lambda_home": 1.3055239677697126,
+      "lambda_away": 1.8700703003426333,
+      "p_over_2_5": 0.25943691983868145,
+      "p_btts": 0.6192289684075759,
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "p": 0.10461372793223564
+        },
+        {
+          "score": "1-2",
+          "p": 0.09536630085542458
+        },
+        {
+          "score": "0-1",
+          "p": 0.07550206400944272
+        },
+        {
+          "score": "0-2",
+          "p": 0.07304829571098821
+        },
+        {
+          "score": "2-1",
+          "p": 0.0665766369646546
+        },
+        {
+          "score": "2-2",
+          "p": 0.062251495742147014
+        },
+        {
+          "score": "1-3",
+          "p": 0.059447228961089935
+        },
+        {
+          "score": "1-0",
+          "p": 0.0519177196190094
+        },
+        {
+          "score": "0-3",
+          "p": 0.045535149433255075
+        },
+        {
+          "score": "0-0",
+          "p": 0.04439726485439654
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": -109.1,
+          "direction": "away",
+          "weight": 0.2726973697663766
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": -1.1,
+          "direction": "away",
+          "weight": 0.011225169161057324
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_B06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -1688,13 +1688,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.528896498825359,
-      "p_draw": 0.244284937088224,
-      "p_away": 0.226818564086416,
-      "lambda_home": 1.32938543394993,
-      "lambda_away": 0.838157305898948,
-      "p_over_2_5": 0.268833425950047,
-      "p_btts": 0.420588238109151,
+      "p_home": 0.5288964988253593,
+      "p_draw": 0.2442849370882244,
+      "p_away": 0.22681856408641635,
+      "lambda_home": 1.3293854339499258,
+      "lambda_away": 0.8381573058989481,
+      "p_over_2_5": 0.2688334259500466,
+      "p_btts": 0.42058823810915136,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -1795,13 +1795,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.503111960669101,
-      "p_draw": 0.220271627159741,
-      "p_away": 0.276616412171158,
-      "lambda_home": 1.63561751286512,
-      "lambda_away": 1.1678803889008,
-      "p_over_2_5": 0.370955578013732,
-      "p_btts": 0.557707444724413,
+      "p_home": 0.5031119606691014,
+      "p_draw": 0.22027162715974088,
+      "p_away": 0.27661641217115784,
+      "lambda_home": 1.635617512865116,
+      "lambda_away": 1.1678803889008007,
+      "p_over_2_5": 0.37095557801373247,
+      "p_btts": 0.5577074447244127,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -1902,13 +1902,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.213460857676485,
-      "p_draw": 0.246564986668015,
-      "p_away": 0.539974155655499,
-      "lambda_home": 0.736743654338434,
-      "lambda_away": 1.20552013301293,
-      "p_over_2_5": 0.112808901032967,
-      "p_btts": 0.368445069113355,
+      "p_home": 0.21346085767648532,
+      "p_draw": 0.24656498666801527,
+      "p_away": 0.5399741556554994,
+      "lambda_home": 0.7367436543384337,
+      "lambda_away": 1.2055201330129253,
+      "p_over_2_5": 0.11280890103296669,
+      "p_btts": 0.36844506911335545,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -2009,13 +2009,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.765642953729184,
-      "p_draw": 0.114375625029629,
-      "p_away": 0.119981421241188,
-      "lambda_home": 2.31019543993077,
-      "lambda_away": 0.613890313956552,
-      "p_over_2_5": 0.520550367623025,
-      "p_btts": 0.415159888011044,
+      "p_home": 0.7656429537291836,
+      "p_draw": 0.11437562502962895,
+      "p_away": 0.1199814212411875,
+      "lambda_home": 2.310195439930767,
+      "lambda_away": 0.6138903139565522,
+      "p_over_2_5": 0.5205503676230252,
+      "p_btts": 0.4151598880110445,
       "top_scorelines": [
         {
           "score": "2-0",
@@ -2075,6 +2075,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_D03",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "D",
+    "match_number": 21,
+    "kickoff_utc": "2026-06-15T18:00:00",
+    "venue": {
+      "venue_id": "NRG__HOUSTON",
+      "name": "NRG Stadium",
+      "city": "Houston",
+      "country": "USA",
+      "altitude_m": 15,
+      "capacity": 72000,
+      "surface": "natural",
+      "roof": "retractable",
+      "timezone": "America/Chicago",
+      "latitude": 29.6847,
+      "longitude": -95.4107
+    },
+    "home_team": {
+      "team_id": "USA",
+      "name": "United States",
+      "fifa_code": "USA",
+      "confederation": "CONCACAF",
+      "fifa_rank": 16,
+      "elo": 1731.9,
+      "flag_emoji": "🇺🇸"
+    },
+    "away_team": {
+      "team_id": "GHA",
+      "name": "Ghana",
+      "fifa_code": "GHA",
+      "confederation": "CAF",
+      "fifa_rank": 67,
+      "elo": 1599.8,
+      "flag_emoji": "🇬🇭"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.535713109069554,
+      "p_draw": 0.2345450067786503,
+      "p_away": 0.22974188415179564,
+      "lambda_home": 1.5608719572876408,
+      "lambda_away": 1.022566339479555,
+      "p_over_2_5": 0.345779325119327,
+      "p_btts": 0.5089828931514387,
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "p": 0.12363014106610404
+        },
+        {
+          "score": "1-0",
+          "p": 0.11477409544978733
+        },
+        {
+          "score": "2-1",
+          "p": 0.09406757938150812
+        },
+        {
+          "score": "2-0",
+          "p": 0.09199166425660434
+        },
+        {
+          "score": "0-0",
+          "p": 0.07861490992100396
+        },
+        {
+          "score": "0-1",
+          "p": 0.07412294625149803
+        },
+        {
+          "score": "1-2",
+          "p": 0.06162602887619505
+        },
+        {
+          "score": "3-1",
+          "p": 0.04894248224884171
+        },
+        {
+          "score": "2-2",
+          "p": 0.04809517015592561
+        },
+        {
+          "score": "3-0",
+          "p": 0.04786240301411785
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 132.1,
+          "direction": "home",
+          "weight": 0.3301332161486596
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 3.7,
+          "direction": "home",
+          "weight": 0.037110178571428565
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_E01",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -2116,13 +2223,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.546940699832575,
-      "p_draw": 0.199209880189776,
-      "p_away": 0.253849419977648,
-      "lambda_home": 1.52710644473726,
-      "lambda_away": 1.06777706644576,
-      "p_over_2_5": 0.337271361876079,
-      "p_btts": 0.516843550047531,
+      "p_home": 0.5469406998325752,
+      "p_draw": 0.19920988018977642,
+      "p_away": 0.25384941997764826,
+      "lambda_home": 1.527106444737259,
+      "lambda_away": 1.0677770664457622,
+      "p_over_2_5": 0.33727136187607903,
+      "p_btts": 0.5168435500475311,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -2188,113 +2295,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_D03",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "D",
-    "match_number": 21,
-    "kickoff_utc": "2026-06-15T18:00:00",
-    "venue": {
-      "venue_id": "NRG__HOUSTON",
-      "name": "NRG Stadium",
-      "city": "Houston",
-      "country": "USA",
-      "altitude_m": 15,
-      "capacity": 72000,
-      "surface": "natural",
-      "roof": "retractable",
-      "timezone": "America/Chicago",
-      "latitude": 29.6847,
-      "longitude": -95.4107
-    },
-    "home_team": {
-      "team_id": "USA",
-      "name": "United States",
-      "fifa_code": "USA",
-      "confederation": "CONCACAF",
-      "fifa_rank": 16,
-      "elo": 1731.9,
-      "flag_emoji": "🇺🇸"
-    },
-    "away_team": {
-      "team_id": "GHA",
-      "name": "Ghana",
-      "fifa_code": "GHA",
-      "confederation": "CAF",
-      "fifa_rank": 67,
-      "elo": 1599.8,
-      "flag_emoji": "🇬🇭"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.535713109069554,
-      "p_draw": 0.23454500677865,
-      "p_away": 0.229741884151796,
-      "lambda_home": 1.56087195728764,
-      "lambda_away": 1.02256633947955,
-      "p_over_2_5": 0.345779325119327,
-      "p_btts": 0.508982893151439,
-      "top_scorelines": [
-        {
-          "score": "1-1",
-          "p": 0.12363014106610404
-        },
-        {
-          "score": "1-0",
-          "p": 0.11477409544978733
-        },
-        {
-          "score": "2-1",
-          "p": 0.09406757938150812
-        },
-        {
-          "score": "2-0",
-          "p": 0.09199166425660434
-        },
-        {
-          "score": "0-0",
-          "p": 0.07861490992100396
-        },
-        {
-          "score": "0-1",
-          "p": 0.07412294625149803
-        },
-        {
-          "score": "1-2",
-          "p": 0.06162602887619505
-        },
-        {
-          "score": "3-1",
-          "p": 0.04894248224884171
-        },
-        {
-          "score": "2-2",
-          "p": 0.04809517015592561
-        },
-        {
-          "score": "3-0",
-          "p": 0.04786240301411785
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 132.1,
-          "direction": "home",
-          "weight": 0.3301332161486596
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 3.7,
-          "direction": "home",
-          "weight": 0.037110178571428565
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_C06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -2336,13 +2336,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.389344043066751,
-      "p_draw": 0.259711488418073,
-      "p_away": 0.350944468515176,
-      "lambda_home": 1.05528243629145,
-      "lambda_away": 1.06960186747392,
-      "p_over_2_5": 0.198231727758374,
-      "p_btts": 0.431672145497278,
+      "p_home": 0.3893440430667508,
+      "p_draw": 0.2597114884180734,
+      "p_away": 0.3509444685151759,
+      "lambda_home": 1.0552824362914455,
+      "lambda_away": 1.0696018674739214,
+      "p_over_2_5": 0.19823172775837367,
+      "p_btts": 0.4316721454972777,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -2449,13 +2449,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.437347584924981,
-      "p_draw": 0.254021518489165,
-      "p_away": 0.308630896585854,
-      "lambda_home": 1.34735750019449,
-      "lambda_away": 1.00830527445197,
-      "p_over_2_5": 0.282260134994243,
-      "p_btts": 0.473376778092892,
+      "p_home": 0.4373475849249808,
+      "p_draw": 0.25402151848916493,
+      "p_away": 0.30863089658585424,
+      "lambda_home": 1.3473575001944902,
+      "lambda_away": 1.0083052744519747,
+      "p_over_2_5": 0.28226013499424285,
+      "p_btts": 0.4733767780928923,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -2556,13 +2556,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.765642953729184,
-      "p_draw": 0.114375625029629,
-      "p_away": 0.119981421241188,
-      "lambda_home": 2.45633415088487,
-      "lambda_away": 0.709516135183479,
-      "p_over_2_5": 0.56541582965522,
-      "p_btts": 0.466394592400134,
+      "p_home": 0.7656429537291836,
+      "p_draw": 0.11437562502962895,
+      "p_away": 0.1199814212411875,
+      "lambda_home": 2.4563341508848704,
+      "lambda_away": 0.7095161351834789,
+      "p_over_2_5": 0.5654158296552199,
+      "p_btts": 0.4663945924001341,
       "top_scorelines": [
         {
           "score": "2-0",
@@ -2663,13 +2663,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.360616530476001,
-      "p_draw": 0.259663876087035,
-      "p_away": 0.379719593436964,
-      "lambda_home": 1.04880798292721,
-      "lambda_away": 1.12428977958821,
-      "p_over_2_5": 0.197477716324143,
-      "p_btts": 0.442035044597889,
+      "p_home": 0.3606165304760007,
+      "p_draw": 0.25966387608703484,
+      "p_away": 0.37971959343696443,
+      "lambda_home": 1.0488079829272092,
+      "lambda_away": 1.1242897795882107,
+      "p_over_2_5": 0.1974777163241433,
+      "p_btts": 0.4420350445978892,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -2770,13 +2770,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.417050123119348,
-      "p_draw": 0.240338212100272,
-      "p_away": 0.342611664780381,
-      "lambda_home": 1.1983178043866,
-      "lambda_away": 1.17980530017603,
-      "p_over_2_5": 0.242055709458578,
-      "p_btts": 0.487052163369146,
+      "p_home": 0.4170501231193478,
+      "p_draw": 0.2403382121002715,
+      "p_away": 0.34261166478038063,
+      "lambda_home": 1.198317804386601,
+      "lambda_away": 1.1798053001760325,
+      "p_over_2_5": 0.24205570945857827,
+      "p_btts": 0.4870521633691457,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -2883,13 +2883,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.694760039235244,
-      "p_draw": 0.182798596621918,
-      "p_away": 0.122441364142838,
-      "lambda_home": 1.93361894438959,
-      "lambda_away": 1.05906858782698,
-      "p_over_2_5": 0.452740934108699,
-      "p_btts": 0.561372172396096,
+      "p_home": 0.6947600392352441,
+      "p_draw": 0.18279859662191805,
+      "p_away": 0.12244136414283774,
+      "lambda_home": 1.933618944389585,
+      "lambda_away": 1.0590685878269828,
+      "p_over_2_5": 0.4527409341086995,
+      "p_btts": 0.5613721723960956,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -2955,119 +2955,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_E04",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "E",
-    "match_number": 28,
-    "kickoff_utc": "2026-06-16T22:00:00",
-    "venue": {
-      "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA",
-      "name": "Lincoln Financial Field",
-      "city": "Philadelphia",
-      "country": "USA",
-      "altitude_m": 12,
-      "capacity": 69000,
-      "surface": "natural",
-      "roof": "open",
-      "timezone": "America/New_York",
-      "latitude": 39.9008,
-      "longitude": -75.1675
-    },
-    "home_team": {
-      "team_id": "DEN",
-      "name": "Denmark",
-      "fifa_code": "DEN",
-      "confederation": "UEFA",
-      "fifa_rank": 21,
-      "elo": 1757.9,
-      "flag_emoji": "🇩🇰"
-    },
-    "away_team": {
-      "team_id": "QAT",
-      "name": "Qatar",
-      "fifa_code": "QAT",
-      "confederation": "AFC",
-      "fifa_rank": 50,
-      "elo": 1572.5,
-      "flag_emoji": "🇶🇦"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.633894379323473,
-      "p_draw": 0.189938138530519,
-      "p_away": 0.176167482146008,
-      "lambda_home": 2.22309331332132,
-      "lambda_away": 0.904189738913537,
-      "p_over_2_5": 0.522465318120538,
-      "p_btts": 0.532926512984252,
-      "top_scorelines": [
-        {
-          "score": "2-0",
-          "p": 0.10837856315565578
-        },
-        {
-          "score": "2-1",
-          "p": 0.09799478472353662
-        },
-        {
-          "score": "1-0",
-          "p": 0.09523648001657949
-        },
-        {
-          "score": "1-1",
-          "p": 0.09042675475863474
-        },
-        {
-          "score": "3-0",
-          "p": 0.08031188635290354
-        },
-        {
-          "score": "3-1",
-          "p": 0.07261718355308548
-        },
-        {
-          "score": "0-0",
-          "p": 0.04612493345694745
-        },
-        {
-          "score": "4-0",
-          "p": 0.04463520438284039
-        },
-        {
-          "score": "2-2",
-          "p": 0.0443029394070314
-        },
-        {
-          "score": "4-1",
-          "p": 0.0403586937972728
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 185.4,
-          "direction": "home",
-          "weight": 0.463578399859573
-        },
-        {
-          "name": "model_disagreement",
-          "value": 0.068,
-          "direction": "neutral",
-          "weight": 0.06795394939298394
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 1.7,
-          "direction": "home",
-          "weight": 0.016662112476358622
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_D06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -3109,12 +2996,12 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.671851913722261,
-      "p_draw": 0.176771230396852,
-      "p_away": 0.151376855880886,
-      "lambda_home": 2.00518357290261,
-      "lambda_away": 0.91707587518222,
-      "p_over_2_5": 0.46646642869008,
+      "p_home": 0.6718519137222614,
+      "p_draw": 0.1767712303968521,
+      "p_away": 0.15137685588088645,
+      "lambda_home": 2.0051835729026064,
+      "lambda_away": 0.9170758751822204,
+      "p_over_2_5": 0.46646642869008026,
       "p_btts": 0.522014642074356,
       "top_scorelines": [
         {
@@ -3181,6 +3068,119 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_E04",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "E",
+    "match_number": 28,
+    "kickoff_utc": "2026-06-16T22:00:00",
+    "venue": {
+      "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA",
+      "name": "Lincoln Financial Field",
+      "city": "Philadelphia",
+      "country": "USA",
+      "altitude_m": 12,
+      "capacity": 69000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/New_York",
+      "latitude": 39.9008,
+      "longitude": -75.1675
+    },
+    "home_team": {
+      "team_id": "DEN",
+      "name": "Denmark",
+      "fifa_code": "DEN",
+      "confederation": "UEFA",
+      "fifa_rank": 21,
+      "elo": 1757.9,
+      "flag_emoji": "🇩🇰"
+    },
+    "away_team": {
+      "team_id": "QAT",
+      "name": "Qatar",
+      "fifa_code": "QAT",
+      "confederation": "AFC",
+      "fifa_rank": 50,
+      "elo": 1572.5,
+      "flag_emoji": "🇶🇦"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.633894379323473,
+      "p_draw": 0.18993813853051877,
+      "p_away": 0.17616748214600825,
+      "lambda_home": 2.223093313321319,
+      "lambda_away": 0.9041897389135366,
+      "p_over_2_5": 0.5224653181205382,
+      "p_btts": 0.532926512984252,
+      "top_scorelines": [
+        {
+          "score": "2-0",
+          "p": 0.10837856315565578
+        },
+        {
+          "score": "2-1",
+          "p": 0.09799478472353662
+        },
+        {
+          "score": "1-0",
+          "p": 0.09523648001657949
+        },
+        {
+          "score": "1-1",
+          "p": 0.09042675475863474
+        },
+        {
+          "score": "3-0",
+          "p": 0.08031188635290354
+        },
+        {
+          "score": "3-1",
+          "p": 0.07261718355308548
+        },
+        {
+          "score": "0-0",
+          "p": 0.04612493345694745
+        },
+        {
+          "score": "4-0",
+          "p": 0.04463520438284039
+        },
+        {
+          "score": "2-2",
+          "p": 0.0443029394070314
+        },
+        {
+          "score": "4-1",
+          "p": 0.0403586937972728
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 185.4,
+          "direction": "home",
+          "weight": 0.463578399859573
+        },
+        {
+          "name": "model_disagreement",
+          "value": 0.068,
+          "direction": "neutral",
+          "weight": 0.06795394939298394
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 1.7,
+          "direction": "home",
+          "weight": 0.016662112476358622
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_F02",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -3224,11 +3224,11 @@
     "prediction": {
       "p_home": 0.56317804244742,
       "p_draw": 0.246569657428837,
-      "p_away": 0.190252300123743,
-      "lambda_home": 1.50792920659102,
-      "lambda_away": 0.76713166473609,
-      "p_over_2_5": 0.316110051698952,
-      "p_btts": 0.420132567607792,
+      "p_away": 0.19025230012374306,
+      "lambda_home": 1.5079292065910237,
+      "lambda_away": 0.7671316647360896,
+      "p_over_2_5": 0.31611005169895184,
+      "p_btts": 0.42013256760779244,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -3335,13 +3335,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.840408766713782,
-      "p_draw": 0.0941495670257185,
-      "p_away": 0.0654416662604994,
-      "lambda_home": 2.58468230123462,
-      "lambda_away": 0.735055835450374,
-      "p_over_2_5": 0.596941209732535,
-      "p_btts": 0.482975800473258,
+      "p_home": 0.8404087667137821,
+      "p_draw": 0.09414956702571851,
+      "p_away": 0.06544166626049942,
+      "lambda_home": 2.5846823012346207,
+      "lambda_away": 0.7350558354503745,
+      "p_over_2_5": 0.5969412097325352,
+      "p_btts": 0.48297580047325767,
       "top_scorelines": [
         {
           "score": "2-0",
@@ -3401,113 +3401,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_G01",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "G",
-    "match_number": 37,
-    "kickoff_utc": "2026-06-17T18:00:00",
-    "venue": {
-      "venue_id": "NRG__HOUSTON",
-      "name": "NRG Stadium",
-      "city": "Houston",
-      "country": "USA",
-      "altitude_m": 15,
-      "capacity": 72000,
-      "surface": "natural",
-      "roof": "retractable",
-      "timezone": "America/Chicago",
-      "latitude": 29.6847,
-      "longitude": -95.4107
-    },
-    "home_team": {
-      "team_id": "ENG",
-      "name": "England",
-      "fifa_code": "ENG",
-      "confederation": "UEFA",
-      "fifa_rank": 4,
-      "elo": 1914.3,
-      "flag_emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
-    },
-    "away_team": {
-      "team_id": "SUI",
-      "name": "Switzerland",
-      "fifa_code": "SUI",
-      "confederation": "UEFA",
-      "fifa_rank": 19,
-      "elo": 1788.5,
-      "flag_emoji": "🇨🇭"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.535713109069554,
-      "p_draw": 0.23454500677865,
-      "p_away": 0.229741884151796,
-      "lambda_home": 1.43164353042907,
-      "lambda_away": 0.968632999157045,
-      "p_over_2_5": 0.305674368910772,
-      "p_btts": 0.475404890702339,
-      "top_scorelines": [
-        {
-          "score": "1-1",
-          "p": 0.1290023941658763
-        },
-        {
-          "score": "1-0",
-          "p": 0.12660981398639723
-        },
-        {
-          "score": "0-0",
-          "p": 0.09392738061851914
-        },
-        {
-          "score": "2-0",
-          "p": 0.09294407953554197
-        },
-        {
-          "score": "2-1",
-          "p": 0.09002870251440298
-        },
-        {
-          "score": "0-1",
-          "p": 0.08461721006996474
-        },
-        {
-          "score": "1-2",
-          "p": 0.06091235022771919
-        },
-        {
-          "score": "3-0",
-          "p": 0.044354263386247726
-        },
-        {
-          "score": "2-2",
-          "p": 0.04360238606337179
-        },
-        {
-          "score": "3-1",
-          "p": 0.042963003169222656
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 125.8,
-          "direction": "home",
-          "weight": 0.314461353986116
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 1.6,
-          "direction": "home",
-          "weight": 0.016090286239783886
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_F03",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -3549,13 +3442,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.557700161381677,
-      "p_draw": 0.203128753015951,
-      "p_away": 0.239171085602372,
-      "lambda_home": 1.69970818625859,
-      "lambda_away": 1.10711244824089,
-      "p_over_2_5": 0.388405989742873,
-      "p_btts": 0.550059909862946,
+      "p_home": 0.5577001613816769,
+      "p_draw": 0.20312875301595149,
+      "p_away": 0.2391710856023716,
+      "lambda_home": 1.6997081862585919,
+      "lambda_away": 1.1071124482408918,
+      "p_over_2_5": 0.3884059897428727,
+      "p_btts": 0.5500599098629464,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -3621,6 +3514,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_G01",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "G",
+    "match_number": 37,
+    "kickoff_utc": "2026-06-17T18:00:00",
+    "venue": {
+      "venue_id": "NRG__HOUSTON",
+      "name": "NRG Stadium",
+      "city": "Houston",
+      "country": "USA",
+      "altitude_m": 15,
+      "capacity": 72000,
+      "surface": "natural",
+      "roof": "retractable",
+      "timezone": "America/Chicago",
+      "latitude": 29.6847,
+      "longitude": -95.4107
+    },
+    "home_team": {
+      "team_id": "ENG",
+      "name": "England",
+      "fifa_code": "ENG",
+      "confederation": "UEFA",
+      "fifa_rank": 4,
+      "elo": 1914.3,
+      "flag_emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    "away_team": {
+      "team_id": "SUI",
+      "name": "Switzerland",
+      "fifa_code": "SUI",
+      "confederation": "UEFA",
+      "fifa_rank": 19,
+      "elo": 1788.5,
+      "flag_emoji": "🇨🇭"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.535713109069554,
+      "p_draw": 0.2345450067786503,
+      "p_away": 0.22974188415179564,
+      "lambda_home": 1.4316435304290653,
+      "lambda_away": 0.9686329991570453,
+      "p_over_2_5": 0.3056743689107725,
+      "p_btts": 0.47540489070233877,
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "p": 0.1290023941658763
+        },
+        {
+          "score": "1-0",
+          "p": 0.12660981398639723
+        },
+        {
+          "score": "0-0",
+          "p": 0.09392738061851914
+        },
+        {
+          "score": "2-0",
+          "p": 0.09294407953554197
+        },
+        {
+          "score": "2-1",
+          "p": 0.09002870251440298
+        },
+        {
+          "score": "0-1",
+          "p": 0.08461721006996474
+        },
+        {
+          "score": "1-2",
+          "p": 0.06091235022771919
+        },
+        {
+          "score": "3-0",
+          "p": 0.044354263386247726
+        },
+        {
+          "score": "2-2",
+          "p": 0.04360238606337179
+        },
+        {
+          "score": "3-1",
+          "p": 0.042963003169222656
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 125.8,
+          "direction": "home",
+          "weight": 0.314461353986116
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 1.6,
+          "direction": "home",
+          "weight": 0.016090286239783886
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_E06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -3662,13 +3662,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.280216802685617,
-      "p_draw": 0.241899853644757,
-      "p_away": 0.477883343669626,
-      "lambda_home": 1.03067688314856,
-      "lambda_away": 1.45127457655153,
-      "p_over_2_5": 0.193036678839278,
-      "p_btts": 0.495752877645064,
+      "p_home": 0.28021680268561694,
+      "p_draw": 0.24189985364475675,
+      "p_away": 0.4778833436696262,
+      "lambda_home": 1.0306768831485564,
+      "lambda_away": 1.4512745765515302,
+      "p_over_2_5": 0.1930366788392777,
+      "p_btts": 0.49575287764506376,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -3770,12 +3770,12 @@
     "status": "scheduled",
     "prediction": {
       "p_home": 0.535713109069554,
-      "p_draw": 0.23454500677865,
-      "p_away": 0.229741884151796,
-      "lambda_home": 1.44249164382978,
-      "lambda_away": 0.872702933225238,
-      "p_over_2_5": 0.304099362346647,
-      "p_btts": 0.447780394677397,
+      "p_draw": 0.2345450067786503,
+      "p_away": 0.22974188415179564,
+      "lambda_home": 1.4424916438297817,
+      "lambda_away": 0.8727029332252382,
+      "p_over_2_5": 0.30409936234664653,
+      "p_btts": 0.4477803946773967,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -3882,13 +3882,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.389344043066751,
-      "p_draw": 0.259711488418073,
-      "p_away": 0.350944468515176,
-      "lambda_home": 1.04762461586533,
-      "lambda_away": 1.29874144818748,
-      "p_over_2_5": 0.198697873725661,
-      "p_btts": 0.475416736474776,
+      "p_home": 0.3893440430667508,
+      "p_draw": 0.2597114884180734,
+      "p_away": 0.3509444685151759,
+      "lambda_home": 1.0476246158653262,
+      "lambda_away": 1.2987414481874846,
+      "p_over_2_5": 0.19869787372566064,
+      "p_btts": 0.47541673647477606,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -3989,13 +3989,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.721659595615382,
-      "p_draw": 0.11574123875109,
-      "p_away": 0.162599165633528,
-      "lambda_home": 1.92829767778933,
-      "lambda_away": 0.638969903225857,
-      "p_over_2_5": 0.423342224680979,
-      "p_btts": 0.405931991102774,
+      "p_home": 0.7216595956153823,
+      "p_draw": 0.11574123875109006,
+      "p_away": 0.16259916563352764,
+      "lambda_home": 1.9282976777893315,
+      "lambda_away": 0.6389699032258572,
+      "p_over_2_5": 0.4233422246809795,
+      "p_btts": 0.40593199110277406,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -4061,6 +4061,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_G03",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "G",
+    "match_number": 39,
+    "kickoff_utc": "2026-06-18T18:00:00",
+    "venue": {
+      "venue_id": "SOFI__LOS_ANGELES",
+      "name": "SoFi Stadium",
+      "city": "Los Angeles",
+      "country": "USA",
+      "altitude_m": 35,
+      "capacity": 70000,
+      "surface": "natural",
+      "roof": "fixed",
+      "timezone": "America/Los_Angeles",
+      "latitude": 33.9535,
+      "longitude": -118.3392
+    },
+    "home_team": {
+      "team_id": "ENG",
+      "name": "England",
+      "fifa_code": "ENG",
+      "confederation": "UEFA",
+      "fifa_rank": 4,
+      "elo": 1914.3,
+      "flag_emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+    },
+    "away_team": {
+      "team_id": "NGA",
+      "name": "Nigeria",
+      "fifa_code": "NGA",
+      "confederation": "CAF",
+      "fifa_rank": 40,
+      "elo": 1817.9,
+      "flag_emoji": "🇳🇬"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.5381372791173332,
+      "p_draw": 0.23560635280633382,
+      "p_away": 0.22625636807633295,
+      "lambda_home": 1.457475831903904,
+      "lambda_away": 0.9199310575517117,
+      "p_over_2_5": 0.3110518924050113,
+      "p_btts": 0.4646157072599687,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.1320457054350915
+        },
+        {
+          "score": "1-1",
+          "p": 0.1276125926393988
+        },
+        {
+          "score": "2-0",
+          "p": 0.09855710508674777
+        },
+        {
+          "score": "0-0",
+          "p": 0.09599084657717748
+        },
+        {
+          "score": "2-1",
+          "p": 0.09066574191168705
+        },
+        {
+          "score": "0-1",
+          "p": 0.0821653138136937
+        },
+        {
+          "score": "1-2",
+          "p": 0.05722649392516861
+        },
+        {
+          "score": "3-0",
+          "p": 0.04788153290878273
+        },
+        {
+          "score": "3-1",
+          "p": 0.04404770920597358
+        },
+        {
+          "score": "2-2",
+          "p": 0.04170311592026442
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 96.4,
+          "direction": "home",
+          "weight": 0.24100578461440364
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 1.6,
+          "direction": "home",
+          "weight": 0.01589133739650452
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_H01",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -4102,13 +4209,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.671851913722261,
-      "p_draw": 0.176771230396852,
-      "p_away": 0.151376855880886,
-      "lambda_home": 2.25866475598617,
+      "p_home": 0.6718519137222614,
+      "p_draw": 0.1767712303968521,
+      "p_away": 0.15137685588088645,
+      "lambda_home": 2.2586647559861657,
       "lambda_away": 0.849615983645309,
-      "p_over_2_5": 0.528210389913699,
-      "p_btts": 0.514779700319859,
+      "p_over_2_5": 0.5282103899136993,
+      "p_btts": 0.5147797003198593,
       "top_scorelines": [
         {
           "score": "2-0",
@@ -4174,113 +4281,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_G03",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "G",
-    "match_number": 39,
-    "kickoff_utc": "2026-06-18T18:00:00",
-    "venue": {
-      "venue_id": "SOFI__LOS_ANGELES",
-      "name": "SoFi Stadium",
-      "city": "Los Angeles",
-      "country": "USA",
-      "altitude_m": 35,
-      "capacity": 70000,
-      "surface": "natural",
-      "roof": "fixed",
-      "timezone": "America/Los_Angeles",
-      "latitude": 33.9535,
-      "longitude": -118.3392
-    },
-    "home_team": {
-      "team_id": "ENG",
-      "name": "England",
-      "fifa_code": "ENG",
-      "confederation": "UEFA",
-      "fifa_rank": 4,
-      "elo": 1914.3,
-      "flag_emoji": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
-    },
-    "away_team": {
-      "team_id": "NGA",
-      "name": "Nigeria",
-      "fifa_code": "NGA",
-      "confederation": "CAF",
-      "fifa_rank": 40,
-      "elo": 1817.9,
-      "flag_emoji": "🇳🇬"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.538137279117333,
-      "p_draw": 0.235606352806334,
-      "p_away": 0.226256368076333,
-      "lambda_home": 1.4574758319039,
-      "lambda_away": 0.919931057551712,
-      "p_over_2_5": 0.311051892405011,
-      "p_btts": 0.464615707259969,
-      "top_scorelines": [
-        {
-          "score": "1-0",
-          "p": 0.1320457054350915
-        },
-        {
-          "score": "1-1",
-          "p": 0.1276125926393988
-        },
-        {
-          "score": "2-0",
-          "p": 0.09855710508674777
-        },
-        {
-          "score": "0-0",
-          "p": 0.09599084657717748
-        },
-        {
-          "score": "2-1",
-          "p": 0.09066574191168705
-        },
-        {
-          "score": "0-1",
-          "p": 0.0821653138136937
-        },
-        {
-          "score": "1-2",
-          "p": 0.05722649392516861
-        },
-        {
-          "score": "3-0",
-          "p": 0.04788153290878273
-        },
-        {
-          "score": "3-1",
-          "p": 0.04404770920597358
-        },
-        {
-          "score": "2-2",
-          "p": 0.04170311592026442
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 96.4,
-          "direction": "home",
-          "weight": 0.24100578461440364
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 1.6,
-          "direction": "home",
-          "weight": 0.01589133739650452
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_F06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -4322,12 +4322,12 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.397048809562917,
-      "p_draw": 0.237129604832015,
-      "p_away": 0.365821585605068,
-      "lambda_home": 1.27149188834679,
-      "lambda_away": 1.5120904382385,
-      "p_over_2_5": 0.26198356828356,
+      "p_home": 0.39704880956291716,
+      "p_draw": 0.23712960483201478,
+      "p_away": 0.3658215856050681,
+      "lambda_home": 1.2714918883467932,
+      "lambda_away": 1.5120904382385039,
+      "p_over_2_5": 0.2619835682835595,
       "p_btts": 0.564003593351768,
       "top_scorelines": [
         {
@@ -4429,13 +4429,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.360616530476001,
-      "p_draw": 0.259663876087035,
-      "p_away": 0.379719593436964,
-      "lambda_home": 1.10308676430281,
-      "lambda_away": 1.27572255491114,
-      "p_over_2_5": 0.214764435225312,
-      "p_btts": 0.484936070445206,
+      "p_home": 0.3606165304760007,
+      "p_draw": 0.25966387608703484,
+      "p_away": 0.37971959343696443,
+      "lambda_home": 1.1030867643028086,
+      "lambda_away": 1.2757225549111402,
+      "p_over_2_5": 0.2147644352253123,
+      "p_btts": 0.48493607044520587,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -4536,13 +4536,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.360616530476001,
-      "p_draw": 0.259663876087035,
-      "p_away": 0.379719593436964,
-      "lambda_home": 1.17118811326853,
-      "lambda_away": 1.00825531096699,
-      "p_over_2_5": 0.2302495606103,
-      "p_btts": 0.441682911908091,
+      "p_home": 0.3606165304760007,
+      "p_draw": 0.25966387608703484,
+      "p_away": 0.37971959343696443,
+      "lambda_home": 1.171188113268528,
+      "lambda_away": 1.0082553109669885,
+      "p_over_2_5": 0.23024956061030036,
+      "p_btts": 0.4416829119080906,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -4649,13 +4649,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.496241816478901,
-      "p_draw": 0.251267239715787,
-      "p_away": 0.252490943805312,
-      "lambda_home": 1.18562066081029,
-      "lambda_away": 0.927719498394249,
-      "p_over_2_5": 0.231410745022208,
-      "p_btts": 0.423237876290897,
+      "p_home": 0.4962418164789013,
+      "p_draw": 0.2512672397157869,
+      "p_away": 0.2524909438053118,
+      "lambda_home": 1.1856206608102886,
+      "lambda_away": 0.9277194983942493,
+      "p_over_2_5": 0.23141074502220826,
+      "p_btts": 0.42323787629089693,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -4756,13 +4756,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.531259233265495,
-      "p_draw": 0.245376228929533,
-      "p_away": 0.223364537804972,
-      "lambda_home": 1.37079379437682,
-      "lambda_away": 0.88387426768241,
-      "p_over_2_5": 0.283633882203599,
-      "p_btts": 0.441088920693973,
+      "p_home": 0.5312592332654951,
+      "p_draw": 0.24537622892953295,
+      "p_away": 0.2233645378049719,
+      "lambda_home": 1.3707937943768247,
+      "lambda_away": 0.8838742676824095,
+      "p_over_2_5": 0.28363388220359914,
+      "p_btts": 0.4410889206939734,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -4863,13 +4863,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.500252907683531,
-      "p_draw": 0.219019881420224,
-      "p_away": 0.280727210896245,
+      "p_home": 0.5002529076835309,
+      "p_draw": 0.21901988142022405,
+      "p_away": 0.2807272108962451,
       "lambda_home": 1.53129950683796,
-      "lambda_away": 1.14704292548229,
-      "p_over_2_5": 0.340221176478874,
-      "p_btts": 0.537942967846084,
+      "lambda_away": 1.1470429254822856,
+      "p_over_2_5": 0.34022117647887357,
+      "p_btts": 0.5379429678460835,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -4929,113 +4929,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_H04",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "H",
-    "match_number": 46,
-    "kickoff_utc": "2026-06-19T22:00:00",
-    "venue": {
-      "venue_id": "LUMEN__SEATTLE",
-      "name": "Lumen Field",
-      "city": "Seattle",
-      "country": "USA",
-      "altitude_m": 4,
-      "capacity": 69000,
-      "surface": "hybrid",
-      "roof": "open",
-      "timezone": "America/Los_Angeles",
-      "latitude": 47.5952,
-      "longitude": -122.3316
-    },
-    "home_team": {
-      "team_id": "UKR",
-      "name": "Ukraine",
-      "fifa_code": "UKR",
-      "confederation": "UEFA",
-      "fifa_rank": 28,
-      "elo": 1673.2,
-      "flag_emoji": "🇺🇦"
-    },
-    "away_team": {
-      "team_id": "KOR",
-      "name": "South Korea",
-      "fifa_code": "KOR",
-      "confederation": "AFC",
-      "fifa_rank": 23,
-      "elo": 1807.7,
-      "flag_emoji": "🇰🇷"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.292093552958156,
-      "p_draw": 0.209768425288056,
-      "p_away": 0.498138021753788,
-      "lambda_home": 1.1257937664567,
-      "lambda_away": 1.66130802842764,
-      "p_over_2_5": 0.216185667470067,
-      "p_btts": 0.55026708997748,
-      "top_scorelines": [
-        {
-          "score": "1-1",
-          "p": 0.11817761057843608
-        },
-        {
-          "score": "0-1",
-          "p": 0.09938076912356356
-        },
-        {
-          "score": "1-2",
-          "p": 0.09570479432552731
-        },
-        {
-          "score": "0-2",
-          "p": 0.08501094709979333
-        },
-        {
-          "score": "1-0",
-          "p": 0.06639128196747059
-        },
-        {
-          "score": "2-1",
-          "p": 0.06485483668773566
-        },
-        {
-          "score": "0-0",
-          "p": 0.06456479359421163
-        },
-        {
-          "score": "2-2",
-          "p": 0.05387193043584942
-        },
-        {
-          "score": "1-3",
-          "p": 0.052998381057338236
-        },
-        {
-          "score": "0-3",
-          "p": 0.0470764563070414
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": -134.5,
-          "direction": "away",
-          "weight": 0.3362639633376847
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 0.5,
-          "direction": "home",
-          "weight": 0.005313348867329438
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_G06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -5077,12 +4970,12 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.389344043066751,
-      "p_draw": 0.259711488418073,
-      "p_away": 0.350944468515176,
-      "lambda_home": 1.35601744521359,
-      "lambda_away": 1.26501254001158,
-      "p_over_2_5": 0.289438957649192,
+      "p_home": 0.3893440430667508,
+      "p_draw": 0.2597114884180734,
+      "p_away": 0.3509444685151759,
+      "lambda_home": 1.3560174452135947,
+      "lambda_away": 1.2650125400115786,
+      "p_over_2_5": 0.2894389576491924,
       "p_btts": 0.536009964815772,
       "top_scorelines": [
         {
@@ -5149,6 +5042,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_H04",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "H",
+    "match_number": 46,
+    "kickoff_utc": "2026-06-19T22:00:00",
+    "venue": {
+      "venue_id": "LUMEN__SEATTLE",
+      "name": "Lumen Field",
+      "city": "Seattle",
+      "country": "USA",
+      "altitude_m": 4,
+      "capacity": 69000,
+      "surface": "hybrid",
+      "roof": "open",
+      "timezone": "America/Los_Angeles",
+      "latitude": 47.5952,
+      "longitude": -122.3316
+    },
+    "home_team": {
+      "team_id": "UKR",
+      "name": "Ukraine",
+      "fifa_code": "UKR",
+      "confederation": "UEFA",
+      "fifa_rank": 28,
+      "elo": 1673.2,
+      "flag_emoji": "🇺🇦"
+    },
+    "away_team": {
+      "team_id": "KOR",
+      "name": "South Korea",
+      "fifa_code": "KOR",
+      "confederation": "AFC",
+      "fifa_rank": 23,
+      "elo": 1807.7,
+      "flag_emoji": "🇰🇷"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.2920935529581562,
+      "p_draw": 0.20976842528805598,
+      "p_away": 0.4981380217537878,
+      "lambda_home": 1.1257937664566964,
+      "lambda_away": 1.661308028427642,
+      "p_over_2_5": 0.21618566747006698,
+      "p_btts": 0.5502670899774801,
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "p": 0.11817761057843608
+        },
+        {
+          "score": "0-1",
+          "p": 0.09938076912356356
+        },
+        {
+          "score": "1-2",
+          "p": 0.09570479432552731
+        },
+        {
+          "score": "0-2",
+          "p": 0.08501094709979333
+        },
+        {
+          "score": "1-0",
+          "p": 0.06639128196747059
+        },
+        {
+          "score": "2-1",
+          "p": 0.06485483668773566
+        },
+        {
+          "score": "0-0",
+          "p": 0.06456479359421163
+        },
+        {
+          "score": "2-2",
+          "p": 0.05387193043584942
+        },
+        {
+          "score": "1-3",
+          "p": 0.052998381057338236
+        },
+        {
+          "score": "0-3",
+          "p": 0.0470764563070414
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": -134.5,
+          "direction": "away",
+          "weight": 0.3362639633376847
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 0.5,
+          "direction": "home",
+          "weight": 0.005313348867329438
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_I02",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -5190,13 +5190,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.234936537756263,
+      "p_home": 0.23493653775626258,
       "p_draw": 0.257117337882059,
-      "p_away": 0.507946124361678,
-      "lambda_home": 0.771854830178452,
-      "lambda_away": 1.240628536325,
-      "p_over_2_5": 0.122108635821228,
-      "p_btts": 0.385587572030234,
+      "p_away": 0.5079461243616784,
+      "lambda_home": 0.7718548301784525,
+      "lambda_away": 1.2406285363249998,
+      "p_over_2_5": 0.12210863582122806,
+      "p_btts": 0.3855875720302341,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -5256,220 +5256,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_J01",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "J",
-    "match_number": 55,
-    "kickoff_utc": "2026-06-20T18:00:00",
-    "venue": {
-      "venue_id": "SOFI__LOS_ANGELES",
-      "name": "SoFi Stadium",
-      "city": "Los Angeles",
-      "country": "USA",
-      "altitude_m": 35,
-      "capacity": 70000,
-      "surface": "natural",
-      "roof": "fixed",
-      "timezone": "America/Los_Angeles",
-      "latitude": 33.9535,
-      "longitude": -118.3392
-    },
-    "home_team": {
-      "team_id": "URU",
-      "name": "Uruguay",
-      "fifa_code": "URU",
-      "confederation": "CONMEBOL",
-      "fifa_rank": 14,
-      "elo": 1797.9,
-      "flag_emoji": "🇺🇾"
-    },
-    "away_team": {
-      "team_id": "SWE",
-      "name": "Sweden",
-      "fifa_code": "SWE",
-      "confederation": "UEFA",
-      "fifa_rank": 35,
-      "elo": 1634.1,
-      "flag_emoji": "🇸🇪"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.56317804244742,
-      "p_draw": 0.246569657428837,
-      "p_away": 0.190252300123743,
-      "lambda_home": 1.46382663690563,
-      "lambda_away": 0.862644885134196,
-      "p_over_2_5": 0.309774063230029,
-      "p_btts": 0.447411999934916,
-      "top_scorelines": [
-        {
-          "score": "1-0",
-          "p": 0.13976170951920722
-        },
-        {
-          "score": "1-1",
-          "p": 0.12646774143172923
-        },
-        {
-          "score": "2-0",
-          "p": 0.10461300619915631
-        },
-        {
-          "score": "0-0",
-          "p": 0.10081109597475522
-        },
-        {
-          "score": "2-1",
-          "p": 0.09024387471621412
-        },
-        {
-          "score": "0-1",
-          "p": 0.08106115873002123
-        },
-        {
-          "score": "1-2",
-          "p": 0.05318144579142005
-        },
-        {
-          "score": "3-0",
-          "p": 0.051045101680366155
-        },
-        {
-          "score": "3-1",
-          "p": 0.04403379587572281
-        },
-        {
-          "score": "2-2",
-          "p": 0.03892420846931665
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 163.8,
-          "direction": "home",
-          "weight": 0.40950211937895575
-        },
-        {
-          "name": "model_disagreement",
-          "value": 0.063,
-          "direction": "neutral",
-          "weight": 0.06259787105717429
-        }
-      ]
-    }
-  },
-  {
-    "match_id": "WC2026_GROUP_I03",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "I",
-    "match_number": 51,
-    "kickoff_utc": "2026-06-20T18:00:00",
-    "venue": {
-      "venue_id": "AT_T__DALLAS",
-      "name": "AT&T Stadium",
-      "city": "Dallas",
-      "country": "USA",
-      "altitude_m": 144,
-      "capacity": 80000,
-      "surface": "natural",
-      "roof": "retractable",
-      "timezone": "America/Chicago",
-      "latitude": 32.7473,
-      "longitude": -97.0945
-    },
-    "home_team": {
-      "team_id": "NED",
-      "name": "Netherlands",
-      "fifa_code": "NED",
-      "confederation": "UEFA",
-      "fifa_rank": 7,
-      "elo": 1855.8,
-      "flag_emoji": "🇳🇱"
-    },
-    "away_team": {
-      "team_id": "CMR",
-      "name": "Cameroon",
-      "fifa_code": "CMR",
-      "confederation": "CAF",
-      "fifa_rank": 45,
-      "elo": 1691.9,
-      "flag_emoji": "🇨🇲"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.535713109069554,
-      "p_draw": 0.23454500677865,
-      "p_away": 0.229741884151796,
-      "lambda_home": 1.49618264166977,
-      "lambda_away": 0.820573217631344,
-      "p_over_2_5": 0.316569107226132,
-      "p_btts": 0.437537936456342,
-      "top_scorelines": [
-        {
-          "score": "1-0",
-          "p": 0.14440572973932148
-        },
-        {
-          "score": "1-1",
-          "p": 0.12415987087029098
-        },
-        {
-          "score": "2-0",
-          "p": 0.11035622898608585
-        },
-        {
-          "score": "0-0",
-          "p": 0.10170694617263822
-        },
-        {
-          "score": "2-1",
-          "p": 0.09055536590477384
-        },
-        {
-          "score": "0-1",
-          "p": 0.07779359950264589
-        },
-        {
-          "score": "3-0",
-          "p": 0.055037691403038796
-        },
-        {
-          "score": "1-2",
-          "p": 0.04966459702495634
-        },
-        {
-          "score": "3-1",
-          "p": 0.04516245552559249
-        },
-        {
-          "score": "2-2",
-          "p": 0.03715365398713198
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 163.9,
-          "direction": "home",
-          "weight": 0.4097045491866584
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 3.4,
-          "direction": "home",
-          "weight": 0.034326349206349194
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_H05",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -5511,13 +5297,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.549505628396244,
-      "p_draw": 0.240583624247974,
-      "p_away": 0.209910747355782,
-      "lambda_home": 1.77656669610519,
-      "lambda_away": 0.986151726894352,
-      "p_over_2_5": 0.406591086544144,
-      "p_btts": 0.523724205719236,
+      "p_home": 0.5495056283962442,
+      "p_draw": 0.24058362424797414,
+      "p_away": 0.20991074735578188,
+      "lambda_home": 1.776566696105195,
+      "lambda_away": 0.9861517268943523,
+      "p_over_2_5": 0.4065910865441442,
+      "p_btts": 0.5237242057192361,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -5583,215 +5369,215 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_J02",
+    "match_id": "WC2026_GROUP_I03",
     "tournament_id": "WC2026",
     "stage": "group",
-    "group_label": "J",
-    "match_number": 56,
-    "kickoff_utc": "2026-06-20T22:00:00",
+    "group_label": "I",
+    "match_number": 51,
+    "kickoff_utc": "2026-06-20T18:00:00",
     "venue": {
-      "venue_id": "AZTECA__MEXICO_CITY",
-      "name": "Estadio Azteca",
-      "city": "Mexico City",
-      "country": "Mexico",
-      "altitude_m": 2240,
-      "capacity": 87000,
+      "venue_id": "AT_T__DALLAS",
+      "name": "AT&T Stadium",
+      "city": "Dallas",
+      "country": "USA",
+      "altitude_m": 144,
+      "capacity": 80000,
       "surface": "natural",
-      "roof": "open",
-      "timezone": "America/Mexico_City",
-      "latitude": 19.3029,
-      "longitude": -99.1505
+      "roof": "retractable",
+      "timezone": "America/Chicago",
+      "latitude": 32.7473,
+      "longitude": -97.0945
     },
     "home_team": {
-      "team_id": "ECU",
-      "name": "Ecuador",
-      "fifa_code": "ECU",
-      "confederation": "CONMEBOL",
-      "fifa_rank": 22,
-      "elo": 1839.4,
-      "flag_emoji": "🇪🇨"
+      "team_id": "NED",
+      "name": "Netherlands",
+      "fifa_code": "NED",
+      "confederation": "UEFA",
+      "fifa_rank": 7,
+      "elo": 1855.8,
+      "flag_emoji": "🇳🇱"
     },
     "away_team": {
-      "team_id": "PAN",
-      "name": "Panama",
-      "fifa_code": "PAN",
-      "confederation": "CONCACAF",
-      "fifa_rank": 39,
-      "elo": 1762.5,
-      "flag_emoji": "🇵🇦"
+      "team_id": "CMR",
+      "name": "Cameroon",
+      "fifa_code": "CMR",
+      "confederation": "CAF",
+      "fifa_rank": 45,
+      "elo": 1691.9,
+      "flag_emoji": "🇨🇲"
     },
     "home_score": null,
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.527074066252955,
-      "p_draw": 0.245229937125769,
-      "p_away": 0.227695996621276,
-      "lambda_home": 1.0833239608783,
-      "lambda_away": 0.627240313565562,
-      "p_over_2_5": 0.183353617721366,
-      "p_btts": 0.311388317990198,
+      "p_home": 0.535713109069554,
+      "p_draw": 0.2345450067786503,
+      "p_away": 0.22974188415179564,
+      "lambda_home": 1.4961826416697737,
+      "lambda_away": 0.8205732176313438,
+      "p_over_2_5": 0.31656910722613224,
+      "p_btts": 0.4375379364563423,
       "top_scorelines": [
         {
           "score": "1-0",
-          "p": 0.1926690251258698
-        },
-        {
-          "score": "0-0",
-          "p": 0.18392127194924304
+          "p": 0.14440572973932148
         },
         {
           "score": "1-1",
-          "p": 0.1259871663843002
-        },
-        {
-          "score": "0-1",
-          "p": 0.11022544963884162
+          "p": 0.12415987087029098
         },
         {
           "score": "2-0",
-          "p": 0.10607157549728514
+          "p": 0.11035622898608585
+        },
+        {
+          "score": "0-0",
+          "p": 0.10170694617263822
         },
         {
           "score": "2-1",
-          "p": 0.06653236827531027
+          "p": 0.09055536590477384
         },
         {
-          "score": "1-2",
-          "p": 0.03852197961672633
+          "score": "0-1",
+          "p": 0.07779359950264589
         },
         {
           "score": "3-0",
-          "p": 0.038303293101440136
+          "p": 0.055037691403038796
         },
         {
-          "score": "0-2",
-          "p": 0.035559058054522176
+          "score": "1-2",
+          "p": 0.04966459702495634
         },
         {
           "score": "3-1",
-          "p": 0.024025369575540922
+          "p": 0.04516245552559249
+        },
+        {
+          "score": "2-2",
+          "p": 0.03715365398713198
         }
       ],
       "top_factors": [
         {
           "name": "elo_diff",
-          "value": 76.9,
+          "value": 163.9,
           "direction": "home",
-          "weight": 0.19219793768069565
+          "weight": 0.4097045491866584
         },
         {
           "name": "lineup_strength_diff",
-          "value": 0.9,
+          "value": 3.4,
           "direction": "home",
-          "weight": 0.008984917944143696
+          "weight": 0.034326349206349194
         }
       ]
     }
   },
   {
-    "match_id": "WC2026_GROUP_I04",
+    "match_id": "WC2026_GROUP_J01",
     "tournament_id": "WC2026",
     "stage": "group",
-    "group_label": "I",
-    "match_number": 52,
-    "kickoff_utc": "2026-06-20T22:00:00",
+    "group_label": "J",
+    "match_number": 55,
+    "kickoff_utc": "2026-06-20T18:00:00",
     "venue": {
-      "venue_id": "AKRON__GUADALAJARA",
-      "name": "Estadio Akron",
-      "city": "Guadalajara",
-      "country": "Mexico",
-      "altitude_m": 1566,
-      "capacity": 48000,
+      "venue_id": "SOFI__LOS_ANGELES",
+      "name": "SoFi Stadium",
+      "city": "Los Angeles",
+      "country": "USA",
+      "altitude_m": 35,
+      "capacity": 70000,
       "surface": "natural",
-      "roof": "open",
-      "timezone": "America/Mexico_City",
-      "latitude": 20.6818,
-      "longitude": -103.4626
+      "roof": "fixed",
+      "timezone": "America/Los_Angeles",
+      "latitude": 33.9535,
+      "longitude": -118.3392
     },
     "home_team": {
-      "team_id": "AUT",
-      "name": "Austria",
-      "fifa_code": "AUT",
-      "confederation": "UEFA",
-      "fifa_rank": 25,
-      "elo": 1737.6,
-      "flag_emoji": "🇦🇹"
+      "team_id": "URU",
+      "name": "Uruguay",
+      "fifa_code": "URU",
+      "confederation": "CONMEBOL",
+      "fifa_rank": 14,
+      "elo": 1797.9,
+      "flag_emoji": "🇺🇾"
     },
     "away_team": {
-      "team_id": "IRN",
-      "name": "Iran",
-      "fifa_code": "IRN",
-      "confederation": "AFC",
-      "fifa_rank": 20,
-      "elo": 1832.3,
-      "flag_emoji": "🇮🇷"
+      "team_id": "SWE",
+      "name": "Sweden",
+      "fifa_code": "SWE",
+      "confederation": "UEFA",
+      "fifa_rank": 35,
+      "elo": 1634.1,
+      "flag_emoji": "🇸🇪"
     },
     "home_score": null,
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.303259552509411,
-      "p_draw": 0.261791729351448,
-      "p_away": 0.434948718139141,
-      "lambda_home": 1.07894165131439,
-      "lambda_away": 1.26974729751134,
-      "p_over_2_5": 0.207712183260954,
-      "p_btts": 0.477997296481235,
+      "p_home": 0.56317804244742,
+      "p_draw": 0.246569657428837,
+      "p_away": 0.19025230012374306,
+      "lambda_home": 1.4638266369056268,
+      "lambda_away": 0.8626448851341959,
+      "p_over_2_5": 0.30977406323002893,
+      "p_btts": 0.44741199993491576,
       "top_scorelines": [
         {
-          "score": "1-1",
-          "p": 0.13418948457376592
-        },
-        {
-          "score": "0-1",
-          "p": 0.11789211592906458
-        },
-        {
           "score": "1-0",
-          "p": 0.09967109227275617
+          "p": 0.13976170951920722
         },
         {
-          "score": "0-0",
-          "p": 0.09885785990292599
-        },
-        {
-          "score": "1-2",
-          "p": 0.08305850457069579
-        },
-        {
-          "score": "0-2",
-          "p": 0.07698146092470533
-        },
-        {
-          "score": "2-1",
-          "p": 0.07057725600428774
+          "score": "1-1",
+          "p": 0.12646774143172923
         },
         {
           "score": "2-0",
-          "p": 0.05558370247577347
+          "p": 0.10461300619915631
+        },
+        {
+          "score": "0-0",
+          "p": 0.10081109597475522
+        },
+        {
+          "score": "2-1",
+          "p": 0.09024387471621412
+        },
+        {
+          "score": "0-1",
+          "p": 0.08106115873002123
+        },
+        {
+          "score": "1-2",
+          "p": 0.05318144579142005
+        },
+        {
+          "score": "3-0",
+          "p": 0.051045101680366155
+        },
+        {
+          "score": "3-1",
+          "p": 0.04403379587572281
         },
         {
           "score": "2-2",
-          "p": 0.044807640038605184
-        },
-        {
-          "score": "1-3",
-          "p": 0.03515443723799141
+          "p": 0.03892420846931665
         }
       ],
       "top_factors": [
         {
           "name": "elo_diff",
-          "value": -94.7,
-          "direction": "away",
-          "weight": 0.23668107884033587
+          "value": 163.8,
+          "direction": "home",
+          "weight": 0.40950211937895575
         },
         {
-          "name": "lineup_strength_diff",
-          "value": 0.9,
-          "direction": "home",
-          "weight": 0.009433413563717252
+          "name": "model_disagreement",
+          "value": 0.063,
+          "direction": "neutral",
+          "weight": 0.06259787105717429
         }
       ]
     }
@@ -5838,13 +5624,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.303259552509411,
-      "p_draw": 0.261791729351448,
-      "p_away": 0.434948718139141,
-      "lambda_home": 0.868659258439444,
-      "lambda_away": 1.48900760093553,
-      "p_over_2_5": 0.147417101291711,
-      "p_btts": 0.452673628904701,
+      "p_home": 0.3032595525094113,
+      "p_draw": 0.2617917293514475,
+      "p_away": 0.4349487181391412,
+      "lambda_home": 0.8686592584394438,
+      "lambda_away": 1.4890076009355302,
+      "p_over_2_5": 0.14741710129171065,
+      "p_btts": 0.4526736289047008,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -5910,6 +5696,220 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_I04",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "I",
+    "match_number": 52,
+    "kickoff_utc": "2026-06-20T22:00:00",
+    "venue": {
+      "venue_id": "AKRON__GUADALAJARA",
+      "name": "Estadio Akron",
+      "city": "Guadalajara",
+      "country": "Mexico",
+      "altitude_m": 1566,
+      "capacity": 48000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/Mexico_City",
+      "latitude": 20.6818,
+      "longitude": -103.4626
+    },
+    "home_team": {
+      "team_id": "AUT",
+      "name": "Austria",
+      "fifa_code": "AUT",
+      "confederation": "UEFA",
+      "fifa_rank": 25,
+      "elo": 1737.6,
+      "flag_emoji": "🇦🇹"
+    },
+    "away_team": {
+      "team_id": "IRN",
+      "name": "Iran",
+      "fifa_code": "IRN",
+      "confederation": "AFC",
+      "fifa_rank": 20,
+      "elo": 1832.3,
+      "flag_emoji": "🇮🇷"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.3032595525094113,
+      "p_draw": 0.2617917293514475,
+      "p_away": 0.4349487181391412,
+      "lambda_home": 1.0789416513143903,
+      "lambda_away": 1.26974729751134,
+      "p_over_2_5": 0.2077121832609544,
+      "p_btts": 0.4779972964812352,
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "p": 0.13418948457376592
+        },
+        {
+          "score": "0-1",
+          "p": 0.11789211592906458
+        },
+        {
+          "score": "1-0",
+          "p": 0.09967109227275617
+        },
+        {
+          "score": "0-0",
+          "p": 0.09885785990292599
+        },
+        {
+          "score": "1-2",
+          "p": 0.08305850457069579
+        },
+        {
+          "score": "0-2",
+          "p": 0.07698146092470533
+        },
+        {
+          "score": "2-1",
+          "p": 0.07057725600428774
+        },
+        {
+          "score": "2-0",
+          "p": 0.05558370247577347
+        },
+        {
+          "score": "2-2",
+          "p": 0.044807640038605184
+        },
+        {
+          "score": "1-3",
+          "p": 0.03515443723799141
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": -94.7,
+          "direction": "away",
+          "weight": 0.23668107884033587
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 0.9,
+          "direction": "home",
+          "weight": 0.009433413563717252
+        }
+      ]
+    }
+  },
+  {
+    "match_id": "WC2026_GROUP_J02",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "J",
+    "match_number": 56,
+    "kickoff_utc": "2026-06-20T22:00:00",
+    "venue": {
+      "venue_id": "AZTECA__MEXICO_CITY",
+      "name": "Estadio Azteca",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "altitude_m": 2240,
+      "capacity": 87000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/Mexico_City",
+      "latitude": 19.3029,
+      "longitude": -99.1505
+    },
+    "home_team": {
+      "team_id": "ECU",
+      "name": "Ecuador",
+      "fifa_code": "ECU",
+      "confederation": "CONMEBOL",
+      "fifa_rank": 22,
+      "elo": 1839.4,
+      "flag_emoji": "🇪🇨"
+    },
+    "away_team": {
+      "team_id": "PAN",
+      "name": "Panama",
+      "fifa_code": "PAN",
+      "confederation": "CONCACAF",
+      "fifa_rank": 39,
+      "elo": 1762.5,
+      "flag_emoji": "🇵🇦"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.5270740662529547,
+      "p_draw": 0.2452299371257689,
+      "p_away": 0.2276959966212764,
+      "lambda_home": 1.0833239608782983,
+      "lambda_away": 0.6272403135655615,
+      "p_over_2_5": 0.18335361772136646,
+      "p_btts": 0.3113883179901982,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.1926690251258698
+        },
+        {
+          "score": "0-0",
+          "p": 0.18392127194924304
+        },
+        {
+          "score": "1-1",
+          "p": 0.1259871663843002
+        },
+        {
+          "score": "0-1",
+          "p": 0.11022544963884162
+        },
+        {
+          "score": "2-0",
+          "p": 0.10607157549728514
+        },
+        {
+          "score": "2-1",
+          "p": 0.06653236827531027
+        },
+        {
+          "score": "1-2",
+          "p": 0.03852197961672633
+        },
+        {
+          "score": "3-0",
+          "p": 0.038303293101440136
+        },
+        {
+          "score": "0-2",
+          "p": 0.035559058054522176
+        },
+        {
+          "score": "3-1",
+          "p": 0.024025369575540922
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 76.9,
+          "direction": "home",
+          "weight": 0.19219793768069565
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 0.9,
+          "direction": "home",
+          "weight": 0.008984917944143696
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_I05",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -5951,13 +5951,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.443211956445411,
-      "p_draw": 0.244018730975027,
-      "p_away": 0.312769312579562,
-      "lambda_home": 1.44399605885265,
-      "lambda_away": 1.27293103265596,
-      "p_over_2_5": 0.315490869436747,
-      "p_btts": 0.553201675681701,
+      "p_home": 0.44321195644541095,
+      "p_draw": 0.24401873097502735,
+      "p_away": 0.31276931257956175,
+      "lambda_home": 1.4439960588526533,
+      "lambda_away": 1.2729310326559649,
+      "p_over_2_5": 0.3154908694367472,
+      "p_btts": 0.5532016756817014,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -6058,13 +6058,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.325948664210173,
-      "p_draw": 0.339041739516712,
-      "p_away": 0.335009596273115,
-      "lambda_home": 0.629876502548751,
+      "p_home": 0.32594866421017266,
+      "p_draw": 0.3390417395167123,
+      "p_away": 0.33500959627311505,
+      "lambda_home": 0.6298765025487508,
       "lambda_away": 0.665522625774466,
-      "p_over_2_5": 0.0742339369452345,
-      "p_btts": 0.230076128838715,
+      "p_over_2_5": 0.07423393694523452,
+      "p_btts": 0.2300761288387148,
       "top_scorelines": [
         {
           "score": "0-0",
@@ -6165,13 +6165,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.451102057983892,
-      "p_draw": 0.240560803695568,
-      "p_away": 0.30833713832054,
-      "lambda_home": 1.57717801602702,
-      "lambda_away": 1.09314869184266,
-      "p_over_2_5": 0.352598519857863,
-      "p_btts": 0.53057471564825,
+      "p_home": 0.4511020579838916,
+      "p_draw": 0.24056080369556812,
+      "p_away": 0.3083371383205404,
+      "lambda_home": 1.5771780160270183,
+      "lambda_away": 1.0931486918426625,
+      "p_over_2_5": 0.35259851985786284,
+      "p_btts": 0.5305747156482502,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -6237,6 +6237,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_I06",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "I",
+    "match_number": 54,
+    "kickoff_utc": "2026-06-21T22:00:00",
+    "venue": {
+      "venue_id": "ARROWHEAD__KANSAS_CITY",
+      "name": "Arrowhead Stadium",
+      "city": "Kansas City",
+      "country": "USA",
+      "altitude_m": 226,
+      "capacity": 76000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/Chicago",
+      "latitude": 39.0489,
+      "longitude": -94.4839
+    },
+    "home_team": {
+      "team_id": "AUT",
+      "name": "Austria",
+      "fifa_code": "AUT",
+      "confederation": "UEFA",
+      "fifa_rank": 25,
+      "elo": 1737.6,
+      "flag_emoji": "🇦🇹"
+    },
+    "away_team": {
+      "team_id": "CMR",
+      "name": "Cameroon",
+      "fifa_code": "CMR",
+      "confederation": "CAF",
+      "fifa_rank": 45,
+      "elo": 1691.9,
+      "flag_emoji": "🇨🇲"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.4373475849249808,
+      "p_draw": 0.25402151848916493,
+      "p_away": 0.30863089658585424,
+      "lambda_home": 1.117935024943054,
+      "lambda_away": 0.8185208772258625,
+      "p_over_2_5": 0.2063906399822477,
+      "p_btts": 0.3795676325962151,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.15783064723459403
+        },
+        {
+          "score": "0-0",
+          "p": 0.14760647157559684
+        },
+        {
+          "score": "1-1",
+          "p": 0.1353558979832139
+        },
+        {
+          "score": "0-1",
+          "p": 0.11465076044264355
+        },
+        {
+          "score": "2-0",
+          "p": 0.09011815917149057
+        },
+        {
+          "score": "2-1",
+          "p": 0.07376359469902838
+        },
+        {
+          "score": "1-2",
+          "p": 0.05400764882865819
+        },
+        {
+          "score": "0-2",
+          "p": 0.04831018585486153
+        },
+        {
+          "score": "3-0",
+          "p": 0.033582082173734144
+        },
+        {
+          "score": "2-2",
+          "p": 0.03018852112019085
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 45.7,
+          "direction": "home",
+          "weight": 0.11433029477746232
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 2.6,
+          "direction": "home",
+          "weight": 0.026048166486291515
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_J04",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -6278,13 +6385,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.355043463321188,
-      "p_draw": 0.24233455614897,
-      "p_away": 0.402621980529842,
-      "lambda_home": 1.40419549629508,
-      "lambda_away": 1.45770016030602,
-      "p_over_2_5": 0.301973059503513,
-      "p_btts": 0.581825134256875,
+      "p_home": 0.35504346332118764,
+      "p_draw": 0.24233455614897007,
+      "p_away": 0.4026219805298424,
+      "lambda_home": 1.404195496295081,
+      "lambda_away": 1.457700160306016,
+      "p_over_2_5": 0.30197305950351294,
+      "p_btts": 0.5818251342568747,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -6350,113 +6457,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_I06",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "I",
-    "match_number": 54,
-    "kickoff_utc": "2026-06-21T22:00:00",
-    "venue": {
-      "venue_id": "ARROWHEAD__KANSAS_CITY",
-      "name": "Arrowhead Stadium",
-      "city": "Kansas City",
-      "country": "USA",
-      "altitude_m": 226,
-      "capacity": 76000,
-      "surface": "natural",
-      "roof": "open",
-      "timezone": "America/Chicago",
-      "latitude": 39.0489,
-      "longitude": -94.4839
-    },
-    "home_team": {
-      "team_id": "AUT",
-      "name": "Austria",
-      "fifa_code": "AUT",
-      "confederation": "UEFA",
-      "fifa_rank": 25,
-      "elo": 1737.6,
-      "flag_emoji": "🇦🇹"
-    },
-    "away_team": {
-      "team_id": "CMR",
-      "name": "Cameroon",
-      "fifa_code": "CMR",
-      "confederation": "CAF",
-      "fifa_rank": 45,
-      "elo": 1691.9,
-      "flag_emoji": "🇨🇲"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.437347584924981,
-      "p_draw": 0.254021518489165,
-      "p_away": 0.308630896585854,
-      "lambda_home": 1.11793502494305,
-      "lambda_away": 0.818520877225863,
-      "p_over_2_5": 0.206390639982248,
-      "p_btts": 0.379567632596215,
-      "top_scorelines": [
-        {
-          "score": "1-0",
-          "p": 0.15783064723459403
-        },
-        {
-          "score": "0-0",
-          "p": 0.14760647157559684
-        },
-        {
-          "score": "1-1",
-          "p": 0.1353558979832139
-        },
-        {
-          "score": "0-1",
-          "p": 0.11465076044264355
-        },
-        {
-          "score": "2-0",
-          "p": 0.09011815917149057
-        },
-        {
-          "score": "2-1",
-          "p": 0.07376359469902838
-        },
-        {
-          "score": "1-2",
-          "p": 0.05400764882865819
-        },
-        {
-          "score": "0-2",
-          "p": 0.04831018585486153
-        },
-        {
-          "score": "3-0",
-          "p": 0.033582082173734144
-        },
-        {
-          "score": "2-2",
-          "p": 0.03018852112019085
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": 45.7,
-          "direction": "home",
-          "weight": 0.11433029477746232
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 2.6,
-          "direction": "home",
-          "weight": 0.026048166486291515
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_K02",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -6498,13 +6498,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.213460857676485,
-      "p_draw": 0.246564986668015,
-      "p_away": 0.539974155655499,
-      "lambda_home": 0.642201253848726,
-      "lambda_away": 1.47311731787225,
-      "p_over_2_5": 0.0895936674215966,
-      "p_btts": 0.368181856300641,
+      "p_home": 0.21346085767648532,
+      "p_draw": 0.24656498666801527,
+      "p_away": 0.5399741556554994,
+      "lambda_home": 0.6422012538487263,
+      "lambda_away": 1.4731173178722496,
+      "p_over_2_5": 0.08959366742159655,
+      "p_btts": 0.36818185630064126,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -6611,13 +6611,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.423732664421639,
-      "p_draw": 0.277244323583003,
+      "p_home": 0.42373266442163926,
+      "p_draw": 0.27724432358300266,
       "p_away": 0.299023011995358,
-      "lambda_home": 1.22655051226885,
-      "lambda_away": 0.750357918361753,
-      "p_over_2_5": 0.233127207012561,
-      "p_btts": 0.376272013072038,
+      "lambda_home": 1.2265505122688514,
+      "lambda_away": 0.7503579183617533,
+      "p_over_2_5": 0.23312720701256093,
+      "p_btts": 0.3762720130720384,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -6683,6 +6683,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_K03",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "K",
+    "match_number": 63,
+    "kickoff_utc": "2026-06-22T18:00:00",
+    "venue": {
+      "venue_id": "BMO__TORONTO",
+      "name": "BMO Field",
+      "city": "Toronto",
+      "country": "Canada",
+      "altitude_m": 76,
+      "capacity": 45000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/Toronto",
+      "latitude": 43.6325,
+      "longitude": -79.4185
+    },
+    "home_team": {
+      "team_id": "COL",
+      "name": "Colombia",
+      "fifa_code": "COL",
+      "confederation": "CONMEBOL",
+      "fifa_rank": 12,
+      "elo": 1865.1,
+      "flag_emoji": "🇨🇴"
+    },
+    "away_team": {
+      "team_id": "PAR",
+      "name": "Paraguay",
+      "fifa_code": "PAR",
+      "confederation": "CONMEBOL",
+      "fifa_rank": 41,
+      "elo": 1729.0,
+      "flag_emoji": "🇵🇾"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.56317804244742,
+      "p_draw": 0.246569657428837,
+      "p_away": 0.19025230012374306,
+      "lambda_home": 1.4816946625666307,
+      "lambda_away": 0.7574565229653559,
+      "p_over_2_5": 0.30771715802872196,
+      "p_btts": 0.41350983846047096,
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "p": 0.1548032424172532
+        },
+        {
+          "score": "1-1",
+          "p": 0.1226586308706769
+        },
+        {
+          "score": "2-0",
+          "p": 0.11696271610258462
+        },
+        {
+          "score": "0-0",
+          "p": 0.10962531414444816
+        },
+        {
+          "score": "2-1",
+          "p": 0.0885941722556478
+        },
+        {
+          "score": "0-1",
+          "p": 0.07763450415529739
+        },
+        {
+          "score": "3-0",
+          "p": 0.05776767738949859
+        },
+        {
+          "score": "1-2",
+          "p": 0.04529019059535085
+        },
+        {
+          "score": "3-1",
+          "p": 0.04375650405523401
+        },
+        {
+          "score": "2-2",
+          "p": 0.03355311683587839
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": 136.1,
+          "direction": "home",
+          "weight": 0.34021285243125704
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": 1.5,
+          "direction": "home",
+          "weight": 0.015329797830840037
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_L01",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -6724,13 +6831,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.280216802685617,
-      "p_draw": 0.241899853644757,
-      "p_away": 0.477883343669626,
-      "lambda_home": 1.20497483748199,
-      "lambda_away": 1.4061460369271,
-      "p_over_2_5": 0.244135687899228,
-      "p_btts": 0.531861537511277,
+      "p_home": 0.28021680268561694,
+      "p_draw": 0.24189985364475675,
+      "p_away": 0.4778833436696262,
+      "lambda_home": 1.2049748374819909,
+      "lambda_away": 1.4061460369271044,
+      "p_over_2_5": 0.24413568789922838,
+      "p_btts": 0.5318615375112772,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -6796,108 +6903,108 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_K03",
+    "match_id": "WC2026_GROUP_J06",
     "tournament_id": "WC2026",
     "stage": "group",
-    "group_label": "K",
-    "match_number": 63,
-    "kickoff_utc": "2026-06-22T18:00:00",
+    "group_label": "J",
+    "match_number": 60,
+    "kickoff_utc": "2026-06-22T22:00:00",
     "venue": {
-      "venue_id": "BMO__TORONTO",
-      "name": "BMO Field",
-      "city": "Toronto",
-      "country": "Canada",
-      "altitude_m": 76,
-      "capacity": 45000,
+      "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA",
+      "name": "Lincoln Financial Field",
+      "city": "Philadelphia",
+      "country": "USA",
+      "altitude_m": 12,
+      "capacity": 69000,
       "surface": "natural",
       "roof": "open",
-      "timezone": "America/Toronto",
-      "latitude": 43.6325,
-      "longitude": -79.4185
+      "timezone": "America/New_York",
+      "latitude": 39.9008,
+      "longitude": -75.1675
     },
     "home_team": {
-      "team_id": "COL",
-      "name": "Colombia",
-      "fifa_code": "COL",
-      "confederation": "CONMEBOL",
-      "fifa_rank": 12,
-      "elo": 1865.1,
-      "flag_emoji": "🇨🇴"
+      "team_id": "SWE",
+      "name": "Sweden",
+      "fifa_code": "SWE",
+      "confederation": "UEFA",
+      "fifa_rank": 35,
+      "elo": 1634.1,
+      "flag_emoji": "🇸🇪"
     },
     "away_team": {
-      "team_id": "PAR",
-      "name": "Paraguay",
-      "fifa_code": "PAR",
+      "team_id": "ECU",
+      "name": "Ecuador",
+      "fifa_code": "ECU",
       "confederation": "CONMEBOL",
-      "fifa_rank": 41,
-      "elo": 1729.0,
-      "flag_emoji": "🇵🇾"
+      "fifa_rank": 22,
+      "elo": 1839.4,
+      "flag_emoji": "🇪🇨"
     },
     "home_score": null,
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.56317804244742,
-      "p_draw": 0.246569657428837,
-      "p_away": 0.190252300123743,
-      "lambda_home": 1.48169466256663,
-      "lambda_away": 0.757456522965356,
-      "p_over_2_5": 0.307717158028722,
-      "p_btts": 0.413509838460471,
+      "p_home": 0.21346085767648532,
+      "p_draw": 0.24656498666801527,
+      "p_away": 0.5399741556554994,
+      "lambda_home": 0.7211034027982888,
+      "lambda_away": 1.2928929175516632,
+      "p_over_2_5": 0.10927296443033667,
+      "p_btts": 0.3759599827665997,
       "top_scorelines": [
         {
-          "score": "1-0",
-          "p": 0.1548032424172532
-        },
-        {
-          "score": "1-1",
-          "p": 0.1226586308706769
-        },
-        {
-          "score": "2-0",
-          "p": 0.11696271610258462
+          "score": "0-1",
+          "p": 0.16934558976894906
         },
         {
           "score": "0-0",
-          "p": 0.10962531414444816
+          "p": 0.1366534884941152
         },
         {
-          "score": "2-1",
-          "p": 0.0885941722556478
+          "score": "1-1",
+          "p": 0.12761981933987848
         },
         {
-          "score": "0-1",
-          "p": 0.07763450415529739
+          "score": "0-2",
+          "p": 0.1115402112303049
         },
         {
-          "score": "3-0",
-          "p": 0.05776767738949859
+          "score": "1-0",
+          "p": 0.09303715724875705
         },
         {
           "score": "1-2",
-          "p": 0.04529019059535085
+          "p": 0.08043202586701277
         },
         {
-          "score": "3-1",
-          "p": 0.04375650405523401
+          "score": "0-3",
+          "p": 0.048069849707292577
         },
         {
-          "score": "2-2",
-          "p": 0.03355311683587839
+          "score": "2-1",
+          "p": 0.04486048825798851
+        },
+        {
+          "score": "2-0",
+          "p": 0.034697760076635206
+        },
+        {
+          "score": "1-3",
+          "p": 0.034663332195931006
         }
       ],
       "top_factors": [
         {
           "name": "elo_diff",
-          "value": 136.1,
-          "direction": "home",
-          "weight": 0.34021285243125704
+          "value": -205.2,
+          "direction": "away",
+          "weight": 0.513068605965301
         },
         {
           "name": "lineup_strength_diff",
-          "value": 1.5,
+          "value": 0.2,
           "direction": "home",
-          "weight": 0.015329797830840037
+          "weight": 0.0021430545123213847
         }
       ]
     }
@@ -6944,13 +7051,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.280216802685617,
-      "p_draw": 0.241899853644757,
-      "p_away": 0.477883343669626,
-      "lambda_home": 0.926814198914175,
-      "lambda_away": 1.5680479301668,
-      "p_over_2_5": 0.162289804367455,
-      "p_btts": 0.481320476115118,
+      "p_home": 0.28021680268561694,
+      "p_draw": 0.24189985364475675,
+      "p_away": 0.4778833436696262,
+      "lambda_home": 0.9268141989141748,
+      "lambda_away": 1.5680479301667978,
+      "p_over_2_5": 0.1622898043674546,
+      "p_btts": 0.4813204761151176,
       "top_scorelines": [
         {
           "score": "0-1",
@@ -7057,13 +7164,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.417050123119348,
-      "p_draw": 0.240338212100272,
-      "p_away": 0.342611664780381,
-      "lambda_home": 1.53988778033032,
-      "lambda_away": 1.29614076932234,
-      "p_over_2_5": 0.343634013729624,
-      "p_btts": 0.573669574473651,
+      "p_home": 0.4170501231193478,
+      "p_draw": 0.2403382121002715,
+      "p_away": 0.34261166478038063,
+      "lambda_home": 1.539887780330319,
+      "lambda_away": 1.2961407693223408,
+      "p_over_2_5": 0.34363401372962443,
+      "p_btts": 0.5736695744736509,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -7129,220 +7236,6 @@
     }
   },
   {
-    "match_id": "WC2026_GROUP_J06",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "J",
-    "match_number": 60,
-    "kickoff_utc": "2026-06-22T22:00:00",
-    "venue": {
-      "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA",
-      "name": "Lincoln Financial Field",
-      "city": "Philadelphia",
-      "country": "USA",
-      "altitude_m": 12,
-      "capacity": 69000,
-      "surface": "natural",
-      "roof": "open",
-      "timezone": "America/New_York",
-      "latitude": 39.9008,
-      "longitude": -75.1675
-    },
-    "home_team": {
-      "team_id": "SWE",
-      "name": "Sweden",
-      "fifa_code": "SWE",
-      "confederation": "UEFA",
-      "fifa_rank": 35,
-      "elo": 1634.1,
-      "flag_emoji": "🇸🇪"
-    },
-    "away_team": {
-      "team_id": "ECU",
-      "name": "Ecuador",
-      "fifa_code": "ECU",
-      "confederation": "CONMEBOL",
-      "fifa_rank": 22,
-      "elo": 1839.4,
-      "flag_emoji": "🇪🇨"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.213460857676485,
-      "p_draw": 0.246564986668015,
-      "p_away": 0.539974155655499,
-      "lambda_home": 0.721103402798289,
-      "lambda_away": 1.29289291755166,
-      "p_over_2_5": 0.109272964430337,
-      "p_btts": 0.3759599827666,
-      "top_scorelines": [
-        {
-          "score": "0-1",
-          "p": 0.16934558976894906
-        },
-        {
-          "score": "0-0",
-          "p": 0.1366534884941152
-        },
-        {
-          "score": "1-1",
-          "p": 0.12761981933987848
-        },
-        {
-          "score": "0-2",
-          "p": 0.1115402112303049
-        },
-        {
-          "score": "1-0",
-          "p": 0.09303715724875705
-        },
-        {
-          "score": "1-2",
-          "p": 0.08043202586701277
-        },
-        {
-          "score": "0-3",
-          "p": 0.048069849707292577
-        },
-        {
-          "score": "2-1",
-          "p": 0.04486048825798851
-        },
-        {
-          "score": "2-0",
-          "p": 0.034697760076635206
-        },
-        {
-          "score": "1-3",
-          "p": 0.034663332195931006
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": -205.2,
-          "direction": "away",
-          "weight": 0.513068605965301
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": 0.2,
-          "direction": "home",
-          "weight": 0.0021430545123213847
-        }
-      ]
-    }
-  },
-  {
-    "match_id": "WC2026_GROUP_L03",
-    "tournament_id": "WC2026",
-    "stage": "group",
-    "group_label": "L",
-    "match_number": 69,
-    "kickoff_utc": "2026-06-23T18:00:00",
-    "venue": {
-      "venue_id": "NRG__HOUSTON",
-      "name": "NRG Stadium",
-      "city": "Houston",
-      "country": "USA",
-      "altitude_m": 15,
-      "capacity": 72000,
-      "surface": "natural",
-      "roof": "retractable",
-      "timezone": "America/Chicago",
-      "latitude": 29.6847,
-      "longitude": -95.4107
-    },
-    "home_team": {
-      "team_id": "VEN",
-      "name": "Venezuela",
-      "fifa_code": "VEN",
-      "confederation": "CONMEBOL",
-      "fifa_rank": 53,
-      "elo": 1653.3,
-      "flag_emoji": "🇻🇪"
-    },
-    "away_team": {
-      "team_id": "NZL",
-      "name": "New Zealand",
-      "fifa_code": "NZL",
-      "confederation": "OFC",
-      "fifa_rank": 95,
-      "elo": 1676.3,
-      "flag_emoji": "🇳🇿"
-    },
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": {
-      "p_home": 0.378428370995777,
-      "p_draw": 0.252430202133824,
-      "p_away": 0.369141426870399,
-      "lambda_home": 1.09977505841009,
-      "lambda_away": 1.38487324218473,
-      "p_over_2_5": 0.213556842227473,
-      "p_btts": 0.503313418905301,
-      "top_scorelines": [
-        {
-          "score": "1-1",
-          "p": 0.13021891633040367
-        },
-        {
-          "score": "0-1",
-          "p": 0.11217477071687948
-        },
-        {
-          "score": "1-0",
-          "p": 0.08841003666535631
-        },
-        {
-          "score": "1-2",
-          "p": 0.08790881516143759
-        },
-        {
-          "score": "0-0",
-          "p": 0.0866194748189521
-        },
-        {
-          "score": "0-2",
-          "p": 0.07993345047170299
-        },
-        {
-          "score": "2-1",
-          "p": 0.06981138734142442
-        },
-        {
-          "score": "2-0",
-          "p": 0.05040994743410049
-        },
-        {
-          "score": "2-2",
-          "p": 0.04833996116446613
-        },
-        {
-          "score": "1-3",
-          "p": 0.04058085528974599
-        }
-      ],
-      "top_factors": [
-        {
-          "name": "elo_diff",
-          "value": -23.1,
-          "direction": "away",
-          "weight": 0.057708253129874265
-        },
-        {
-          "name": "lineup_strength_diff",
-          "value": -0.3,
-          "direction": "away",
-          "weight": 0.003089172532893436
-        }
-      ]
-    }
-  },
-  {
     "match_id": "WC2026_GROUP_K05",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -7384,13 +7277,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.397048809562917,
-      "p_draw": 0.237129604832015,
-      "p_away": 0.365821585605068,
-      "lambda_home": 1.21012643505694,
-      "lambda_away": 1.41904421508052,
-      "p_over_2_5": 0.245506433629274,
-      "p_btts": 0.535213399488002,
+      "p_home": 0.39704880956291716,
+      "p_draw": 0.23712960483201478,
+      "p_away": 0.3658215856050681,
+      "lambda_home": 1.2101264350569398,
+      "lambda_away": 1.4190442150805171,
+      "p_over_2_5": 0.2455064336292744,
+      "p_btts": 0.5352133994880015,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -7450,6 +7343,113 @@
     }
   },
   {
+    "match_id": "WC2026_GROUP_L03",
+    "tournament_id": "WC2026",
+    "stage": "group",
+    "group_label": "L",
+    "match_number": 69,
+    "kickoff_utc": "2026-06-23T18:00:00",
+    "venue": {
+      "venue_id": "NRG__HOUSTON",
+      "name": "NRG Stadium",
+      "city": "Houston",
+      "country": "USA",
+      "altitude_m": 15,
+      "capacity": 72000,
+      "surface": "natural",
+      "roof": "retractable",
+      "timezone": "America/Chicago",
+      "latitude": 29.6847,
+      "longitude": -95.4107
+    },
+    "home_team": {
+      "team_id": "VEN",
+      "name": "Venezuela",
+      "fifa_code": "VEN",
+      "confederation": "CONMEBOL",
+      "fifa_rank": 53,
+      "elo": 1653.3,
+      "flag_emoji": "🇻🇪"
+    },
+    "away_team": {
+      "team_id": "NZL",
+      "name": "New Zealand",
+      "fifa_code": "NZL",
+      "confederation": "OFC",
+      "fifa_rank": 95,
+      "elo": 1676.3,
+      "flag_emoji": "🇳🇿"
+    },
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": {
+      "p_home": 0.3784283709957774,
+      "p_draw": 0.2524302021338241,
+      "p_away": 0.36914142687039864,
+      "lambda_home": 1.099775058410095,
+      "lambda_away": 1.3848732421847272,
+      "p_over_2_5": 0.21355684222747265,
+      "p_btts": 0.5033134189053009,
+      "top_scorelines": [
+        {
+          "score": "1-1",
+          "p": 0.13021891633040367
+        },
+        {
+          "score": "0-1",
+          "p": 0.11217477071687948
+        },
+        {
+          "score": "1-0",
+          "p": 0.08841003666535631
+        },
+        {
+          "score": "1-2",
+          "p": 0.08790881516143759
+        },
+        {
+          "score": "0-0",
+          "p": 0.0866194748189521
+        },
+        {
+          "score": "0-2",
+          "p": 0.07993345047170299
+        },
+        {
+          "score": "2-1",
+          "p": 0.06981138734142442
+        },
+        {
+          "score": "2-0",
+          "p": 0.05040994743410049
+        },
+        {
+          "score": "2-2",
+          "p": 0.04833996116446613
+        },
+        {
+          "score": "1-3",
+          "p": 0.04058085528974599
+        }
+      ],
+      "top_factors": [
+        {
+          "name": "elo_diff",
+          "value": -23.1,
+          "direction": "away",
+          "weight": 0.057708253129874265
+        },
+        {
+          "name": "lineup_strength_diff",
+          "value": -0.3,
+          "direction": "away",
+          "weight": 0.003089172532893436
+        }
+      ]
+    }
+  },
+  {
     "match_id": "WC2026_GROUP_K06",
     "tournament_id": "WC2026",
     "stage": "group",
@@ -7491,13 +7491,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.505950661440887,
-      "p_draw": 0.256183219372109,
-      "p_away": 0.237866119187003,
-      "lambda_home": 1.13480344858137,
-      "lambda_away": 0.836991631694699,
-      "p_over_2_5": 0.212240972905228,
-      "p_btts": 0.38810808993943,
+      "p_home": 0.5059506614408873,
+      "p_draw": 0.25618321937210925,
+      "p_away": 0.2378661191870034,
+      "lambda_home": 1.1348034485813747,
+      "lambda_away": 0.8369916316946993,
+      "p_over_2_5": 0.21224097290522814,
+      "p_btts": 0.38810808993942986,
       "top_scorelines": [
         {
           "score": "1-0",
@@ -7598,13 +7598,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.477290749481917,
-      "p_draw": 0.22908330998998,
-      "p_away": 0.293625940528103,
-      "lambda_home": 1.56354172617852,
-      "lambda_away": 1.42012405257293,
-      "p_over_2_5": 0.349151874841897,
-      "p_btts": 0.602408673488488,
+      "p_home": 0.47729074948191685,
+      "p_draw": 0.22908330998997975,
+      "p_away": 0.29362594052810326,
+      "lambda_home": 1.5635417261785212,
+      "lambda_away": 1.4201240525729255,
+      "p_over_2_5": 0.3491518748418972,
+      "p_btts": 0.6024086734884881,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -7705,13 +7705,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.383470486143275,
-      "p_draw": 0.242469709500267,
-      "p_away": 0.374059804356459,
-      "lambda_home": 1.2984207350664,
-      "lambda_away": 1.37620996718602,
+      "p_home": 0.38347048614327467,
+      "p_draw": 0.2424697095002667,
+      "p_away": 0.37405980435645864,
+      "lambda_home": 1.2984207350664025,
+      "lambda_away": 1.376209967186019,
       "p_over_2_5": 0.271969574177289,
-      "p_btts": 0.546597487481993,
+      "p_btts": 0.5465974874819925,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -7818,13 +7818,13 @@
     "away_score": null,
     "status": "scheduled",
     "prediction": {
-      "p_home": 0.477290749481917,
-      "p_draw": 0.22908330998998,
-      "p_away": 0.293625940528103,
-      "lambda_home": 1.32433513020467,
-      "lambda_away": 1.4290637678003,
-      "p_over_2_5": 0.278982886888886,
-      "p_btts": 0.561291923688535,
+      "p_home": 0.47729074948191685,
+      "p_draw": 0.22908330998997975,
+      "p_away": 0.29362594052810326,
+      "lambda_home": 1.3243351302046675,
+      "lambda_away": 1.429063767800301,
+      "p_over_2_5": 0.2789828868888855,
+      "p_btts": 0.5612919236885349,
       "top_scorelines": [
         {
           "score": "1-1",
@@ -8160,33 +8160,6 @@
     "prediction": null
   },
   {
-    "match_id": "WC2026_ROUND_32_11",
-    "tournament_id": "WC2026",
-    "stage": "round_32",
-    "group_label": null,
-    "match_number": 83,
-    "kickoff_utc": "2026-07-12T12:00:00",
-    "venue": {
-      "venue_id": "METLIFE__NEW_YORK",
-      "name": "MetLife Stadium",
-      "city": "New York/New Jersey",
-      "country": "USA",
-      "altitude_m": 2,
-      "capacity": 82000,
-      "surface": "natural",
-      "roof": "open",
-      "timezone": "America/New_York",
-      "latitude": 40.8136,
-      "longitude": -74.0744
-    },
-    "home_team": null,
-    "away_team": null,
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": null
-  },
-  {
     "match_id": "WC2026_ROUND_16_01",
     "tournament_id": "WC2026",
     "stage": "round_16",
@@ -8214,24 +8187,24 @@
     "prediction": null
   },
   {
-    "match_id": "WC2026_ROUND_32_12",
+    "match_id": "WC2026_ROUND_32_11",
     "tournament_id": "WC2026",
     "stage": "round_32",
     "group_label": null,
-    "match_number": 84,
-    "kickoff_utc": "2026-07-12T15:00:00",
+    "match_number": 83,
+    "kickoff_utc": "2026-07-12T12:00:00",
     "venue": {
-      "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA",
-      "name": "Lincoln Financial Field",
-      "city": "Philadelphia",
+      "venue_id": "METLIFE__NEW_YORK",
+      "name": "MetLife Stadium",
+      "city": "New York/New Jersey",
       "country": "USA",
-      "altitude_m": 12,
-      "capacity": 69000,
+      "altitude_m": 2,
+      "capacity": 82000,
       "surface": "natural",
       "roof": "open",
       "timezone": "America/New_York",
-      "latitude": 39.9008,
-      "longitude": -75.1675
+      "latitude": 40.8136,
+      "longitude": -74.0744
     },
     "home_team": null,
     "away_team": null,
@@ -8259,6 +8232,33 @@
       "timezone": "America/New_York",
       "latitude": 42.0909,
       "longitude": -71.2643
+    },
+    "home_team": null,
+    "away_team": null,
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": null
+  },
+  {
+    "match_id": "WC2026_ROUND_32_12",
+    "tournament_id": "WC2026",
+    "stage": "round_32",
+    "group_label": null,
+    "match_number": 84,
+    "kickoff_utc": "2026-07-12T15:00:00",
+    "venue": {
+      "venue_id": "LINCOLN_FINANCIAL__PHILADELPHIA",
+      "name": "Lincoln Financial Field",
+      "city": "Philadelphia",
+      "country": "USA",
+      "altitude_m": 12,
+      "capacity": 69000,
+      "surface": "natural",
+      "roof": "open",
+      "timezone": "America/New_York",
+      "latitude": 39.9008,
+      "longitude": -75.1675
     },
     "home_team": null,
     "away_team": null,
@@ -8322,33 +8322,6 @@
     "prediction": null
   },
   {
-    "match_id": "WC2026_ROUND_32_14",
-    "tournament_id": "WC2026",
-    "stage": "round_32",
-    "group_label": null,
-    "match_number": 86,
-    "kickoff_utc": "2026-07-13T15:00:00",
-    "venue": {
-      "venue_id": "LUMEN__SEATTLE",
-      "name": "Lumen Field",
-      "city": "Seattle",
-      "country": "USA",
-      "altitude_m": 4,
-      "capacity": 69000,
-      "surface": "hybrid",
-      "roof": "open",
-      "timezone": "America/Los_Angeles",
-      "latitude": 47.5952,
-      "longitude": -122.3316
-    },
-    "home_team": null,
-    "away_team": null,
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": null
-  },
-  {
     "match_id": "WC2026_ROUND_16_04",
     "tournament_id": "WC2026",
     "stage": "round_16",
@@ -8367,6 +8340,33 @@
       "timezone": "America/Mexico_City",
       "latitude": 20.6818,
       "longitude": -103.4626
+    },
+    "home_team": null,
+    "away_team": null,
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": null
+  },
+  {
+    "match_id": "WC2026_ROUND_32_14",
+    "tournament_id": "WC2026",
+    "stage": "round_32",
+    "group_label": null,
+    "match_number": 86,
+    "kickoff_utc": "2026-07-13T15:00:00",
+    "venue": {
+      "venue_id": "LUMEN__SEATTLE",
+      "name": "Lumen Field",
+      "city": "Seattle",
+      "country": "USA",
+      "altitude_m": 4,
+      "capacity": 69000,
+      "surface": "hybrid",
+      "roof": "open",
+      "timezone": "America/Los_Angeles",
+      "latitude": 47.5952,
+      "longitude": -122.3316
     },
     "home_team": null,
     "away_team": null,
@@ -8430,33 +8430,6 @@
     "prediction": null
   },
   {
-    "match_id": "WC2026_ROUND_32_16",
-    "tournament_id": "WC2026",
-    "stage": "round_32",
-    "group_label": null,
-    "match_number": 88,
-    "kickoff_utc": "2026-07-14T15:00:00",
-    "venue": {
-      "venue_id": "BC_PLACE__VANCOUVER",
-      "name": "BC Place",
-      "city": "Vancouver",
-      "country": "Canada",
-      "altitude_m": 0,
-      "capacity": 54500,
-      "surface": "hybrid",
-      "roof": "retractable",
-      "timezone": "America/Vancouver",
-      "latitude": 49.2767,
-      "longitude": -123.1119
-    },
-    "home_team": null,
-    "away_team": null,
-    "home_score": null,
-    "away_score": null,
-    "status": "scheduled",
-    "prediction": null
-  },
-  {
     "match_id": "WC2026_ROUND_16_06",
     "tournament_id": "WC2026",
     "stage": "round_16",
@@ -8475,6 +8448,33 @@
       "timezone": "America/Chicago",
       "latitude": 39.0489,
       "longitude": -94.4839
+    },
+    "home_team": null,
+    "away_team": null,
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled",
+    "prediction": null
+  },
+  {
+    "match_id": "WC2026_ROUND_32_16",
+    "tournament_id": "WC2026",
+    "stage": "round_32",
+    "group_label": null,
+    "match_number": 88,
+    "kickoff_utc": "2026-07-14T15:00:00",
+    "venue": {
+      "venue_id": "BC_PLACE__VANCOUVER",
+      "name": "BC Place",
+      "city": "Vancouver",
+      "country": "Canada",
+      "altitude_m": 0,
+      "capacity": 54500,
+      "surface": "hybrid",
+      "roof": "retractable",
+      "timezone": "America/Vancouver",
+      "latitude": 49.2767,
+      "longitude": -123.1119
     },
     "home_team": null,
     "away_team": null,

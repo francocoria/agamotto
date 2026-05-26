@@ -6,7 +6,7 @@ import { ThemeProvider, ThemeToggle } from "@/components/ThemeProvider";
 import { LangSwitcher } from "@/components/LangSwitcher";
 import { Logo } from "@/components/Logo";
 import { UserMenu } from "@/components/UserMenu";
-import { MobileNav } from "@/components/MobileNav";
+import { HamburgerNav } from "@/components/HamburgerNav";
 
 export const metadata: Metadata = {
   title: "Agamotto · Mundial 2026",
@@ -51,52 +51,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             >
               <Logo />
 
-              {/* Desktop nav (md+) */}
-              <nav
-                className="hidden md:flex"
-                style={{ alignItems: "center", gap: 22, marginLeft: 8, overflowX: "auto" }}
-              >
-                {NAV.map((n) => (
-                  <Link
-                    key={n.href}
-                    href={n.href}
-                    className="agm-display"
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: "0.16em",
-                      color: "var(--fg-2)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {n.label}
-                  </Link>
-                ))}
-              </nav>
-
               <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 10 }}>
                 {/* Desktop-only meta */}
                 <span
                   className="hidden lg:inline agm-mono"
                   style={{ fontSize: 10, color: "var(--fg-3)", letterSpacing: "0.06em" }}
                 >
-                  v0.4.1 · CALIB Q
+                  v0.5.0 · MULTIVERSE
                 </span>
                 <span className="hidden lg:inline-flex agm-pill agm-pill-green" style={{ height: 20, fontSize: 9 }}>
                   <span className="agm-dot agm-dot-green agm-dot-pulse" />
                   ONLINE
                 </span>
-                <div className="hidden md:block">
-                  <LangSwitcher />
-                </div>
                 <ThemeToggle />
-                <div className="hidden md:block">
+                
+                {/* Unified Hamburger Nav for all screen sizes */}
+                <HamburgerNav items={NAV}>
                   <UserMenu />
-                </div>
-
-                {/* Mobile nav drawer */}
-                <MobileNav items={NAV}>
-                  <UserMenu />
-                </MobileNav>
+                </HamburgerNav>
               </div>
             </div>
           </header>

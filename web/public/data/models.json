@@ -2,9 +2,9 @@
   {
     "model_version_id": "player_impact_0.2.0",
     "family": "player-impact",
-    "created_at": "2026-05-25T22:57:42.515518",
+    "created_at": "2026-05-25T20:48:47.741957",
     "params": {
-      "impact_alpha": 0.003
+      "impact_alpha": 0.005
     },
     "metrics": {
       "players": 1611,
@@ -13,35 +13,57 @@
   },
   {
     "model_version_id": "agamotto_ensemble_0.3.0",
-    "family": "ensemble",
-    "created_at": "2026-05-25T22:49:26.648012",
+    "family": "ensemble-stacker-context",
+    "created_at": "2026-05-25T20:33:07.590254",
     "params": {
       "weights": {
-        "w_elo": 0.42272828254592126,
-        "w_dc": 0.3816593817041494,
-        "w_stacker": 0.19561233574992928
+        "w_elo": 0.3833324302740273,
+        "w_dc": 0.39179506557613464,
+        "w_stacker": 0.22487250414983806
       },
       "n_bags": 3
     },
     "metrics": {
-      "brier": 0.5148401089433201,
-      "log_loss": 0.8741330656215395
+      "brier": 0.5133110475854582,
+      "log_loss": 0.8712628095035695
     }
   },
   {
     "model_version_id": "agamotto_ensemble_0.2.0",
-    "family": "ensemble",
-    "created_at": "2026-05-25T00:18:12.187337",
+    "family": "ensemble-stacker",
+    "created_at": "2026-05-24T22:50:28.451616",
     "params": {
-      "w_elo": 0.4732775507723185,
-      "w_dc": 0.367878868672416
+      "weights": {
+        "w_elo": 0.5000734984304855,
+        "w_dc": 0.39865050364773347,
+        "w_stacker": 0.10127599792178106
+      }
     },
-    "metrics": {}
+    "metrics": {
+      "brier": 0.5148942296310832,
+      "log_loss": 0.8744444800922533
+    }
+  },
+  {
+    "model_version_id": "agamotto_ensemble_0.1.0",
+    "family": "ensemble",
+    "created_at": "2026-05-24T19:26:28.358697",
+    "params": {
+      "w_elo": 0.25,
+      "w_dc": 0.75
+    },
+    "metrics": {
+      "brier": 0.5175629144926374,
+      "log_loss": 0.8778619801481639,
+      "uncalibrated_brier": 0.5248719513540416,
+      "uncalibrated_log_loss": 0.8933985092651778,
+      "validation_size": 4421
+    }
   },
   {
     "model_version_id": "player_impact_0.1.0",
     "family": "player-impact",
-    "created_at": "2026-05-25T00:18:10.518771",
+    "created_at": "2026-05-24T19:26:28.293411",
     "params": {
       "star_dependence_alpha": 0.05
     },
@@ -52,9 +74,9 @@
   {
     "model_version_id": "dixon_coles_0.1.0",
     "family": "dixon-coles",
-    "created_at": "2026-05-25T00:18:09.084604",
+    "created_at": "2026-05-24T19:24:51.999174",
     "params": {
-      "rho": -0.02570312500000005
+      "rho": -0.021796875000000056
     },
     "metrics": {
       "rho": -0.02570312500000005
@@ -63,10 +85,10 @@
   {
     "model_version_id": "poisson_0.1.0",
     "family": "poisson",
-    "created_at": "2026-05-25T00:17:46.589829",
+    "created_at": "2026-05-24T19:24:41.071157",
     "params": {
-      "home_adv": 0.24993035756984963,
-      "intercept": 0.18315695051334543
+      "home_adv": 0.24993035756989695,
+      "intercept": 0.1831569505136286
     },
     "metrics": {
       "teams": 294
@@ -75,7 +97,7 @@
   {
     "model_version_id": "elo_0.1.0",
     "family": "elo",
-    "created_at": "2026-05-25T00:17:26.929800",
+    "created_at": "2026-05-24T19:23:57.037340",
     "params": {
       "home_adv": 65.0,
       "initial": 1500.0

@@ -49,6 +49,13 @@
     "impact_score": 1.0974
   },
   {
+    "match_id": "WC2026_GROUP_B03",
+    "home_team_id": "CAN",
+    "away_team_id": "EGY",
+    "stage": "group",
+    "impact_score": 1.097
+  },
+  {
     "match_id": "WC2026_GROUP_G04",
     "home_team_id": "SUI",
     "away_team_id": "AUS",
@@ -77,6 +84,34 @@
     "impact_score": 1.0965
   },
   {
+    "match_id": "WC2026_GROUP_C06",
+    "home_team_id": "ITA",
+    "away_team_id": "TUN",
+    "stage": "group",
+    "impact_score": 1.0963
+  },
+  {
+    "match_id": "WC2026_GROUP_H02",
+    "home_team_id": "CIV",
+    "away_team_id": "KOR",
+    "stage": "group",
+    "impact_score": 1.0945
+  },
+  {
+    "match_id": "WC2026_GROUP_A04",
+    "home_team_id": "POL",
+    "away_team_id": "JAM",
+    "stage": "group",
+    "impact_score": 1.0934
+  },
+  {
+    "match_id": "WC2026_GROUP_J03",
+    "home_team_id": "URU",
+    "away_team_id": "ECU",
+    "stage": "group",
+    "impact_score": 1.0931
+  },
+  {
     "match_id": "WC2026_GROUP_I05",
     "home_team_id": "NED",
     "away_team_id": "IRN",
@@ -91,6 +126,20 @@
     "impact_score": 1.0918
   },
   {
+    "match_id": "WC2026_GROUP_D05",
+    "home_team_id": "USA",
+    "away_team_id": "UZB",
+    "stage": "group",
+    "impact_score": 1.0915
+  },
+  {
+    "match_id": "WC2026_GROUP_G06",
+    "home_team_id": "SUI",
+    "away_team_id": "NGA",
+    "stage": "group",
+    "impact_score": 1.0911
+  },
+  {
     "match_id": "WC2026_GROUP_A04",
     "home_team_id": "POL",
     "away_team_id": "JAM",
@@ -103,6 +152,27 @@
     "away_team_id": "SEN",
     "stage": "group",
     "impact_score": 1.0894
+  },
+  {
+    "match_id": "WC2026_GROUP_E03",
+    "home_team_id": "FRA",
+    "away_team_id": "SEN",
+    "stage": "group",
+    "impact_score": 1.089
+  },
+  {
+    "match_id": "WC2026_GROUP_I05",
+    "home_team_id": "NED",
+    "away_team_id": "IRN",
+    "stage": "group",
+    "impact_score": 1.0876
+  },
+  {
+    "match_id": "WC2026_GROUP_G04",
+    "home_team_id": "SUI",
+    "away_team_id": "AUS",
+    "stage": "group",
+    "impact_score": 1.0863
   },
   {
     "match_id": "WC2026_GROUP_F06",
@@ -138,75 +208,5 @@
     "away_team_id": "KOR",
     "stage": "group",
     "impact_score": 1.0856
-  },
-  {
-    "match_id": "WC2026_GROUP_C06",
-    "home_team_id": "ITA",
-    "away_team_id": "TUN",
-    "stage": "group",
-    "impact_score": 1.0849
-  },
-  {
-    "match_id": "WC2026_GROUP_G02",
-    "home_team_id": "NGA",
-    "away_team_id": "AUS",
-    "stage": "group",
-    "impact_score": 1.0849
-  },
-  {
-    "match_id": "WC2026_GROUP_G06",
-    "home_team_id": "SUI",
-    "away_team_id": "NGA",
-    "stage": "group",
-    "impact_score": 1.0849
-  },
-  {
-    "match_id": "WC2026_GROUP_C02",
-    "home_team_id": "TUN",
-    "away_team_id": "CRC",
-    "stage": "group",
-    "impact_score": 1.0845
-  },
-  {
-    "match_id": "WC2026_GROUP_L03",
-    "home_team_id": "VEN",
-    "away_team_id": "NZL",
-    "stage": "group",
-    "impact_score": 1.0831
-  },
-  {
-    "match_id": "WC2026_GROUP_C02",
-    "home_team_id": "TUN",
-    "away_team_id": "CRC",
-    "stage": "group",
-    "impact_score": 1.083
-  },
-  {
-    "match_id": "WC2026_GROUP_J05",
-    "home_team_id": "URU",
-    "away_team_id": "PAN",
-    "stage": "group",
-    "impact_score": 1.0812
-  },
-  {
-    "match_id": "WC2026_GROUP_J05",
-    "home_team_id": "URU",
-    "away_team_id": "PAN",
-    "stage": "group",
-    "impact_score": 1.0805
-  },
-  {
-    "match_id": "WC2026_GROUP_L05",
-    "home_team_id": "VEN",
-    "away_team_id": "JOR",
-    "stage": "group",
-    "impact_score": 1.0789
-  },
-  {
-    "match_id": "WC2026_GROUP_L05",
-    "home_team_id": "VEN",
-    "away_team_id": "JOR",
-    "stage": "group",
-    "impact_score": 1.0774
   }
 ]
