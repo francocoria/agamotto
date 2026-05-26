@@ -43,7 +43,7 @@ interface TeamStats {
   fouls_avg: number | null;
   yellows_avg: number | null;
   reds_avg: number | null;
-  
+
   // Advanced stats
   xg_avg: number | null;
   free_kicks_avg: number | null;
@@ -52,11 +52,11 @@ interface TeamStats {
   pass_accuracy_avg: number | null;
   aerials_won_avg: number | null;
   saves_avg: number | null;
-  
+
   // Splits
   first_half?: HalfStats;
   second_half?: HalfStats;
-  
+
   // Periods
   periods?: GoalPeriods;
 
@@ -111,7 +111,7 @@ interface PredictionData {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Poisson helpers for betting market calculations
+// Poisson helpers
 // ──────────────────────────────────────────────────────────────────────────────
 function poissonPMF(lambda: number, k: number): number {
   if (lambda <= 0) return k === 0 ? 1 : 0;
@@ -169,65 +169,65 @@ function pOverLine(expectedTotal: number, line: number): number {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Markets panel component
+// Pronóstico panel — informativo, lenguaje simple
 // ──────────────────────────────────────────────────────────────────────────────
-function MarketPill({
-  label, value, accent = false, dim = false,
-}: { label: string; value: string; accent?: boolean; dim?: boolean }) {
+function ProbRow({
+  label, p, color = "var(--green)", note,
+}: { label: string; p: number; color?: string; note?: string }) {
+  const pct100 = Math.round(p * 100);
   return (
-    <div style={{
-      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-      padding: "10px 14px", borderRadius: 10, minWidth: 86,
-      background: accent ? "var(--green-bg)" : dim ? "rgba(255,255,255,0.02)" : "var(--bg-2)",
-      border: `1px solid ${accent ? "rgba(34,217,126,0.25)" : "var(--line)"}`,
-      gap: 4,
-    }}>
-      <span className="agm-mono" style={{
-        fontSize: 14, fontWeight: 700,
-        color: accent ? "var(--green-deep)" : "var(--fg-1)",
-      }}>{value}</span>
-      <span className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)", letterSpacing: "0.1em", textAlign: "center" }}>
-        {label}
-      </span>
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 5 }}>
+        <span style={{ fontSize: 13, color: "var(--fg-1)", fontFamily: "var(--font-sans)" }}>{label}</span>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+          {note && <span style={{ fontSize: 11, color: "var(--fg-3)", fontFamily: "var(--font-sans)" }}>{note}</span>}
+          <span style={{ fontSize: 16, fontWeight: 700, fontFamily: "var(--font-mono)", color: pct100 >= 60 ? color : "var(--fg-1)" }}>
+            {pct100}%
+          </span>
+        </div>
+      </div>
+      <div style={{ height: 6, borderRadius: 99, background: "var(--bg-3)", overflow: "hidden" }}>
+        <div style={{
+          height: "100%", width: `${pct100}%`,
+          background: color,
+          borderRadius: 99,
+          transition: "width 0.6s cubic-bezier(0.4,0,0.2,1)",
+        }} />
+      </div>
     </div>
   );
 }
 
-function MarketRow({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
+function Insight({ text, type = "neutral" }: { text: string; type?: "good" | "neutral" | "info" }) {
+  const bg = type === "good" ? "var(--green-bg-2)" : type === "info" ? "var(--violet-bg)" : "var(--bg-2)";
+  const col = type === "good" ? "var(--green)" : type === "info" ? "var(--violet)" : "var(--fg-2)";
   return (
     <div style={{
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      padding: "6px 0", borderBottom: "1px solid var(--line)",
+      padding: "10px 14px", borderRadius: 9,
+      background: bg, border: `1px solid ${type === "good" ? "rgba(34,217,126,0.2)" : type === "info" ? "rgba(123,82,255,0.2)" : "var(--line)"}`,
+      fontSize: 13, color: col, fontFamily: "var(--font-sans)", lineHeight: 1.5,
     }}>
-      <span className="agm-mono" style={{ fontSize: 11, color: "var(--fg-2)" }}>{label}</span>
-      <span className="agm-mono" style={{
-        fontSize: 12, fontWeight: 700,
-        color: accent ? "var(--green-deep)" : "var(--fg-0)",
-      }}>{value}</span>
+      {text}
     </div>
   );
 }
 
-interface BettingMarketsProps {
+interface PronosticoPanelProps {
   prediction: PredictionData;
   homeStats: TeamStats;
   awayStats: TeamStats;
   homeId: string;
   awayId: string;
+  homeName: string;
+  awayName: string;
 }
 
-function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: BettingMarketsProps) {
+function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, homeName, awayName }: PronosticoPanelProps) {
   const { p_home: pH, p_draw: pD, p_away: pA, lambda_home: lH, lambda_away: lA } = prediction;
 
-  // Goals markets
-  const pO05 = pOverGoals(lH, lA, 0);
-  const pO15 = pOverGoals(lH, lA, 1);
   const pO25 = pOverGoals(lH, lA, 2);
-  const pO35 = pOverGoals(lH, lA, 3);
-  const pO45 = pOverGoals(lH, lA, 4);
   const pBtts = pBTTS(lH, lA);
 
-  // Exact goals
   const pG0 = pExactGoals(lH, lA, 0);
   const pG1 = pExactGoals(lH, lA, 1);
   const pG2 = pExactGoals(lH, lA, 2);
@@ -235,40 +235,21 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
   const pG4 = pExactGoals(lH, lA, 4);
   const pG5p = 1 - pG0 - pG1 - pG2 - pG3 - pG4;
 
-  // Double chance
   const p1X = pDoubleChance(pH, pD, pA, "1X");
   const pX2 = pDoubleChance(pH, pD, pA, "X2");
   const p12 = pDoubleChance(pH, pD, pA, "12");
 
-  // HT result
   const ht = pHTResult(lH, lA);
 
-  // HT/FT combos (simplified with independence assumption)
-  const htft = [
-    { label: `1/1 (${homeId} gana ambos)`, p: ht.p1 * pH },
-    { label: `X/1 (Empate 1T, gana ${homeId})`, p: ht.pX * pH },
-    { label: `X/X (Empate ambos)`, p: ht.pX * pD },
-    { label: `1/X (${homeId} 1T, empate final)`, p: ht.p1 * pD },
-    { label: `2/2 (${awayId} gana ambos)`, p: ht.p2 * pA },
-    { label: `X/2 (Empate 1T, gana ${awayId})`, p: ht.pX * pA },
-  ].sort((a, b) => b.p - a.p);
-
-  // Corners (using team averages)
+  // Corners
   const hCorners = homeStats.corners_avg ?? 4.5;
   const aCorners = awayStats.corners_avg ?? 4.5;
   const expCorners = hCorners + aCorners;
   const pC75 = pOverLine(expCorners, 7);
   const pC95 = pOverLine(expCorners, 9);
   const pC115 = pOverLine(expCorners, 11);
-  const pC125 = pOverLine(expCorners, 12);
-  const hFHCorners = homeStats.first_half?.corners_avg ?? hCorners * 0.48;
-  const aFHCorners = awayStats.first_half?.corners_avg ?? aCorners * 0.48;
-  const expFHCorners = hFHCorners + aFHCorners;
-  const pCFH35 = pOverLine(expFHCorners, 3);
-  const pCFH45 = pOverLine(expFHCorners, 4);
-  const pCSH = pOverLine(expCorners - expFHCorners, 4);
 
-  // Cards (using yellows + 2*reds)
+  // Cards
   const hCards = (homeStats.yellows_avg ?? 1.5) + 2 * (homeStats.reds_avg ?? 0.05);
   const aCards = (awayStats.yellows_avg ?? 1.5) + 2 * (awayStats.reds_avg ?? 0.05);
   const expCards = hCards + aCards;
@@ -277,25 +258,20 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
   const pCards55 = pOverLine(expCards, 5);
   const pRedCard = 1 - Math.exp(-(homeStats.reds_avg ?? 0.05) - (awayStats.reds_avg ?? 0.05));
 
-  // Shots O/U
+  // Shots
   const expShots = (homeStats.shots_avg ?? 10) + (awayStats.shots_avg ?? 10);
   const expSOT = (homeStats.sot_avg ?? 3.5) + (awayStats.sot_avg ?? 3.5);
   const pShots185 = pOverLine(expShots, 18);
   const pShots215 = pOverLine(expShots, 21);
   const pSOT75 = pOverLine(expSOT, 7);
-  const pSOT95 = pOverLine(expSOT, 9);
 
-  // Free kicks
+  // Free kicks & offsides
   const expFK = (homeStats.free_kicks_avg ?? 11) + (awayStats.free_kicks_avg ?? 11);
-  const pFK195 = pOverLine(expFK, 19);
-  const pFK235 = pOverLine(expFK, 23);
-
-  // Offsides
   const expOff = (homeStats.offsides_avg ?? 1.8) + (awayStats.offsides_avg ?? 1.8);
-  const pOff25 = pOverLine(expOff, 2);
+  const pFK195 = pOverLine(expFK, 19);
   const pOff35 = pOverLine(expOff, 3);
 
-  // Goals by period (first goal timing)
+  // Goals by period
   const periods = homeStats.periods && awayStats.periods ? {
     "0-15": (homeStats.periods.p_0_15 ?? 0.1) + (awayStats.periods.p_0_15 ?? 0.1),
     "15-30": (homeStats.periods.p_15_30 ?? 0.15) + (awayStats.periods.p_15_30 ?? 0.15),
@@ -306,33 +282,28 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
     "90+": (homeStats.periods.p_90plus ?? 0.04) + (awayStats.periods.p_90plus ?? 0.04),
   } : null;
 
-  // First half total goals
   const lHFH = lH * 0.48, lAFH = lA * 0.48;
   const pFHO05 = pOverGoals(lHFH, lAFH, 0);
   const pFHO15 = pOverGoals(lHFH, lAFH, 1);
-  const pFHBTTS = pBTTS(lHFH, lAFH);
-
   const lHSH = lH * 0.52, lASH = lA * 0.52;
   const pSHO05 = pOverGoals(lHSH, lASH, 0);
   const pSHO15 = pOverGoals(lHSH, lASH, 1);
 
-  const [activeTab, setActiveTab] = useState<string>("resultado");
+  const [activeTab, setActiveTab] = useState<string>("ganador");
 
   const tabs = [
-    { id: "resultado", label: "RESULTADO" },
-    { id: "goles", label: "GOLES" },
-    { id: "corners", label: "CORNERS" },
-    { id: "tarjetas", label: "TARJETAS" },
-    { id: "mitades", label: "MITADES" },
-    { id: "tiempos", label: "TIEMPOS" },
-    { id: "remates", label: "REMATES" },
+    { id: "ganador", label: "¿Quién gana?" },
+    { id: "goles", label: "Goles" },
+    { id: "momentos", label: "Momentos" },
+    { id: "juego", label: "Cómo juegan" },
+    { id: "disciplina", label: "Disciplina" },
   ];
 
   return (
     <div className="agm-card agm-anim-blur" style={{ marginBottom: 20 }}>
       <div className="agm-card-h">
-        <h3>MERCADOS DE APUESTAS</h3>
-        <span className="agm-pill agm-pill-green" style={{ fontSize: 9 }}>300+ VARIABLES</span>
+        <h3>ANÁLISIS PREDICTIVO</h3>
+        <span className="agm-pill agm-pill-green" style={{ fontSize: 9 }}>MODELO ENSEMBLE</span>
       </div>
 
       {/* Tab nav */}
@@ -344,11 +315,11 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
           <button
             key={t.id}
             onClick={() => setActiveTab(t.id)}
-            className="agm-mono"
             style={{
-              padding: "10px 14px", border: "none", background: "transparent",
-              cursor: "pointer", fontSize: 9, letterSpacing: "0.14em",
-              color: activeTab === t.id ? "var(--green)" : "var(--fg-3)",
+              padding: "10px 16px", border: "none", background: "transparent",
+              cursor: "pointer", fontSize: 12,
+              fontFamily: "var(--font-sans)",
+              color: activeTab === t.id ? "var(--green)" : "var(--fg-2)",
               borderBottom: activeTab === t.id ? "2px solid var(--green)" : "2px solid transparent",
               whiteSpace: "nowrap", transition: "color 0.2s",
             }}
@@ -358,61 +329,66 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
 
       <div style={{ padding: "20px 24px" }}>
 
-        {/* ── RESULTADO ── */}
-        {activeTab === "resultado" && (
+        {/* ── ¿QUIÉN GANA? ── */}
+        {activeTab === "ganador" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                RESULTADO FINAL (1X2)
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                RESULTADO FINAL
               </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`GANA ${homeId}`} value={pct(pH)} accent={pH === Math.max(pH, pD, pA)} />
-                <MarketPill label="EMPATE" value={pct(pD)} accent={pD === Math.max(pH, pD, pA)} />
-                <MarketPill label={`GANA ${awayId}`} value={pct(pA)} accent={pA === Math.max(pH, pD, pA)} />
-              </div>
+              <ProbRow
+                label={`Gana ${homeName}`}
+                p={pH}
+                color="var(--green)"
+                note={pH === Math.max(pH, pD, pA) ? "Favorito" : undefined}
+              />
+              <ProbRow label="Empate" p={pD} color="var(--fg-2)" />
+              <ProbRow
+                label={`Gana ${awayName}`}
+                p={pA}
+                color="var(--violet)"
+                note={pA === Math.max(pH, pD, pA) ? "Favorito" : undefined}
+              />
             </div>
 
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                DOBLE OPORTUNIDAD
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`${homeId} O EMPATE (1X)`} value={pct(p1X)} accent={p1X > 0.6} />
-                <MarketPill label={`EMPATE O ${awayId} (X2)`} value={pct(pX2)} accent={pX2 > 0.6} />
-                <MarketPill label={`${homeId} O ${awayId} (12)`} value={pct(p12)} accent={p12 > 0.8} />
-              </div>
-            </div>
+            <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                RESULTADO 1ER TIEMPO (1X2)
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                ¿QUIÉN NO PIERDE?
               </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`GANA ${homeId} 1T`} value={pct(ht.p1)} />
-                <MarketPill label="EMPATE 1T" value={pct(ht.pX)} accent={ht.pX === Math.max(ht.p1, ht.pX, ht.p2)} />
-                <MarketPill label={`GANA ${awayId} 1T`} value={pct(ht.p2)} />
-              </div>
+              <ProbRow label={`${homeName} gana o empata`} p={p1X} color="var(--green)" />
+              <ProbRow label={`${awayName} empata o gana`} p={pX2} color="var(--violet)" />
+              <ProbRow label="El partido se define (no hay empate)" p={p12} color="var(--fg-2)" />
             </div>
 
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                COMBINADO DESCANSO / FINAL (HT/FT) — Top 6
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-                {htft.map((c) => (
-                  <MarketRow key={c.label} label={c.label} value={pct(c.p)} accent={c.p === htft[0].p} />
-                ))}
-              </div>
-            </div>
+            <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                APUESTA SIN EMPATE (DNB)
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                PRIMER TIEMPO
               </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`${homeId} (DNB)`} value={pct(pH / (pH + pA))} accent={pH > pA} />
-                <MarketPill label={`${awayId} (DNB)`} value={pct(pA / (pH + pA))} accent={pA > pH} />
-              </div>
+              <ProbRow label={`${homeName} gana el 1er tiempo`} p={ht.p1} color="var(--green)" />
+              <ProbRow label="Empate al descanso" p={ht.pX} color="var(--fg-2)" />
+              <ProbRow label={`${awayName} gana el 1er tiempo`} p={ht.p2} color="var(--violet)" />
+            </div>
+
+            <div className="agm-rune-line" />
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {pH > pA && pH > 0.45 && (
+                <Insight type="good" text={`El modelo favorece a ${homeName}, con un ${Math.round(pH * 100)}% de probabilidad de ganar.`} />
+              )}
+              {pA > pH && pA > 0.45 && (
+                <Insight type="good" text={`El modelo favorece a ${awayName}, con un ${Math.round(pA * 100)}% de probabilidad de ganar.`} />
+              )}
+              {Math.abs(pH - pA) < 0.08 && (
+                <Insight type="neutral" text={`Partido muy parejo: ${homeName} ${Math.round(pH * 100)}% vs ${awayName} ${Math.round(pA * 100)}%. El empate (${Math.round(pD * 100)}%) es una opción muy válida.`} />
+              )}
+              {ht.pX > 0.45 && (
+                <Insight type="info" text={`Hay un ${Math.round(ht.pX * 100)}% de probabilidad de que el primer tiempo termine igualado.`} />
+              )}
+              <Insight type="info" text={`El modelo estima ${lH.toFixed(1)} goles esperados para ${homeName} y ${lA.toFixed(1)} para ${awayName}.`} />
             </div>
           </div>
         )}
@@ -421,69 +397,32 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
         {activeTab === "goles" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                TOTAL GOLES — LÍNEAS OVER/UNDER
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                ¿CUÁNTOS GOLES HABRÁ?
               </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                {[
-                  { label: "O/U 0.5", over: pO05 },
-                  { label: "O/U 1.5", over: pO15 },
-                  { label: "O/U 2.5", over: pO25 },
-                  { label: "O/U 3.5", over: pO35 },
-                  { label: "O/U 4.5", over: pO45 },
-                ].map(({ label, over }) => (
-                  <div key={label} style={{
-                    display: "flex", flexDirection: "column", gap: 6, minWidth: 96, alignItems: "center",
-                    padding: "12px 14px", borderRadius: 10, background: "var(--bg-2)", border: "1px solid var(--line)",
-                  }}>
-                    <span className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)" }}>{label}</span>
-                    <div style={{ display: "flex", gap: 8 }}>
-                      <div style={{ textAlign: "center" }}>
-                        <div className="agm-mono" style={{ fontSize: 13, fontWeight: 700, color: "var(--green-deep)" }}>{pct(over)}</div>
-                        <div className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)" }}>MÁS</div>
-                      </div>
-                      <div style={{ width: 1, background: "var(--line)" }} />
-                      <div style={{ textAlign: "center" }}>
-                        <div className="agm-mono" style={{ fontSize: 13, fontWeight: 700, color: "var(--violet)" }}>{pct(1 - over)}</div>
-                        <div className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)" }}>MENOS</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <ProbRow label="Sin goles (0–0)" p={pG0} color="var(--fg-2)" />
+              <ProbRow label="1 gol en total" p={pG1} color="var(--fg-2)" />
+              <ProbRow label="2 goles en total" p={pG2} color="var(--green)" />
+              <ProbRow label="3 goles en total" p={pG3} color="var(--green)" />
+              <ProbRow label="4 goles en total" p={pG4} color="var(--fg-2)" />
+              <ProbRow label="5 o más goles" p={Math.max(0, pG5p)} color="var(--fg-2)" />
             </div>
+
+            <div className="agm-rune-line" />
+
+            <div>
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                ¿ANOTAN LOS DOS EQUIPOS?
+              </div>
+              <ProbRow label="Ambos equipos anotan al menos 1 gol" p={pBtts} color="var(--green)" />
+              <ProbRow label="Algún equipo termina sin anotar" p={1 - pBtts} color="var(--fg-2)" />
+            </div>
+
+            <div className="agm-rune-line" />
 
             <div>
               <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                AMBOS EQUIPOS ANOTAN (BTTS)
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label="BTTS — SÍ" value={pct(pBtts)} accent={pBtts > 0.5} />
-                <MarketPill label="BTTS — NO" value={pct(1 - pBtts)} accent={pBtts <= 0.5} />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                GOLES EXACTOS DEL PARTIDO
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                {[
-                  { label: "0 GOLES", p: pG0 },
-                  { label: "1 GOL", p: pG1 },
-                  { label: "2 GOLES", p: pG2 },
-                  { label: "3 GOLES", p: pG3 },
-                  { label: "4 GOLES", p: pG4 },
-                  { label: "5+ GOLES", p: pG5p },
-                ].map(({ label, p }) => (
-                  <MarketPill key={label} label={label} value={pct(p)} accent={p === Math.max(pG0, pG1, pG2, pG3, pG4, pG5p)} />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                MARCADORES EXACTOS MÁS PROBABLES
+                MARCADORES MÁS PROBABLES
               </div>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 {prediction.top_scorelines?.slice(0, 12).map((s) => {
@@ -502,218 +441,29 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
               </div>
             </div>
 
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                MULTIGOLES (RANGOS)
-              </div>
-              <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                {[
-                  { label: "1-2 goles", p: pG1 + pG2 },
-                  { label: "1-3 goles", p: pG1 + pG2 + pG3 },
-                  { label: "2-3 goles", p: pG2 + pG3 },
-                  { label: "2-4 goles", p: pG2 + pG3 + pG4 },
-                  { label: "3-5 goles", p: pG3 + pG4 + pG5p },
-                ].map(({ label, p }) => (
-                  <MarketRow key={label} label={label} value={pct(Math.min(1, p))} />
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ── CORNERS ── */}
-        {activeTab === "corners" && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 8 }}>
-                MEDIA ESPERADA: <span style={{ color: "var(--green)" }}>{expCorners.toFixed(1)} corners totales</span>
-                &nbsp;({homeId}: {hCorners.toFixed(1)} · {awayId}: {aCorners.toFixed(1)})
-              </div>
-            </div>
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                TOTAL CORNERS — OVER/UNDER
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                {[
-                  { label: "O/U 7.5", over: pC75 },
-                  { label: "O/U 9.5", over: pC95 },
-                  { label: "O/U 11.5", over: pC115 },
-                  { label: "O/U 12.5", over: pC125 },
-                ].map(({ label, over }) => (
-                  <div key={label} style={{
-                    display: "flex", flexDirection: "column", gap: 6, minWidth: 96, alignItems: "center",
-                    padding: "12px 14px", borderRadius: 10, background: "var(--bg-2)", border: "1px solid var(--line)",
-                  }}>
-                    <span className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)" }}>{label}</span>
-                    <div style={{ display: "flex", gap: 8 }}>
-                      <div style={{ textAlign: "center" }}>
-                        <div className="agm-mono" style={{ fontSize: 13, fontWeight: 700, color: "var(--green-deep)" }}>{pct(over)}</div>
-                        <div className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)" }}>MÁS</div>
-                      </div>
-                      <div style={{ width: 1, background: "var(--line)" }} />
-                      <div style={{ textAlign: "center" }}>
-                        <div className="agm-mono" style={{ fontSize: 13, fontWeight: 700, color: "var(--violet)" }}>{pct(1 - over)}</div>
-                        <div className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)" }}>MENOS</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                CORNERS POR MITAD
-              </div>
-              <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                <MarketRow label={`Corners 1T — Más de 3.5 (Media: ${expFHCorners.toFixed(1)})`} value={pct(pCFH35)} accent={pCFH35 > 0.5} />
-                <MarketRow label={`Corners 1T — Más de 4.5`} value={pct(pCFH45)} />
-                <MarketRow label={`Corners 2T — Más de 4.5 (Media: ${(expCorners - expFHCorners).toFixed(1)})`} value={pct(pCSH)} accent={pCSH > 0.5} />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                CARRERA DE CORNERS (¿Quién llega primero?)
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill
-                  label={`${homeId} MÁS CORNERS`}
-                  value={pct(hCorners / (hCorners + aCorners))}
-                  accent={hCorners > aCorners}
-                />
-                <MarketPill
-                  label={`${awayId} MÁS CORNERS`}
-                  value={pct(aCorners / (hCorners + aCorners))}
-                  accent={aCorners > hCorners}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ── TARJETAS ── */}
-        {activeTab === "tarjetas" && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 8 }}>
-                MEDIA ESPERADA: <span style={{ color: "var(--green)" }}>{expCards.toFixed(1)} pts de tarjetas</span>
-                &nbsp;(amarilla=1, roja=2)
-              </div>
-            </div>
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                TOTAL TARJETAS — OVER/UNDER
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                {[
-                  { label: "O/U 3.5", over: pCards35 },
-                  { label: "O/U 4.5", over: pCards45 },
-                  { label: "O/U 5.5", over: pCards55 },
-                ].map(({ label, over }) => (
-                  <div key={label} style={{
-                    display: "flex", flexDirection: "column", gap: 6, minWidth: 96, alignItems: "center",
-                    padding: "12px 14px", borderRadius: 10, background: "var(--bg-2)", border: "1px solid var(--line)",
-                  }}>
-                    <span className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)" }}>{label}</span>
-                    <div style={{ display: "flex", gap: 8 }}>
-                      <div style={{ textAlign: "center" }}>
-                        <div className="agm-mono" style={{ fontSize: 13, fontWeight: 700, color: "var(--green-deep)" }}>{pct(over)}</div>
-                        <div className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)" }}>MÁS</div>
-                      </div>
-                      <div style={{ width: 1, background: "var(--line)" }} />
-                      <div style={{ textAlign: "center" }}>
-                        <div className="agm-mono" style={{ fontSize: 13, fontWeight: 700, color: "var(--violet)" }}>{pct(1 - over)}</div>
-                        <div className="agm-mono" style={{ fontSize: 8, color: "var(--fg-3)" }}>MENOS</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                TARJETA ROJA EN EL PARTIDO
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label="SÍ HABRÁ ROJA" value={pct(pRedCard)} accent={pRedCard > 0.15} />
-                <MarketPill label="NO HABRÁ ROJA" value={pct(1 - pRedCard)} accent={pRedCard <= 0.15} />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                DISCIPLINA POR EQUIPO (AMARILLAS PROM.)
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`${homeId} — Más tarjetas`} value={(homeStats.yellows_avg ?? 1.5).toFixed(1)} accent={(homeStats.yellows_avg ?? 0) > (awayStats.yellows_avg ?? 0)} />
-                <MarketPill label={`${awayId} — Más tarjetas`} value={(awayStats.yellows_avg ?? 1.5).toFixed(1)} accent={(awayStats.yellows_avg ?? 0) > (homeStats.yellows_avg ?? 0)} />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ── MITADES ── */}
-        {activeTab === "mitades" && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                GOLES EN PRIMER TIEMPO
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label="1T — O/U 0.5" value={`${pct(pFHO05)} / ${pct(1 - pFHO05)}`} accent={pFHO05 > 0.6} />
-                <MarketPill label="1T — O/U 1.5" value={`${pct(pFHO15)} / ${pct(1 - pFHO15)}`} />
-                <MarketPill label="1T — BTTS" value={pct(pFHBTTS)} />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                GOLES EN SEGUNDO TIEMPO
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label="2T — O/U 0.5" value={`${pct(pSHO05)} / ${pct(1 - pSHO05)}`} accent={pSHO05 > 0.6} />
-                <MarketPill label="2T — O/U 1.5" value={`${pct(pSHO15)} / ${pct(1 - pSHO15)}`} />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                ¿QUÉ EQUIPO GANA CADA MITAD? (GANA AMBOS TIEMPOS)
-              </div>
-              <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                <MarketRow label={`${homeId} gana primer tiempo`} value={pct(ht.p1)} />
-                <MarketRow label={`${homeId} gana segundo tiempo`} value={pct(pH)} />
-                <MarketRow label={`${homeId} gana AMBOS tiempos`} value={pct(ht.p1 * pH)} accent />
-                <MarketRow label={`${awayId} gana primer tiempo`} value={pct(ht.p2)} />
-                <MarketRow label={`${awayId} gana AMBOS tiempos`} value={pct(ht.p2 * pA)} accent />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                STATS MITAD ESPERADAS — {homeId}
-              </div>
-              {homeStats.first_half && (
-                <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                  <MarketRow label="Corners 1T prom." value={(homeStats.first_half.corners_avg ?? 2.2).toFixed(1)} />
-                  <MarketRow label="Remates 1T prom." value={(homeStats.first_half.shots_avg ?? 4.8).toFixed(1)} />
-                  <MarketRow label="xG 1T prom." value={(homeStats.first_half.xg_avg ?? 0.5).toFixed(2)} />
-                  <MarketRow label="Faltas 1T prom." value={(homeStats.first_half.fouls_avg ?? 6).toFixed(1)} />
-                </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {pG2 + pG3 > 0.5 && (
+                <Insight type="good" text={`El escenario más probable es 2 o 3 goles en el partido (${Math.round((pG2 + pG3) * 100)}% de chances).`} />
+              )}
+              {pO25 > 0.6 && (
+                <Insight type="good" text={`Alta probabilidad de ver más de 2 goles (${Math.round(pO25 * 100)}%). Ambos ataques son potentes.`} />
+              )}
+              {pO25 < 0.4 && (
+                <Insight type="neutral" text={`El modelo espera un partido cerrado. Lo más probable es que haya menos de 3 goles.`} />
+              )}
+              {pBtts > 0.55 && (
+                <Insight type="info" text={`Hay ${Math.round(pBtts * 100)}% de probabilidad de que los dos equipos anoten. Los dos ataques tienen potencial.`} />
               )}
             </div>
           </div>
         )}
 
-        {/* ── TIEMPOS ── */}
-        {activeTab === "tiempos" && (
+        {/* ── MOMENTOS ── */}
+        {activeTab === "momentos" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
               <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                DISTRIBUCIÓN DE GOLES POR TRAMO (PROM. COMBINADO)
+                DISTRIBUCIÓN DE GOLES POR TRAMO (PROMEDIO HISTÓRICO COMBINADO)
               </div>
               {periods ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -722,7 +472,7 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
                     const barPct = maxVal > 0 ? (avg / maxVal) * 100 : 0;
                     return (
                       <div key={period} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                        <span className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", minWidth: 60 }}>{period}'</span>
+                        <span className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", minWidth: 60 }}>{period}&apos;</span>
                         <div style={{ flex: 1, height: 24, background: "var(--bg-2)", borderRadius: 4, overflow: "hidden", position: "relative" }}>
                           <div style={{
                             position: "absolute", left: 0, top: 0, bottom: 0,
@@ -740,93 +490,151 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
                   })}
                 </div>
               ) : (
-                <div style={{ color: "var(--fg-3)", fontSize: 12 }}>Sin datos de distribución temporal.</div>
+                <div style={{ color: "var(--fg-3)", fontSize: 12 }}>Sin datos de distribución temporal disponibles.</div>
               )}
             </div>
 
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                PRIMER GOL POR INTERVALO (RANGOS DE 15 MIN)
-              </div>
-              {periods && (
-                <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                  {Object.entries(periods).map(([period, avg]) => {
-                    const totalGoals = Object.values(periods).reduce((s, v) => s + v, 0);
-                    const p = totalGoals > 0 ? avg / totalGoals : 1 / 7;
-                    return (
-                      <MarketRow key={period} label={`Primer gol en ${period}'`} value={pct(p)} accent={p === Math.max(...Object.values(periods).map((v) => totalGoals > 0 ? v / totalGoals : 1/7))} />
-                    );
-                  })}
-                </div>
-              )}
-            </div>
+            <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                MARCADOR EN MINUTO EXACTO
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                GOLES POR TIEMPO
               </div>
-              <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                <MarketRow label={`Ganando al min 15`} value={pct(ht.p1 * 0.5)} />
-                <MarketRow label={`Ganando al min 30`} value={pct(ht.p1 * 0.75)} />
-                <MarketRow label={`Ganando al min 60`} value={pct(pH * 0.8)} />
-                <MarketRow label={`Ganando al min 75`} value={pct(pH * 0.9)} />
+              <ProbRow label="Primer tiempo con al menos 1 gol" p={pFHO05} color="var(--green)" />
+              <ProbRow label="Primer tiempo con 2 o más goles" p={pFHO15} color="var(--green)" />
+              <ProbRow label="Segundo tiempo con al menos 1 gol" p={pSHO05} color="var(--violet)" />
+              <ProbRow label="Segundo tiempo con 2 o más goles" p={pSHO15} color="var(--violet)" />
+            </div>
+
+            {periods && (() => {
+              const entries = Object.entries(periods);
+              const totalGoals = entries.reduce((s, [, v]) => s + v, 0);
+              const peakPeriod = entries.reduce((best, curr) => curr[1] > best[1] ? curr : best, entries[0]);
+              const lateGoals = (periods["75-90"] ?? 0) + (periods["90+"] ?? 0);
+              const lateShare = totalGoals > 0 ? lateGoals / totalGoals : 0;
+              return (
+                <>
+                  <div className="agm-rune-line" />
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <Insight type="info" text={`El tramo más productivo históricamente es el ${peakPeriod[0]}' (${peakPeriod[1].toFixed(2)} goles promedio).`} />
+                    {lateShare > 0.3 && (
+                      <Insight type="good" text={`Estos equipos marcan mucho al final del partido: el ${Math.round(lateShare * 100)}% de los goles caen después del minuto 75.`} />
+                    )}
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        )}
+
+        {/* ── CÓMO JUEGAN ── */}
+        {activeTab === "juego" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            <div>
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
+                TIROS DE ESQUINA
+              </div>
+              <Insight type="neutral" text={`Se esperan ${expCorners.toFixed(1)} tiros de esquina en total — ${homeName}: ${hCorners.toFixed(1)}, ${awayName}: ${aCorners.toFixed(1)}.`} />
+              <div style={{ marginTop: 14 }}>
+                <ProbRow label="Más de 7 corners en el partido" p={pC75} color="var(--green)" />
+                <ProbRow label="Más de 9 corners en el partido" p={pC95} color="var(--green)" />
+                <ProbRow label="Más de 11 corners en el partido" p={pC115} color="var(--fg-2)" />
+                <ProbRow label={`${homeName} tiene más corners`} p={hCorners / (hCorners + aCorners)} color="var(--green)" />
+                <ProbRow label={`${awayName} tiene más corners`} p={aCorners / (hCorners + aCorners)} color="var(--violet)" />
+              </div>
+            </div>
+
+            <div className="agm-rune-line" />
+
+            <div>
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
+                REMATES
+              </div>
+              <Insight type="neutral" text={`Se esperan ${expShots.toFixed(1)} remates totales, de los cuales ${expSOT.toFixed(1)} irán al arco.`} />
+              <div style={{ marginTop: 14 }}>
+                <ProbRow label="Más de 18 remates en el partido" p={pShots185} color="var(--green)" />
+                <ProbRow label="Más de 21 remates en el partido" p={pShots215} color="var(--fg-2)" />
+                <ProbRow label="Más de 7 remates al arco" p={pSOT75} color="var(--green)" />
+              </div>
+            </div>
+
+            <div className="agm-rune-line" />
+
+            <div>
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
+                TIROS LIBRES Y FUERAS DE JUEGO
+              </div>
+              <Insight type="neutral" text={`Promedio esperado: ${expFK.toFixed(1)} tiros libres y ${expOff.toFixed(1)} fueras de juego.`} />
+              <div style={{ marginTop: 14 }}>
+                <ProbRow label="Más de 19 tiros libres" p={pFK195} color="var(--green)" />
+                <ProbRow label="Más de 3 fueras de juego" p={pOff35} color="var(--fg-2)" />
               </div>
             </div>
           </div>
         )}
 
-        {/* ── REMATES ── */}
-        {activeTab === "remates" && (
+        {/* ── DISCIPLINA ── */}
+        {activeTab === "disciplina" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 8 }}>
-                MEDIA ESPERADA: <span style={{ color: "var(--green)" }}>{expShots.toFixed(1)} remates totales · {expSOT.toFixed(1)} al arco</span>
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
+                TARJETAS EN EL PARTIDO
               </div>
-            </div>
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                REMATES TOTALES — OVER/UNDER
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label="Remates O/U 18.5" value={`${pct(pShots185)} / ${pct(1 - pShots185)}`} accent={pShots185 > 0.5} />
-                <MarketPill label="Remates O/U 21.5" value={`${pct(pShots215)} / ${pct(1 - pShots215)}`} />
-                <MarketPill label="Al Arco O/U 7.5" value={`${pct(pSOT75)} / ${pct(1 - pSOT75)}`} accent={pSOT75 > 0.5} />
-                <MarketPill label="Al Arco O/U 9.5" value={`${pct(pSOT95)} / ${pct(1 - pSOT95)}`} />
-              </div>
-            </div>
-
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                TIROS LIBRES — OVER/UNDER
-              </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`TL O/U 19.5 (Media: ${expFK.toFixed(1)})`} value={`${pct(pFK195)} / ${pct(1 - pFK195)}`} accent={pFK195 > 0.5} />
-                <MarketPill label="TL O/U 23.5" value={`${pct(pFK235)} / ${pct(1 - pFK235)}`} />
+              <Insight type="neutral" text={`Se esperan aproximadamente ${expCards.toFixed(1)} tarjetas en total (amarilla = 1 pt, roja = 2 pts).`} />
+              <div style={{ marginTop: 14 }}>
+                <ProbRow label="Más de 3 tarjetas en el partido" p={pCards35} color="var(--fg-2)" />
+                <ProbRow label="Más de 4 tarjetas en el partido" p={pCards45} color="var(--fg-2)" />
+                <ProbRow label="Más de 5 tarjetas en el partido" p={pCards55} color="var(--fg-2)" />
+                <ProbRow
+                  label="Habrá una tarjeta roja"
+                  p={pRedCard}
+                  color="var(--red, #e84040)"
+                  note={pRedCard < 0.1 ? "Poco probable" : undefined}
+                />
               </div>
             </div>
 
+            <div className="agm-rune-line" />
+
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                FUERAS DE JUEGO (OFFSIDES) — OVER/UNDER
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
+                HISTORIAL DE TARJETAS POR EQUIPO
               </div>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <MarketPill label={`Offside O/U 2.5 (Media: ${expOff.toFixed(1)})`} value={`${pct(pOff25)} / ${pct(1 - pOff25)}`} accent={pOff25 > 0.5} />
-                <MarketPill label="Offside O/U 3.5" value={`${pct(pOff35)} / ${pct(1 - pOff35)}`} />
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: "var(--fg-1)", marginBottom: 8 }}>{homeName}</div>
+                  <ProbRow
+                    label="Amarillas por partido"
+                    p={Math.min(1, (homeStats.yellows_avg ?? 1.5) / 5)}
+                    color="var(--green)"
+                    note={`${(homeStats.yellows_avg ?? 1.5).toFixed(1)} promedio`}
+                  />
+                </div>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: "var(--fg-1)", marginBottom: 8 }}>{awayName}</div>
+                  <ProbRow
+                    label="Amarillas por partido"
+                    p={Math.min(1, (awayStats.yellows_avg ?? 1.5) / 5)}
+                    color="var(--violet)"
+                    note={`${(awayStats.yellows_avg ?? 1.5).toFixed(1)} promedio`}
+                  />
+                </div>
               </div>
             </div>
 
-            <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                REMATES POR EQUIPO
-              </div>
-              <div style={{ display: "flex", gap: 0, flexDirection: "column" }}>
-                <MarketRow label={`${homeId} — Remates prom.`} value={(homeStats.shots_avg ?? 10).toFixed(1)} accent={(homeStats.shots_avg ?? 0) > (awayStats.shots_avg ?? 0)} />
-                <MarketRow label={`${awayId} — Remates prom.`} value={(awayStats.shots_avg ?? 10).toFixed(1)} accent={(awayStats.shots_avg ?? 0) > (homeStats.shots_avg ?? 0)} />
-                <MarketRow label={`${homeId} — SOT prom.`} value={(homeStats.sot_avg ?? 3.5).toFixed(1)} accent={(homeStats.sot_avg ?? 0) > (awayStats.sot_avg ?? 0)} />
-                <MarketRow label={`${awayId} — SOT prom.`} value={(awayStats.sot_avg ?? 3.5).toFixed(1)} accent={(awayStats.sot_avg ?? 0) > (homeStats.sot_avg ?? 0)} />
-                <MarketRow label={`${homeId} — xG prom.`} value={(homeStats.xg_avg ?? 1.1).toFixed(2)} />
-                <MarketRow label={`${awayId} — xG prom.`} value={(awayStats.xg_avg ?? 1.1).toFixed(2)} />
-              </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {(homeStats.yellows_avg ?? 1.5) > 2.5 && (
+                <Insight type="neutral" text={`${homeName} es un equipo físico y suele recibir más de 2 amarillas por partido.`} />
+              )}
+              {(awayStats.yellows_avg ?? 1.5) > 2.5 && (
+                <Insight type="neutral" text={`${awayName} es un equipo físico y suele recibir más de 2 amarillas por partido.`} />
+              )}
+              {pRedCard < 0.08 && (
+                <Insight type="info" text={`El historial de ambos equipos muestra que las expulsiones son poco frecuentes.`} />
+              )}
+              {pRedCard >= 0.15 && (
+                <Insight type="neutral" text={`Hay un ${Math.round(pRedCard * 100)}% de probabilidad de ver una expulsión. Los partidos entre estos equipos pueden ser intensos.`} />
+              )}
             </div>
           </div>
         )}
@@ -834,147 +642,6 @@ function BettingMarkets({ prediction, homeStats, awayStats, homeId, awayId }: Be
       </div>
     </div>
   );
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
-// Eye of Agamotto animated SVG
-// ──────────────────────────────────────────────────────────────────────────────
-function EyeOfAgamotto({ size = 120, active = false }: { size?: number; active?: boolean }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animRef = useRef<number>(0);
-  const tRef = useRef(0);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d")!;
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = size * dpr;
-    canvas.height = size * dpr;
-    canvas.style.width = `${size}px`;
-    canvas.style.height = `${size}px`;
-    ctx.scale(dpr, dpr);
-
-    const cx = size / 2;
-    const cy = size / 2;
-    const R = size * 0.44;
-
-    function draw(t: number) {
-      ctx.clearRect(0, 0, size, size);
-
-      // Outer glow ring
-      const outerGrd = ctx.createRadialGradient(cx, cy, R * 0.7, cx, cy, R * 1.1);
-      outerGrd.addColorStop(0, "rgba(34,217,126,0.0)");
-      outerGrd.addColorStop(0.6, active ? "rgba(34,217,126,0.22)" : "rgba(34,217,126,0.08)");
-      outerGrd.addColorStop(1, "rgba(34,217,126,0.0)");
-      ctx.beginPath();
-      ctx.arc(cx, cy, R * 1.1, 0, Math.PI * 2);
-      ctx.fillStyle = outerGrd;
-      ctx.fill();
-
-      // Rotating runes ring
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(t * 0.4);
-      for (let i = 0; i < 8; i++) {
-        const angle = (i / 8) * Math.PI * 2;
-        const rx = Math.cos(angle) * R * 0.88;
-        const ry = Math.sin(angle) * R * 0.88;
-        ctx.beginPath();
-        ctx.arc(rx, ry, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(34,217,126,${0.4 + 0.3 * Math.sin(t * 1.5 + i)})`;
-        ctx.fill();
-      }
-      ctx.restore();
-
-      // Inner counter-rotating ring
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(-t * 0.25);
-      for (let i = 0; i < 12; i++) {
-        const angle = (i / 12) * Math.PI * 2;
-        const rx = Math.cos(angle) * R * 0.68;
-        const ry = Math.sin(angle) * R * 0.68;
-        ctx.beginPath();
-        ctx.arc(rx, ry, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(123,82,255,${0.3 + 0.25 * Math.sin(t * 2 + i)})`;
-        ctx.fill();
-      }
-      ctx.restore();
-
-      // Main iris circle
-      const irisGrd = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 0.55);
-      irisGrd.addColorStop(0, "#0a9956");
-      irisGrd.addColorStop(0.45, "#22d97e");
-      irisGrd.addColorStop(0.75, "#075a32");
-      irisGrd.addColorStop(1, "#06090d");
-      ctx.beginPath();
-      ctx.arc(cx, cy, R * 0.55, 0, Math.PI * 2);
-      ctx.fillStyle = irisGrd;
-      ctx.fill();
-
-      // Iris lines
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(t * 0.12);
-      for (let i = 0; i < 24; i++) {
-        const angle = (i / 24) * Math.PI * 2;
-        ctx.beginPath();
-        ctx.moveTo(Math.cos(angle) * R * 0.12, Math.sin(angle) * R * 0.12);
-        ctx.lineTo(Math.cos(angle) * R * 0.50, Math.sin(angle) * R * 0.50);
-        ctx.strokeStyle = "rgba(10,153,86,0.35)";
-        ctx.lineWidth = 0.7;
-        ctx.stroke();
-      }
-      ctx.restore();
-
-      // Pupil (black)
-      const pupilR = R * 0.18 + (active ? R * 0.04 * Math.sin(t * 2) : 0);
-      const pupilGrd = ctx.createRadialGradient(cx, cy, 0, cx, cy, pupilR);
-      pupilGrd.addColorStop(0, "#000000");
-      pupilGrd.addColorStop(0.7, "#060a0d");
-      pupilGrd.addColorStop(1, "rgba(6,10,13,0.9)");
-      ctx.beginPath();
-      ctx.arc(cx, cy, pupilR, 0, Math.PI * 2);
-      ctx.fillStyle = pupilGrd;
-      ctx.fill();
-
-      // Pupil highlight
-      ctx.beginPath();
-      ctx.arc(cx - pupilR * 0.28, cy - pupilR * 0.28, pupilR * 0.22, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(255,255,255,0.65)";
-      ctx.fill();
-
-      // Outer ring border
-      ctx.beginPath();
-      ctx.arc(cx, cy, R, 0, Math.PI * 2);
-      const borderGrd = ctx.createConicGradient
-        ? ctx.createConicGradient(t * 0.4, cx, cy)
-        : null;
-      if (borderGrd) {
-        borderGrd.addColorStop(0, "#22d97e");
-        borderGrd.addColorStop(0.25, "rgba(34,217,126,0.2)");
-        borderGrd.addColorStop(0.5, "#7b52ff");
-        borderGrd.addColorStop(0.75, "rgba(123,82,255,0.2)");
-        borderGrd.addColorStop(1, "#22d97e");
-        ctx.strokeStyle = borderGrd;
-      } else {
-        ctx.strokeStyle = "rgba(34,217,126,0.6)";
-      }
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-    }
-
-    function loop() {
-      tRef.current += 0.016;
-      draw(tRef.current);
-      animRef.current = requestAnimationFrame(loop);
-    }
-    loop();
-    return () => cancelAnimationFrame(animRef.current);
-  }, [size, active]);
-
-  return <canvas ref={canvasRef} style={{ display: "block" }} />;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -1132,12 +799,10 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
   const [data, setData] = useState<AnalysisData | null>(null);
   const [prediction, setPrediction] = useState<PredictionData | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [eyeActive, setEyeActive] = useState(false);
 
   const analyze = useCallback(async () => {
     if (!home || !away || home === away) return;
     setLoading(true);
-    setEyeActive(true);
     setError(null);
 
     try {
@@ -1151,7 +816,6 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
       setError(e?.message ?? "Error al analizar");
     } finally {
       setLoading(false);
-      setTimeout(() => setEyeActive(false), 1500);
     }
   }, [home, away, n]);
 
@@ -1237,12 +901,12 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                   <div style={{ fontSize: 40, marginBottom: 4, fontFamily: "'Apple Color Emoji','Segoe UI Emoji',sans-serif" }}>
                     {data.home.flag}
                   </div>
-                  <div className="agm-display" style={{ fontSize: 22, color: "var(--fg-0)" }}>{data.home.team_id}</div>
+                  <div className="agm-display" style={{ fontSize: 22, color: "var(--fg-0)" }}>{data.home.name}</div>
                   <div className="agm-mono" style={{ fontSize: 30, fontWeight: 700, color: "var(--green-deep)", marginTop: 8 }}>
                     {pct(prediction.p_home)}
                   </div>
                   <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", marginTop: 2 }}>
-                    xG {prediction.lambda_home.toFixed(2)}
+                    {prediction.lambda_home.toFixed(2)} goles esperados
                   </div>
                 </div>
                 <div style={{ padding: "22px 20px", textAlign: "center" }}>
@@ -1255,15 +919,15 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                   <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.12em", marginTop: 2 }}>
                     EMPATE
                   </div>
-                  <div style={{ marginTop: 12, display: "flex", gap: 8, justifyContent: "center" }}>
+                  <div style={{ marginTop: 12, display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
                     {prediction.p_over_2_5 != null && (
                       <span className="agm-pill agm-pill-green" style={{ fontSize: 9 }}>
-                        O/U 2.5: {pct(prediction.p_over_2_5)}
+                        +2 goles: {pct(prediction.p_over_2_5)}
                       </span>
                     )}
                     {prediction.p_btts != null && (
                       <span className="agm-pill" style={{ fontSize: 9 }}>
-                        BTTS: {pct(prediction.p_btts)}
+                        Anotan los 2: {pct(prediction.p_btts)}
                       </span>
                     )}
                   </div>
@@ -1275,12 +939,12 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                   <div style={{ fontSize: 40, marginBottom: 4, fontFamily: "'Apple Color Emoji','Segoe UI Emoji',sans-serif" }}>
                     {data.away.flag}
                   </div>
-                  <div className="agm-display" style={{ fontSize: 22, color: "var(--fg-0)" }}>{data.away.team_id}</div>
+                  <div className="agm-display" style={{ fontSize: 22, color: "var(--fg-0)" }}>{data.away.name}</div>
                   <div className="agm-mono" style={{ fontSize: 30, fontWeight: 700, color: "var(--violet)", marginTop: 8 }}>
                     {pct(prediction.p_away)}
                   </div>
                   <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", marginTop: 2 }}>
-                    xG {prediction.lambda_away.toFixed(2)}
+                    {prediction.lambda_away.toFixed(2)} goles esperados
                   </div>
                 </div>
               </div>
@@ -1314,14 +978,16 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
             </div>
           )}
 
-          {/* Betting markets panel */}
+          {/* Pronóstico panel */}
           {prediction && (
-            <BettingMarkets
+            <PronosticoPanel
               prediction={prediction}
               homeStats={data.home.stats}
               awayStats={data.away.stats}
               homeId={data.home.team_id}
               awayId={data.away.team_id}
+              homeName={data.home.name}
+              awayName={data.away.name}
             />
           )}
 
