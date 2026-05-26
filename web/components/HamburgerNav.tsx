@@ -9,244 +9,222 @@ interface NavItem {
   label: string;
 }
 
-export function HamburgerNav({ items, children }: {
-  items: NavItem[];
-  children?: React.ReactNode;
-}) {
+const ICONS: Record<string, string> = {
+  "/": "◎",
+  "/comparar": "⇄",
+  "/analisis": "◈",
+  "/escenarios": "⊞",
+  "/llave": "◇",
+  "/modelo": "⌬",
+  "/pivotes": "◉",
+  "/jugadores": "◍",
+  "/sobre": "○",
+};
+
+export function HamburgerNav({ items }: { items: NavItem[] }) {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
 
-  // Close menu on pressing Escape
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") setIsOpen(false); };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  // Prevent background scrolling when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // Close when path changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [path]);
+  useEffect(() => { setIsOpen(false); }, [path]);
 
   return (
     <>
-      {/* Menu Trigger Button */}
+      {/* Trigger button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Menu"
-        className="agm-eye-border"
+        aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: 42,
-          height: 42,
-          borderRadius: "50%",
-          background: "var(--bg-2)",
-          border: "1px solid var(--line)",
-          cursor: "pointer",
-          position: "relative",
-          zIndex: 60,
-          boxShadow: isOpen ? "0 0 15px var(--violet-glow)" : "var(--shadow-card)",
-          transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-      >
-        <div style={{ position: "relative", width: 18, height: 14 }}>
-          {/* Top Bar */}
-          <span
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: 2,
-              background: "var(--fg-1)",
-              borderRadius: 1,
-              transform: isOpen ? "rotate(45deg) translateY(5px) translateX(4px)" : "none",
-              transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-          />
-          {/* Middle Bar */}
-          <span
-            style={{
-              position: "absolute",
-              top: 6,
-              left: 0,
-              width: "100%",
-              height: 2,
-              background: "var(--fg-1)",
-              borderRadius: 1,
-              opacity: isOpen ? 0 : 1,
-              transform: isOpen ? "scaleX(0)" : "none",
-              transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-          />
-          {/* Bottom Bar */}
-          <span
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              height: 2,
-              background: "var(--fg-1)",
-              borderRadius: 1,
-              transform: isOpen ? "rotate(-45deg) translateY(-5px) translateX(4px)" : "none",
-              transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-          />
-        </div>
-      </button>
-
-      {/* Backdrop Overlay */}
-      <div
-        onClick={() => setIsOpen(false)}
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "rgba(3, 5, 8, 0.4)",
-          backdropFilter: "blur(8px)",
-          opacity: isOpen ? 1 : 0,
-          pointerEvents: isOpen ? "auto" : "none",
-          zIndex: 58,
-          transition: "opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-      />
-
-      {/* Sliding Drawer Menu */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: "100%",
-          maxWidth: 420,
-          background: "rgba(11, 17, 23, 0.94)",
-          backdropFilter: "blur(20px)",
-          borderLeft: "1px solid var(--line-2)",
-          zIndex: 59,
-          padding: "80px 40px 40px 40px",
-          boxShadow: "-10px 0 30px rgba(0,0,0,0.5)",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
-          transform: isOpen ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 5,
+          width: 38,
+          height: 38,
+          borderRadius: 8,
+          background: isOpen ? "var(--green-bg-2)" : "transparent",
+          border: `1px solid ${isOpen ? "rgba(34,217,126,0.3)" : "var(--line-2)"}`,
+          cursor: "pointer",
+          flexShrink: 0,
+          transition: "all 0.2s ease",
+          padding: 0,
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-          {/* Header Area inside Menu */}
+        {[0, 1, 2].map((i) => (
+          <span
+            key={i}
+            style={{
+              display: "block",
+              width: 16,
+              height: 2,
+              borderRadius: 1,
+              background: isOpen ? "var(--green)" : "var(--fg-2)",
+              transition: "all 0.25s ease",
+              transform:
+                isOpen && i === 0 ? "rotate(45deg) translate(5px, 5px)" :
+                isOpen && i === 1 ? "scaleX(0)" :
+                isOpen && i === 2 ? "rotate(-45deg) translate(5px, -5px)" :
+                "none",
+              opacity: isOpen && i === 1 ? 0 : 1,
+            }}
+          />
+        ))}
+      </button>
+
+      {/* Backdrop */}
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          style={{
+            position: "fixed", inset: 0,
+            background: "rgba(3, 5, 8, 0.55)",
+            backdropFilter: "blur(6px)",
+            zIndex: 58,
+            animation: "agm-fade-in 0.25s ease",
+          }}
+        />
+      )}
+
+      {/* Drawer — always dark bg, legible text */}
+      <nav
+        role="dialog"
+        aria-modal="true"
+        style={{
+          position: "fixed",
+          top: 0, left: 0, bottom: 0,
+          width: 280,
+          background: "#0e1320",
+          borderRight: "1px solid rgba(255,255,255,0.08)",
+          zIndex: 59,
+          display: "flex",
+          flexDirection: "column",
+          transform: isOpen ? "translateX(0)" : "translateX(-100%)",
+          transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+          boxShadow: isOpen ? "4px 0 40px rgba(0,0,0,0.5)" : "none",
+          overflowY: "auto",
+        }}
+      >
+        {/* Header */}
+        <div style={{
+          padding: "20px 24px 16px",
+          borderBottom: "1px solid rgba(255,255,255,0.07)",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+        }}>
           <div>
-            <div className="agm-mono" style={{ fontSize: 10, color: "var(--violet)", letterSpacing: "0.2em", marginBottom: 4 }}>
+            <div style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "#5a6573", letterSpacing: "0.18em", marginBottom: 2 }}>
               MULTIVERSE PORTAL
             </div>
-            <h3 className="agm-display" style={{ fontSize: 24, letterSpacing: "0.05em", color: "var(--fg-0)" }}>
-              AGAMOTTO NAV
-            </h3>
-            <div className="agm-rune-line" style={{ marginTop: 12 }} />
+            <div style={{ fontSize: 20, fontFamily: "var(--font-display)", color: "#f4f7fb", letterSpacing: "0.06em", fontWeight: 700 }}>
+              AGAMOTTO
+            </div>
           </div>
-
-          {/* Navigation Links */}
-          <nav style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            {items.map((n, idx) => {
-              const active = n.href === path || (n.href !== "/" && path.startsWith(n.href));
-              return (
-                <Link
-                  key={n.href}
-                  href={n.href}
-                  className="agm-display"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 16,
-                    fontSize: 16,
-                    letterSpacing: "0.14em",
-                    color: active ? "var(--green)" : "var(--fg-1)",
-                    padding: "12px 18px",
-                    borderRadius: 10,
-                    background: active ? "var(--green-bg)" : "rgba(255,255,255,0.02)",
-                    border: active ? "1px solid rgba(34, 217, 126, 0.2)" : "1px solid transparent",
-                    transition: "all 0.25s ease",
-                    position: "relative",
-                    overflow: "hidden",
-                    animation: isOpen ? `agm-fade-in-slide 0.3s ease forwards ${idx * 0.04}s` : "none",
-                    opacity: isOpen ? 0 : 1,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "var(--green)";
-                    e.currentTarget.style.background = "var(--green-bg)";
-                    e.currentTarget.style.borderColor = "rgba(34, 217, 126, 0.15)";
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!active) {
-                      e.currentTarget.style.color = "var(--fg-1)";
-                      e.currentTarget.style.background = "rgba(255,255,255,0.02)";
-                      e.currentTarget.style.borderColor = "transparent";
-                    }
-                  }}
-                >
-                  {/* Glowing active indicator dot */}
-                  <span
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      background: active ? "var(--green)" : "transparent",
-                      boxShadow: active ? "0 0 10px var(--green)" : "none",
-                      transition: "all 0.25s ease",
-                    }}
-                  />
-                  <span>{n.label}</span>
-                </Link>
-              );
-            })}
-          </nav>
+          <button
+            onClick={() => setIsOpen(false)}
+            aria-label="Cerrar"
+            style={{
+              width: 32, height: 32, borderRadius: 8,
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "#8a96a3", fontSize: 16, cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}
+          >✕</button>
         </div>
 
-        {/* Footer Area inside Menu */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div className="agm-rune-line" />
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <LangSwitcher />
-            {children}
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            <span className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)" }}>
-              SYSTEM LATENCY: OFF-LINE snapping
-            </span>
-            <span className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)" }}>
-              TIMELINES: 420+ PARALLEL COMBINATIONS
-            </span>
+        {/* Nav links */}
+        <div style={{ flex: 1, padding: "12px 16px", display: "flex", flexDirection: "column", gap: 2 }}>
+          {items.map((item, idx) => {
+            const active = item.href === path || (item.href !== "/" && path.startsWith(item.href));
+            const icon = ICONS[item.href] ?? "·";
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "11px 14px",
+                  borderRadius: 9,
+                  textDecoration: "none",
+                  background: active ? "rgba(34,217,126,0.1)" : "transparent",
+                  border: `1px solid ${active ? "rgba(34,217,126,0.2)" : "transparent"}`,
+                  transition: "all 0.15s ease",
+                  animation: isOpen ? `agm-nav-in 0.3s ease both` : "none",
+                  animationDelay: `${idx * 35}ms`,
+                }}
+                onMouseEnter={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.borderColor = "transparent";
+                  }
+                }}
+              >
+                <span style={{
+                  width: 20, textAlign: "center", fontSize: 14,
+                  color: active ? "#22d97e" : "#5a6573",
+                  flexShrink: 0,
+                }}>{icon}</span>
+                <span style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12,
+                  fontWeight: active ? 700 : 500,
+                  letterSpacing: "0.12em",
+                  color: active ? "#f4f7fb" : "#c8d0d9",
+                }}>
+                  {item.label}
+                </span>
+                {active && (
+                  <span style={{
+                    marginLeft: "auto", width: 6, height: 6, borderRadius: "50%",
+                    background: "#22d97e",
+                    boxShadow: "0 0 8px #22d97e",
+                    flexShrink: 0,
+                  }} />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <div style={{
+          padding: "16px 24px",
+          borderTop: "1px solid rgba(255,255,255,0.07)",
+          display: "flex", flexDirection: "column", gap: 12,
+        }}>
+          <LangSwitcher />
+          <div style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "#2e3a47", letterSpacing: "0.1em" }}>
+            420+ COMBINACIONES · OFFLINE-FIRST
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Internal Menu Animations */}
       <style jsx global>{`
-        @keyframes agm-fade-in-slide {
-          from {
-            opacity: 0;
-            transform: translateX(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+        @keyframes agm-fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes agm-nav-in {
+          from { opacity: 0; transform: translateX(-12px); }
+          to { opacity: 1; transform: translateX(0); }
         }
       `}</style>
     </>

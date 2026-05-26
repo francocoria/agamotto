@@ -1174,12 +1174,16 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
         }}>
           <TeamSelect label="EQUIPO LOCAL" value={home} onChange={setHome} teams={sorted} />
 
-          {/* Eye central */}
+          {/* VS divider */}
           <div style={{
             display: "flex", flexDirection: "column", alignItems: "center",
-            gap: 6, paddingBottom: 2,
+            justifyContent: "flex-end", gap: 4, paddingBottom: 4,
           }}>
-            <EyeOfAgamotto size={58} active={loading || eyeActive} />
+            <span className="agm-mono" style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.18em",
+              color: loading ? "var(--green)" : "var(--fg-3)",
+              transition: "color 0.3s",
+            }}>VS</span>
           </div>
 
           <button onClick={swap} className="agm-btn-icon" style={{
@@ -1243,7 +1247,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                 </div>
                 <div style={{ padding: "22px 20px", textAlign: "center" }}>
                   <div style={{ marginBottom: 12, marginTop: 8 }}>
-                    <EyeOfAgamotto size={56} active={false} />
+                    <span className="agm-mono" style={{ fontSize: 11, color: "var(--fg-3)", letterSpacing: "0.2em" }}>VS</span>
                   </div>
                   <div className="agm-mono" style={{ fontSize: 20, fontWeight: 700, color: "var(--fg-1)" }}>
                     {pct(prediction.p_draw)}
@@ -1458,8 +1462,8 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                   </>
                 ) : (
                   <div style={{ textAlign: "center", color: "var(--fg-3)", padding: "24px 0" }}>
-                    <EyeOfAgamotto size={48} />
-                    <p style={{ marginTop: 12, fontSize: 12 }}>Sin historial directo registrado.</p>
+                    <div style={{ fontSize: 32, marginBottom: 8 }}>—</div>
+                    <p style={{ fontSize: 12, fontFamily: "var(--font-mono)" }}>Sin historial directo registrado.</p>
                   </div>
                 )}
               </div>
@@ -1488,7 +1492,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                   <span className="agm-display" style={{ fontSize: 16, color: "var(--green-deep)" }}>{data.home.name}</span>
                 </div>
                 <div style={{ textAlign: "center" }}>
-                  <EyeOfAgamotto size={40} active={loading} />
+                  <span className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", letterSpacing: "0.18em" }}>VS</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <span className="agm-display" style={{ fontSize: 16, color: "var(--violet)" }}>{data.away.name}</span>
