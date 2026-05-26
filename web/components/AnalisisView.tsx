@@ -302,8 +302,8 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
   return (
     <div className="agm-card agm-anim-blur" style={{ marginBottom: 20 }}>
       <div className="agm-card-h">
-        <h3>ANÁLISIS PREDICTIVO</h3>
-        <span className="agm-pill agm-pill-green" style={{ fontSize: 9 }}>MODELO ENSEMBLE</span>
+        <h3>QUÉ PUEDE PASAR EN ESTE PARTIDO</h3>
+        <span className="agm-pill" style={{ fontSize: 9 }}>Basado en el historial reciente</span>
       </div>
 
       {/* Tab nav */}
@@ -333,18 +333,18 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
         {activeTab === "ganador" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                RESULTADO FINAL
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                Basado en los últimos partidos de cada equipo, estas son las chances de cada resultado al final del partido:
               </div>
               <ProbRow
-                label={`Gana ${homeName}`}
+                label={`${homeName} gana el partido`}
                 p={pH}
                 color="var(--green)"
                 note={pH === Math.max(pH, pD, pA) ? "Favorito" : undefined}
               />
-              <ProbRow label="Empate" p={pD} color="var(--fg-2)" />
+              <ProbRow label="El partido termina en empate" p={pD} color="var(--fg-2)" />
               <ProbRow
-                label={`Gana ${awayName}`}
+                label={`${awayName} gana el partido`}
                 p={pA}
                 color="var(--violet)"
                 note={pA === Math.max(pH, pD, pA) ? "Favorito" : undefined}
@@ -354,41 +354,41 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                ¿QUIÉN NO PIERDE?
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                Probabilidad de que cada equipo al menos no pierda (ya sea ganando o empatando):
               </div>
-              <ProbRow label={`${homeName} gana o empata`} p={p1X} color="var(--green)" />
-              <ProbRow label={`${awayName} empata o gana`} p={pX2} color="var(--violet)" />
-              <ProbRow label="El partido se define (no hay empate)" p={p12} color="var(--fg-2)" />
+              <ProbRow label={`${homeName} no pierde — gana o empata`} p={p1X} color="var(--green)" />
+              <ProbRow label={`${awayName} no pierde — empata o gana`} p={pX2} color="var(--violet)" />
+              <ProbRow label="Alguien gana — no hay empate" p={p12} color="var(--fg-2)" />
             </div>
 
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                PRIMER TIEMPO
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                ¿Cómo suele arrancar cada equipo? Resultado probable al llegar al descanso (minuto 45):
               </div>
-              <ProbRow label={`${homeName} gana el 1er tiempo`} p={ht.p1} color="var(--green)" />
-              <ProbRow label="Empate al descanso" p={ht.pX} color="var(--fg-2)" />
-              <ProbRow label={`${awayName} gana el 1er tiempo`} p={ht.p2} color="var(--violet)" />
+              <ProbRow label={`${homeName} va ganando al descanso`} p={ht.p1} color="var(--green)" />
+              <ProbRow label="Igualdad al llegar al descanso" p={ht.pX} color="var(--fg-2)" />
+              <ProbRow label={`${awayName} va ganando al descanso`} p={ht.p2} color="var(--violet)" />
             </div>
 
             <div className="agm-rune-line" />
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {pH > pA && pH > 0.45 && (
-                <Insight type="good" text={`El modelo favorece a ${homeName}, con un ${Math.round(pH * 100)}% de probabilidad de ganar.`} />
+                <Insight type="good" text={`Mirando el historial reciente, ${homeName} tiene más chances de llevarse la victoria (${Math.round(pH * 100)}%).`} />
               )}
               {pA > pH && pA > 0.45 && (
-                <Insight type="good" text={`El modelo favorece a ${awayName}, con un ${Math.round(pA * 100)}% de probabilidad de ganar.`} />
+                <Insight type="good" text={`Mirando el historial reciente, ${awayName} tiene más chances de llevarse la victoria (${Math.round(pA * 100)}%).`} />
               )}
               {Math.abs(pH - pA) < 0.08 && (
-                <Insight type="neutral" text={`Partido muy parejo: ${homeName} ${Math.round(pH * 100)}% vs ${awayName} ${Math.round(pA * 100)}%. El empate (${Math.round(pD * 100)}%) es una opción muy válida.`} />
+                <Insight type="neutral" text={`Los equipos están muy parejos: ${homeName} ${Math.round(pH * 100)}% vs ${awayName} ${Math.round(pA * 100)}%. El empate (${Math.round(pD * 100)}%) es un resultado muy posible.`} />
               )}
               {ht.pX > 0.45 && (
-                <Insight type="info" text={`Hay un ${Math.round(ht.pX * 100)}% de probabilidad de que el primer tiempo termine igualado.`} />
+                <Insight type="info" text={`En ${Math.round(ht.pX * 100)} de cada 100 partidos similares, ambos equipos llegan igualados al descanso.`} />
               )}
-              <Insight type="info" text={`El modelo estima ${lH.toFixed(1)} goles esperados para ${homeName} y ${lA.toFixed(1)} para ${awayName}.`} />
+              <Insight type="info" text={`El análisis estima que ${homeName} generaría oportunidades para ~${lH.toFixed(1)} goles y ${awayName} para ~${lA.toFixed(1)} goles en promedio.`} />
             </div>
           </div>
         )}
@@ -397,25 +397,25 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
         {activeTab === "goles" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                ¿CUÁNTOS GOLES HABRÁ?
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                ¿Cuántos goles puede haber en el partido? Cada barra muestra la probabilidad de cada cantidad:
               </div>
-              <ProbRow label="Sin goles (0–0)" p={pG0} color="var(--fg-2)" />
-              <ProbRow label="1 gol en total" p={pG1} color="var(--fg-2)" />
-              <ProbRow label="2 goles en total" p={pG2} color="var(--green)" />
-              <ProbRow label="3 goles en total" p={pG3} color="var(--green)" />
-              <ProbRow label="4 goles en total" p={pG4} color="var(--fg-2)" />
-              <ProbRow label="5 o más goles" p={Math.max(0, pG5p)} color="var(--fg-2)" />
+              <ProbRow label="El partido termina sin goles (0 a 0)" p={pG0} color="var(--fg-2)" />
+              <ProbRow label="Hay solo 1 gol en todo el partido" p={pG1} color="var(--fg-2)" />
+              <ProbRow label="Hay exactamente 2 goles en el partido" p={pG2} color="var(--green)" />
+              <ProbRow label="Hay exactamente 3 goles en el partido" p={pG3} color="var(--green)" />
+              <ProbRow label="Hay exactamente 4 goles en el partido" p={pG4} color="var(--fg-2)" />
+              <ProbRow label="Hay 5 goles o más (partido muy abierto)" p={Math.max(0, pG5p)} color="var(--fg-2)" />
             </div>
 
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                ¿ANOTAN LOS DOS EQUIPOS?
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                ¿Anotarán los dos equipos, o uno se quedará sin marcar?
               </div>
-              <ProbRow label="Ambos equipos anotan al menos 1 gol" p={pBtts} color="var(--green)" />
-              <ProbRow label="Algún equipo termina sin anotar" p={1 - pBtts} color="var(--fg-2)" />
+              <ProbRow label="Los dos equipos anotan (ambos marcan al menos 1)" p={pBtts} color="var(--green)" />
+              <ProbRow label="Uno de los equipos no logra anotar ningún gol" p={1 - pBtts} color="var(--fg-2)" />
             </div>
 
             <div className="agm-rune-line" />
@@ -443,16 +443,16 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {pG2 + pG3 > 0.5 && (
-                <Insight type="good" text={`El escenario más probable es 2 o 3 goles en el partido (${Math.round((pG2 + pG3) * 100)}% de chances).`} />
+                <Insight type="good" text={`El escenario más probable es que haya 2 o 3 goles en el partido (${Math.round((pG2 + pG3) * 100)} de cada 100 veces en partidos similares).`} />
               )}
               {pO25 > 0.6 && (
-                <Insight type="good" text={`Alta probabilidad de ver más de 2 goles (${Math.round(pO25 * 100)}%). Ambos ataques son potentes.`} />
+                <Insight type="good" text={`Es bastante probable ver más de 2 goles (${Math.round(pO25 * 100)}%). Los dos equipos tienen buen ataque.`} />
               )}
               {pO25 < 0.4 && (
-                <Insight type="neutral" text={`El modelo espera un partido cerrado. Lo más probable es que haya menos de 3 goles.`} />
+                <Insight type="neutral" text={`Se espera un partido cerrado. Lo más probable es que haya 2 goles o menos.`} />
               )}
               {pBtts > 0.55 && (
-                <Insight type="info" text={`Hay ${Math.round(pBtts * 100)}% de probabilidad de que los dos equipos anoten. Los dos ataques tienen potencial.`} />
+                <Insight type="info" text={`En ${Math.round(pBtts * 100)} de cada 100 partidos similares, los dos equipos logran anotar al menos un gol cada uno.`} />
               )}
             </div>
           </div>
@@ -462,8 +462,8 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
         {activeTab === "momentos" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 12 }}>
-                DISTRIBUCIÓN DE GOLES POR TRAMO (PROMEDIO HISTÓRICO COMBINADO)
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                Los goles no caen igual en todos los minutos del partido. Esta barra muestra en qué momento suelen marcar más estos equipos, según su historial:
               </div>
               {periods ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -497,13 +497,13 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                GOLES POR TIEMPO
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 16, lineHeight: 1.6 }}>
+                ¿Se anotará en el primer tiempo o en el segundo? Probabilidad de que haya goles en cada mitad:
               </div>
-              <ProbRow label="Primer tiempo con al menos 1 gol" p={pFHO05} color="var(--green)" />
-              <ProbRow label="Primer tiempo con 2 o más goles" p={pFHO15} color="var(--green)" />
-              <ProbRow label="Segundo tiempo con al menos 1 gol" p={pSHO05} color="var(--violet)" />
-              <ProbRow label="Segundo tiempo con 2 o más goles" p={pSHO15} color="var(--violet)" />
+              <ProbRow label="En el 1er tiempo cae al menos 1 gol (minutos 0–45)" p={pFHO05} color="var(--green)" />
+              <ProbRow label="En el 1er tiempo hay 2 goles o más" p={pFHO15} color="var(--green)" />
+              <ProbRow label="En el 2do tiempo cae al menos 1 gol (minutos 45–90)" p={pSHO05} color="var(--violet)" />
+              <ProbRow label="En el 2do tiempo hay 2 goles o más" p={pSHO15} color="var(--violet)" />
             </div>
 
             {periods && (() => {
@@ -531,44 +531,35 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
         {activeTab === "juego" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
-                TIROS DE ESQUINA
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 12, lineHeight: 1.6 }}>
+                Un tiro de esquina (corner) ocurre cuando la pelota sale por la línea de fondo tocada por el equipo defensor. Se esperan <strong>{expCorners.toFixed(1)}</strong> corners en total — {homeName}: {hCorners.toFixed(1)}, {awayName}: {aCorners.toFixed(1)}.
               </div>
-              <Insight type="neutral" text={`Se esperan ${expCorners.toFixed(1)} tiros de esquina en total — ${homeName}: ${hCorners.toFixed(1)}, ${awayName}: ${aCorners.toFixed(1)}.`} />
-              <div style={{ marginTop: 14 }}>
-                <ProbRow label="Más de 7 corners en el partido" p={pC75} color="var(--green)" />
-                <ProbRow label="Más de 9 corners en el partido" p={pC95} color="var(--green)" />
-                <ProbRow label="Más de 11 corners en el partido" p={pC115} color="var(--fg-2)" />
-                <ProbRow label={`${homeName} tiene más corners`} p={hCorners / (hCorners + aCorners)} color="var(--green)" />
-                <ProbRow label={`${awayName} tiene más corners`} p={aCorners / (hCorners + aCorners)} color="var(--violet)" />
-              </div>
+              <ProbRow label="Habrá más de 7 corners en el partido" p={pC75} color="var(--green)" />
+              <ProbRow label="Habrá más de 9 corners en el partido" p={pC95} color="var(--green)" />
+              <ProbRow label="Habrá más de 11 corners en el partido" p={pC115} color="var(--fg-2)" />
+              <ProbRow label={`${homeName} saca más corners que ${awayName}`} p={hCorners / (hCorners + aCorners)} color="var(--green)" />
+              <ProbRow label={`${awayName} saca más corners que ${homeName}`} p={aCorners / (hCorners + aCorners)} color="var(--violet)" />
             </div>
 
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
-                REMATES
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 12, lineHeight: 1.6 }}>
+                ¿Cuánto van a intentar al arco? Se esperan <strong>{expShots.toFixed(1)}</strong> remates totales en el partido, de los cuales unos <strong>{expSOT.toFixed(1)}</strong> irán directo al arco (los demás salen afuera o los bloquean).
               </div>
-              <Insight type="neutral" text={`Se esperan ${expShots.toFixed(1)} remates totales, de los cuales ${expSOT.toFixed(1)} irán al arco.`} />
-              <div style={{ marginTop: 14 }}>
-                <ProbRow label="Más de 18 remates en el partido" p={pShots185} color="var(--green)" />
-                <ProbRow label="Más de 21 remates en el partido" p={pShots215} color="var(--fg-2)" />
-                <ProbRow label="Más de 7 remates al arco" p={pSOT75} color="var(--green)" />
-              </div>
+              <ProbRow label="Habrá más de 18 remates en todo el partido" p={pShots185} color="var(--green)" />
+              <ProbRow label="Habrá más de 21 remates en todo el partido" p={pShots215} color="var(--fg-2)" />
+              <ProbRow label="Más de 7 de esos remates irán directo al arco" p={pSOT75} color="var(--green)" />
             </div>
 
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
-                TIROS LIBRES Y FUERAS DE JUEGO
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 12, lineHeight: 1.6 }}>
+                Los tiros libres son las faltas que da lugar a una pelota parada. Se esperan <strong>{expFK.toFixed(1)}</strong> tiros libres y <strong>{expOff.toFixed(1)}</strong> fueras de juego (posiciones adelantadas) en el partido.
               </div>
-              <Insight type="neutral" text={`Promedio esperado: ${expFK.toFixed(1)} tiros libres y ${expOff.toFixed(1)} fueras de juego.`} />
-              <div style={{ marginTop: 14 }}>
-                <ProbRow label="Más de 19 tiros libres" p={pFK195} color="var(--green)" />
-                <ProbRow label="Más de 3 fueras de juego" p={pOff35} color="var(--fg-2)" />
-              </div>
+              <ProbRow label="Habrá más de 19 tiros libres en el partido" p={pFK195} color="var(--green)" />
+              <ProbRow label="Habrá más de 3 veces en offside (fuera de juego)" p={pOff35} color="var(--fg-2)" />
             </div>
           </div>
         )}
@@ -580,13 +571,15 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
               <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>
                 TARJETAS EN EL PARTIDO
               </div>
-              <Insight type="neutral" text={`Se esperan aproximadamente ${expCards.toFixed(1)} tarjetas en total (amarilla = 1 pt, roja = 2 pts).`} />
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 12, lineHeight: 1.6 }}>
+                Las tarjetas amarillas se dan por faltas graves o protestas. La roja expulsa al jugador y deja al equipo con un hombre menos. Se esperan unas <strong>{expCards.toFixed(1)} tarjetas</strong> en el partido.
+              </div>
               <div style={{ marginTop: 14 }}>
-                <ProbRow label="Más de 3 tarjetas en el partido" p={pCards35} color="var(--fg-2)" />
-                <ProbRow label="Más de 4 tarjetas en el partido" p={pCards45} color="var(--fg-2)" />
-                <ProbRow label="Más de 5 tarjetas en el partido" p={pCards55} color="var(--fg-2)" />
+                <ProbRow label="El árbitro saca más de 3 tarjetas en el partido" p={pCards35} color="var(--fg-2)" />
+                <ProbRow label="El árbitro saca más de 4 tarjetas en el partido" p={pCards45} color="var(--fg-2)" />
+                <ProbRow label="El árbitro saca más de 5 tarjetas en el partido" p={pCards55} color="var(--fg-2)" />
                 <ProbRow
-                  label="Habrá una tarjeta roja"
+                  label="Habrá al menos una tarjeta roja (expulsión)"
                   p={pRedCard}
                   color="var(--red, #e84040)"
                   note={pRedCard < 0.1 ? "Poco probable" : undefined}
@@ -597,26 +590,26 @@ function PronosticoPanel({ prediction, homeStats, awayStats, homeId, awayId, hom
             <div className="agm-rune-line" />
 
             <div>
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 14 }}>
-                HISTORIAL DE TARJETAS POR EQUIPO
+              <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 14, lineHeight: 1.6 }}>
+                ¿Cuántas amarillas saca habitualmente cada equipo? (La barra llena = 5 amarillas por partido, que sería mucho)
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 600, color: "var(--fg-1)", marginBottom: 8 }}>{homeName}</div>
                   <ProbRow
-                    label="Amarillas por partido"
+                    label="Promedio de amarillas por partido"
                     p={Math.min(1, (homeStats.yellows_avg ?? 1.5) / 5)}
                     color="var(--green)"
-                    note={`${(homeStats.yellows_avg ?? 1.5).toFixed(1)} promedio`}
+                    note={`${(homeStats.yellows_avg ?? 1.5).toFixed(1)} por partido`}
                   />
                 </div>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 600, color: "var(--fg-1)", marginBottom: 8 }}>{awayName}</div>
                   <ProbRow
-                    label="Amarillas por partido"
+                    label="Promedio de amarillas por partido"
                     p={Math.min(1, (awayStats.yellows_avg ?? 1.5) / 5)}
                     color="var(--violet)"
-                    note={`${(awayStats.yellows_avg ?? 1.5).toFixed(1)} promedio`}
+                    note={`${(awayStats.yellows_avg ?? 1.5).toFixed(1)} por partido`}
                   />
                 </div>
               </div>
@@ -887,8 +880,8 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
           {prediction && (
             <div className="agm-card agm-anim-blur" style={{ marginBottom: 20, overflow: "hidden" }}>
               <div className="agm-card-h">
-                <h3>PREDICCIÓN ENSEMBLE</h3>
-                <span className="agm-card-eyebrow">Cancha neutral · Modelo calibrado</span>
+                <h3>PRONÓSTICO DEL PARTIDO</h3>
+                <span className="agm-card-eyebrow">Basado en el historial reciente de ambos equipos</span>
               </div>
               <div style={{
                 display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
@@ -906,7 +899,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                     {pct(prediction.p_home)}
                   </div>
                   <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", marginTop: 2 }}>
-                    {prediction.lambda_home.toFixed(2)} goles esperados
+                    ~{prediction.lambda_home.toFixed(1)} goles por partido en promedio
                   </div>
                 </div>
                 <div style={{ padding: "22px 20px", textAlign: "center" }}>
@@ -944,7 +937,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                     {pct(prediction.p_away)}
                   </div>
                   <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)", marginTop: 2 }}>
-                    {prediction.lambda_away.toFixed(2)} goles esperados
+                    ~{prediction.lambda_away.toFixed(1)} goles por partido en promedio
                   </div>
                 </div>
               </div>
@@ -955,6 +948,22 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                   <div style={{ flex: prediction.p_draw, background: "var(--bg-3)" }} />
                   <div style={{ flex: prediction.p_away, background: "linear-gradient(90deg, var(--violet), var(--violet-soft))" }} />
                 </div>
+              </div>
+
+              {/* Narrative summary */}
+              <div style={{ padding: "14px 24px", borderBottom: "1px solid var(--line)" }}>
+                <p style={{ fontSize: 14, color: "var(--fg-1)", lineHeight: 1.7, margin: 0 }}>
+                  {(() => {
+                    const fav = prediction.p_home > prediction.p_away ? data.home.name : data.away.name;
+                    const favPct = Math.round(Math.max(prediction.p_home, prediction.p_away) * 100);
+                    const totalGoals = prediction.lambda_home + prediction.lambda_away;
+                    const goalsDesc = totalGoals < 1.8 ? "un partido con pocos goles" : totalGoals > 2.8 ? "un partido con varios goles" : "un partido con 2 o 3 goles";
+                    const tight = Math.abs(prediction.p_home - prediction.p_away) < 0.08;
+                    return tight
+                      ? `Los dos equipos están muy parejos. No hay un favorito claro — cualquier resultado es posible. Se espera ${goalsDesc}.`
+                      : `${fav} entra como favorito con un ${favPct}% de chances de ganar. Se espera ${goalsDesc}.`;
+                  })()}
+                </p>
               </div>
 
               {/* Top scorelines */}
@@ -1007,7 +1016,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                     <div>
                       <div className="agm-display" style={{ fontSize: 14, color: "var(--fg-0)" }}>{data.home.team_id}</div>
                       <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)" }}>
-                        Elo {data.home.elo ? Math.round(data.home.elo) : "—"} · #{data.home.fifa_rank ?? "—"}
+                        Ranking: #{data.home.fifa_rank ?? "—"} FIFA · {data.home.elo ? `${Math.round(data.home.elo)} pts Elo` : ""}
                       </div>
                     </div>
                   </div>
@@ -1023,7 +1032,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                     <div>
                       <div className="agm-display" style={{ fontSize: 14, color: "var(--fg-0)" }}>{data.away.team_id}</div>
                       <div className="agm-mono" style={{ fontSize: 10, color: "var(--fg-3)" }}>
-                        Elo {data.away.elo ? Math.round(data.away.elo) : "—"} · #{data.away.fifa_rank ?? "—"}
+                        Ranking: #{data.away.fifa_rank ?? "—"} FIFA · {data.away.elo ? `${Math.round(data.away.elo)} pts Elo` : ""}
                       </div>
                     </div>
                   </div>
@@ -1035,7 +1044,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
                     FORMA {n} PARTIDOS
                   </div>
                   <StatBar
-                    label="% Puntos"
+                    label="Puntos ganados de los posibles (rendimiento %)"
                     homeVal={data.home.stats.form_pct}
                     awayVal={data.away.stats.form_pct}
                     format={(v) => `${(v * 100).toFixed(0)}%`}
@@ -1139,12 +1148,9 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
           {/* Advanced stats comparison */}
           <div className="agm-card" style={{ marginBottom: 20 }}>
             <div className="agm-card-h">
-              <h3>ESTADÍSTICAS AVANZADAS</h3>
+              <h3>COMPARATIVA DETALLADA</h3>
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                <span className="agm-card-eyebrow">{n} partidos · {data.home.stats.matches_analyzed} analiz.</span>
-                <span className="agm-pill agm-pill-green" style={{ fontSize: 9 }}>
-                  420+ COMBINACIONES
-                </span>
+                <span className="agm-card-eyebrow">Últimos {n} partidos · {data.home.stats.matches_analyzed} analizados</span>
               </div>
             </div>
             <div style={{ padding: "18px 28px" }}>
@@ -1167,34 +1173,34 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
               </div>
 
               {/* Ataque */}
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>⚡ PODER OFENSIVO</div>
-              <StatBar label="Goles Esperados (xG)" homeVal={data.home.stats.xg_avg} awayVal={data.away.stats.xg_avg} />
-              <StatBar label="Remates por partido" homeVal={data.home.stats.shots_avg} awayVal={data.away.stats.shots_avg} />
-              <StatBar label="Remates al arco" homeVal={data.home.stats.sot_avg} awayVal={data.away.stats.sot_avg} />
-              <StatBar label="Eficiencia de tiro" homeVal={data.home.stats.shot_efficiency} awayVal={data.away.stats.shot_efficiency} format={(v) => `${(v * 100).toFixed(0)}%`} />
-              <StatBar label="Tasa de conversión" homeVal={data.home.stats.conversion_rate} awayVal={data.away.stats.conversion_rate} format={(v) => `${(v * 100).toFixed(0)}%`} />
-              <StatBar label="Tiros de esquina" homeVal={data.home.stats.corners_avg} awayVal={data.away.stats.corners_avg} />
-              <StatBar label="Goles primeros 10 min" homeVal={data.home.stats.early_goals_avg} awayVal={data.away.stats.early_goals_avg} format={(v) => v.toFixed(2)} />
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>⚡ ATAQUE</div>
+              <StatBar label="Calidad de las jugadas ofensivas (xG)" homeVal={data.home.stats.xg_avg} awayVal={data.away.stats.xg_avg} />
+              <StatBar label="Remates intentados por partido" homeVal={data.home.stats.shots_avg} awayVal={data.away.stats.shots_avg} />
+              <StatBar label="Remates que fueron al arco" homeVal={data.home.stats.sot_avg} awayVal={data.away.stats.sot_avg} />
+              <StatBar label="% de remates que van al arco" homeVal={data.home.stats.shot_efficiency} awayVal={data.away.stats.shot_efficiency} format={(v) => `${(v * 100).toFixed(0)}%`} />
+              <StatBar label="% de remates al arco que terminan en gol" homeVal={data.home.stats.conversion_rate} awayVal={data.away.stats.conversion_rate} format={(v) => `${(v * 100).toFixed(0)}%`} />
+              <StatBar label="Corners (tiros de esquina) por partido" homeVal={data.home.stats.corners_avg} awayVal={data.away.stats.corners_avg} />
+              <StatBar label="Goles en los primeros 10 minutos" homeVal={data.home.stats.early_goals_avg} awayVal={data.away.stats.early_goals_avg} format={(v) => v.toFixed(2)} />
 
               <div className="agm-rune-line" style={{ margin: "16px 0" }} />
 
               {/* Control */}
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>🔄 CONTROL DE JUEGO</div>
-              <StatBar label="Posesión promedio" homeVal={data.home.stats.possession_avg} awayVal={data.away.stats.possession_avg} format={(v) => `${(v * 100).toFixed(0)}%`} />
-              <StatBar label="Pases intentados" homeVal={data.home.stats.passes_avg} awayVal={data.away.stats.passes_avg} format={(v) => Math.round(v).toString()} />
-              <StatBar label="Precisión de pases" homeVal={data.home.stats.pass_accuracy_avg} awayVal={data.away.stats.pass_accuracy_avg} format={(v) => `${v.toFixed(1)}%`} />
-              <StatBar label="Duelos aéreos ganados" homeVal={data.home.stats.aerials_won_avg} awayVal={data.away.stats.aerials_won_avg} format={(v) => v.toFixed(1)} />
-              <StatBar label="Atajadas del portero" homeVal={data.home.stats.saves_avg} awayVal={data.away.stats.saves_avg} />
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>🔄 POSESIÓN Y JUEGO</div>
+              <StatBar label="Tiempo con la pelota (posesión %)" homeVal={data.home.stats.possession_avg} awayVal={data.away.stats.possession_avg} format={(v) => `${(v * 100).toFixed(0)}%`} />
+              <StatBar label="Cantidad de pases por partido" homeVal={data.home.stats.passes_avg} awayVal={data.away.stats.passes_avg} format={(v) => Math.round(v).toString()} />
+              <StatBar label="% de pases que llegan al compañero" homeVal={data.home.stats.pass_accuracy_avg} awayVal={data.away.stats.pass_accuracy_avg} format={(v) => `${v.toFixed(1)}%`} />
+              <StatBar label="Disputas en el aire ganadas (pelotas divididas)" homeVal={data.home.stats.aerials_won_avg} awayVal={data.away.stats.aerials_won_avg} format={(v) => v.toFixed(1)} />
+              <StatBar label="Atajadas del arquero por partido" homeVal={data.home.stats.saves_avg} awayVal={data.away.stats.saves_avg} />
 
               <div className="agm-rune-line" style={{ margin: "16px 0" }} />
 
               {/* Disciplina */}
-              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>🟨 DISCIPLINA</div>
-              <StatBar label="Tiros Libres por partido" homeVal={data.home.stats.free_kicks_avg} awayVal={data.away.stats.free_kicks_avg} />
-              <StatBar label="Fueras de juego (Offsides)" homeVal={data.home.stats.offsides_avg} awayVal={data.away.stats.offsides_avg} higherIsBetter={false} />
-              <StatBar label="Faltas cometidas" homeVal={data.home.stats.fouls_avg} awayVal={data.away.stats.fouls_avg} higherIsBetter={false} />
-              <StatBar label="Tarjetas amarillas" homeVal={data.home.stats.yellows_avg} awayVal={data.away.stats.yellows_avg} higherIsBetter={false} />
-              <StatBar label="Tarjetas rojas" homeVal={data.home.stats.reds_avg} awayVal={data.away.stats.reds_avg} higherIsBetter={false} format={(v) => v.toFixed(2)} />
+              <div className="agm-mono" style={{ fontSize: 9, color: "var(--fg-3)", letterSpacing: "0.14em", marginBottom: 10 }}>🟨 FALTAS Y TARJETAS</div>
+              <StatBar label="Faltas que generan tiro libre (por partido)" homeVal={data.home.stats.free_kicks_avg} awayVal={data.away.stats.free_kicks_avg} />
+              <StatBar label="Veces en offside (posición adelantada)" homeVal={data.home.stats.offsides_avg} awayVal={data.away.stats.offsides_avg} higherIsBetter={false} />
+              <StatBar label="Faltas cometidas por partido" homeVal={data.home.stats.fouls_avg} awayVal={data.away.stats.fouls_avg} higherIsBetter={false} />
+              <StatBar label="Tarjetas amarillas recibidas" homeVal={data.home.stats.yellows_avg} awayVal={data.away.stats.yellows_avg} higherIsBetter={false} />
+              <StatBar label="Expulsiones (tarjeta roja) por partido" homeVal={data.home.stats.reds_avg} awayVal={data.away.stats.reds_avg} higherIsBetter={false} format={(v) => v.toFixed(2)} />
             </div>
           </div>
 
@@ -1202,7 +1208,7 @@ export function AnalisisView({ teams }: { teams: Team[] }) {
           <div className="agm-card" style={{ marginBottom: 20 }}>
             <div className="agm-card-h">
               <h3>DESGLOSE POR MITAD</h3>
-              <span className="agm-card-eyebrow">Comparación 1er vs 2do Tiempo (Averages)</span>
+              <span className="agm-card-eyebrow">Cómo rinde cada equipo en cada mitad del partido</span>
             </div>
             <div style={{ padding: "18px 28px" }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
